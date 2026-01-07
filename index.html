@@ -24,28 +24,40 @@
             overflow-x: hidden;
         }
 
-        /* --- 1. แถบตัวอักษรวิ่งด้านบนสุด (Marquee Bar) --- */
-        .announcement-bar {
+        /* --- New Ultra-Smooth Marquee --- */
+        .marquee-wrapper {
             background: var(--p-green);
             color: var(--white);
-            padding: 10px 0;
+            padding: 12px 0;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee-content {
+            display: flex;
+            white-space: nowrap;
+            /* ใช้แอนิเมชั่นที่ทำงานร่วมกับ GPU */
+            animation: marquee-smooth 40s linear infinite;
+        }
+
+        .marquee-item {
+            padding: 0 40px;
             font-size: 0.85rem;
             font-weight: 300;
-            letter-spacing: 1px;
-            overflow: hidden;
-            white-space: nowrap;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .marquee-track {
-            display: inline-block;
-            white-space: nowrap;
-            will-change: transform;
-            animation: marquee 25s linear infinite;
+        @keyframes marquee-smooth {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); } /* เลื่อนไปครึ่งหนึ่งของความกว้างทั้งหมด */
         }
 
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+        /* หยุดเมื่อเอาเมาส์วาง (ลูกเล่นเพิ่มเติม) */
+        .marquee-wrapper:hover .marquee-content {
+            animation-play-state: paused;
         }
 
         /* --- Glassmorphism Navbar --- */
@@ -95,11 +107,9 @@
             font-family: 'Prompt';
             font-weight: 600;
             transition: 0.4s;
-            box-shadow: 0 4px 15px rgba(27, 67, 50, 0.2);
         }
         .lang-switch:hover { background: transparent; color: var(--p-green); transform: translateY(-2px); }
 
-        /* --- Hero Section with Text Reveal Animation --- */
         header { 
             position: relative; height: 450px; display: flex; align-items: center; justify-content: center;
             overflow: hidden; color: white;
@@ -113,11 +123,9 @@
             font-size: 4rem; 
             letter-spacing: 12px; 
             margin: 0; 
-            overflow: hidden;
             animation: tracking-in-expand 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
         }
 
-        /* เอฟเฟกต์ตัวอักษรกางออก */
         @keyframes tracking-in-expand {
             0% { letter-spacing: -0.5em; opacity: 0; }
             40% { opacity: 0.6; }
@@ -133,34 +141,15 @@
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- Social Platforms Area --- */
-        .platforms { 
-            display: flex; justify-content: center; gap: 15px; padding: 30px; 
-            background: white; flex-wrap: wrap;
-        }
-        .p-btn { 
-            text-decoration: none; font-size: 0.85rem; color: #555; 
-            border: 1px solid #eee; padding: 10px 22px; border-radius: 30px; 
-            transition: 0.4s; background: #fff;
-        }
-        .p-btn:hover { border-color: var(--gold); color: var(--gold); transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .platforms { display: flex; justify-content: center; gap: 15px; padding: 30px; background: white; flex-wrap: wrap; }
+        .p-btn { text-decoration: none; font-size: 0.85rem; color: #555; border: 1px solid #eee; padding: 10px 22px; border-radius: 30px; transition: 0.4s; }
+        .p-btn:hover { border-color: var(--gold); color: var(--gold); transform: scale(1.05); }
 
-        /* --- Product Grid & Cards --- */
         .container { max-width: 1250px; margin: 60px auto; padding: 0 25px; }
-        .section-title { 
-            font-family: 'Playfair Display', serif; text-align: center; 
-            font-size: 2.8rem; color: var(--p-green); margin-bottom: 50px;
-            position: relative;
-        }
-        .section-title::after {
-            content: ''; display: block; width: 60px; height: 3px; background: var(--gold); margin: 15px auto;
-        }
+        .section-title { font-family: 'Playfair Display', serif; text-align: center; font-size: 2.8rem; color: var(--p-green); margin-bottom: 50px; position: relative; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--gold); margin: 15px auto; }
 
-        .product-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
-            gap: 35px; 
-        }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 35px; }
 
         .card { 
             background: white; border-radius: 20px; padding: 20px; position: relative;
@@ -170,33 +159,18 @@
         .card.visible { opacity: 1; transform: translateY(0); }
         .card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
 
-        .badge { 
-            position: absolute; top: 20px; left: 20px; background: var(--gold); color: white;
-            font-size: 9px; padding: 4px 12px; border-radius: 50px; z-index: 5; letter-spacing: 1.5px;
-            font-weight: 600;
-        }
+        .badge { position: absolute; top: 20px; left: 20px; background: var(--gold); color: white; font-size: 9px; padding: 4px 12px; border-radius: 50px; z-index: 5; letter-spacing: 1.5px; font-weight: 600; }
 
-        .img-box { 
-            width: 100%; height: 240px; background: #fdfdfd; border-radius: 15px; 
-            margin-bottom: 20px; display: flex; align-items: center; justify-content: center; 
-            overflow: hidden; position: relative;
-        }
+        .img-box { width: 100%; height: 240px; background: #fdfdfd; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .img-box img { width: 80%; height: 80%; object-fit: contain; transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .card:hover img { transform: scale(1.1) rotate(2deg); }
 
-        .card h3 { 
-            font-size: 0.9rem; font-weight: 400; color: var(--p-green); 
-            line-height: 1.5; margin: 10px 0; height: 2.8rem; overflow: hidden; 
-        }
+        .card h3 { font-size: 0.9rem; font-weight: 400; color: var(--p-green); line-height: 1.5; margin: 10px 0; height: 2.8rem; overflow: hidden; }
         .price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px; }
         .sale { color: #b33939; font-weight: 600; font-size: 1.3rem; }
         .old { color: #aaa; text-decoration: line-through; font-size: 0.85rem; }
 
-        .btn { 
-            background: var(--p-green); color: white; text-align: center; text-decoration: none;
-            padding: 12px; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--p-green); 
-            transition: 0.4s; overflow: hidden; position: relative;
-        }
+        .btn { background: var(--p-green); color: white; text-align: center; text-decoration: none; padding: 12px; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--p-green); transition: 0.4s; }
         .btn:hover { background: white; color: var(--p-green); box-shadow: 0 10px 20px rgba(27,67,50,0.15); }
 
         @media (max-width: 600px) {
@@ -210,11 +184,9 @@
 </head>
 <body>
 
-<div class="announcement-bar">
-    <div class="marquee-track" id="marquee-text">
-        ✨ FLASH SALE: UP TO 50% OFF | NEW COLLECTION | HJ COSMETICS - REDEFINING NATURAL BEAUTY ✨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        ✨ FLASH SALE: UP TO 50% OFF | NEW COLLECTION | HJ COSMETICS - REDEFINING NATURAL BEAUTY ✨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </div>
+<div class="marquee-wrapper">
+    <div class="marquee-content" id="marquee-inner">
+        </div>
 </div>
 
 <nav class="top-nav">
@@ -274,23 +246,23 @@
 
     let currentLang = 'th';
     const translations = {
-        th: { 
-            about: "เกี่ยวกับเรา", 
-            contact: "ติดต่อเรา", 
-            title: "สินค้าลดราคาพิเศษ", 
-            viewBtn: "ดูรายละเอียด", 
-            sub: "นิยามใหม่ของความงามจากธรรมชาติ",
-            marquee: "✨ โปรโมชั่นสุดพิเศษ: ลดสูงสุด 50% | ส่งฟรีเมื่อซื้อครบ 999 บาท | HJ COSMETICS นิยามความงามจากธรรมชาติ ✨" 
-        },
-        en: { 
-            about: "About Us", 
-            contact: "Contact Us", 
-            title: "Flash Sale Selection", 
-            viewBtn: "VIEW DETAILS", 
-            sub: "REDEFINING NATURAL BEAUTY",
-            marquee: "✨ FLASH SALE: UP TO 50% OFF | FREE SHIPPING OVER ฿999 | HJ COSMETICS - REDEFINING NATURAL BEAUTY ✨" 
-        }
+        th: { about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", title: "สินค้าลดราคาพิเศษ", viewBtn: "ดูรายละเอียด", sub: "นิยามใหม่ของความงามจากธรรมชาติ", 
+              promo: "✨ โปรโมชั่นสุดพิเศษ: ลดสูงสุด 50% | ส่งฟรีเมื่อซื้อครบ 999 บาท | HJ COSMETICS ✨" },
+        en: { about: "About Us", contact: "Contact Us", title: "Flash Sale Selection", viewBtn: "VIEW DETAILS", sub: "REDEFINING NATURAL BEAUTY",
+              promo: "✨ FLASH SALE: UP TO 50% OFF | FREE SHIPPING OVER ฿999 | HJ COSMETICS ✨" }
     };
+
+    function updateMarquee() {
+        const inner = document.getElementById('marquee-inner');
+        const text = translations[currentLang].promo;
+        // ใส่ 4 ชุดเพื่อให้ข้อความเต็มความกว้างและต่อกันสมูทที่สุด
+        inner.innerHTML = `
+            <div class="marquee-item">${text}</div>
+            <div class="marquee-item">${text}</div>
+            <div class="marquee-item">${text}</div>
+            <div class="marquee-item">${text}</div>
+        `;
+    }
 
     function renderProducts() {
         const grid = document.getElementById('main-grid');
@@ -309,7 +281,6 @@
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.card').forEach(card => observer.observe(card));
     }
 
@@ -320,17 +291,12 @@
         document.getElementById('section-title').textContent = translations[currentLang].title;
         document.getElementById('header-sub').textContent = translations[currentLang].sub;
         document.getElementById('langBtn').textContent = currentLang === 'th' ? 'EN' : 'TH';
-        
-        // อัปเดต Marquee เมื่อเปลี่ยนภาษา
-        const marqueeTrack = document.getElementById('marquee-text');
-        const text = translations[currentLang].marquee + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-        marqueeTrack.innerHTML = text + text;
-
-        document.querySelectorAll('.view-btn').forEach(btn => {
-            btn.textContent = translations[currentLang].viewBtn;
-        });
+        updateMarquee();
+        renderProducts();
     }
 
+    // Initial Load
+    updateMarquee();
     renderProducts();
 </script>
 
