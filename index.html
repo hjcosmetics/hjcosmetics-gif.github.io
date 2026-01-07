@@ -9,7 +9,9 @@
         :root {
             --p-green: #1b4332;
             --a-green: #2d6a4f;
-            --gold: #c5a059;
+            --gold-light: #f1d38e;
+            --gold-dark: #c5a059;
+            --gold-gradient: linear-gradient(90deg, #c5a059, #f1d38e, #c5a059);
             --white: #ffffff;
             --bg: #f8faf9;
             --glass: rgba(255, 255, 255, 0.85);
@@ -24,43 +26,60 @@
             overflow-x: hidden;
         }
 
-        /* --- New Ultra-Smooth Marquee --- */
+        /* --- ✨ Modern Golden Marquee ✨ --- */
         .marquee-wrapper {
-            background: var(--p-green);
-            color: var(--white);
-            padding: 12px 0;
+            background: var(--gold-gradient);
+            background-size: 200% auto;
+            color: var(--p-green);
+            padding: 10px 0;
             overflow: hidden;
             position: relative;
             display: flex;
             align-items: center;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            /* แอนิเมชั่นให้สีทองเล่นแสงที่พื้นหลัง */
+            animation: gold-shine-bg 6s linear infinite;
+        }
+
+        @keyframes gold-shine-bg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .marquee-content {
             display: flex;
             white-space: nowrap;
-            /* ใช้แอนิเมชั่นที่ทำงานร่วมกับ GPU */
-            animation: marquee-smooth 40s linear infinite;
+            animation: marquee-smooth 30s linear infinite;
         }
 
         .marquee-item {
-            padding: 0 40px;
-            font-size: 0.85rem;
-            font-weight: 300;
-            letter-spacing: 2px;
+            padding: 0 60px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
+            /* เอฟเฟกต์ตัวอักษรเล่นแสง */
+            background: linear-gradient(to right, #1b4332 20%, #4c6d5e 40%, #4c6d5e 60%, #1b4332 80%);
+            background-size: 200% auto;
+            color: #1b4332;
+            background-clip: text;
+            -webkit-background-clip: text;
+            /*-webkit-text-fill-color: transparent;*/ /* เปิดถ้าต้องการให้ตัวอักษรเป็น Gradient */
+            animation: text-shine 3s linear infinite;
+        }
+
+        @keyframes text-shine {
+            to { background-position: 200% center; }
         }
 
         @keyframes marquee-smooth {
             0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); } /* เลื่อนไปครึ่งหนึ่งของความกว้างทั้งหมด */
+            100% { transform: translate3d(-50%, 0, 0); }
         }
 
-        /* หยุดเมื่อเอาเมาส์วาง (ลูกเล่นเพิ่มเติม) */
-        .marquee-wrapper:hover .marquee-content {
-            animation-play-state: paused;
-        }
-
-        /* --- Glassmorphism Navbar --- */
+        /* --- ส่วนอื่นๆ ของโค้ดคงเดิม --- */
         .top-nav {
             background: var(--glass);
             backdrop-filter: blur(10px);
@@ -77,36 +96,14 @@
         
         .nav-left { display: flex; align-items: center; gap: 40px; }
         .logo-box img { height: 50px; width: auto; transition: transform 0.3s ease; }
-        .logo-box:hover img { transform: scale(1.05); }
-
         .nav-links { display: flex; gap: 25px; }
-        .nav-links a { 
-            text-decoration: none; 
-            color: var(--p-green); 
-            font-size: 0.95rem; 
-            font-weight: 400; 
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px; left: 0;
-            width: 0%; height: 2px;
-            background: var(--gold);
-            transition: 0.3s;
-        }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.95rem; font-weight: 400; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px; background: var(--gold-dark); transition: 0.3s; }
         .nav-links a:hover::after { width: 100%; }
         
         .lang-switch {
-            background: var(--p-green);
-            color: white;
-            border: 2px solid var(--p-green);
-            padding: 6px 18px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-family: 'Prompt';
-            font-weight: 600;
-            transition: 0.4s;
+            background: var(--p-green); color: white; border: 2px solid var(--p-green);
+            padding: 6px 18px; border-radius: 25px; cursor: pointer; font-family: 'Prompt'; font-weight: 600; transition: 0.4s;
         }
         .lang-switch:hover { background: transparent; color: var(--p-green); transform: translateY(-2px); }
 
@@ -119,10 +116,7 @@
         
         .header-content { position: relative; z-index: 3; text-align: center; }
         .header-content h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 4rem; 
-            letter-spacing: 12px; 
-            margin: 0; 
+            font-family: 'Playfair Display', serif; font-size: 4rem; letter-spacing: 12px; margin: 0; 
             animation: tracking-in-expand 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
         }
 
@@ -132,22 +126,16 @@
             100% { opacity: 1; }
         }
 
-        .header-content p { 
-            font-weight: 200; 
-            letter-spacing: 4px; 
-            margin-top: 10px;
-            animation: fadeInUp 1s ease 0.5s backwards; 
-        }
-
+        .header-content p { font-weight: 200; letter-spacing: 4px; margin-top: 10px; animation: fadeInUp 1s ease 0.5s backwards; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         .platforms { display: flex; justify-content: center; gap: 15px; padding: 30px; background: white; flex-wrap: wrap; }
         .p-btn { text-decoration: none; font-size: 0.85rem; color: #555; border: 1px solid #eee; padding: 10px 22px; border-radius: 30px; transition: 0.4s; }
-        .p-btn:hover { border-color: var(--gold); color: var(--gold); transform: scale(1.05); }
+        .p-btn:hover { border-color: var(--gold-dark); color: var(--gold-dark); transform: scale(1.05); }
 
         .container { max-width: 1250px; margin: 60px auto; padding: 0 25px; }
         .section-title { font-family: 'Playfair Display', serif; text-align: center; font-size: 2.8rem; color: var(--p-green); margin-bottom: 50px; position: relative; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--gold); margin: 15px auto; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--gold-dark); margin: 15px auto; }
 
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 35px; }
 
@@ -159,7 +147,7 @@
         .card.visible { opacity: 1; transform: translateY(0); }
         .card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
 
-        .badge { position: absolute; top: 20px; left: 20px; background: var(--gold); color: white; font-size: 9px; padding: 4px 12px; border-radius: 50px; z-index: 5; letter-spacing: 1.5px; font-weight: 600; }
+        .badge { position: absolute; top: 20px; left: 20px; background: var(--gold-dark); color: white; font-size: 9px; padding: 4px 12px; border-radius: 50px; z-index: 5; letter-spacing: 1.5px; font-weight: 600; }
 
         .img-box { width: 100%; height: 240px; background: #fdfdfd; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .img-box img { width: 80%; height: 80%; object-fit: contain; transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -255,7 +243,6 @@
     function updateMarquee() {
         const inner = document.getElementById('marquee-inner');
         const text = translations[currentLang].promo;
-        // ใส่ 4 ชุดเพื่อให้ข้อความเต็มความกว้างและต่อกันสมูทที่สุด
         inner.innerHTML = `
             <div class="marquee-item">${text}</div>
             <div class="marquee-item">${text}</div>
@@ -295,7 +282,6 @@
         renderProducts();
     }
 
-    // Initial Load
     updateMarquee();
     renderProducts();
 </script>
