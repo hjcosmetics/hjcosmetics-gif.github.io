@@ -24,6 +24,30 @@
             overflow-x: hidden;
         }
 
+        /* --- 1. แถบตัวอักษรวิ่งด้านบนสุด (Marquee Bar) --- */
+        .announcement-bar {
+            background: var(--p-green);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-track {
+            display: inline-block;
+            white-space: nowrap;
+            will-change: transform;
+            animation: marquee 25s linear infinite;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
         /* --- Glassmorphism Navbar --- */
         .top-nav {
             background: var(--glass);
@@ -37,7 +61,6 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            transition: all 0.4s ease;
         }
         
         .nav-left { display: flex; align-items: center; gap: 40px; }
@@ -76,25 +99,39 @@
         }
         .lang-switch:hover { background: transparent; color: var(--p-green); transform: translateY(-2px); }
 
-        /* --- Hero Section with Overlay Effect --- */
+        /* --- Hero Section with Text Reveal Animation --- */
         header { 
             position: relative; height: 450px; display: flex; align-items: center; justify-content: center;
             overflow: hidden; color: white;
         }
         .header-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; z-index: 1; }
         .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(10,46,31,0.4), rgba(10,46,31,0.7)); z-index: 2; }
+        
         .header-content { position: relative; z-index: 3; text-align: center; }
         .header-content h1 { 
             font-family: 'Playfair Display', serif; 
             font-size: 4rem; 
-            letter-spacing: 8px; 
+            letter-spacing: 12px; 
             margin: 0; 
-            animation: fadeInDown 1.2s ease;
+            overflow: hidden;
+            animation: tracking-in-expand 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
         }
-        .header-content p { font-weight: 200; letter-spacing: 3px; animation: fadeInUp 1.2s ease 0.3s backwards; }
 
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        /* เอฟเฟกต์ตัวอักษรกางออก */
+        @keyframes tracking-in-expand {
+            0% { letter-spacing: -0.5em; opacity: 0; }
+            40% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .header-content p { 
+            font-weight: 200; 
+            letter-spacing: 4px; 
+            margin-top: 10px;
+            animation: fadeInUp 1s ease 0.5s backwards; 
+        }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- Social Platforms Area --- */
         .platforms { 
@@ -167,11 +204,18 @@
             .header-content h1 { font-size: 2.2rem; }
             .nav-left { gap: 10px; }
             .logo-box img { height: 35px; }
-            .nav-links { display: none; } /* ซ่อนเมนูในมือถือเพื่อให้ดูสะอาดตา */
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
+
+<div class="announcement-bar">
+    <div class="marquee-track" id="marquee-text">
+        ✨ FLASH SALE: UP TO 50% OFF | NEW COLLECTION | HJ COSMETICS - REDEFINING NATURAL BEAUTY ✨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        ✨ FLASH SALE: UP TO 50% OFF | NEW COLLECTION | HJ COSMETICS - REDEFINING NATURAL BEAUTY ✨&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+</div>
 
 <nav class="top-nav">
     <div class="nav-left">
@@ -206,9 +250,7 @@
 
 <div class="container">
     <h2 class="section-title" id="section-title">สินค้าลดราคาพิเศษ</h2>
-    
-    <div class="product-grid" id="main-grid">
-        </div>
+    <div class="product-grid" id="main-grid"></div>
 </div>
 
 <script>
@@ -232,13 +274,26 @@
 
     let currentLang = 'th';
     const translations = {
-        th: { about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", title: "สินค้าลดราคาพิเศษ", viewBtn: "ดูรายละเอียด", sub: "นิยามใหม่ของความงามจากธรรมชาติ" },
-        en: { about: "About Us", contact: "Contact Us", title: "Flash Sale Selection", viewBtn: "VIEW DETAILS", sub: "REDEFINING NATURAL BEAUTY" }
+        th: { 
+            about: "เกี่ยวกับเรา", 
+            contact: "ติดต่อเรา", 
+            title: "สินค้าลดราคาพิเศษ", 
+            viewBtn: "ดูรายละเอียด", 
+            sub: "นิยามใหม่ของความงามจากธรรมชาติ",
+            marquee: "✨ โปรโมชั่นสุดพิเศษ: ลดสูงสุด 50% | ส่งฟรีเมื่อซื้อครบ 999 บาท | HJ COSMETICS นิยามความงามจากธรรมชาติ ✨" 
+        },
+        en: { 
+            about: "About Us", 
+            contact: "Contact Us", 
+            title: "Flash Sale Selection", 
+            viewBtn: "VIEW DETAILS", 
+            sub: "REDEFINING NATURAL BEAUTY",
+            marquee: "✨ FLASH SALE: UP TO 50% OFF | FREE SHIPPING OVER ฿999 | HJ COSMETICS - REDEFINING NATURAL BEAUTY ✨" 
+        }
     };
 
-    // Render Products
-    const grid = document.getElementById('main-grid');
     function renderProducts() {
+        const grid = document.getElementById('main-grid');
         grid.innerHTML = products.map(p => `
             <div class="card">
                 <div class="badge">${p.badge}</div>
@@ -249,12 +304,9 @@
             </div>
         `).join('');
         
-        // Setup Intersection Observer for Animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
 
@@ -269,12 +321,16 @@
         document.getElementById('header-sub').textContent = translations[currentLang].sub;
         document.getElementById('langBtn').textContent = currentLang === 'th' ? 'EN' : 'TH';
         
+        // อัปเดต Marquee เมื่อเปลี่ยนภาษา
+        const marqueeTrack = document.getElementById('marquee-text');
+        const text = translations[currentLang].marquee + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        marqueeTrack.innerHTML = text + text;
+
         document.querySelectorAll('.view-btn').forEach(btn => {
             btn.textContent = translations[currentLang].viewBtn;
         });
     }
 
-    // Initial Load
     renderProducts();
 </script>
 
