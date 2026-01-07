@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HJ COSMETICS - Full Flash Sale Collection</title>
+    <title>HJ COSMETICS - Luxury Collection</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -11,111 +11,163 @@
             --a-green: #2d6a4f;
             --gold: #c5a059;
             --white: #ffffff;
-            --bg: #fcfdfc;
+            --bg: #f8faf9;
+            --glass: rgba(255, 255, 255, 0.85);
         }
 
-        body { font-family: 'Prompt', sans-serif; margin: 0; background-color: var(--bg); color: #333; }
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Prompt', sans-serif; 
+            margin: 0; 
+            background: linear-gradient(135deg, #fcfdfc 0%, #f4f7f5 100%); 
+            color: #333; 
+            overflow-x: hidden;
+        }
 
-        /* --- Updated Navbar with Logo --- */
+        /* --- Glassmorphism Navbar --- */
         .top-nav {
-            background: var(--white);
-            padding: 10px 5%;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
         }
         
-        .nav-left { display: flex; align-items: center; gap: 30px; }
-        
-        .logo-box img {
-            height: 45px; /* ปรับขนาดความสูงโลโก้ตามต้องการ */
-            width: auto;
-            display: block;
-        }
+        .nav-left { display: flex; align-items: center; gap: 40px; }
+        .logo-box img { height: 50px; width: auto; transition: transform 0.3s ease; }
+        .logo-box:hover img { transform: scale(1.05); }
 
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.9rem; font-weight: 400; transition: 0.3s; }
-        .nav-links a:hover { color: var(--gold); }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--p-green); 
+            font-size: 0.95rem; 
+            font-weight: 400; 
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0;
+            width: 0%; height: 2px;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
         
         .lang-switch {
             background: var(--p-green);
             color: white;
-            border: 1px solid var(--p-green);
-            padding: 5px 15px;
-            border-radius: 20px;
+            border: 2px solid var(--p-green);
+            padding: 6px 18px;
+            border-radius: 25px;
             cursor: pointer;
             font-family: 'Prompt';
-            font-size: 0.8rem;
-            transition: 0.3s;
+            font-weight: 600;
+            transition: 0.4s;
+            box-shadow: 0 4px 15px rgba(27, 67, 50, 0.2);
         }
-        .lang-switch:hover { background: transparent; color: var(--p-green); }
+        .lang-switch:hover { background: transparent; color: var(--p-green); transform: translateY(-2px); }
 
-        /* --- Original Style --- */
+        /* --- Hero Section with Overlay Effect --- */
         header { 
-            position: relative; height: 380px; display: flex; align-items: center; justify-content: center;
+            position: relative; height: 450px; display: flex; align-items: center; justify-content: center;
             overflow: hidden; color: white;
         }
         .header-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; z-index: 1; }
-        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 46, 31, 0.6); z-index: 2; }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(10,46,31,0.4), rgba(10,46,31,0.7)); z-index: 2; }
         .header-content { position: relative; z-index: 3; text-align: center; }
-        .header-content h1 { font-family: 'Playfair Display', serif; font-size: 3rem; letter-spacing: 5px; margin: 0; }
-
-        .platforms { 
-            display: flex; justify-content: center; gap: 10px; padding: 20px; 
-            background: white; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap;
+        .header-content h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 4rem; 
+            letter-spacing: 8px; 
+            margin: 0; 
+            animation: fadeInDown 1.2s ease;
         }
-        .p-btn { text-decoration: none; font-size: 0.8rem; color: #777; border: 1px solid #eee; padding: 8px 18px; border-radius: 20px; transition: 0.3s; }
-        .p-btn:hover { border-color: var(--p-green); color: var(--p-green); }
+        .header-content p { font-weight: 200; letter-spacing: 3px; animation: fadeInUp 1.2s ease 0.3s backwards; }
 
-        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
-        .section-title { font-family: 'Playfair Display', serif; text-align: center; font-size: 2.2rem; color: var(--p-green); margin-bottom: 40px; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Social Platforms Area --- */
+        .platforms { 
+            display: flex; justify-content: center; gap: 15px; padding: 30px; 
+            background: white; flex-wrap: wrap;
+        }
+        .p-btn { 
+            text-decoration: none; font-size: 0.85rem; color: #555; 
+            border: 1px solid #eee; padding: 10px 22px; border-radius: 30px; 
+            transition: 0.4s; background: #fff;
+        }
+        .p-btn:hover { border-color: var(--gold); color: var(--gold); transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        /* --- Product Grid & Cards --- */
+        .container { max-width: 1250px; margin: 60px auto; padding: 0 25px; }
+        .section-title { 
+            font-family: 'Playfair Display', serif; text-align: center; 
+            font-size: 2.8rem; color: var(--p-green); margin-bottom: 50px;
+            position: relative;
+        }
+        .section-title::after {
+            content: ''; display: block; width: 60px; height: 3px; background: var(--gold); margin: 15px auto;
+        }
 
         .product-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-            gap: 30px; 
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+            gap: 35px; 
         }
 
         .card { 
-            background: white; border-radius: 15px; padding: 15px; position: relative;
-            transition: 0.4s; border: 1px solid rgba(0,0,0,0.02); display: flex; flex-direction: column;
+            background: white; border-radius: 20px; padding: 20px; position: relative;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); border: 1px solid rgba(0,0,0,0.03); 
+            display: flex; flex-direction: column; opacity: 0; transform: translateY(40px);
         }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.06); }
+        .card.visible { opacity: 1; transform: translateY(0); }
+        .card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
 
         .badge { 
-            position: absolute; top: 15px; left: 15px; background: var(--p-green); color: white;
-            font-size: 10px; padding: 3px 10px; border-radius: 4px; z-index: 5; letter-spacing: 1px;
+            position: absolute; top: 20px; left: 20px; background: var(--gold); color: white;
+            font-size: 9px; padding: 4px 12px; border-radius: 50px; z-index: 5; letter-spacing: 1.5px;
+            font-weight: 600;
         }
 
         .img-box { 
-            width: 100%; height: 220px; background: #f9f9f9; border-radius: 10px; 
-            margin-bottom: 15px; display: flex; align-items: center; justify-content: center; overflow: hidden;
+            width: 100%; height: 240px; background: #fdfdfd; border-radius: 15px; 
+            margin-bottom: 20px; display: flex; align-items: center; justify-content: center; 
+            overflow: hidden; position: relative;
         }
-        .img-box img { width: 85%; height: 85%; object-fit: contain; transition: 0.5s; }
-        .card:hover img { transform: scale(1.08); }
+        .img-box img { width: 80%; height: 80%; object-fit: contain; transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .card:hover img { transform: scale(1.1) rotate(2deg); }
 
-        .card h3 { font-size: 0.85rem; font-weight: 400; color: var(--p-green); line-height: 1.5; margin: 10px 0; height: 2.5rem; overflow: hidden; }
-        .price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 15px; }
-        .sale { color: #d63031; font-weight: 600; font-size: 1.2rem; }
-        .old { color: #b2bec3; text-decoration: line-through; font-size: 0.8rem; }
+        .card h3 { 
+            font-size: 0.9rem; font-weight: 400; color: var(--p-green); 
+            line-height: 1.5; margin: 10px 0; height: 2.8rem; overflow: hidden; 
+        }
+        .price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 20px; }
+        .sale { color: #b33939; font-weight: 600; font-size: 1.3rem; }
+        .old { color: #aaa; text-decoration: line-through; font-size: 0.85rem; }
 
         .btn { 
             background: var(--p-green); color: white; text-align: center; text-decoration: none;
-            padding: 10px; border-radius: 8px; font-size: 0.8rem; border: 1px solid var(--p-green); transition: 0.3s;
+            padding: 12px; border-radius: 12px; font-size: 0.85rem; border: 1px solid var(--p-green); 
+            transition: 0.4s; overflow: hidden; position: relative;
         }
-        .btn:hover { background: transparent; color: var(--p-green); }
+        .btn:hover { background: white; color: var(--p-green); box-shadow: 0 10px 20px rgba(27,67,50,0.15); }
 
         @media (max-width: 600px) {
             .product-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
-            .header-content h1 { font-size: 1.8rem; }
-            .nav-left { gap: 15px; }
+            .header-content h1 { font-size: 2.2rem; }
+            .nav-left { gap: 10px; }
             .logo-box img { height: 35px; }
-            .nav-links a { font-size: 0.7rem; }
+            .nav-links { display: none; } /* ซ่อนเมนูในมือถือเพื่อให้ดูสะอาดตา */
         }
     </style>
 </head>
@@ -124,7 +176,7 @@
 <nav class="top-nav">
     <div class="nav-left">
         <a href="index.html" class="logo-box">
-            <img src="logo.png" alt="HJ COSMETICS LOGO" onerror="this.src='https://via.placeholder.com/150x50?text=HJ+LOGO'">
+            <img src="logo.png" alt="HJ LOGO" onerror="this.src='https://via.placeholder.com/150x50/1b4332/ffffff?text=HJ+COSMETICS'">
         </a>
         <div class="nav-links">
             <a href="#" id="nav-about">เกี่ยวกับเรา</a>
@@ -135,7 +187,9 @@
 </nav>
 
 <header>
-    <video autoplay muted loop playsinline class="header-video"><source src="Video.mp4" type="video/mp4"></video>
+    <video autoplay muted loop playsinline class="header-video">
+        <source src="Video.mp4" type="video/mp4">
+    </video>
     <div class="overlay"></div>
     <div class="header-content">
         <h1>HJ COSMETICS</h1>
@@ -152,149 +206,60 @@
 
 <div class="container">
     <h2 class="section-title" id="section-title">สินค้าลดราคาพิเศษ</h2>
-    <div class="product-grid">
-
-        <div class="card">
-            <div class="badge">FLASH SALE</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+1"></div>
-            <h3>ORIGINAL HERB WORMWOOD CALMING WATERY CREAM</h3>
-            <div class="price"><span class="sale">฿250</span><span class="old">฿369</span></div>
-            <a href="product1.html" class="btn view-btn">ดูรายละเอียด</a>
+    
+    <div class="product-grid" id="main-grid">
         </div>
-
-        <div class="card">
-            <div class="badge">FLASH SALE</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+2"></div>
-            <h3>ORIGINAL HERB WORMWOOD CALMING TONER</h3>
-            <div class="price"><span class="sale">฿350</span><span class="old">฿459</span></div>
-            <a href="product2.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">HOT ITEM</div>
-            <div class="img-box"><img src="ดีไซน์ที่ยังไม่ได้ตั้งชื่อ.png"></div>
-            <h3>ORIGINAL HERB WORMWOOD CLEANSNG WATER</h3>
-            <div class="price"><span class="sale">฿250</span><span class="old">฿400</span></div>
-            <a href="product3.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">FLASH SALE</div>
-            <div class="img-box"><img src="IMG_5751.png"></div>
-            <h3>ORIGINAL HERB WORMWOOD CLEANSING FOAM</h3>
-            <div class="price"><span class="sale">฿290</span><span class="old">฿399</span></div>
-            <a href="product4.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">EXCLUSIVE</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+5"></div>
-            <h3>HEARTLEAF BLEMISH MOISTURE CREAM</h3>
-            <div class="price"><span class="sale">฿310</span><span class="old">฿590</span></div>
-            <a href="product5.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">BEST DEAL</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+6"></div>
-            <h3>HEARTLEAF BLEMISH TONER</h3>
-            <div class="price"><span class="sale">฿360</span><span class="old">฿529</span></div>
-            <a href="product6.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">3D CORE</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+7"></div>
-            <h3>RETIN-COLLAGEN 3D CORE CREAM</h3>
-            <div class="price"><span class="sale">฿250</span><span class="old">฿459</span></div>
-            <a href="product7.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">FLASH SALE</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+8"></div>
-            <h3>RETIN-COLLAGEN 3D CORE EYE CREAM</h3>
-            <div class="price"><span class="sale">฿195</span><span class="old">฿370</span></div>
-            <a href="product8.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">FLASH SALE</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+9"></div>
-            <h3>RETIN-COLLAGEN 3D CORE TONER</h3>
-            <div class="price"><span class="sale">฿290</span><span class="old">฿500</span></div>
-            <a href="product9.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">SPECIAL</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+10"></div>
-            <h3>RETIN-COLLAGEN 3D CORE LIP OIL</h3>
-            <div class="price"><span class="sale">฿125</span><span class="old">฿259</span></div>
-            <a href="product10.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">AIRY FIT</div>
-            <div class="img-box"><img src="Heartleaf Airy Fit Sun Cream 50g ผลิตภัณฑ์.png"></div>
-            <h3>HEARTLEAF AIRY FIT SUN CREAM</h3>
-            <div class="price"><span class="sale">฿280</span><span class="old">฿450</span></div>
-            <a href="product11.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">SUN SCREEN</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+12"></div>
-            <h3>HEARTLEAF WATER FIT SUN SCREEN</h3>
-            <div class="price"><span class="sale">฿320</span><span class="old">฿590</span></div>
-            <a href="product12.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">FLASH SALE</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+13"></div>
-            <h3>ORIGINAL HERB WORMWOOD SHEET MASK</h3>
-            <div class="price"><span class="sale">฿17</span><span class="old">฿29</span></div>
-            <a href="product13.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">TONE UP</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+14"></div>
-            <h3>BATHPA BODY TONE UP CREAM</h3>
-            <div class="price"><span class="sale">฿150</span><span class="old">฿529</span></div>
-            <a href="product14.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-        <div class="card">
-            <div class="badge">CICA CARE</div>
-            <div class="img-box"><img src="https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+15"></div>
-            <h3>MANG BEAN CICA CLEANSING FOAM</h3>
-            <div class="price"><span class="sale">฿120</span><span class="old">฿199</span></div>
-            <a href="product15.html" class="btn view-btn">ดูรายละเอียด</a>
-        </div>
-
-    </div>
 </div>
 
 <script>
+    const products = [
+        { id:1, name: "ORIGINAL HERB WORMWOOD CALMING WATERY CREAM", sale: 250, old: 369, badge: "FLASH SALE", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+1" },
+        { id:2, name: "ORIGINAL HERB WORMWOOD CALMING TONER", sale: 350, old: 459, badge: "FLASH SALE", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+2" },
+        { id:3, name: "ORIGINAL HERB WORMWOOD CLEANSNG WATER", sale: 250, old: 400, badge: "HOT ITEM", img: "ดีไซน์ที่ยังไม่ได้ตั้งชื่อ.png" },
+        { id:4, name: "ORIGINAL HERB WORMWOOD CLEANSING FOAM", sale: 290, old: 399, badge: "FLASH SALE", img: "IMG_5751.png" },
+        { id:5, name: "HEARTLEAF BLEMISH MOISTURE CREAM", sale: 310, old: 590, badge: "EXCLUSIVE", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+5" },
+        { id:6, name: "HEARTLEAF BLEMISH TONER", sale: 360, old: 529, badge: "BEST DEAL", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+6" },
+        { id:7, name: "RETIN-COLLAGEN 3D CORE CREAM", sale: 250, old: 459, badge: "3D CORE", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+7" },
+        { id:8, name: "RETIN-COLLAGEN 3D CORE EYE CREAM", sale: 195, old: 370, badge: "FLASH SALE", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+8" },
+        { id:9, name: "RETIN-COLLAGEN 3D CORE TONER", sale: 290, old: 500, badge: "FLASH SALE", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+9" },
+        { id:10, name: "RETIN-COLLAGEN 3D CORE LIP OIL", sale: 125, old: 259, badge: "SPECIAL", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+10" },
+        { id:11, name: "HEARTLEAF AIRY FIT SUN CREAM", sale: 280, old: 450, badge: "AIRY FIT", img: "Heartleaf Airy Fit Sun Cream 50g ผลิตภัณฑ์.png" },
+        { id:12, name: "HEARTLEAF WATER FIT SUN SCREEN", sale: 320, old: 590, badge: "SUN SCREEN", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+12" },
+        { id:13, name: "ORIGINAL HERB WORMWOOD SHEET MASK", sale: 17, old: 29, badge: "FLASH SALE", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+13" },
+        { id:14, name: "BATHPA BODY TONE UP CREAM", sale: 150, old: 529, badge: "TONE UP", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+14" },
+        { id:15, name: "MANG BEAN CICA CLEANSING FOAM", sale: 120, old: 199, badge: "CICA CARE", img: "https://via.placeholder.com/300/f9f9f9/1b4332?text=Product+15" }
+    ];
+
     let currentLang = 'th';
     const translations = {
-        th: {
-            about: "เกี่ยวกับเรา",
-            contact: "ติดต่อเรา",
-            title: "สินค้าลดราคาพิเศษ",
-            viewBtn: "ดูรายละเอียด",
-            sub: "นิยามใหม่ของความงามจากธรรมชาติ"
-        },
-        en: {
-            about: "About Us",
-            contact: "Contact Us",
-            title: "Flash Sale Selection",
-            viewBtn: "VIEW DETAILS",
-            sub: "REDEFINING NATURAL BEAUTY"
-        }
+        th: { about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", title: "สินค้าลดราคาพิเศษ", viewBtn: "ดูรายละเอียด", sub: "นิยามใหม่ของความงามจากธรรมชาติ" },
+        en: { about: "About Us", contact: "Contact Us", title: "Flash Sale Selection", viewBtn: "VIEW DETAILS", sub: "REDEFINING NATURAL BEAUTY" }
     };
+
+    // Render Products
+    const grid = document.getElementById('main-grid');
+    function renderProducts() {
+        grid.innerHTML = products.map(p => `
+            <div class="card">
+                <div class="badge">${p.badge}</div>
+                <div class="img-box"><img src="${p.img}" alt="${p.name}"></div>
+                <h3>${p.name}</h3>
+                <div class="price"><span class="sale">฿${p.sale}</span><span class="old">฿${p.old}</span></div>
+                <a href="product${p.id}.html" class="btn view-btn">${translations[currentLang].viewBtn}</a>
+            </div>
+        `).join('');
+        
+        // Setup Intersection Observer for Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card').forEach(card => observer.observe(card));
+    }
 
     function toggleLanguage() {
         currentLang = currentLang === 'th' ? 'en' : 'th';
@@ -304,11 +269,13 @@
         document.getElementById('header-sub').textContent = translations[currentLang].sub;
         document.getElementById('langBtn').textContent = currentLang === 'th' ? 'EN' : 'TH';
         
-        const buttons = document.querySelectorAll('.view-btn');
-        buttons.forEach(btn => {
+        document.querySelectorAll('.view-btn').forEach(btn => {
             btn.textContent = translations[currentLang].viewBtn;
         });
     }
+
+    // Initial Load
+    renderProducts();
 </script>
 
 </body>
