@@ -22,9 +22,10 @@
             font-family: 'IBM-Plex-Light', sans-serif; 
             margin: 0; background-color: var(--bg-creme); 
             color: var(--p-green); overflow-x: hidden;
+            /* ✨ Luxury Moving Background */
             background: linear-gradient(45deg, #fdfcf9, #f9f5eb, #f1e9d2, #fdfcf9);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite; /* พื้นหลังเคลื่อนไหวช้าๆ */
+            animation: gradientBG 15s ease infinite;
         }
 
         @keyframes gradientBG {
@@ -33,9 +34,9 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- 🌟 Glass Navigation --- */
+        /* --- Glass Navigation --- */
         .top-nav { 
-            background: rgba(255, 255, 255, 0.6); 
+            background: rgba(255, 255, 255, 0.7); 
             backdrop-filter: blur(20px); 
             padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; 
             position: sticky; top: 0; z-index: 1000;
@@ -46,20 +47,19 @@
         .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; }
         .lang-switch { background: var(--p-green); color: var(--gold-light); border: none; padding: 8px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; }
 
-        /* --- 🎬 Cinematic Hero --- */
-        header { height: 80vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .header-video { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+        /* --- 🎬 Cinematic Hero (Fixed Header) --- */
+        header { height: 75vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #000; }
+        .header-video { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.65; }
+        .header-overlay { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.4) 100%); z-index: 1; }
         .header-content { position: relative; z-index: 2; text-align: center; }
-        .header-content h1 { font-size: 6rem; margin: 0; color: white; letter-spacing: 15px; font-weight: 300; text-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .header-content p { color: var(--gold-light); letter-spacing: 8px; text-transform: uppercase; font-size: 1rem; margin-top: 20px; }
+        .header-content h1 { font-size: 5.5rem; margin: 0; color: white; letter-spacing: 18px; font-weight: 300; text-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+        .header-content p { color: var(--gold-light); letter-spacing: 10px; text-transform: uppercase; font-size: 1rem; margin-top: 25px; font-weight: 300; }
 
-        /* --- 🏛 Brand Layout (New Design) --- */
+        /* --- Brand Sections --- */
         .brand-section { padding: 120px 0; position: relative; }
-        
-        /* ตัวอักษรพื้นหลังขนาดใหญ่ (Parallax Effect) */
         .bg-text { 
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            font-size: 15vw; font-weight: 800; color: rgba(27, 67, 50, 0.03);
+            font-size: 15vw; font-weight: 800; color: rgba(27, 67, 50, 0.035);
             white-space: nowrap; z-index: 0; pointer-events: none; text-transform: uppercase;
         }
 
@@ -68,61 +68,61 @@
         .brand-header p { font-size: 0.9rem; letter-spacing: 5px; color: var(--gold-dark); text-transform: uppercase; }
 
         .slider-outer { position: relative; z-index: 1; padding: 0 5%; }
-        
         .product-slider { 
             display: flex; gap: 40px; overflow-x: auto; 
             padding: 40px 20px; scrollbar-width: none;
         }
         .product-slider::-webkit-scrollbar { display: none; }
 
-        /* --- 🎨 Sculptural Card --- */
+        /* --- Luxury Card --- */
         .card { 
-            flex: 0 0 350px; background: white; border-radius: 60px 10px 60px 10px; /* ทรงหยดน้ำเหลี่ยม */
+            flex: 0 0 350px; background: rgba(255, 255, 255, 0.9); 
+            border-radius: 50px 10px 50px 10px; 
             padding: 40px; transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.03), -20px -20px 60px rgba(255,255,255,0.8);
             border: 1px solid rgba(255,255,255,0.5); position: relative;
         }
-        .card:hover { transform: translateY(-20px) scale(1.02); box-shadow: 30px 30px 80px rgba(197, 160, 89, 0.2); }
+        .card:hover { transform: translateY(-20px); box-shadow: 30px 30px 80px rgba(197, 160, 89, 0.15); border-color: var(--gold-dark); }
         
         .badge { 
-            position: absolute; top: 30px; left: -10px; background: var(--gold-dark); 
-            color: white; padding: 8px 15px; font-size: 10px; font-weight: 900; 
+            position: absolute; top: 30px; left: -10px; background: var(--p-green); 
+            color: var(--gold-light); padding: 8px 18px; font-size: 10px; font-weight: 700; 
             border-radius: 0 20px 20px 0; box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
         }
         
-        .img-box { width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; }
-        .img-box img { max-width: 90%; max-height: 90%; object-fit: contain; transition: 0.5s; }
+        .img-box { width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; transition: 0.5s; }
+        .img-box img { max-width: 85%; max-height: 85%; object-fit: contain; }
+        .card:hover .img-box { transform: scale(1.08); }
         
-        .card h3 { font-size: 1.1rem; text-align: center; margin-bottom: 15px; font-weight: 500; height: 3rem; overflow: hidden; }
+        .card h3 { font-size: 1.1rem; text-align: center; margin-bottom: 15px; font-weight: 500; height: 3.2rem; overflow: hidden; color: var(--p-green); }
         .price-box { text-align: center; margin-bottom: 30px; }
-        .sale { font-size: 1.8rem; font-weight: 300; color: var(--p-green); }
-        .old { font-size: 1rem; color: #ccc; text-decoration: line-through; margin-left: 10px; }
+        .sale { font-size: 1.8rem; font-weight: 400; color: var(--p-green); }
+        .old { font-size: 1rem; color: #bbb; text-decoration: line-through; margin-left: 10px; }
         
         .btn-buy { 
             display: block; width: 100%; padding: 18px; border-radius: 40px;
             background: var(--p-green); color: var(--gold-light); text-align: center;
-            text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px;
-            transition: 0.4s; border: 1px solid var(--p-green);
+            text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px;
+            transition: 0.4s; border: 1.5px solid var(--p-green);
         }
         .btn-buy:hover { background: transparent; color: var(--p-green); }
 
-        /* --- 🏹 Navigation Arrows --- */
         .arrow-btn {
-            position: absolute; top: 50%; width: 60px; height: 60px; border-radius: 50%;
+            position: absolute; top: 50%; width: 55px; height: 55px; border-radius: 50%;
             background: white; border: none; cursor: pointer; z-index: 10;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); font-size: 1.2rem; transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08); font-size: 1rem; transition: 0.3s; color: var(--p-green);
         }
-        .arrow-btn:hover { background: var(--gold-dark); color: white; }
+        .arrow-btn:hover { background: var(--p-green); color: white; transform: scale(1.1); }
         .arrow-prev { left: 20px; }
         .arrow-next { right: 20px; }
 
-        footer { background: var(--p-green); color: white; padding: 120px 8% 60px; }
+        footer { background: #0a1410; color: white; padding: 120px 8% 60px; border-top: 1px solid var(--gold-dark); }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 100px; }
 
         @media (max-width: 900px) {
-            .header-content h1 { font-size: 3rem; letter-spacing: 5px; }
-            .bg-text { display: none; }
+            .header-content h1 { font-size: 2.8rem; letter-spacing: 8px; }
             .card { flex: 0 0 300px; }
+            .bg-text { display: none; }
         }
     </style>
 </head>
@@ -140,40 +140,41 @@
 
 <header>
     <video autoplay muted loop playsinline class="header-video"><source src="Video.mp4" type="video/mp4"></video>
+    <div class="header-overlay"></div>
     <div class="header-content">
-        <h1>THE SELECTION</h1>
-        <p id="hero-sub">Where Science Meets Pure Nature</p>
+        <h1>HJ COSMETICS</h1>
+        <p id="hero-sub">The Essence of Korean Beauty Selection</p>
     </div>
 </header>
 
 <main class="wrapper">
     <section class="brand-section">
         <div class="bg-text">FRAIJOUR</div>
-        <div class="brand-header"><p id="f-tag">Pure Botanical</p><h2>Fraijour</h2></div>
+        <div class="brand-header"><p>Pure Botanical</p><h2>Fraijour</h2></div>
         <div class="slider-outer">
-            <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-fraijour', -1)"><i class="fas fa-arrow-left"></i></button>
+            <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-fraijour', -1)"><i class="fas fa-chevron-left"></i></button>
             <div class="product-slider" id="grid-fraijour"></div>
-            <button class="arrow-btn arrow-next" onclick="moveSlider('grid-fraijour', 1)"><i class="fas fa-arrow-right"></i></button>
+            <button class="arrow-btn arrow-next" onclick="moveSlider('grid-fraijour', 1)"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
     <section class="brand-section">
         <div class="bg-text">BATHPA</div>
-        <div class="brand-header"><p id="b-tag">The Body Ritual</p><h2>Bathpa</h2></div>
+        <div class="brand-header"><p>The Body Ritual</p><h2>Bathpa</h2></div>
         <div class="slider-outer">
-            <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-bathpa', -1)"><i class="fas fa-arrow-left"></i></button>
+            <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-bathpa', -1)"><i class="fas fa-chevron-left"></i></button>
             <div class="product-slider" id="grid-bathpa"></div>
-            <button class="arrow-btn arrow-next" onclick="moveSlider('grid-bathpa', 1)"><i class="fas fa-arrow-right"></i></button>
+            <button class="arrow-btn arrow-next" onclick="moveSlider('grid-bathpa', 1)"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
     <section class="brand-section">
         <div class="bg-text">CHAR CHAR</div>
-        <div class="brand-header"><p id="c-tag">Intensive Care</p><h2>Char Char</h2></div>
+        <div class="brand-header"><p>Intensive Care</p><h2>Char Char</h2></div>
         <div class="slider-outer">
-            <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-charchar', -1)"><i class="fas fa-arrow-left"></i></button>
+            <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-charchar', -1)"><i class="fas fa-chevron-left"></i></button>
             <div class="product-slider" id="grid-charchar"></div>
-            <button class="arrow-btn arrow-next" onclick="moveSlider('grid-charchar', 1)"><i class="fas fa-arrow-right"></i></button>
+            <button class="arrow-btn arrow-next" onclick="moveSlider('grid-charchar', 1)"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 </main>
@@ -181,15 +182,15 @@
 <footer>
     <div class="footer-grid">
         <div class="footer-col">
-            <h2 style="font-weight: 300; letter-spacing: 10px;">HJ COSMETICS</h2>
-            <p style="opacity: 0.6; line-height: 2;">Selection of premium Korean excellence. Curated for those who seek the true essence of beauty.</p>
+            <h2 style="font-weight: 300; letter-spacing: 10px; margin-bottom: 20px;">HJ COSMETICS</h2>
+            <p style="opacity: 0.6; line-height: 2;">Premium Korean Beauty Selection. Curated with expertise for your ultimate skin health.</p>
         </div>
         <div class="footer-col">
             <h4 style="color: var(--gold-light);">VISIT US</h4>
-            <p>Sriracha, Chon Buri<br>Thailand</p>
+            <p>Sriracha, Chon Buri, Thailand</p>
         </div>
         <div class="footer-col">
-            <h4 style="color: var(--gold-light);">TALK TO US</h4>
+            <h4 style="color: var(--gold-light);">CONTACT</h4>
             <p>Line: @thaihj11<br>info@hjcosmetics.com</p>
         </div>
     </div>
@@ -207,11 +208,11 @@
         { id: 8, brand: "Fraijour", name: "Retin-Collagen 3D Core Eye Cream", sale: 195, old: 370, badge: "EYE", img: "8.jpeg" },
         { id: 9, brand: "Fraijour", name: "Retin-Collagen 3D Core Toner", sale: 290, old: 500, badge: "FIRM", img: "9.jpeg" },
         { id: 10, brand: "Fraijour", name: "Retin-Collagen 3D Core Lip Oil", sale: 125, old: 259, badge: "GLOSS", img: "10.jpeg" },
-        { id: 11, brand: "Fraijour", name: "Heartleaf Airy Fit Sun Cream", sale: 280, old: 450, badge: "SUN", img: "11.jpeg" },
-        { id: 12, brand: "Fraijour", name: "Heartleaf Water Fit Sun Screen", sale: 320, old: 590, badge: "WATER", img: "12.jpeg" },
-        { id: 13, brand: "Fraijour", name: "Original Herb Sheet Mask", sale: 17, old: 29, badge: "MASK", img: "15.jpeg" },
-        { id: 14, brand: "Bathpa", name: "Body Tone Up Cream", sale: 150, old: 529, badge: "TONE-UP", img: "13.jpeg" },
-        { id: 15, brand: "CharChar", name: "Mung Bean Cica Cleansing Foam", sale: 120, old: 199, badge: "CICA", img: "14.jpeg" }
+        { id: 11, brand: "Fraijour", name: "Heartleaf Airy Fit Sun Cream", sale: 280, old: 450, badge: "UV", img: "11.jpeg" },
+        { id: 12, brand: "Fraijour", name: "Heartleaf Water Fit Sun Screen", sale: 320, old: 590, badge: "SUN", img: "12.jpeg" },
+        { id: 13, brand: "Fraijour", name: "Original Herb Sheet Mask", sale: 17, old: 29, badge: "DAILY", img: "15.jpeg" },
+        { id: 14, brand: "Bathpa", name: "Body Tone Up Cream", sale: 150, old: 529, badge: "BODY", img: "13.jpeg" },
+        { id: 15, brand: "CharChar", name: "Mung Bean Cica Cleansing Foam", sale: 120, old: 199, badge: "DETOX", img: "14.jpeg" }
     ];
 
     let currentLang = localStorage.getItem('selectedLang') || 'th';
@@ -234,7 +235,7 @@
                         <span class="sale">฿${p.sale}</span>
                         <span class="old">฿${p.old}</span>
                     </div>
-                    <a href="product.html?id=${p.id}" class="btn-buy">${currentLang === 'th' ? 'สั่งซื้อ' : 'ORDER NOW'}</a>
+                    <a href="product.html?id=${p.id}" class="btn-buy">${currentLang === 'th' ? 'สั่งซื้อสินค้า' : 'SHOP NOW'}</a>
                 </div>
             `;
             document.getElementById(containers[p.brand]).innerHTML += html;
