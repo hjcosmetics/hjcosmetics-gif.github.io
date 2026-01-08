@@ -27,7 +27,8 @@
         body.lang-th .nav-links a, 
         body.lang-th h1, body.lang-th h2, 
         body.lang-th p, body.lang-th label, 
-        body.lang-th .btn-submit { 
+        body.lang-th .btn-submit,
+        body.lang-th .info-item h4 { 
             letter-spacing: 0px !important; 
         }
 
@@ -50,7 +51,6 @@
         .contact-container { max-width: 1200px; margin: -60px auto 50px; padding: 0 20px; position: relative; z-index: 10; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; margin-bottom: 40px; }
 
-        /* ปรับกรอบให้มนเหมือนหน้าแรก */
         .info-card { background: var(--p-green); color: white; padding: 60px; border-radius: 20px; box-shadow: 10px 10px 30px rgba(0,0,0,0.1); }
         .info-card h2 { color: var(--gold-light); font-size: 2.2rem; margin-bottom: 30px; letter-spacing: 1px; line-height: 1.1; }
         .info-item { margin-bottom: 25px; }
@@ -140,7 +140,7 @@
 <section class="map-section">
     <div class="map-wrapper">
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882.35824596328!2d101.1293708!3d13.0128919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3102c3425f385157%3A0xc6c4f3460773d2a7!2sThai%20HJ%20Co.%2CLtd.!5e0!3m2!1sth!2sth!4v1715000000000!5m2!1sth!2sth" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882.355106520336!2d101.12782137588048!3d13.013063414002636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3102c019d45e4537%3A0xc39223a851e39b25!2sThai%20HJ%20Co.%2CLtd.!5e0!3m2!1sth!2sth!4v1714800000000!5m2!1sth!2sth" 
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade">
@@ -184,7 +184,6 @@
         const l = trans[languages[langIndex]];
         const body = document.getElementById('main-body');
         
-        // จัดการคลาสภาษาเพื่อแก้ระยะห่างตัวอักษร
         body.classList.remove('lang-kr', 'lang-th');
         if (languages[langIndex] === 'kr') body.classList.add('lang-kr');
         else if (languages[langIndex] === 'th') body.classList.add('lang-th');
