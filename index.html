@@ -3,248 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HJ COSMETICS - Luxury Collection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Prompt:wght@200;300;400;500;600&family=Sarabun:wght@200;400;600&display=swap" rel="stylesheet">
+    <title>About Us - HJ COSMETICS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&family=Sarabun:wght@100;200;300;400&family=Noto+Sans+KR:wght@100;300&display=swap" rel="stylesheet">
     <style>
         :root {
             --p-green: #1b4332;
-            --gold-light: #f1d38e;
             --gold-dark: #c5a059;
-            --gold-gradient: linear-gradient(135deg, #c5a059 0%, #f1d38e 50%, #c5a059 100%);
-            --white: #ffffff;
-            --bg: #fdfdfd;
+            --gold-light: #f1d38e;
+            --text-main: #222222;
+            --text-sub: #5a5a5a;
+            --bg-creme: #fcfbf7;
         }
 
-        * { box-sizing: border-box; }
-        body { 
-            font-family: 'Sarabun', 'Prompt', sans-serif; 
-            margin: 0; background-color: var(--bg); color: #333; overflow-x: hidden;
-        }
-
-        /* --- ✨ Marquee & Nav ✨ --- */
-        .marquee-wrapper { background: var(--p-green); color: var(--gold-light); padding: 12px 0; overflow: hidden; position: relative; }
-        .marquee-content { display: flex; white-space: nowrap; animation: marquee-smooth 40s linear infinite; }
-        .marquee-item { padding: 0 40px; font-size: 0.85rem; letter-spacing: 2px; font-family: 'Prompt'; }
-        @keyframes marquee-smooth { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        .top-nav {
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 15px 5%;
-            display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
-        }
-        .logo-box img { height: 55px; transition: 0.3s; }
-        .logo-box:hover img { transform: scale(1.05); }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.95rem; font-weight: 500; font-family: 'Prompt'; position: relative; transition: 0.3s; }
-        .nav-links a:hover { color: var(--gold-dark); text-shadow: 0 0 8px rgba(197, 160, 89, 0.3); }
-
-        .lang-switch {
-            background: white; color: var(--p-green); border: 1.5px solid var(--gold-dark);
-            padding: 5px 18px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: 0.3s; font-family: 'Prompt';
-        }
-        .lang-switch:hover { background: var(--gold-gradient); color: white; border-color: transparent; box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3); }
-
-        /* --- ✨ Header ✨ --- */
-        header { position: relative; height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .header-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; }
-        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.35); }
-        .header-content { position: relative; z-index: 3; text-align: center; color: white; }
-        .header-content h1 { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; letter-spacing: 12px; margin: 0; text-shadow: 2px 2px 15px rgba(0,0,0,0.4); animation: fadeInUp 1s ease; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- ✨ Luxury Section Title ✨ --- */
-        .title-container { text-align: center; margin: 80px auto 60px auto; padding: 0 20px; }
-        .sub-title-top { font-family: 'Prompt'; font-weight: 300; letter-spacing: 4px; color: var(--gold-dark); font-size: 0.85rem; text-transform: uppercase; margin-bottom: 5px; }
-        .section-title { 
-            font-family: 'Cormorant Garamond', 'Prompt', serif; 
-            display: inline-flex; align-items: center; justify-content: center;
-            font-size: 3.5rem; font-weight: 700; position: relative;
-            background: linear-gradient(to bottom, #c5a059 20%, #f1d38e 50%, #c5a059 80%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.05)); letter-spacing: 4px;
-        }
-        .section-title::before, .section-title::after {
-            content: ''; width: 60px; height: 1px; background: var(--gold-gradient); margin: 0 30px; opacity: 0.7;
-        }
-
-        /* --- ✨ Product Grid ✨ --- */
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 40px 25px; margin-bottom: 100px; }
-
-        .card { 
-            background: #fff; border-radius: 15px; padding: 25px; position: relative; transition: 0.4s; border: 1px solid #f2f2f2; overflow: hidden;
-            display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-        }
-        .card::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.7), transparent);
-            transform: rotate(45deg); transition: 0.8s; opacity: 0;
-        }
-        .card:hover::before { left: 100%; opacity: 1; }
-        .card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--gold-light); }
-        .badge { position: absolute; top: 15px; left: 15px; background: var(--gold-gradient); color: #fff; font-size: 10px; padding: 5px 14px; border-radius: 4px; font-weight: 600; letter-spacing: 1px; }
-        .img-box { width: 100%; height: 220px; display: flex; align-items: center; justify-content: center; transition: 0.4s; }
-        .card:hover .img-box { transform: scale(1.05); }
-        .img-box img { max-width: 90%; max-height: 90%; object-fit: contain; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
-        .card h3 { font-size: 0.9rem; font-weight: 500; color: #333; margin: 15px 0; height: 2.6rem; overflow: hidden; font-family: 'Prompt'; line-height: 1.4; }
-        .price { margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-        .sale { color: #d63031; font-weight: 700; font-size: 1.3rem; }
-        .old { color: #aaa; text-decoration: line-through; font-size: 0.9rem; }
-        .btn { background: var(--p-green); color: white; text-align: center; text-decoration: none; padding: 12px; border-radius: 10px; font-size: 0.85rem; font-family: 'Prompt'; font-weight: 500; transition: 0.3s; letter-spacing: 1px; }
-        .btn:hover { background: var(--gold-dark); box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4); }
+        body { 
+            font-family: 'Sarabun', sans-serif; 
+            margin: 0; 
+            background-color: var(--bg-creme); 
+            /* เพิ่ม Noise Texture และ Grid บางๆ ให้พื้นหลังไม่โล่ง */
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(197, 160, 89, 0.05) 1px, transparent 0),
+                linear-gradient(to right, rgba(197, 160, 89, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(197, 160, 89, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px, 100px 100px, 100px 100px;
+            color: var(--text-main); 
+            line-height: 1.8;
+        }
+
+        /* --- ✨ Top Bar Marquee (เพิ่มให้ดูมีลูกเล่น) ✨ --- */
+        .top-marquee {
+            background: var(--p-green);
+            color: var(--gold-light);
+            font-size: 0.65rem;
+            padding: 8px 0;
+            letter-spacing: 3px;
+            text-align: center;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--gold-dark);
+        }
+
+        /* --- ✨ Navigation (Glassmorphism) ✨ --- */
+        .top-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+        }
+        .logo-box img { height: 48px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05)); }
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--p-green); 
+            font-size: 0.8rem; 
+            letter-spacing: 2px; 
+            font-weight: 500; 
+            transition: 0.3s;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0; width: 0; height: 1px;
+            background: var(--gold-dark); transition: 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* --- ✨ Hero Section (เพิ่ม Layer ทอง) ✨ --- */
+        .hero {
+            height: 65vh;
+            background: linear-gradient(rgba(27, 67, 50, 0.9), rgba(27, 67, 50, 0.9)), 
+                        url('https://images.unsplash.com/photo-1556228578-0f192f4709b3?q=80&w=1600') center/cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* กรอบทองบางๆ ใน Hero */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 40px; left: 40px; right: 40px; bottom: 40px;
+            border: 1px solid rgba(241, 211, 142, 0.2);
+            pointer-events: none;
+        }
+        .hero h1 { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 5.5rem; 
+            font-weight: 300; 
+            font-style: italic; 
+            margin: 0; 
+            letter-spacing: 8px;
+            background: linear-gradient(to bottom, #fff, var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p { 
+            font-size: 0.8rem; 
+            letter-spacing: 8px; 
+            color: var(--gold-light); 
+            margin-top: 15px; 
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* --- ✨ Origin Section (เพิ่ม Watermark) ✨ --- */
+        .origin-section { 
+            padding: 140px 0; 
+            background: transparent; 
+            position: relative;
+        }
+        .origin-section::after {
+            content: 'HJ';
+            position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-family: 'Cormorant Garamond';
+            font-size: 20rem;
+            color: rgba(197, 160, 89, 0.03);
+            font-weight: 700;
+            z-index: -1;
+        }
+        .container-narrow { max-width: 800px; margin: 0 auto; padding: 0 40px; text-align: center; }
+        .origin-section h2 { 
+            font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; 
+            font-weight: 400; color: var(--p-green); margin-bottom: 40px;
+        }
+        .origin-section p { 
+            font-weight: 300; font-size: 1.15rem; line-height: 2.3; 
+            color: var(--text-sub); letter-spacing: 0.03em;
+        }
+
+        /* --- ✨ Brand Showcase (เพิ่ม Shadow และ Border) ✨ --- */
+        .brand-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 0; 
+            background: white; 
+            margin: 0 5% 80px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+        }
+        .brand-image { height: 650px; overflow: hidden; position: relative; }
+        .brand-image::after {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(27, 67, 50, 0.1);
+        }
+        .brand-image img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s ease; }
+        .brand-grid:hover .brand-image img { transform: scale(1.08); }
+        
+        .brand-content { 
+            padding: 12% 12%; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            background: #fff;
+            position: relative;
+        }
+        .brand-grid:nth-child(even) .brand-image { order: 2; }
+        
+        .brand-content h3 { 
+            font-family: 'Cormorant Garamond', serif; font-size: 3.8rem; 
+            font-weight: 400; color: var(--p-green); margin: 0; 
+        }
+        .brand-content span { 
+            font-size: 0.75rem; color: var(--gold-dark); 
+            letter-spacing: 5px; text-transform: uppercase; margin-bottom: 20px; 
+            display: block;
+        }
+        .brand-content p { 
+            font-weight: 300; font-size: 1.05rem; line-height: 2.2; 
+            color: var(--text-sub); margin-bottom: 45px;
+        }
+
+        .btn-visit {
+            align-self: flex-start; text-decoration: none; color: var(--p-green);
+            font-size: 0.85rem; letter-spacing: 3px; font-weight: 500;
+            border-bottom: 2px solid var(--gold-dark); padding-bottom: 8px;
+            transition: 0.4s;
+        }
+        .btn-visit:hover { color: var(--gold-dark); letter-spacing: 5px; }
 
         /* --- ✨ Footer ✨ --- */
-        footer { background: var(--p-green); color: white; padding: 80px 0 40px 0; border-top: 5px solid var(--gold-dark); position: relative; }
-        footer::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://www.transparenttextures.com/patterns/black-paper.png'); opacity: 0.1; pointer-events: none; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; position: relative; z-index: 2; }
-        .footer-section h4 { font-family: 'Prompt'; font-weight: 600; color: var(--gold-light); margin-bottom: 25px; font-size: 1.1rem; border-left: 4px solid var(--gold-dark); padding-left: 15px; letter-spacing: 1px; }
-        .footer-section p, .footer-section address { font-style: normal; font-weight: 300; line-height: 2; opacity: 0.85; font-size: 0.95rem; }
-        .copyright { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; padding-top: 30px; text-align: center; font-size: 0.8rem; opacity: 0.5; letter-spacing: 2px; }
+        footer { 
+            background: #0d1a14; 
+            color: rgba(255,255,255,0.6); 
+            padding: 120px 8% 60px; 
+            border-top: 4px solid var(--gold-dark);
+        }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 80px; }
+        .footer-col h4 { 
+            font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; 
+            color: var(--gold-light); margin-bottom: 35px; letter-spacing: 3px;
+        }
+        .footer-col p { font-size: 0.9rem; font-weight: 200; line-height: 2.2; }
 
-        @media (max-width: 768px) {
-            .section-title { font-size: 2.2rem; }
-            .section-title::before, .section-title::after { width: 30px; margin: 0 15px; }
-            .product-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
-            .header-content h1 { font-size: 2.8rem; letter-spacing: 6px; }
+        @media (max-width: 1024px) {
+            .brand-grid { grid-template-columns: 1fr; margin: 0 0 40px; }
+            .brand-image { height: 450px; }
+            .hero h1 { font-size: 4rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
         }
     </style>
 </head>
 <body>
 
-<div class="marquee-wrapper"><div class="marquee-content" id="marquee-inner"></div></div>
+<div class="top-marquee">Premium Korean Beauty Curator • Quality Guaranteed • Established 2026</div>
 
 <nav class="top-nav">
-    <div class="logo-box">
-        <a href="index.html">
-            <img src="HJ (5).png" alt="HJ LOGO" onerror="this.src='https://via.placeholder.com/150x60/1b4332/ffffff?text=HJ+COSMETICS'">
-        </a>
-    </div>
+    <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
     <div class="nav-links">
-        <a href="about.html" id="nav-about">เกี่ยวกับเรา</a>
-        <a href="contact.html" id="nav-contact">ติดต่อเรา</a>
-        <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">EN</button>
+        <a href="index.html" id="nav-home">HOME</a>
+        <a href="about.html" style="color:var(--gold-dark)" id="nav-about">ABOUT</a>
+        <a href="contact.html" id="nav-contact">CONTACT</a>
+        <button onclick="rotateLanguage()" id="langBtn" style="background:none; border:1px solid var(--gold-dark); padding: 5px 12px; cursor:pointer; font-size:0.7rem; letter-spacing:2px; color:var(--gold-dark)">EN</button>
     </div>
 </nav>
 
-<header>
-    <video autoplay muted loop playsinline class="header-video"><source src="Video.mp4" type="video/mp4"></video>
-    <div class="overlay"></div>
-    <div class="header-content">
-        <h1>HJ COSMETICS</h1>
-        <p id="header-sub">REDEFINING NATURAL BEAUTY</p>
+<section class="hero">
+    <h1 id="hero-title">Our Heritage</h1>
+    <p id="hero-sub">The Essence of Korean Beauty Selection</p>
+</section>
+
+<section class="origin-section">
+    <div class="container-narrow">
+        <h2 id="hj-title">The HJ Story</h2>
+        <p id="hj-desc">
+            เราเริ่มต้นด้วยเจตนารมณ์ที่เรียบง่าย คือการคัดสรรสิ่งที่ดีที่สุด HJ COSMETICS เชื่อมั่นในพลังของส่วนผสมจากธรรมชาติที่ผสานกับเทคโนโลยีอันล้ำสมัยจากเกาหลี เพื่อส่งต่อผลิตภัณฑ์ที่ดูแลผิวของคุณอย่างทะนุถนอมและลึกซึ้ง
+        </p>
     </div>
-</header>
+</section>
 
-<div class="title-container">
-    <p class="sub-title-top" id="sub-title-top">Exclusive Discovery</p>
-    <h2 class="section-title" id="section-title">คอลเลกชันสุดพิเศษ</h2>
-</div>
-
-<div class="container">
-    <div class="product-grid" id="main-grid"></div>
-</div>
-
-<footer id="main-footer">
-    <div class="container" style="margin-top:0;">
-        <div class="footer-grid">
-            <div class="footer-section">
-                <h3 id="f-name" style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--gold-light); margin-bottom: 20px; font-weight: 700;">HJ COSMETICS</h3>
-                <p id="f-desc">คัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ มั่นใจในความปลอดภัยและคุณภาพระดับพรีเมียม</p>
-            </div>
-            <div class="footer-section">
-                <h4 id="h-addr">ADDRESS</h4>
-                <address id="f-addr"></address>
-            </div>
-            <div class="footer-section">
-                <h4 id="h-cont">CONTACT</h4>
-                <p id="f-cont"></p>
-            </div>
+<section class="brand-showcase">
+    <div class="brand-grid">
+        <div class="brand-image"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1200" alt="Fraijour"></div>
+        <div class="brand-content">
+            <span id="f-tag-sub">Botanical Therapy</span>
+            <h3>Fraijour</h3>
+            <p id="f-desc">สัมผัสพลังแห่งการฟื้นฟูจากพืชพรรณธรรมชาติ ด้วยสารสกัดจาก Wormwood ที่ผ่านการคิดค้นมาเพื่อผิวแพ้ง่ายโดยเฉพาะ มอบความบริสุทธิ์และสุขภาพผิวที่แข็งแรงอย่างยั่งยืน</p>
+            <a href="http://fraijour.co.kr/" target="_blank" class="btn-visit">OFFICIAL SITE</a>
         </div>
-        <div class="copyright">
-            &copy; 2026 HJ COSMETICS. ALL RIGHTS RESERVED.
+    </div>
+
+    <div class="brand-grid">
+        <div class="brand-image"><img src="https://images.unsplash.com/photo-1559591937-e620a8a6503c?q=80&w=1200" alt="Bathpa"></div>
+        <div class="brand-content">
+            <span id="b-tag-sub">Body Ritual</span>
+            <h3>Bathpa</h3>
+            <p id="b-desc">เปลี่ยนกิจวัตรประจำวันให้เป็นช่วงเวลาแห่งการพักผ่อนระดับพรีเมียม ด้วยกลิ่นหอมและเนื้อสัมผัสที่คัดสรรมาเพื่อปรนนิบัติผิวกายให้กระจ่างใสและเนียนนุ่มอย่างมีระดับ</p>
+            <a href="http://bathpa.co.kr/" target="_blank" class="btn-visit">OFFICIAL SITE</a>
         </div>
+    </div>
+
+    <div class="brand-grid">
+        <div class="brand-image"><img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?q=80&w=1200" alt="Char Char"></div>
+        <div class="brand-content">
+            <span id="c-tag-sub">Hair Care Solution</span>
+            <h3>Char Char</h3>
+            <p id="c-desc">ฟื้นบำรุงเส้นผมและหนังศีรษะด้วยอาร์แกนออยล์เข้มข้น มอบความเงางามและคืนชีวิตชีวาให้กับเส้นผมที่แห้งเสีย ให้กลับมานุ่มสลวยและแข็งแรงจากรากจรดปลาย</p>
+            <a href="http://evas.co.kr/product/list.html?cate_no=348" target="_blank" class="btn-visit">OFFICIAL SITE</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4 style="font-size: 2rem; color: #fff;">HJ COSMETICS</h4>
+            <p id="foot-desc">Premium Korean Skincare Curator. Handpicked for your skin's long-term health and radiance. We believe in beauty that transcends time through the power of nature.</p>
+        </div>
+        <div class="footer-col">
+            <h4 id="h-addr">ADDRESS</h4>
+            <p id="f-addr">323/11-12 Huayprab Muangthong 5, Chon Buri 20230, Thailand</p>
+        </div>
+        <div class="footer-col">
+            <h4 id="h-cont">CONTACT</h4>
+            <p id="f-cont">Email: info@hjcosmetics.com<br>Tel: 03-8182-577<br>Line: @thaihj11</p>
+        </div>
+    </div>
+    <div style="margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 0.7rem; letter-spacing: 2px;">
+        © 2026 HJ COSMETICS. ALL RIGHTS RESERVED.
     </div>
 </footer>
 
 <script>
-    const products = [
-        { id:1, name: "Original Herb Wormwood Calming Watery Cream", sale: 250, old: 369, badge: "BEST SELLER", img: "1.jpeg" },
-        { id:2, name: "Original Herb Wormwood Calming Toner", sale: 350, old: 459, badge: "RECOMMENDED", img: "2.jpeg" },
-        { id:3, name: "Original Herb Wormwood Cleansing Water", sale: 250, old: 400, badge: "GENTLE", img: "3.jpeg" },
-        { id:4, name: "Original Herb Wormwood Cleansing Foam", sale: 290, old: 399, badge: "NEW ITEM", img: "4.jpeg" },
-        { id:5, name: "Heartleaf Blemish Moisture Cream", sale: 310, old: 590, badge: "EXCLUSIVE", img: "5.jpeg" },
-        { id:6, name: "Heartleaf Blemish Toner", sale: 360, old: 529, badge: "BEST DEAL", img: "https://via.placeholder.com/300?text=Product+6" },
-        { id:7, name: "Retin-Collagen 3D Core Cream", sale: 250, old: 459, badge: "3D CORE", img: "https://via.placeholder.com/300?text=Product+7" },
-        { id:8, name: "Retin-Collagen 3D Core Eye Cream", sale: 195, old: 370, badge: "LIFTING", img: "https://via.placeholder.com/300?text=Product+8" },
-        { id:9, name: "Retin-Collagen 3D Core Toner", sale: 290, old: 500, badge: "FIRMING", img: "https://via.placeholder.com/300?text=Product+9" },
-        { id:10, name: "Retin-Collagen 3D Core Lip Oil", sale: 125, old: 259, badge: "GLOWY", img: "https://via.placeholder.com/300?text=Product+10" },
-        { id:11, name: "Heartleaf Airy Fit Sun Cream", sale: 280, old: 450, badge: "UV PROTECT", img: "Heartleaf Airy Fit Sun Cream 50g ผลิตภัณฑ์.png" },
-        { id:12, name: "Heartleaf Water Fit Sun Screen", sale: 320, old: 590, badge: "DAILY USE", img: "https://via.placeholder.com/300?text=Product+12" },
-        { id:13, name: "Original Herb Wormwood Sheet Mask", sale: 17, old: 29, badge: "PROMO", img: "https://via.placeholder.com/300?text=Product+13" },
-        { id:14, name: "Bathpa Body Tone Up Cream", sale: 150, old: 529, badge: "BRIGHTENING", img: "13.jpeg" },
-        { id:15, name: "Mung Bean Cica Cleansing Foam", sale: 120, old: 199, badge: "CICA CARE", img: "https://via.placeholder.com/300?text=Product+15" }
-    ];
+    const languages = ['th', 'en', 'kr'];
+    let langIndex = 0;
 
-    let currentLang = 'th';
     const trans = {
         th: {
-            about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", title: "คอลเลกชันสุดพิเศษ", subTop: "ค้นพบความเหนือระดับ", viewBtn: "เลือกซื้อสินค้า", sub: "นิยามใหม่ของความงามจากธรรมชาติ",
-            promo: "✨ ลดสูงสุด 50% | สมาชิกรับส่วนลดเพิ่ม 5% | HJ COSMETICS LUXURY SELECTION ✨",
-            fDesc: "คัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ มั่นใจในความปลอดภัยและคุณภาพระดับพรีเมียม",
-            hAddr: "ที่อยู่บริษัท", hCont: "ช่องทางติดต่อ",
-            addr: "บริษัท ไทย เอชเจ โกลบอล จำกัด <br>เลขที่ 323/11-12 ห้วยปราบเมืองทอง 5 <br>หมู่ 3 ต.บ่อวิน อ.ศรีราชา จ.ชลบุรี 20230",
-            cont: "โทร: 03-8182-577 <br>อีเมล: thaihjglobal@gmail.com <br>Line Official: @thaihj11"
+            home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา",
+            heroTitle: "มรดกแห่งความงาม", heroSub: "แก่นแท้ของการคัดสรรสกินแคร์จากเกาหลี",
+            hjTitle: "เส้นทางของ HJ COSMETICS",
+            hjDesc: "เราเริ่มต้นด้วยเจตนารมณ์ที่เรียบง่าย คือการคัดสรรสิ่งที่ดีที่สุด HJ COSMETICS เชื่อมั่นในพลังของส่วนผสมจากธรรมชาติที่ผสานกับเทคโนโลยีอันล้ำสมัยจากเกาหลี เพื่อส่งต่อผลิตภัณฑ์ที่ดูแลผิวของคุณอย่างทะนุถนอมและลึกซึ้ง",
+            fDesc: "สัมผัสพลังแห่งการฟื้นฟูจากพืชพรรณธรรมชาติ ด้วยสารสกัดจาก Wormwood ที่ผ่านการคิดค้นมาเพื่อผิวแพ้ง่ายโดยเฉพาะ มอบความบริสุทธิ์และสุขภาพผิวที่แข็งแรงอย่างยั่งยืน",
+            bDesc: "เปลี่ยนกิจวัตรประจำวันให้เป็นช่วงเวลาแห่งการพักผ่อนระดับพรีเมียม ด้วยกลิ่นหอมและเนื้อสัมผัสที่คัดสรรมาเพื่อปรนนิบัติผิวกายให้กระจ่างใสและเนียนนุ่มอย่างมีระดับ",
+            cDesc: "ฟื้นบำรุงเส้นผมและหนังศีรษะด้วยอาร์แกนออยล์เข้มข้น มอบความเงางามและคืนชีวิตชีวาให้กับเส้นผมที่แห้งเสีย ให้กลับมานุ่มสลวยและแข็งแรงจากรากจรดปลาย",
+            visit: "OFFICIAL SITE", btn: "EN"
         },
         en: {
-            about: "About Us", contact: "Contact Us", title: "Luxury Collection", subTop: "Exclusive Discovery", viewBtn: "SHOP NOW", sub: "REDEFINING NATURAL BEAUTY",
-            promo: "✨ UP TO 50% OFF | EXTRA 5% FOR MEMBERS | HJ COSMETICS LUXURY SELECTION ✨",
-            fDesc: "Specially selected natural extracts for your best skin results. Trust in our premium safety and quality standards.",
-            hAddr: "OFFICE ADDRESS", hCont: "CONTACT CHANNELS",
-            addr: "Thai HJ Global Co., Ltd. <br>323/11-12 Huayprab Muangthong 5 <br>Moo 3, Bo Win, Si Racha, Chon Buri 20230",
-            cont: "Tel: 03-8182-577 <br>Email: thaihjglobal@gmail.com <br>Line Official: @thaihj11"
+            home: "HOME", about: "ABOUT", contact: "CONTACT",
+            heroTitle: "Our Heritage", heroSub: "The Essence of Korean Beauty Selection",
+            hjTitle: "The HJ Story",
+            hjDesc: "Born from a simple vision to curate excellence. HJ COSMETICS believes in the profound synergy of natural ingredients and South Korean innovation, bringing products that care for your skin deeply and sincerely.",
+            fDesc: "Experience the healing power of nature. Fraijour’s Wormwood-infused formulas are meticulously crafted for sensitive skin, offering purity and long-term resilience.",
+            bDesc: "Elevate your daily ritual into a premium escape. Bathpa's scents and textures are curated to brighten and nourish your body with an air of sophistication.",
+            cDesc: "Restorative care for hair and scalp. Char Char uses intensive Argan Oil to breathe life back into damaged strands, leaving them silky, radiant, and strong.",
+            visit: "OFFICIAL SITE", btn: "KR"
+        },
+        kr: {
+            home: "홈", about: "회사소개", contact: "문의",
+            heroTitle: "아름다운 유산", heroSub: "한국 뷰티 셀렉션의 정수",
+            hjTitle: "HJ 코스메틱 이야기",
+            hjDesc: "최고만을 선별하겠다는 단순한 비전에서 시작되었습니다. HJ COSMETICS는 천연 성분과 한국의 혁신 기술이 만들어내는 시너지를 믿으며, 진심을 담아 당신의 피부를 돌보는 제품만을 선보입니다.",
+            fDesc: "자연의 치유력을 경험해 보세요. 민감한 피부를 위해 정교하게 설계된 프라이주어의 약쑥 추출물은 피부 본연의 건강함과 순수함을 되찾아줍니다.",
+            bDesc: "일상의 루틴을 프리미엄 휴식으로 바꿔보세요. 배스파만의 특별한 향기와 텍스처는 바디 피부를 맑고 부드럽게 가꾸어 고품격 리추얼을 선사합니다.",
+            cDesc: "모발과 두피를 위한 집중 회복 케어. 차차의 아르간 오일 솔루션은 손상된 모발에 생기를 불어넣어 뿌리부터 끝까지 윤기 있고 건강하게 가꾸어줍니다.",
+            visit: "공식 사이트", btn: "TH"
         }
     };
 
     function updateContent() {
-        const l = trans[currentLang];
+        const l = trans[languages[langIndex]];
+        document.getElementById('nav-home').textContent = l.home;
         document.getElementById('nav-about').textContent = l.about;
         document.getElementById('nav-contact').textContent = l.contact;
-        document.getElementById('section-title').textContent = l.title;
-        document.getElementById('sub-title-top').textContent = l.subTop;
-        document.getElementById('header-sub').textContent = l.sub;
-        document.getElementById('langBtn').textContent = currentLang === 'th' ? 'EN' : 'TH';
-        
+        document.getElementById('hero-title').textContent = l.heroTitle;
+        document.getElementById('hero-sub').textContent = l.heroSub;
+        document.getElementById('hj-title').textContent = l.hjTitle;
+        document.getElementById('hj-desc').textContent = l.hjDesc;
         document.getElementById('f-desc').textContent = l.fDesc;
-        document.getElementById('h-addr').textContent = l.hAddr;
-        document.getElementById('h-cont').textContent = l.hCont;
-        document.getElementById('f-addr').innerHTML = l.addr;
-        document.getElementById('f-cont').innerHTML = l.cont;
-
-        const marqueeInner = document.getElementById('marquee-inner');
-        marqueeInner.innerHTML = `<div class="marquee-item">${l.promo}</div>`.repeat(8);
-        
-        renderProducts();
+        document.getElementById('b-desc').textContent = l.bDesc;
+        document.getElementById('c-desc').textContent = l.cDesc;
+        document.querySelectorAll('.btn-visit').forEach(b => b.textContent = l.visit);
+        document.getElementById('langBtn').textContent = l.btn;
     }
 
-    function renderProducts() {
-        const grid = document.getElementById('main-grid');
-        grid.innerHTML = products.map(p => `
-            <div class="card">
-                <div class="badge">${p.badge}</div>
-                <div class="img-box"><img src="${p.img}" alt="${p.name}"></div>
-                <h3>${p.name}</h3>
-                <div class="price"><span class="sale">฿${p.sale}</span><span class="old">฿${p.old}</span></div>
-                <a href="#" class="btn">${trans[currentLang].viewBtn}</a>
-            </div>
-        `).join('');
-    }
-
-    function toggleLanguage() {
-        currentLang = currentLang === 'th' ? 'en' : 'th';
+    function rotateLanguage() {
+        langIndex = (langIndex + 1) % languages.length;
         updateContent();
     }
-
     updateContent();
 </script>
 
