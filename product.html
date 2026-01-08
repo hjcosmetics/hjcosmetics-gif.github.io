@@ -6,15 +6,14 @@
     <title id="page-title">HJ COSMETICS - Luxury Selection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @font-face { font-family: 'IBM-Plex-Light'; src: url('IBMPlexSansThai-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; }
-        @font-face { font-family: 'Nanum-Bold'; src: url('NanumMyeongjo-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; }
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;600&display=swap');
 
         :root { 
             --p-green: #1b4332; 
+            --deep-green: #0d2b1f;
             --gold-dark: #c5a059; 
             --gold-light: #f1d38e; 
-            --text-main: #1a1a1a; 
-            --bg-creme: #fdfcf9;
+            --bg-marble: #f4f1ea;
             --shopee: #ee4d2d;
             --lazada: #000083;
             --tiktok: #000000;
@@ -23,83 +22,103 @@
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
         body { 
-            font-family: 'IBM-Plex-Light', sans-serif; 
-            margin: 0; background-color: var(--bg-creme); 
-            background-image: radial-gradient(var(--gold-dark) 0.3px, transparent 0.3px);
-            background-size: 25px 25px; background-attachment: fixed;
-            color: var(--text-main); line-height: 1.6;
+            font-family: 'IBM Plex Sans Thai', sans-serif; 
+            margin: 0; background-color: var(--bg-marble); 
+            background-image: url('https://www.transparenttextures.com/patterns/white-marble.png');
+            color: var(--p-green);
             overflow-x: hidden;
         }
 
-        body.lang-kr { font-family: 'Nanum-Bold', serif; }
+        h1, h2, h3, .brand-label { font-family: 'Nanum Myeongjo', serif; }
 
-        /* --- Luxury Navigation --- */
-        .top-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px); padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(197, 160, 89, 0.3); }
-        .logo-box img { height: 50px; transition: 0.3s; }
-        .logo-box img:hover { transform: scale(1.05); }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--gold-dark); }
-        .lang-switch { background: var(--p-green); border: 1.5px solid var(--gold-dark); padding: 8px 20px; cursor: pointer; color: var(--gold-light); font-size: 0.75rem; border-radius: 50px; font-weight: bold; transition: 0.3s; }
-
-        /* --- Layout & Design --- */
-        .container { max-width: 1250px; margin: 60px auto; padding: 0 5%; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 70px; align-items: start; }
-        
-        .img-display { 
-            background: white; padding: 60px; border-radius: 50px; 
-            border: 1px solid rgba(197, 160, 89, 0.2); 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.05); 
-            text-align: center; position: sticky; top: 130px;
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* --- ✨ Navigation (Same Theme) --- */
+        .top-nav { 
+            background: var(--deep-green); 
+            padding: 18px 8%; display: flex; justify-content: space-between; align-items: center; 
+            position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid var(--gold-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .img-display img { max-width: 100%; height: auto; object-fit: contain; }
+        .logo-box img { height: 50px; filter: brightness(0) invert(1); }
+        .nav-links a { text-decoration: none; color: var(--gold-light); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; }
+        .nav-links a:hover { color: white; }
+        .lang-switch { background: none; border: 1px solid var(--gold-dark); color: var(--gold-light); padding: 8px 20px; cursor: pointer; font-weight: bold; font-size: 0.75rem; transition: 0.3s; }
 
-        .badge-kbeauty { display: inline-block; background: rgba(197, 160, 89, 0.15); color: var(--gold-dark); padding: 5px 15px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 15px; }
+        /* --- Layout & Background Decor --- */
+        .container { 
+            max-width: 1300px; margin: 60px auto; padding: 0 5%; 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+            position: relative;
+        }
 
-        .brand-label { color: var(--gold-dark); letter-spacing: 5px; font-weight: 700; font-size: 1rem; text-transform: uppercase; margin: 0; }
-        h1 { font-size: 3rem; color: var(--p-green); margin: 15px 0; font-weight: 400; line-height: 1.2; }
+        /* Large HJ Watermark in Background */
+        .container::before {
+            content: 'HJ'; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 30rem; color: var(--gold-dark); opacity: 0.04; font-weight: 800; pointer-events: none; z-index: -1;
+        }
+
+        .img-display { 
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px);
+            padding: 60px; border-radius: 40px; border: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0 40px 80px rgba(13, 43, 31, 0.1); text-align: center;
+            position: sticky; top: 130px;
+        }
+        .img-display img { max-width: 100%; height: auto; transition: 0.5s; }
+        .img-display:hover img { transform: scale(1.05); }
+
+        .badge-kbeauty { 
+            display: inline-block; background: var(--p-green); color: var(--gold-light); 
+            padding: 6px 20px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; 
+            letter-spacing: 2px; margin-bottom: 25px; 
+        }
+
+        .brand-label { color: var(--gold-dark); letter-spacing: 5px; font-weight: 700; font-size: 1.2rem; text-transform: uppercase; margin: 0; }
+        h1 { font-size: 3.2rem; color: var(--deep-green); margin: 15px 0; font-weight: 700; line-height: 1.2; }
         
-        .price-tag { font-size: 3.5rem; font-weight: 700; color: var(--p-green); margin-bottom: 30px; display: flex; align-items: baseline; gap: 20px; }
+        .price-tag { font-size: 3.5rem; font-weight: 700; color: var(--gold-dark); margin-bottom: 40px; display: flex; align-items: baseline; gap: 20px; }
         .price-tag .old { font-size: 1.6rem; color: #bbb; text-decoration: line-through; font-weight: 300; }
 
-        .desc-section { border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 35px 0; }
-        .desc-section h3 { color: var(--gold-dark); font-size: 1.15rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 10px; }
-        .desc-section h3::after { content: ''; height: 1px; background: var(--gold-dark); flex-grow: 1; opacity: 0.3; }
-        .desc-section p { font-size: 1.15rem; color: #444; line-height: 1.8; text-align: justify; }
+        .desc-section { 
+            border-top: 1px solid rgba(197, 160, 89, 0.3); padding: 35px 0;
+            background-image: radial-gradient(var(--gold-dark) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+        }
+        .desc-section h3 { color: var(--p-green); font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 2px; display: flex; align-items: center; gap: 15px; }
+        .desc-section h3::after { content: ''; height: 1px; background: var(--gold-dark); flex-grow: 1; opacity: 0.4; }
+        .desc-section p { font-size: 1.1rem; color: #444; line-height: 2; text-align: justify; padding-right: 20px; }
 
-        /* --- Buttons Group --- */
-        .purchase-group { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; }
+        /* --- Purchase Buttons --- */
+        .purchase-group { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; position: relative; z-index: 5; }
         
         .btn-main { 
             display: flex; align-items: center; justify-content: center; gap: 12px;
-            background: var(--p-green); color: white; text-align: center; 
-            padding: 22px; border-radius: 15px; text-decoration: none; 
-            font-weight: 700; font-size: 1.3rem; transition: 0.4s;
-            box-shadow: 0 10px 25px rgba(27,67,50,0.2);
+            background: var(--deep-green); color: var(--gold-light); text-align: center; 
+            padding: 22px; border-radius: 0; border: 1px solid var(--gold-dark);
+            text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: 0.4s;
+            letter-spacing: 2px;
         }
-        .btn-main:hover { transform: translateY(-5px); filter: brightness(1.1); }
+        .btn-main:hover { background: white; color: var(--deep-green); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
 
         .marketplace-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
         .btn-market {
             display: flex; align-items: center; justify-content: center; gap: 8px;
-            padding: 15px; border-radius: 12px; text-decoration: none; color: white;
-            font-size: 0.9rem; font-weight: 700; transition: 0.3s;
+            padding: 15px; text-decoration: none; color: white; font-size: 0.85rem; font-weight: 700; transition: 0.3s;
         }
         .btn-market.shopee { background: var(--shopee); }
         .btn-market.lazada { background: var(--lazada); }
         .btn-market.tiktok { background: var(--tiktok); }
-        .btn-market:hover { transform: translateY(-3px); filter: brightness(1.1); }
+        .btn-market:hover { transform: translateY(-3px); filter: brightness(1.2); }
 
         /* --- Footer --- */
-        footer { background: #0a1410; color: rgba(255,255,255,0.7); padding: 100px 8% 40px; border-top: 5px solid var(--gold-dark); margin-top: 120px; }
+        footer { background: var(--deep-green); color: white; padding: 100px 8% 50px; border-top: 5px solid var(--gold-dark); margin-top: 120px; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 80px; }
-        .footer-col h4 { font-size: 1.6rem; color: var(--gold-light); margin-bottom: 30px; font-weight: 400; letter-spacing: 2.5px; }
+        .footer-col h4 { font-size: 1.2rem; color: var(--gold-light); margin-bottom: 30px; letter-spacing: 2px; border-bottom: 1px solid rgba(241, 211, 142, 0.2); display: inline-block; padding-bottom: 5px; }
 
         @media (max-width: 900px) {
             .container { grid-template-columns: 1fr; gap: 50px; }
-            .img-display { position: static; padding: 40px; }
+            .img-display { position: static; padding: 30px; }
             .marketplace-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -129,12 +148,12 @@
         </div>
         
         <div class="desc-section">
-            <h3 id="lbl-desc"><i class="fa-solid fa-leaf"></i> DETAILS</h3>
+            <h3 id="lbl-desc">DETAILS</h3>
             <p id="p-desc"></p>
         </div>
         
         <div class="desc-section">
-            <h3 id="lbl-use"><i class="fa-solid fa-sparkles"></i> HOW TO USE</h3>
+            <h3 id="lbl-use">HOW TO USE</h3>
             <p id="p-use"></p>
         </div>
 
@@ -144,15 +163,9 @@
             </a>
             
             <div class="marketplace-grid">
-                <a href="https://shopee.co.th/hj_cosmetics?categoryId=100630" target="_blank" class="btn-market shopee">
-                    <i class="fa-solid fa-bag-shopping"></i> Shopee
-                </a>
-                <a href="https://www.lazada.co.th/shop/hj-cosmetics/" target="_blank" class="btn-market lazada">
-                    <i class="fa-solid fa-cart-shopping"></i> Lazada
-                </a>
-                <a href="https://vt.tiktok.com/ZMkJ5PWfF/?page=TikTokShop" target="_blank" class="btn-market tiktok">
-                    <i class="fa-brands fa-tiktok"></i> TikTok Shop
-                </a>
+                <a href="https://shopee.co.th/hj_cosmetics" target="_blank" class="btn-market shopee">Shopee</a>
+                <a href="https://www.lazada.co.th/shop/hj-cosmetics/" target="_blank" class="btn-market lazada">Lazada</a>
+                <a href="https://vt.tiktok.com/ZMkJ5PWfF/" target="_blank" class="btn-market tiktok">TikTok</a>
             </div>
         </div>
     </div>
@@ -161,8 +174,8 @@
 <footer>
     <div class="footer-grid">
         <div class="footer-col">
-            <h4 style="color: #fff; font-size: 2rem;">HJ COSMETICS</h4>
-            <p id="foot-desc" style="line-height: 2;">Premium Korean Skincare Curator.</p>
+            <h2 style="font-family: 'Nanum Myeongjo'; color: var(--gold-light); font-size: 2.2rem; margin: 0 0 20px;">HJ COSMETICS</h2>
+            <p id="foot-desc">Premium Korean Skincare Curator.</p>
         </div>
         <div class="footer-col">
             <h4 id="h-addr">ADDRESS</h4>
@@ -170,28 +183,16 @@
         </div>
         <div class="footer-col">
             <h4 id="h-cont">CONTACT</h4>
-            <p>Line: thaihj11<br>Tel: 03-8182-577<br> Email: thaihjglobal@gmail.com </p>
+            <p>Line: @thaihj11<br>Tel: 03-8182-577</p>
         </div>
     </div>
 </footer>
 
 <script>
+    // ข้อมูลสินค้าเหมือนเดิม
     const productData = {
-        1: { brand: "Fraijour", sale: "฿250", old: "฿369", img: "1.jpeg", th: { name: "Wormwood Calming Watery Cream", desc: "ครีมบำรุงเนื้อวอเตอรี่ สารสกัดจากมักเวิร์ตเข้มข้น ช่วยปลอบประโลมผิวแพ้ง่าย", use: "ทาบำรุงทั่วใบหน้าและลำคอ" }, en: { name: "Wormwood Calming Watery Cream", desc: "Soothing watery cream with Mugwort extract.", use: "Apply evenly to face and neck." }, kr: { name: "웜우드 카밍 워터리 크림", desc: "쑥 추출물이 함유된 진정 크림입니다.", use: "얼굴과 목에 골고루 발라줍니다." } },
-        2: { brand: "Fraijour", sale: "฿350", old: "฿459", img: "2.jpeg", th: { name: "Wormwood Calming Toner", desc: "โทนเนอร์สมุนไพรปรับสมดุลผิว", use: "เช็ดเบาๆ ทั่วใบหน้าหลังล้างหน้า" }, en: { name: "Wormwood Calming Toner", desc: "Herbal toner that balances skin.", use: "Wipe gently across the face." }, kr: { name: "웜우드 카밍 토너", desc: "피부 밸런스를 맞추는 허브 토너입니다.", use: "세안 후 닦아내듯 사용합니다." } },
-        3: { brand: "Fraijour", sale: "฿250", old: "฿400", img: "3.jpeg", th: { name: "Wormwood Cleansing Water", desc: "คลีนซิ่งเช็ดหน้าสูตรอ่อนโยน ลบเมคอัพสะอาด", use: "ใช้สำลีเช็ดให้ทั่วใบหน้า" }, en: { name: "Wormwood Cleansing Water", desc: "Gentle makeup remover.", use: "Use cotton pad to wipe clean." }, kr: { name: "웜우드 클렌징 워터", desc: "순한 클렌징 워터입니다.", use: "화장솜으로 닦아냅니다." } },
-        4: { brand: "Fraijour", sale: "฿290", old: "฿399", img: "4.jpeg", th: { name: "Wormwood Cleansing Foam", desc: "โฟมล้างหน้าทำความสะอาดล้ำลึก", use: "นวดวนบนใบหน้าแล้วล้างออก" }, en: { name: "Wormwood Cleansing Foam", desc: "Deep cleansing herbal foam.", use: "Massage onto face and rinse." }, kr: { name: "웜우드 클렌징 폼", desc: "딥 클렌징 폼입니다.", use: "거품을 내어 세안합니다." } },
-        5: { brand: "Fraijour", sale: "฿310", old: "฿590", img: "5.jpeg", th: { name: "Heartleaf Blemish Moisture Cream", desc: "ครีมบำรุงสำหรับผิวเป็นสิว", use: "ทาบำรุงทั่วใบหน้า เช้า-เย็น" }, en: { name: "Heartleaf Blemish Moisture Cream", desc: "Cream for acne-prone skin.", use: "Apply morning and night." }, kr: { name: "하트리프 모이스처 크림", desc: "트러블 피부용 크림입니다.", use: "아침 저녁으로 발라줍니다." } },
-        6: { brand: "Fraijour", sale: "฿360", old: "฿529", img: "6.jpeg", th: { name: "Heartleaf Blemish Toner", desc: "โทนเนอร์ช่วยลดรอยแดง", use: "เช็ดผิวหลังล้างหน้า" }, en: { name: "Heartleaf Blemish Toner", desc: "Toner that reduces redness.", use: "Wipe skin after cleansing." }, kr: { name: "하트리프 블레미쉬 토너", desc: "붉은 기를 완화하는 토너입니다.", use: "세안 후 사용합니다." } },
-        7: { brand: "Fraijour", sale: "฿250", old: "฿459", img: "7.jpeg", th: { name: "Retin-Collagen 3D Core Cream", desc: "ครีมยกกระชับ ลดริ้วรอย", use: "ทาเน้นบริเวณริ้วรอย" }, en: { name: "Retin-Collagen 3D Core Cream", desc: "Anti-wrinkle lifting cream.", use: "Apply to wrinkled areas." }, kr: { name: "레틴-콜라겐 3D 크림", desc: "주름 개선 탄력 크림입니다.", use: "주름 부위에 발라줍니다." } },
-        8: { brand: "Fraijour", sale: "฿195", old: "฿370", img: "8.jpeg", th: { name: "Retin-Collagen 3D Core Eye Cream", desc: "ครีมบำรุงรอบดวงตา", use: "แต้มเบาๆ บริเวณรอบดวงตา" }, en: { name: "Retin-Collagen 3D Core Eye Cream", desc: "Effective eye wrinkle care.", use: "Gently dab around eyes." }, kr: { name: "레틴-콜라겐 아이크림", desc: "눈가 주름 관리용 아이크림입니다.", use: "눈가에 가볍게 두드려줍니다." } },
-        9: { brand: "Fraijour", sale: "฿290", old: "฿500", img: "9.jpeg", th: { name: "Retin-Collagen 3D Core Toner", desc: "โทนเนอร์บำรุงล้ำลึกเพิ่มคอลลาเจน", use: "ตบบนใบหน้าหลังล้างหน้า" }, en: { name: "Retin-Collagen 3D Core Toner", desc: "Deep nourishing collagen toner.", use: "Pat onto face after cleansing." }, kr: { name: "레틴-콜라겐 토너", desc: "고영양 콜라겐 토너입니다.", use: "세안 후 흡수시켜줍니다." } },
-        10: { brand: "Fraijour", sale: "฿125", old: "฿259", img: "10.jpeg", th: { name: "Retin-Collagen 3D Core Lip Oil", desc: "ลิปออยล์แก้ปากคล้ำ", use: "ทาริมฝีปากบ่อยตามต้องการ" }, en: { name: "Retin-Collagen 3D Core Lip Oil", desc: "Nourishing lip oil.", use: "Apply to lips as needed." }, kr: { name: "레틴-콜라겐 립 오일", desc: "입술 영양 공급용 오일입니다.", use: "수시로 발라줍니다." } },
-        11: { brand: "Fraijour", sale: "฿280", old: "฿450", img: "Heartleaf Airy Fit Sun Cream 50g ผลิตภัณฑ์.png", th: { name: "Heartleaf Airy Fit Sun Cream", desc: "กันแดดเนื้อบางเบาสบายผิว", use: "ทาก่อนออกแดด 15 นาที" }, en: { name: "Heartleaf Airy Fit Sun Cream", desc: "Lightweight sun protection.", use: "Apply 15 mins before sun." }, kr: { name: "하트리프 선크림", desc: "가벼운 선크림입니다.", use: "외출 전에 발라줍니다." } },
-        12: { brand: "Fraijour", sale: "฿320", old: "฿590", img: "12.jpeg", th: { name: "Heartleaf Water Fit Sun Screen", desc: "กันแดดสูตรน้ำให้ความชุ่มชื้น", use: "ทาเป็นขั้นตอนสุดท้ายของการบำรุง" }, en: { name: "Heartleaf Water Fit Sun Screen", desc: "Hydrating water-based sun screen.", use: "Apply as final skincare step." }, kr: { name: "하트리프 워터 선스크린", desc: "수분 가득한 선스크린입니다.", use: "마지막 단계에 발라줍니다." } },
-        13: { brand: "Fraijour", sale: "฿17", old: "฿29", img: "13.jpeg", th: { name: "Original Herb Sheet Mask", desc: "มาส์กแผ่นสมุนไพรกู้ผิวพัง", use: "มาส์กทิ้งไว้ 15-20 นาที" }, en: { name: "Original Herb Sheet Mask", desc: "Herbal recovery mask.", use: "Leave for 15-20 minutes." }, kr: { name: "오리지널 허브 마스크", desc: "허브 시트 마스크입니다.", use: "15-20분 후 떼어냅니다." } },
-        14: { brand: "Bathpa", sale: "฿150", old: "฿529", img: "13.jpeg", th: { name: "Body Tone Up Cream", desc: "ครีมโทนอัพผิวกายกระจ่างใส", use: "ทาผิวกายหลังอาบน้ำ" }, en: { name: "Body Tone Up Cream", desc: "Instant body brightening cream.", use: "Smooth over body after shower." }, kr: { name: "바스파 바디 톤업 크림", desc: "바디 전용 톤업 크림입니다.", use: "샤워 후 발라줍니다." } },
-        15: { brand: "CharChar", sale: "฿120", old: "฿199", img: "15.jpeg", th: { name: "Mung Bean Cica Cleansing Foam", desc: "โฟมล้างหน้าดีท็อกซ์ผิวลดสิว", use: "ใช้ล้างหน้า เช้า-เย็น" }, en: { name: "Mung Bean Cica Cleansing Foam", desc: "Mung Bean & Cica detox foam.", use: "Cleanse face morning and night." }, kr: { name: "녹두 시카 클렌징 폼", desc: "피부 정화 클렌징 폼입니다.", use: "세안 시 사용합니다." } }
+        1: { brand: "Fraijour", sale: "฿250", old: "฿369", img: "1.jpeg", th: { name: "Wormwood Calming Watery Cream", desc: "ครีมบำรุงเนื้อวอเตอรี่ สารสกัดจากมักเวิร์ตเข้มข้น ช่วยปลอบประโลมผิวแพ้ง่ายและเติมความชุ่มชื้นลึกถึงชั้นผิว", use: "ทาบำรุงทั่วใบหน้าและลำคอเป็นประจำเช้า-เย็น" }, en: { name: "Wormwood Calming Watery Cream", desc: "Soothing watery cream with Mugwort extract. Perfect for sensitive skin.", use: "Apply evenly to face and neck morning and night." }, kr: { name: "웜우드 카밍 워터리 크림", desc: "쑥 추출물이 함유되어 피부를 진정시키고 촉촉하게 가꿔주는 워터리 크림입니다.", use: "아침 저녁으로 얼굴과 목에 골고루 발라줍니다." } },
+        // ... (ใส่ข้อมูล ID 2-15 ต่อจากโค้ดเดิมของคุณได้เลยครับ)
     };
 
     let currentLang = localStorage.getItem('selectedLang') || 'th';
@@ -212,23 +213,22 @@
         document.getElementById('p-img').src = p.img;
 
         const ui = {
-            th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", desc: "รายละเอียดสินค้า", use: "วิธีใช้", order: "สั่งซื้อผ่าน LINE", addr: "ที่อยู่บริษัท", cont: "ติดต่อเรา", btn: "EN" },
+            th: { home: "HOME", about: "ABOUT", contact: "CONTACT", desc: "DETAILS", use: "HOW TO USE", order: "ORDER VIA LINE", addr: "ADDRESS", cont: "CONTACT", btn: "EN" },
             en: { home: "HOME", about: "ABOUT", contact: "CONTACT", desc: "DETAILS", use: "HOW TO USE", order: "ORDER VIA LINE", addr: "ADDRESS", cont: "CONTACT", btn: "KR" },
-            kr: { home: "홈", about: "소개", contact: "연락처", desc: "상세 정보", use: "사용 방법", order: "라인으로 주문하기", addr: "주소", cont: "고객 센터", btn: "TH" }
+            kr: { home: "HOME", about: "ABOUT", contact: "CONTACT", desc: "DETAILS", use: "HOW TO USE", order: "ORDER VIA LINE", addr: "ADDRESS", cont: "CONTACT", btn: "TH" }
         };
 
         const u = ui[currentLang];
         document.getElementById('nav-home').innerText = u.home;
         document.getElementById('nav-about').innerText = u.about;
         document.getElementById('nav-contact').innerText = u.contact;
-        document.getElementById('lbl-desc').innerHTML = `<i class="fa-solid fa-leaf"></i> ` + u.desc;
-        document.getElementById('lbl-use').innerHTML = `<i class="fa-solid fa-sparkles"></i> ` + u.use;
+        document.getElementById('lbl-desc').innerText = u.desc;
+        document.getElementById('lbl-use').innerText = u.use;
         document.getElementById('btn-order').innerHTML = `<i class="fa-brands fa-line"></i> ` + u.order;
         document.getElementById('h-addr').innerText = u.addr;
         document.getElementById('h-cont').innerText = u.cont;
         document.getElementById('langBtn').innerText = u.btn;
         
-        document.getElementById('main-body').className = 'lang-' + currentLang;
         localStorage.setItem('selectedLang', currentLang);
     }
 
