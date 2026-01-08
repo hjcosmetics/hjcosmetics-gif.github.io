@@ -37,8 +37,8 @@
         .hero h1 { font-size: 3.5rem; margin: 0; letter-spacing: 10px; font-weight: 400; text-transform: uppercase; line-height: 1.2; }
 
         /* --- Contact Content --- */
-        .contact-container { max-width: 1200px; margin: -60px auto 100px; padding: 0 20px; position: relative; z-index: 10; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
+        .contact-container { max-width: 1200px; margin: -60px auto 50px; padding: 0 20px; position: relative; z-index: 10; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; margin-bottom: 40px; }
 
         .info-card { background: var(--p-green); color: white; padding: 60px; box-shadow: 15px 15px 0px var(--gold-dark); }
         .info-card h2 { color: var(--gold-light); font-size: 2.2rem; margin-bottom: 30px; letter-spacing: 1px; line-height: 1.1; }
@@ -55,10 +55,21 @@
         .btn-submit { background: var(--p-green); color: var(--gold-light); border: 1px solid var(--gold-dark); padding: 15px 40px; font-size: 0.85rem; letter-spacing: 3px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; text-transform: uppercase; }
         .btn-submit:hover { background: var(--gold-dark); color: var(--p-green); }
 
+        /* --- Map Section --- */
+        .map-section { width: 100%; max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; }
+        .map-wrapper { 
+            width: 100%; height: 450px; 
+            border: 1px solid var(--gold-dark); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            background: #fff;
+            padding: 10px;
+        }
+        .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: grayscale(0.2) contrast(1.1); }
+
         /* --- ✨ Premium Footer ✨ --- */
         footer { 
             background: #0a1410; color: rgba(255,255,255,0.8); padding: 80px 8% 40px; 
-            border-top: 5px solid var(--gold-dark); margin-top: 100px; 
+            border-top: 5px solid var(--gold-dark); 
         }
         .footer-grid { 
             display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px; 
@@ -76,6 +87,7 @@
             .contact-grid { grid-template-columns: 1fr; } 
             .info-card, .form-card { padding: 40px; }
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .map-wrapper { height: 350px; }
         }
     </style>
 </head>
@@ -121,6 +133,17 @@
         </div>
     </div>
 </div>
+
+<section class="map-section">
+    <div class="map-wrapper">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882.355193630653!2d101.0963333!3d13.0124444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3102c7760775d71b%3A0xc3f60f607c73335e!2z4Lir4LiC4LmJ4Lin4Lii4Lib4Lij4Liy4LiaIOC5gOC4nuC4o-C4suC4p-C4quC5guC4oeC4lOC4tOC4geC4uOC4oeC4leC4tCDguIjguLPguIHguLHguJQ!5e0!3m2!1sth!2sth!4v1715000000000!5m2!1sth!2sth" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
 
 <footer>
     <div class="footer-grid">
@@ -181,7 +204,6 @@
         document.getElementById('btn-send').textContent = l.btnSend;
         document.getElementById('foot-desc').textContent = l.footDesc;
         
-        // อัปเดตหัวข้อ Footer ตามภาษา
         document.getElementById('h-addr-foot').textContent = l.hAddr;
         document.getElementById('h-cont-foot').textContent = l.hCont;
         
