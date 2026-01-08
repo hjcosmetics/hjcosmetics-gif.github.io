@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - HJ COSMETICS</title>
+    <style>
+        /* --- 1. ประกาศฟอนต์ --- */
+        @font-face {
+            font-family: 'IBM-Plex-Light';
+            src: url('IBMPlexSansThai-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Nanum-Bold';
+            src: url('NanumMyeongjo-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        :root {
+            --p-green: #1b4332;
+            --gold-dark: #c5a059;
+            --gold-light: #f1d38e;
+            --text-main: #1a1a1a;
+            --bg-creme: #fdfcf9;
+        }
+
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; font-style: normal !important; }
+        
+        body { 
+            font-family: 'IBM-Plex-Light', sans-serif; 
+            margin: 0; background-color: var(--bg-creme); 
+            background-image: radial-gradient(var(--gold-dark) 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
+            background-attachment: fixed;
+            color: var(--text-main); line-height: 1.8;
+        }
+
+        body.lang-kr { font-family: 'Nanum-Bold', serif; }
+
+        /* --- ✨ Navigation ✨ --- */
+        .top-nav {
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 15px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold-dark);
+        }
+        .logo-box img { height: 45px; }
+        .nav-links { display: flex; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.85rem; letter-spacing: 2px; font-weight: 600; }
+        .lang-switch { background: var(--p-green); border: 1.5px solid var(--gold-dark); padding: 6px 18px; cursor: pointer; color: var(--gold-light); font-size: 0.75rem; font-weight: 700; }
+
+        /* --- ✨ Contact Hero ✨ --- */
+        .hero {
+            height: 40vh; position: relative; background: var(--p-green);
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80') center/cover; opacity: 0.3; }
+        .hero-content { position: relative; z-index: 3; text-align: center; color: white; }
+        .hero h1 { font-size: 3.5rem; margin: 0; letter-spacing: 10px; font-weight: 400; text-transform: uppercase; }
+
+        /* --- ✨ Contact Section ✨ --- */
+        .contact-container { max-width: 1200px; margin: -60px auto 100px; padding: 0 20px; position: relative; z-index: 10; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
+
+        /* Info Box */
+        .info-card { 
+            background: var(--p-green); color: white; padding: 60px; 
+            box-shadow: 15px 15px 0px var(--gold-dark);
+        }
+        .info-card h2 { color: var(--gold-light); font-size: 2rem; margin-bottom: 30px; letter-spacing: 2px; }
+        .info-item { margin-bottom: 30px; }
+        .info-item h4 { color: var(--gold-dark); margin: 0 0 5px; letter-spacing: 2px; font-size: 0.9rem; }
+        .info-item p { margin: 0; font-size: 1rem; opacity: 0.9; }
+
+        /* Form Box */
+        .form-card { background: white; padding: 60px; border: 1px solid rgba(197, 160, 89, 0.2); }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.85rem; color: var(--p-green); font-weight: 600; letter-spacing: 1px; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 12px; border: 1px solid #ddd; background: #f9f9f9;
+            font-family: inherit; font-size: 1rem; outline: none; transition: 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--gold-dark); background: white; }
+        
+        .btn-submit {
+            background: var(--p-green); color: var(--gold-light); border: 1px solid var(--gold-dark);
+            padding: 15px 40px; font-size: 0.85rem; letter-spacing: 3px; font-weight: 700;
+            cursor: pointer; transition: 0.3s; width: 100%; text-transform: uppercase;
+        }
+        .btn-submit:hover { background: var(--gold-dark); color: var(--p-green); }
+
+        /* --- ✨ Map Section ✨ --- */
+        .map-section { height: 400px; background: #eee; margin-top: 50px; border: 1px solid var(--gold-dark); position: relative; }
+        .map-placeholder { display: flex; align-items: center; justify-content: center; height: 100%; color: #888; letter-spacing: 2px; }
+
+        footer { background: #0a1410; color: rgba(255,255,255,0.6); padding: 80px 8% 40px; border-top: 6px solid var(--gold-dark); }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+        .footer-col h4 { font-size: 1.8rem; color: #fff; margin-bottom: 25px; }
+
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .info-card { padding: 40px; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body id="main-body">
+
+<nav class="top-nav">
+    <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
+    <div class="nav-links">
+        <a href="index.html" id="nav-home">HOME</a>
+        <a href="about.html" id="nav-about">ABOUT</a>
+        <a href="contact.html" id="nav-contact" style="color:var(--gold-dark)">CONTACT</a>
+        <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">EN</button>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <h1 id="hero-title">Contact Us</h1>
+    </div>
+</header>
+
+<div class="contact-container">
+    <div class="contact-grid">
+        <div class="info-card">
+            <h2 id="info-h">Get In Touch</h2>
+            <div class="info-item">
+                <h4 id="h-addr">ADDRESS</h4>
+                <p>323/11-12 Huayprab Muangthong 5, Bowin, Sriracha, Chon Buri 20230, Thailand</p>
+            </div>
+            <div class="info-item">
+                <h4 id="h-cont">PHONE & EMAIL</h4>
+                <p>Tel: 03-8182-577</p>
+                <p>Email: info@hjcosmetics.com</p>
+            </div>
+            <div class="info-item">
+                <h4 id="h-line">LINE OFFICIAL</h4>
+                <p>@thaihj11</p>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <form action="#">
+                <div class="form-group">
+                    <label id="l-name">FULL NAME</label>
+                    <input type="text" placeholder="...">
+                </div>
+                <div class="form-group">
+                    <label id="l-email">EMAIL ADDRESS</label>
+                    <input type="email" placeholder="...">
+                </div>
+                <div class="form-group">
+                    <label id="l-msg">YOUR MESSAGE</label>
+                    <textarea rows="5" placeholder="..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit" id="btn-send">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="map-section">
+        <div class="map-placeholder">
+            [ GOOGLE MAPS EMBED HERE ]
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4 style="font-size: 2.2rem; color: #fff;">HJ COSMETICS</h4>
+            <p id="foot-desc">Premium Korean Skincare Curator.</p>
+        </div>
+        <div class="footer-col"><h4 id="f-h-addr">ADDRESS</h4><p>Chon Buri 20230, Thailand</p></div>
+        <div class="footer-col"><h4 id="f-h-cont">CONTACT</h4><p>Email: info@hjcosmetics.com</p></div>
+    </div>
+</footer>
+
+<script>
+    const languages = ['th', 'en', 'kr'];
+    let langIndex = languages.indexOf(localStorage.getItem('selectedLang')) || 0;
+    if (langIndex === -1) langIndex = 0;
+
+    const trans = {
+        th: {
+            home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา",
+            heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ",
+            hAddr: "ที่อยู่", hCont: "โทรศัพท์และอีเมล", hLine: "ไลน์ออฟฟิเชียล",
+            lName: "ชื่อ-นามสกุล", lEmail: "อีเมล", lMsg: "ข้อความของคุณ",
+            btnSend: "ส่งข้อความ", footDesc: "เราคัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ",
+            btn: "EN"
+        },
+        en: {
+            home: "HOME", about: "ABOUT", contact: "CONTACT",
+            heroTitle: "Contact Us", infoH: "Get In Touch",
+            hAddr: "ADDRESS", hCont: "PHONE & EMAIL", hLine: "LINE OFFICIAL",
+            lName: "FULL NAME", lEmail: "EMAIL ADDRESS", lMsg: "YOUR MESSAGE",
+            btnSend: "SEND MESSAGE", footDesc: "Premium Korean Skincare Curator.",
+            btn: "KR"
+        },
+        kr: {
+            home: "홈", about: "회사소개", contact: "문의하기",
+            heroTitle: "문의하기", infoH: "연락처",
+            hAddr: "주소", hCont: "전화 및 이메일", hLine: "카카오톡/라인",
+            lName: "성함", lEmail: "이메일 주소", lMsg: "문의 내용",
+            btnSend: "메시지 보내기", footDesc: "자연의 힘으로 완성하는 최상의 스킨케어",
+            btn: "TH"
+        }
+    };
+
+    function updateContent() {
+        const l = trans[languages[langIndex]];
+        const body = document.getElementById('main-body');
+        
+        if (languages[langIndex] === 'kr') body.classList.add('lang-kr');
+        else body.classList.remove('lang-kr');
+
+        document.getElementById('nav-home').textContent = l.home;
+        document.getElementById('nav-about').textContent = l.about;
+        document.getElementById('nav-contact').textContent = l.contact;
+        document.getElementById('hero-title').textContent = l.heroTitle;
+        document.getElementById('info-h').textContent = l.infoH;
+        document.getElementById('h-addr').textContent = l.hAddr;
+        document.getElementById('h-cont').textContent = l.hCont;
+        document.getElementById('h-line').textContent = l.hLine;
+        document.getElementById('l-name').textContent = l.lName;
+        document.getElementById('l-email').textContent = l.lEmail;
+        document.getElementById('l-msg').textContent = l.lMsg;
+        document.getElementById('btn-send').textContent = l.btnSend;
+        document.getElementById('foot-desc').textContent = l.footDesc;
+        document.getElementById('langBtn').textContent = l.btn;
+
+        localStorage.setItem('selectedLang', languages[langIndex]);
+    }
+
+    function rotateLanguage() {
+        langIndex = (langIndex + 1) % languages.length;
+        updateContent();
+    }
+
+    updateContent();
+</script>
+</body>
+</html>
