@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">HJ COSMETICS - Luxury Selection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face { font-family: 'IBM-Plex-Light'; src: url('IBMPlexSansThai-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; }
         @font-face { font-family: 'Nanum-Bold'; src: url('NanumMyeongjo-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; }
 
-        :root { --p-green: #1b4332; --gold-dark: #c5a059; --gold-light: #f1d38e; --text-main: #1a1a1a; --bg-creme: #fdfcf9; }
+        :root { 
+            --p-green: #1b4332; 
+            --gold-dark: #c5a059; 
+            --gold-light: #f1d38e; 
+            --text-main: #1a1a1a; 
+            --bg-creme: #fdfcf9;
+            --shopee: #ee4d2d;
+            --lazada: #000083;
+            --tiktok: #000000;
+        }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
@@ -18,45 +28,81 @@
             background-image: radial-gradient(var(--gold-dark) 0.3px, transparent 0.3px);
             background-size: 25px 25px; background-attachment: fixed;
             color: var(--text-main); line-height: 1.6;
+            overflow-x: hidden;
         }
 
         body.lang-kr { font-family: 'Nanum-Bold', serif; }
 
-        /* --- Navigation --- */
-        .top-nav { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold-dark); }
-        .logo-box img { height: 45px; }
-        .nav-links { display: flex; gap: 35px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.85rem; font-weight: 600; }
-        .lang-switch { background: var(--p-green); border: 1.5px solid var(--gold-dark); padding: 6px 18px; cursor: pointer; color: var(--gold-light); font-size: 0.75rem; border-radius: 50px; font-weight: bold; }
+        /* --- Luxury Navigation --- */
+        .top-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px); padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(197, 160, 89, 0.3); }
+        .logo-box img { height: 50px; transition: 0.3s; }
+        .logo-box img:hover { transform: scale(1.05); }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold-dark); }
+        .lang-switch { background: var(--p-green); border: 1.5px solid var(--gold-dark); padding: 8px 20px; cursor: pointer; color: var(--gold-light); font-size: 0.75rem; border-radius: 50px; font-weight: bold; transition: 0.3s; }
+        .lang-switch:hover { background: var(--gold-dark); color: white; }
 
-        /* --- Layout --- */
-        .container { max-width: 1200px; margin: 50px auto; padding: 0 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-        .img-display { background: white; padding: 50px; border-radius: 40px; border: 1px solid rgba(197, 160, 89, 0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.03); text-align: center; position: sticky; top: 120px; }
+        /* --- Layout & Design --- */
+        .container { max-width: 1250px; margin: 60px auto; padding: 0 5%; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 70px; align-items: start; }
+        
+        .img-display { 
+            background: white; padding: 60px; border-radius: 50px; 
+            border: 1px solid rgba(197, 160, 89, 0.2); 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05); 
+            text-align: center; position: sticky; top: 130px;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .img-display:hover { transform: translateY(-10px); box-shadow: 0 40px 80px rgba(0,0,0,0.1); }
         .img-display img { max-width: 100%; height: auto; object-fit: contain; }
 
-        .brand-label { color: var(--gold-dark); letter-spacing: 4px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; margin: 0; }
-        h1 { font-size: 2.8rem; color: var(--p-green); margin: 15px 0; font-weight: 400; line-height: 1.1; }
+        .badge-kbeauty { display: inline-block; background: rgba(197, 160, 89, 0.15); color: var(--gold-dark); padding: 5px 15px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 15px; }
+
+        .brand-label { color: var(--gold-dark); letter-spacing: 5px; font-weight: 700; font-size: 1rem; text-transform: uppercase; margin: 0; }
+        h1 { font-size: 3rem; color: var(--p-green); margin: 15px 0; font-weight: 400; line-height: 1.2; }
         
-        .price-tag { font-size: 3rem; font-weight: 700; color: var(--p-green); margin-bottom: 40px; display: flex; align-items: baseline; gap: 20px; }
-        .price-tag .old { font-size: 1.5rem; color: #aaa; text-decoration: line-through; font-weight: 300; }
+        .price-tag { font-size: 3.5rem; font-weight: 700; color: var(--p-green); margin-bottom: 30px; display: flex; align-items: baseline; gap: 20px; }
+        .price-tag .old { font-size: 1.6rem; color: #bbb; text-decoration: line-through; font-weight: 300; }
 
-        .desc-section { border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 30px 0; }
-        .desc-section h3 { color: var(--gold-dark); font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px; border-left: 4px solid var(--p-green); padding-left: 15px; }
-        .desc-section p { font-size: 1.1rem; color: #444; margin: 0; }
+        .desc-section { border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 35px 0; }
+        .desc-section h3 { color: var(--gold-dark); font-size: 1.15rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 10px; }
+        .desc-section h3::after { content: ''; height: 1px; background: var(--gold-dark); flex-grow: 1; opacity: 0.3; }
+        .desc-section p { font-size: 1.15rem; color: #444; line-height: 1.8; text-align: justify; }
 
-        .btn-order { display: block; background: var(--p-green); color: white; text-align: center; padding: 22px; border-radius: 60px; text-decoration: none; font-weight: 700; font-size: 1.2rem; margin-top: 30px; border: 2px solid var(--p-green); transition: 0.3s; box-shadow: 0 10px 20px rgba(27,67,50,0.15); }
-        .btn-order:hover { background: transparent; color: var(--p-green); transform: translateY(-5px); }
+        /* --- Buttons Group --- */
+        .purchase-group { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; }
+        
+        .btn-main { 
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            background: var(--p-green); color: white; text-align: center; 
+            padding: 22px; border-radius: 15px; text-decoration: none; 
+            font-weight: 700; font-size: 1.3rem; transition: 0.4s;
+            box-shadow: 0 10px 25px rgba(27,67,50,0.2);
+        }
+        .btn-main:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(27,67,50,0.3); filter: brightness(1.1); }
+
+        .marketplace-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 10px; }
+        .btn-market {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 15px; border-radius: 12px; text-decoration: none; color: white;
+            font-size: 0.9rem; font-weight: 700; transition: 0.3s;
+        }
+        .btn-market.shopee { background: var(--shopee); }
+        .btn-market.lazada { background: var(--lazada); }
+        .btn-market.tiktok { background: var(--tiktok); }
+        .btn-market:hover { transform: scale(1.05); filter: contrast(1.2); }
 
         /* --- Footer --- */
-        footer { background: #0a1410; color: rgba(255,255,255,0.7); padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); margin-top: 100px; }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
-        .footer-col h4 { font-size: 1.4rem; color: var(--gold-light); margin-bottom: 25px; font-weight: 400; letter-spacing: 2px; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; padding-top: 30px; text-align: center; font-size: 0.8rem; }
+        footer { background: #0a1410; color: rgba(255,255,255,0.7); padding: 100px 8% 40px; border-top: 5px solid var(--gold-dark); margin-top: 120px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 80px; }
+        .footer-col h4 { font-size: 1.6rem; color: var(--gold-light); margin-bottom: 30px; font-weight: 400; letter-spacing: 2.5px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 60px; padding-top: 40px; text-align: center; font-size: 0.85rem; letter-spacing: 1px; }
 
         @media (max-width: 900px) {
-            .container { grid-template-columns: 1fr; gap: 40px; }
-            .img-display { position: static; }
-            h1 { font-size: 2rem; }
+            .container { grid-template-columns: 1fr; gap: 50px; }
+            .img-display { position: static; padding: 40px; }
+            h1 { font-size: 2.2rem; }
+            .marketplace-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -75,6 +121,7 @@
 
 <div class="container">
     <div class="img-display">
+        <div class="badge-kbeauty">✨ PREMUM K-BEAUTY</div>
         <img id="p-img" src="" alt="Product">
     </div>
     <div class="info-box">
@@ -86,32 +133,52 @@
         </div>
         
         <div class="desc-section">
-            <h3 id="lbl-desc">Details</h3>
+            <h3 id="lbl-desc"><i class="fa-solid fa-leaf"></i> DETAILS</h3>
             <p id="p-desc"></p>
         </div>
         
         <div class="desc-section">
-            <h3 id="lbl-use">How to Use</h3>
+            <h3 id="lbl-use"><i class="fa-solid fa-sparkles"></i> HOW TO USE</h3>
             <p id="p-use"></p>
         </div>
 
-        <a href="https://line.me/R/ti/p/@thaihj11" class="btn-order" id="btn-order">ORDER VIA LINE</a>
+        <div class="purchase-group">
+            <a href="https://line.me/R/ti/p/@thaihj11" class="btn-main" id="btn-order">
+                <i class="fa-brands fa-line"></i> ORDER VIA LINE
+            </a>
+            <div class="marketplace-grid">
+                <a href="#" class="btn-market shopee">
+                    <i class="fa-solid fa-bag-shopping"></i> Shopee
+                </a>
+                <a href="#" class="btn-market lazada">
+                    <i class="fa-solid fa-cart-shopping"></i> Lazada
+                </a>
+                <a href="#" class="btn-market tiktok">
+                    <i class="fa-brands fa-tiktok"></i> TikTok Shop
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
 <footer>
     <div class="footer-grid">
         <div class="footer-col">
-            <h4 style="color: #fff;">HJ COSMETICS</h4>
-            <p id="foot-desc">Premium Korean Skincare Curator.</p>
+            <h4 style="color: #fff; font-size: 2rem;">HJ COSMETICS</h4>
+            <p id="foot-desc" style="line-height: 2;">Premium Korean Skincare Curator. We bring the essence of Seoul's luxury beauty directly to you.</p>
+            <div style="margin-top: 20px; display: flex; gap: 20px; font-size: 1.5rem;">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-line"></i>
+            </div>
         </div>
         <div class="footer-col">
             <h4 id="h-addr">ADDRESS</h4>
-            <p>323/11-12 Huayprab Muangthong 5, Bowin, Sriracha, Chon Buri 20230</p>
+            <p style="line-height: 2;">323/11-12 Huayprab Muangthong 5, <br>Bowin, Sriracha, <br>Chon Buri 20230, Thailand</p>
         </div>
         <div class="footer-col">
             <h4 id="h-cont">CONTACT</h4>
-            <p>Line: @thaihj11<br>Tel: 03-8182-577</p>
+            <p><strong>Line:</strong> @thaihj11<br><strong>Tel:</strong> 03-8182-577<br><strong>Email:</strong> info@hjcosmetics.com</p>
         </div>
     </div>
     <div class="footer-bottom">&copy; 2024 HJ COSMETICS. ALL RIGHTS RESERVED.</div>
@@ -120,79 +187,79 @@
 <script>
     const productData = {
         1: { brand: "Fraijour", sale: "฿250", old: "฿369", img: "1.jpeg",
-             th: { name: "Original Herb Wormwood Calming Watery Cream", desc: "ครีมบำรุงเนื้อวอเตอรี่ สารสกัดจากมักเวิร์ตเข้มข้น ช่วยปลอบประโลมผิวแพ้ง่าย ลดการอักเสบ และเติมความชุ่มชื้นให้ผิวอิ่มน้ำยาวนาน", use: "ทาบำรุงทั่วใบหน้าและลำคอ เป็นขั้นตอนสุดท้ายของการบำรุง" },
-             en: { name: "Original Herb Wormwood Calming Watery Cream", desc: "Deeply soothing watery cream with Wormwood extract for sensitive skin. Provides long-lasting hydration.", use: "Apply evenly over face and neck as the last step of skincare." },
-             kr: { name: "오리지널 허브 웜우드 카밍 워터리 크림", desc: "쑥 추출물이 함유되어 민감한 피부를 진정시키고 깊은 보습감을 전달하는 워터리 크림입니다.", use: "스킨케어 마지막 단계에서 얼굴과 목에 골고루 펴 발라줍니다." }
+             th: { name: "Wormwood Calming Watery Cream", desc: "ครีมบำรุงเนื้อวอเตอรี่ สารสกัดจากมักเวิร์ตเข้มข้น ช่วยปลอบประโลมผิวแพ้ง่าย ลดการอักเสบ และเติมความชุ่มชื้นให้ผิวอิ่มน้ำยาวนาน", use: "ทาบำรุงทั่วใบหน้าและลำคอ เป็นขั้นตอนสุดท้ายของการบำรุง" },
+             en: { name: "Wormwood Calming Watery Cream", desc: "Concentrated Wormwood extract in a watery texture. Soothes sensitive skin, reduces inflammation, and keeps skin hydrated.", use: "Apply evenly to face and neck as the final skincare step." },
+             kr: { name: "웜우드 카밍 워터리 크림", desc: "쑥 추출물이 함유되어 민감한 피부를 진정시키고 깊은 보습감을 전달하는 워터리 크림입니다.", use: "스킨케어 마지막 단계에서 얼굴과 목에 골고루 펴 발라줍니다." }
         },
         2: { brand: "Fraijour", sale: "฿350", old: "฿459", img: "2.jpeg",
-             th: { name: "Original Herb Wormwood Calming Toner", desc: "โทนเนอร์สมุนไพรช่วยปรับสมดุลผิว ลดสิวผด และทำความสะอาดรูขุมขนอย่างอ่อนโยน", use: "หยดลงสำลีเช็ดทั่วใบหน้าหลังล้างหน้า" },
-             en: { name: "Original Herb Wormwood Calming Toner", desc: "Herbal toner that balances pH levels and gently cleanses pores while reducing irritation.", use: "Apply with a cotton pad over the face after cleansing." },
-             kr: { name: "오리지널 허브 웜우드 카밍 토너", desc: "피부 밸런스를 맞추고 모공을 깨끗하게 관리해주는 진정 토너입니다.", use: "세안 후 화장솜에 적셔 피부 결을 따라 닦아냅니다." }
+             th: { name: "Wormwood Calming Toner", desc: "โทนเนอร์สมุนไพรปรับสมดุลผิว ช่วยลดการสะสมของแบคทีเรียและปลอบประโลมผิวที่อ่อนแอ", use: "เช็ดเบาๆ ทั่วใบหน้าหลังล้างหน้า" },
+             en: { name: "Wormwood Calming Toner", desc: "Herbal toner that balances skin pH, reduces bacteria, and soothes weakened skin.", use: "Wipe gently across the face after cleansing." },
+             kr: { name: "웜우드 카밍 토너", desc: "피부 밸런스를 맞추고 약해진 피부를 진정시키는 허브 토너입니다.", use: "세안 후 화장솜에 적셔 부드럽게 닦아냅니다." }
         },
         3: { brand: "Fraijour", sale: "฿250", old: "฿400", img: "3.jpeg",
-             th: { name: "Original Herb Wormwood Cleansing Water", desc: "คลีนซิ่งน้ำสูตรสมุนไพร เช็ดเครื่องสำอางสะอาดหมดจด พร้อมบำรุงผิวให้สดใส", use: "ใช้สำลีเช็ดเครื่องสำอางออกก่อนล้างหน้า" },
-             en: { name: "Original Herb Wormwood Cleansing Water", desc: "Herbal cleansing water that removes makeup effectively while keeping skin hydrated.", use: "Wipe over face with a cotton pad to remove makeup." },
-             kr: { name: "오리지널 허브 웜우드 클렌징 워터", desc: "허브 성분으로 메이크업을 깔끔하게 지워주고 피부를 촉촉하게 유지해주는 클렌징 워터입니다.", use: "화장솜에 적셔 메이크업을 부드럽게 닦아냅니다." }
+             th: { name: "Wormwood Cleansing Water", desc: "คลีนซิ่งเช็ดหน้าสูตรอ่อนโยน ลบเมคอัพได้สะอาดหมดจดพร้อมบำรุงในตัว", use: "ใช้สำลีแผ่นเช็ดให้ทั่วใบหน้าจนสะอาด" },
+             en: { name: "Wormwood Cleansing Water", desc: "Gentle cleansing water that removes makeup thoroughly while nourishing the skin.", use: "Use a cotton pad to wipe all over the face until clean." },
+             kr: { name: "웜우드 클렌징 워터", desc: "메이크업을 말끔히 지워주고 피부를 촉촉하게 지켜주는 클렌징 워터입니다.", use: "화장솜에 적셔 메이크업을 부드럽게 지워냅니다." }
         },
         4: { brand: "Fraijour", sale: "฿290", old: "฿399", img: "4.jpeg",
-             th: { name: "Original Herb Wormwood Cleansing Foam", desc: "โฟมล้างหน้าสูตรอ่อนโยน ทำความสะอาดล้ำลึกถึงรูขุมขน ลดการสะสมของแบคทีเรีย", use: "ล้างหน้าเป็นประจำ เช้า-เย็น" },
-             en: { name: "Original Herb Wormwood Cleansing Foam", desc: "Gentle cleansing foam that deep cleans pores and reduces bacteria accumulation.", use: "Use daily morning and evening for facial cleansing." },
-             kr: { name: "오리지널 허브 웜우드 클렌징 폼", desc: "모공 깊숙이 노폐물을 제거하고 피부를 진정시켜주는 부드러운 클렌징 폼입니다.", use: "적당량을 덜어 거품을 낸 뒤 마사지하듯 세안합니다." }
+             th: { name: "Wormwood Cleansing Foam", desc: "โฟมล้างหน้าสูตรสมุนไพร ทำความสะอาดล้ำลึกถึงรูขุมขนโดยไม่ทำให้ผิวแห้งตึง", use: "ผสมน้ำให้เกิดฟอง นวดวนบนใบหน้าแล้วล้างออก" },
+             en: { name: "Wormwood Cleansing Foam", desc: "Herbal cleansing foam that cleans deep into pores without drying out the skin.", use: "Lather with water, massage onto face, and rinse off." },
+             kr: { name: "웜우드 클렌징 폼", desc: "모공 속까지 깨끗하게 세정해주고 당김 없이 촉촉한 클렌징 폼입니다.", use: "거품을 내어 마사지한 후 미온수로 씻어냅니다." }
         },
         5: { brand: "Fraijour", sale: "฿310", old: "฿590", img: "5.jpeg",
-             th: { name: "Heartleaf Blemish Moisture Cream", desc: "ครีมบำรุงเข้มข้นจาก Heartleaf ช่วยลดปัญหาสิว รอยแดง และควบคุมความมัน", use: "ทาบำรุงผิวหน้าเป็นขั้นตอนสุดท้าย" },
-             en: { name: "Heartleaf Blemish Moisture Cream", desc: "Moisture cream with Heartleaf extract to target blemishes, redness, and oil control.", use: "Apply to the face as the final step in your routine." },
-             kr: { name: "하트리프 블레미쉬 모이스처 크림", desc: "어성초 성분이 트러블과 붉은 기를 케어하고 유분을 조절해주는 수분 크림입니다.", use: "스킨케어 마지막 단계에서 피부에 펴 발라줍니다." }
+             th: { name: "Heartleaf Blemish Moisture Cream", desc: "ครีมบำรุงสำหรับผิวเป็นสิวและรอยแดง ช่วยควบคุมความมันและเติมน้ำให้ผิว", use: "ทาบำรุงทั่วใบหน้า เช้า-เย็น" },
+             en: { name: "Heartleaf Blemish Moisture Cream", desc: "Moisture cream for acne-prone skin and redness. Controls oil while hydrating.", use: "Apply to the face morning and night." },
+             kr: { name: "하트리프 블레미쉬 모이스처 크림", desc: "트러블과 붉은 기를 케어하고 유수분 밸런스를 맞춰주는 크림입니다.", use: "아침 저녁으로 얼굴 전체에 펴 발라줍니다." }
         },
         6: { brand: "Fraijour", sale: "฿360", old: "฿529", img: "6.jpeg",
-             th: { name: "Heartleaf Blemish Toner", desc: "โทนเนอร์ลดสิว กระชับรูขุมขน ด้วยพลังจากธรรมชาติของ Heartleaf", use: "เช็ดผิวหลังล้างหน้าเพื่อลดการอุดตัน" },
-             en: { name: "Heartleaf Blemish Toner", desc: "Blemish-care toner that tightens pores using natural Heartleaf power.", use: "Wipe skin after cleansing to prevent clogged pores." },
-             kr: { name: "하트리프 블레미쉬 토너", desc: "어성초 성분이 모공을 수축시키고 피부 결을 정돈해주는 트러블 케어 토너입니다.", use: "세안 후 화장솜으로 피부 결을 따라 닦아냅니다." }
+             th: { name: "Heartleaf Blemish Toner", desc: "โทนเนอร์ช่วยลดรอยแดงและอาการอักเสบของสิว พร้อมกระชับรูขุมขน", use: "เช็ดผิวหลังล้างหน้าเพื่อเตรียมการบำรุง" },
+             en: { name: "Heartleaf Blemish Toner", desc: "Toner that reduces redness and acne inflammation while tightening pores.", use: "Wipe skin after cleansing to prepare for nourishment." },
+             kr: { name: "하트리프 블레미쉬 토너", desc: "붉은 기와 여드름 염증을 완화하고 모공을 관리해주는 토너입니다.", use: "세안 후 피부 결을 따라 닦아줍니다." }
         },
         7: { brand: "Fraijour", sale: "฿250", old: "฿459", img: "7.jpeg",
-             th: { name: "Retin-Collagen 3D Core Cream", desc: "ครีมยกกระชับ ลดริ้วรอยด้วยเรตินอลและคอลลาเจนเข้มข้น ให้ผิวดูอ่อนเยาว์", use: "ทาบำรุงเน้นจุดที่มีริ้วรอยเป็นประจำ" },
-             en: { name: "Retin-Collagen 3D Core Cream", desc: "Anti-aging cream with Retinol and Collagen to lift and firm the skin.", use: "Apply focus on wrinkled areas daily." },
-             kr: { name: "레틴-콜라겐 3D 코어 크림", desc: "레티놀과 콜라겐이 함유되어 피부 탄력을 높이고 주름을 개선해주는 크림입니다.", use: "주름이 고민되는 부위를 중심으로 펴 발라줍니다." }
+             th: { name: "Retin-Collagen 3D Core Cream", desc: "ครีมยกกระชับ ลดเลือนริ้วรอยด้วยเรตินอลและคอลลาเจนเข้มข้น", use: "ทาบำรุงเน้นบริเวณริ้วรอยหรือทั่วใบหน้า" },
+             en: { name: "Retin-Collagen 3D Core Cream", desc: "Lifting and anti-wrinkle cream with concentrated Retinol and Collagen.", use: "Apply focusing on wrinkled areas or all over the face." },
+             kr: { name: "레틴-콜라겐 3D 코어 크림", desc: "레티놀과 콜라겐이 함유되어 탄력을 높이고 주름을 개선하는 크림입니다.", use: "주름 부위나 얼굴 전체에 발라줍니다." }
         },
         8: { brand: "Fraijour", sale: "฿195", old: "฿370", img: "8.jpeg",
-             th: { name: "Retin-Collagen 3D Core Eye Cream", desc: "ครีมรอบดวงตา ลดรอยหมองคล้ำและริ้วรอยร่องลึก ให้ดวงตาดูสดใส", use: "ทาเบาๆ รอบดวงตา เช้า-เย็น" },
-             en: { name: "Retin-Collagen 3D Core Eye Cream", desc: "Eye cream that targets dark circles and deep wrinkles for a brighter look.", use: "Gently dab around the eye area morning and night." },
-             kr: { name: "레틴-콜라겐 3D 코어 아이크림", desc: "눈가 다크서클과 깊은 주름을 관리하여 생기 있는 눈가를 만들어주는 아이크림입니다.", use: "눈가에 소량을 덜어 가볍게 두드려 흡수시킵니다." }
+             th: { name: "Retin-Collagen 3D Core Eye Cream", desc: "ครีมบำรุงรอบดวงตา ลดความหมองคล้ำและริ้วรอยรอบดวงตาอย่างเห็นผล", use: "แต้มเบาๆ บริเวณรอบดวงตา" },
+             en: { name: "Retin-Collagen 3D Core Eye Cream", desc: "Eye cream that effectively reduces dark circles and wrinkles around the eyes.", use: "Gently dab around the eye area." },
+             kr: { name: "레틴-콜라겐 3D 코어 아이크림", desc: "눈가 다크서클과 주름을 효과적으로 관리해주는 아이크림입니다.", use: "눈가에 소량을 덜어 가볍게 두드려 흡수시킵니다." }
         },
         9: { brand: "Fraijour", sale: "฿290", old: "฿500", img: "9.jpeg",
-             th: { name: "Retin-Collagen 3D Core Toner", desc: "โทนเนอร์สูตรเข้มข้น เตรียมผิวให้กระชับ อิ่มฟู พร้อมรับการบำรุงลดริ้วรอย", use: "ตบเบาๆ ทั่วใบหน้าหลังล้างหน้า" },
-             en: { name: "Retin-Collagen 3D Core Toner", desc: "Rich toner that preps skin for anti-aging treatments, making it firm and plump.", use: "Gently pat onto the face after cleansing." },
-             kr: { name: "레틴-콜라겐 3D 코어 토너", desc: "피부를 탄탄하게 채워주고 다음 단계의 흡수를 돕는 탄력 토너입니다.", use: "세안 후 적당량을 덜어 얼굴 전체에 흡수시킵니다." }
+             th: { name: "Retin-Collagen 3D Core Toner", desc: "โทนเนอร์บำรุงล้ำลึก เตรียมผิวให้เต่งตึงอิ่มน้ำด้วยพลังคอลลาเจน", use: "เช็ดหรือตบบนใบหน้าหลังล้างหน้า" },
+             en: { name: "Retin-Collagen 3D Core Toner", desc: "Deep nourishing toner that preps skin to be plump and hydrated with Collagen.", use: "Wipe or pat onto the face after cleansing." },
+             kr: { name: "레틴-콜라겐 3D 코어 토너", desc: "콜라겐의 힘으로 피부를 탄탄하고 촉촉하게 가꿔주는 토너입니다.", use: "세안 후 가볍게 두드려 흡수시킵니다." }
         },
         10: { brand: "Fraijour", sale: "฿125", old: "฿259", img: "10.jpeg",
-             th: { name: "Retin-Collagen 3D Core Lip Oil", desc: "ออยล์บำรุงริมฝีปาก แก้ปากแห้งคล้ำ เติมร่องปากให้ดูอวบอิ่ม", use: "ทาบำรุงริมฝีปากได้บ่อยตามต้องการ" },
-             en: { name: "Retin-Collagen 3D Core Lip Oil", desc: "Lip oil that treats dry, dark lips and fills in fine lines for a plump look.", use: "Apply to lips as often as needed." },
-             kr: { name: "레틴-콜라겐 3D 코어 립 오일", desc: "건조하고 칙칙한 입술에 보습과 탄력을 주어 생기 있게 가꿔주는 립 오일입니다.", use: "입술이 건조할 때마다 수시로 발라줍니다." }
+             th: { name: "Retin-Collagen 3D Core Lip Oil", desc: "ลิปออยล์แก้ปากคล้ำ บำรุงริมฝีปากให้เนียนนุ่มชุ่มชื้นตลอดวัน", use: "ทาบริเวณริมฝีปากได้บ่อยตามต้องการ" },
+             en: { name: "Retin-Collagen 3D Core Lip Oil", desc: "Lip oil that treats dark lips and keeps them smooth and hydrated all day.", use: "Apply to lips as often as needed." },
+             kr: { name: "레틴-콜라겐 3D 코어 립 오일", desc: "칙칙한 입술을 케어하고 온종일 촉촉하게 유지해주는 립 오일입니다.", use: "입술이 건조할 때마다 수시로 발라줍니다." }
         },
         11: { brand: "Fraijour", sale: "฿280", old: "฿450", img: "Heartleaf Airy Fit Sun Cream 50g ผลิตภัณฑ์.png",
-             th: { name: "Heartleaf Airy Fit Sun Cream", desc: "กันแดดเนื้อบางเบาสบายผิว ไม่เหนียวเหนอะหนะ ปกป้องยูวีสูงสุด SPF50+ PA++++", use: "ทาทั่วใบหน้าก่อนออกแดด 15 นาที" },
-             en: { name: "Heartleaf Airy Fit Sun Cream", desc: "Lightweight sun cream with no sticky residue. Provides SPF50+ PA++++ protection.", use: "Apply to the face 15 minutes before sun exposure." },
-             kr: { name: "하트리프 에어리 핏 선크림", desc: "끈적임 없이 가볍게 밀착되어 강력한 자외선 차단을 돕는 선크림입니다.", use: "기초 마지막 단계에서 얼굴에 골고루 펴 바릅니다." }
+             th: { name: "Heartleaf Airy Fit Sun Cream", desc: "กันแดดเนื้อบางเบาสบายผิว ไม่เหนียวเหนอะหนะ ปกป้องผิวได้ยาวนาน", use: "ทาบนใบหน้าก่อนออกแดด 15-20 นาที" },
+             en: { name: "Heartleaf Airy Fit Sun Cream", desc: "Lightweight sunscreen with a comfortable finish. Non-sticky and long-lasting protection.", use: "Apply to face 15-20 minutes before sun exposure." },
+             kr: { name: "하트리프 에어리 핏 선크림", desc: "끈적임 없이 가볍게 밀착되어 오랫동안 피부를 보호해주는 선크림입니다.", use: "외출 전 얼굴에 골고루 펴 발라줍니다." }
         },
         12: { brand: "Fraijour", sale: "฿320", old: "฿590", img: "12.jpeg",
-             th: { name: "Heartleaf Water Fit Sun Screen", desc: "กันแดดสูตรน้ำ เติมความชุ่มชื้นพร้อมกันแดด ให้ผิวฉ่ำวาวสุขภาพดี", use: "ใช้เป็นขั้นตอนสุดท้ายของการบำรุง" },
-             en: { name: "Heartleaf Water Fit Sun Screen", desc: "Water-based sunscreen that hydrates while protecting from the sun for a dewy look.", use: "Apply as the final step of your skincare routine." },
-             kr: { name: "하트리프 워터 핏 선스크린", desc: "수분감이 가득하여 촉촉하고 광채 나는 피부로 가꿔주는 수분 선스크린입니다.", use: "외출 전 얼굴 전체에 부드럽게 펴 바릅니다." }
+             th: { name: "Heartleaf Water Fit Sun Screen", desc: "กันแดดสูตรน้ำให้ความชุ่มชื้นสูง เหมาะสำหรับผิวแห้งและขาดน้ำ", use: "ใช้ทาเป็นขั้นตอนสุดท้ายของการบำรุง" },
+             en: { name: "Heartleaf Water Fit Sun Screen", desc: "Water-based sunscreen with high hydration. Perfect for dry and dehydrated skin.", use: "Apply as the final step of your skincare routine." },
+             kr: { name: "하트리프 워터 핏 선스크린", desc: "수분감이 가득하여 건조한 피부에 적합한 수분 선스크린입니다.", use: "기초 케어 마지막 단계에서 발라줍니다." }
         },
         13: { brand: "Fraijour", sale: "฿17", old: "฿29", img: "13.jpeg",
-             th: { name: "Original Herb Sheet Mask", desc: "แผ่นมาส์กเข้มข้น กู้ผิวโทรมเร่งด่วนด้วยสารสกัดสมุนไพรเกาหลี", use: "มาส์กทิ้งไว้ 15-20 นาทีแล้วลอกออก" },
-             en: { name: "Original Herb Sheet Mask", desc: "Concentrated sheet mask for instant skin recovery with Korean herbal extracts.", use: "Apply for 15-20 minutes, then remove." },
-             kr: { name: "오리지널 허브 시트 마스크", desc: "허브 추출물이 지친 피부에 즉각적인 생기를 부여하는 집중 케어 마스크입니다.", use: "15~20분간 부착 후 떼어내고 남은 에센스를 흡수시킵니다." }
+             th: { name: "Original Herb Sheet Mask", desc: "มาส์กแผ่นสมุนไพรกู้ผิวพังเร่งด่วน ให้ผิวกลับมาสดใสมีชีวิตชีวา", use: "มาส์กทิ้งไว้ 15-20 นาทีแล้วดึงออก" },
+             en: { name: "Original Herb Sheet Mask", desc: "Herbal sheet mask for urgent skin recovery. Brings life back to your skin.", use: "Apply for 15-20 minutes, then remove." },
+             kr: { name: "오리지널 허브 시트 마스크", desc: "지친 피부를 즉각적으로 회복시켜주는 허브 시트 마스크입니다.", use: "15~20분 동안 부착 후 떼어냅니다." }
         },
         14: { brand: "Bathpa", sale: "฿150", old: "฿529", img: "13.jpeg",
-             th: { name: "Bathpa Body Tone Up Cream", desc: "ครีมบำรุงผิวกาย ปรับผิวขาวกระจ่างใสทันที พร้อมกลิ่นหอมหรูหรา", use: "ทาทั่วผิวกายทุกครั้งหลังอาบน้ำ" },
-             en: { name: "Bathpa Body Tone Up Cream", desc: "Body cream for instant brightening and nourishment with a luxury scent.", use: "Apply all over the body after showering." },
-             kr: { name: "바스파 바디 톤업 크림", desc: "바르는 즉시 피부 톤을 밝게 보정해주고 은은한 향기를 남기는 바디 크림입니다.", use: "샤워 후 전신에 부드럽게 펴 바릅니다." }
+             th: { name: "Bathpa Body Tone Up Cream", desc: "ครีมโทนอัพผิวกาย ปรับสีผิวให้กระจ่างใสขึ้นทันทีที่ทา พร้อมกลิ่นหอม", use: "ทาลูบไล้ทั่วผิวกายหลังอาบน้ำ" },
+             en: { name: "Bathpa Body Tone Up Cream", desc: "Body tone-up cream that instantly brightens skin with a lovely scent.", use: "Smooth over the body after showering." },
+             kr: { name: "바스파 바디 톤업 크림", desc: "바르는 즉시 피부를 밝게 해주고 향기를 더해주는 바디 크림입니다.", use: "샤워 후 전신에 부드럽게 펴 발라줍니다." }
         },
         15: { brand: "CharChar", sale: "฿120", old: "฿199", img: "15.jpeg",
-             th: { name: "Mung Bean Cica Cleansing Foam", desc: "โฟมล้างหน้าสูตรถั่วเขียวและซิก้า ลดการอักเสบของผิวและทำความสะอาดล้ำลึก", use: "ล้างหน้า เช้า-เย็น" },
-             en: { name: "Mung Bean Cica Cleansing Foam", desc: "Cleansing foam with Mung Bean and Cica to soothe inflammation and deep clean.", use: "Use daily morning and evening." },
-             kr: { name: "차차 녹두 시카 클렌징 폼", desc: "녹두와 시카 성분이 피부 진정을 돕고 노폐물을 깨끗하게 세정해주는 폼 클렌저입니다.", use: "세안 시 거품을 내어 부드럽게 마사지한 뒤 씻어냅니다." }
+             th: { name: "Mung Bean Cica Cleansing Foam", desc: "โฟมล้างหน้าสารสกัดถั่วเขียวและซิก้า ช่วยดีท็อกซ์ผิวและลดสิว", use: "ใช้ล้างทำความสะอาดผิวหน้า เช้า-เย็น" },
+             en: { name: "Mung Bean Cica Cleansing Foam", desc: "Cleansing foam with Mung Bean and Cica. Detoxes skin and reduces acne.", use: "Use to cleanse the face morning and night." },
+             kr: { name: "차차 녹두 시카 클렌징 폼", desc: "녹두와 시카 성분이 피부를 정화하고 여드름을 케어해주는 폼 클렌저입니다.", use: "아침 저녁 세안 시 사용합니다." }
         }
     };
 
@@ -212,22 +279,22 @@
         document.getElementById('p-desc').innerText = data.desc;
         document.getElementById('p-use').innerText = data.use;
         document.getElementById('p-img').src = p.img;
-        document.getElementById('page-title').innerText = data.name;
+        document.getElementById('page-title').innerText = data.name + " | HJ COSMETICS";
 
         // UI Translation
         const ui = {
             th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", desc: "รายละเอียดสินค้า", use: "วิธีใช้", order: "สั่งซื้อผ่าน LINE", addr: "ที่อยู่บริษัท", cont: "ติดต่อเรา", fdesc: "เราคัดสรรสารสกัดจากธรรมชาติ เพื่อผิวที่ดีที่สุดของคุณ", btn: "EN" },
-            en: { home: "HOME", about: "ABOUT", contact: "CONTACT", desc: "PRODUCT DETAILS", use: "HOW TO USE", order: "ORDER VIA LINE", addr: "ADDRESS", cont: "CONTACT US", fdesc: "Premium Korean Skincare Curator.", btn: "KR" },
-            kr: { home: "홈", about: "소개", contact: "연락처", desc: "상세 정보", use: "사용 방법", order: "라인으로 주문", addr: "주소", cont: "고객 센터", fdesc: "당신의 피부를 위한 최고의 선택, 프리미엄 스킨케어.", btn: "TH" }
+            en: { home: "HOME", about: "ABOUT", contact: "CONTACT", desc: "DETAILS", use: "HOW TO USE", order: "ORDER VIA LINE", addr: "ADDRESS", cont: "CONTACT", fdesc: "Premium Korean Skincare Curator.", btn: "KR" },
+            kr: { home: "홈", about: "소개", contact: "연락처", desc: "상세 정보", use: "사용 방법", order: "라인으로 주문하기", addr: "주소", cont: "고객 센터", fdesc: "프리미엄 한국 스킨케어 큐레이터.", btn: "TH" }
         };
 
         const u = ui[currentLang];
         document.getElementById('nav-home').innerText = u.home;
         document.getElementById('nav-about').innerText = u.about;
         document.getElementById('nav-contact').innerText = u.contact;
-        document.getElementById('lbl-desc').innerText = u.desc;
-        document.getElementById('lbl-use').innerText = u.use;
-        document.getElementById('btn-order').innerText = u.order;
+        document.getElementById('lbl-desc').innerHTML = `<i class="fa-solid fa-leaf"></i> ` + u.desc;
+        document.getElementById('lbl-use').innerHTML = `<i class="fa-solid fa-sparkles"></i> ` + u.use;
+        document.getElementById('btn-order').innerHTML = `<i class="fa-brands fa-line"></i> ` + u.order;
         document.getElementById('h-addr').innerText = u.addr;
         document.getElementById('h-cont').innerText = u.cont;
         document.getElementById('foot-desc').innerText = u.fdesc;
