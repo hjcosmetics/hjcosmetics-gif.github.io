@@ -18,23 +18,26 @@
             background-image: radial-gradient(var(--gold-dark) 0.5px, transparent 0.5px);
             background-size: 30px 30px; background-attachment: fixed;
             color: var(--text-main); 
-            line-height: 1.5; /* ปรับภาษาไทยให้กระชับ */
-            letter-spacing: -0.2px; /* ลดความห่างตัวอักษรไทย */
+            line-height: 1.5; 
+            letter-spacing: -0.2px; 
         }
         body.lang-kr { font-family: 'Nanum-Bold', serif; letter-spacing: 0; line-height: 1.6; }
 
+        /* --- Navigation --- */
         .top-nav { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold-dark); }
         .logo-box img { height: 45px; }
         .nav-links { display: flex; gap: 35px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.85rem; letter-spacing: 1px; font-weight: 600; }
         .lang-switch { background: var(--p-green); border: 1.5px solid var(--gold-dark); padding: 6px 18px; cursor: pointer; color: var(--gold-light); font-size: 0.75rem; font-weight: 700; }
 
+        /* --- Header --- */
         header { position: relative; height: 60vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--p-green); }
         .header-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); object-fit: cover; opacity: 0.5; }
         .header-content { position: relative; z-index: 3; text-align: center; color: white; padding: 0 20px; }
         .header-content h1 { font-size: 4rem; margin: 0; letter-spacing: 8px; font-weight: 400; text-transform: uppercase; line-height: 1.1; }
         .header-content p { font-size: 0.9rem; letter-spacing: 4px; color: var(--gold-light); text-transform: uppercase; margin-top: 15px; }
 
+        /* --- Brand & Grid --- */
         .brand-section { padding: 60px 5% 40px; }
         .brand-header { text-align: center; margin-bottom: 50px; }
         .brand-header h2 { font-size: 3rem; color: var(--p-green); margin: 0; font-weight: 400; letter-spacing: 2px; }
@@ -54,11 +57,28 @@
         .btn-buy { border: 1px solid var(--p-green); color: var(--p-green); text-align: center; text-decoration: none; padding: 12px; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .btn-buy:hover { background: var(--p-green); color: white; }
 
-        footer { background: #0a1410; color: rgba(255,255,255,0.7); padding: 80px 8% 40px; border-top: 6px solid var(--gold-dark); margin-top: 80px; }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
-        .footer-col h4 { font-size: 1.8rem; color: var(--gold-light); margin-bottom: 20px; letter-spacing: 1px; }
+        /* --- ✨ Premium Footer ✨ --- */
+        footer { 
+            background: #0a1410; color: rgba(255,255,255,0.8); padding: 80px 8% 40px; 
+            border-top: 5px solid var(--gold-dark); margin-top: 100px; 
+        }
+        .footer-grid { 
+            display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px; 
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 50px; 
+        }
+        .footer-col h4 { 
+            font-size: 1.6rem; color: var(--gold-light); margin-bottom: 25px; 
+            letter-spacing: 2px; font-weight: 400; text-transform: uppercase; 
+        }
+        .footer-col p { font-size: 0.95rem; line-height: 1.7; margin: 0 0 10px; letter-spacing: 0; }
+        .footer-col strong { color: var(--gold-dark); display: block; margin-bottom: 5px; font-size: 0.8rem; letter-spacing: 1px; }
+        .footer-bottom { padding-top: 30px; text-align: center; font-size: 0.8rem; color: rgba(197, 160, 89, 0.5); letter-spacing: 1px; }
 
-        @media (max-width: 900px) { .header-content h1 { font-size: 2.5rem; } .product-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 900px) { 
+            .header-content h1 { font-size: 2.5rem; } 
+            .product-grid { grid-template-columns: 1fr 1fr; } 
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
     </style>
 </head>
 <body id="main-body">
@@ -100,9 +120,30 @@
 
 <footer>
     <div class="footer-grid">
-        <div class="footer-col"><h4 style="color: #fff;">HJ COSMETICS</h4><p id="foot-desc">Premium Korean Skincare Curator.</p></div>
-        <div class="footer-col"><h4 id="h-addr">ADDRESS</h4><p>Chon Buri 20230, Thailand</p></div>
-        <div class="footer-col"><h4 id="h-cont">CONTACT</h4><p>Email: info@hjcosmetics.com</p></div>
+        <div class="footer-col">
+            <h4 style="color: #fff; font-size: 2.2rem; margin-bottom: 15px;">HJ COSMETICS</h4>
+            <p id="foot-desc">Premium Korean Skincare Curator.</p>
+            <p style="color: var(--gold-dark); font-weight: 600;">Selection of Excellence</p>
+        </div>
+
+        <div class="footer-col">
+            <h4 id="h-addr-foot">ADDRESS</h4>
+            <p>
+                323/11-12 Huayprab Muangthong 5, <br>
+                Moo 3, Bowin, Sriracha, <br>
+                Chon Buri 20230, Thailand
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4 id="h-cont-foot">CONTACT</h4>
+            <p><strong>TEL:</strong> 03-8182-577</p>
+            <p><strong>EMAIL:</strong> info@hjcosmetics.com</p>
+            <p><strong>LINE ID:</strong> @thaihj11</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2024 HJ COSMETICS. ALL RIGHTS RESERVED.
     </div>
 </footer>
 
@@ -139,6 +180,7 @@
         const l = trans[languages[langIndex]];
         const body = document.getElementById('main-body');
         if (languages[langIndex] === 'kr') body.classList.add('lang-kr'); else body.classList.remove('lang-kr');
+        
         document.getElementById('nav-home').textContent = l.home;
         document.getElementById('nav-about').textContent = l.about;
         document.getElementById('nav-contact').textContent = l.contact;
@@ -147,8 +189,11 @@
         document.getElementById('b-tag').textContent = l.bTag;
         document.getElementById('c-tag').textContent = l.cTag;
         document.getElementById('foot-desc').textContent = l.footDesc;
-        document.getElementById('h-addr').textContent = l.hAddr;
-        document.getElementById('h-cont').textContent = l.hCont;
+        
+        // อัปเดตหัวข้อ Footer ตามภาษา
+        document.getElementById('h-addr-foot').textContent = l.hAddr;
+        document.getElementById('h-cont-foot').textContent = l.hCont;
+        
         document.getElementById('langBtn').textContent = l.btn;
         localStorage.setItem('selectedLang', languages[langIndex]);
         renderProducts();
