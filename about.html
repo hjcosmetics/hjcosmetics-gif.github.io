@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - HJ COSMETICS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Noto+Sans+KR:wght@300;500;700&family=Prompt:wght@200;300;400;500;600&family=Sarabun:wght@200;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,400&family=Niramit:wght@200;300;400;500&family=Noto+Sans+KR:wght@100;300;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --p-green: #1b4332;
@@ -12,85 +12,101 @@
             --gold-dark: #c5a059;
             --gold-gradient: linear-gradient(135deg, #c5a059 0%, #f1d38e 50%, #c5a059 100%);
             --white: #ffffff;
-            --bg: #fdfdfd;
+            --text-main: #1a1a1a;
+            --text-sub: #4a4a4a;
+            --bg-creme: #f9f7f2;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
         body { 
-            font-family: 'Sarabun', 'Prompt', 'Noto Sans KR', sans-serif; 
-            margin: 0; background-color: var(--bg); color: #333; overflow-x: hidden;
+            font-family: 'Niramit', 'Noto Sans KR', sans-serif; 
+            margin: 0; background-color: var(--bg-creme); color: var(--text-main); 
+            overflow-x: hidden; -webkit-font-smoothing: antialiased;
         }
 
-        /* --- ✨ Marquee & Nav (ถอดแบบจากหน้าหลัก) ✨ --- */
-        .marquee-wrapper { background: var(--p-green); color: var(--gold-light); padding: 12px 0; overflow: hidden; position: relative; }
+        /* --- ✨ Marquee ✨ --- */
+        .marquee-wrapper { background: var(--p-green); color: var(--gold-light); padding: 12px 0; overflow: hidden; }
         .marquee-content { display: flex; white-space: nowrap; animation: marquee-smooth 40s linear infinite; }
-        .marquee-item { padding: 0 40px; font-size: 0.85rem; letter-spacing: 2px; }
+        .marquee-item { padding: 0 40px; font-size: 0.85rem; letter-spacing: 2px; font-weight: 300; }
         @keyframes marquee-smooth { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
+        /* --- ✨ Navigation ✨ --- */
         .top-nav {
-            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 15px 5%;
+            background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(15px); padding: 15px 5%;
             display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000;
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
-        .logo-box img { height: 55px; transition: 0.3s; }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
+        .logo-box img { height: 50px; }
+        .nav-links { display: flex; gap: 35px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.85rem; font-weight: 500; letter-spacing: 1.5px; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--gold-dark); }
         .lang-switch {
-            background: white; color: var(--p-green); border: 1.5px solid var(--gold-dark);
-            padding: 5px 18px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: 0.3s;
+            background: transparent; color: var(--p-green); border: 1px solid var(--gold-dark);
+            padding: 4px 15px; border-radius: 0; cursor: pointer; font-family: 'Cormorant Garamond';
+            font-weight: 700; transition: 0.3s;
         }
-        .lang-switch:hover { background: var(--gold-gradient); color: white; border-color: transparent; }
+        .lang-switch:hover { background: var(--p-green); color: var(--gold-light); }
 
-        /* --- ✨ Hero Section (แน่นขึ้น มีพลัง) ✨ --- */
-        .about-hero {
-            position: relative; height: 450px; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(27, 67, 50, 0.85)), url('https://images.unsplash.com/photo-1556228578-0f192f4709b3?q=80&w=1600') center/cover;
+        /* --- ✨ Hero Section ✨ --- */
+        .hero-section {
+            height: 450px; position: relative; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(27, 67, 50, 0.7), rgba(27, 67, 50, 0.7)), 
+            url('https://images.unsplash.com/photo-1556228578-0f192f4709b3?q=80&w=1600') center/cover;
             color: white; text-align: center;
         }
-        .about-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 4rem; letter-spacing: 8px; margin: 0; }
-        .about-hero p { font-family: 'Prompt'; font-weight: 200; letter-spacing: 4px; color: var(--gold-light); }
+        .hero-section h1 { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-style: italic; margin: 0; letter-spacing: 5px; font-weight: 400; }
+        .hero-section p { font-size: 0.9rem; letter-spacing: 5px; color: var(--gold-light); text-transform: uppercase; }
 
-        /* --- ✨ HJ History Section ✨ --- */
-        .history-box { 
-            background: #fff; padding: 80px 5%; border-bottom: 1px solid #eee;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+        /* --- ✨ History Section ✨ --- */
+        .history-container { 
+            display: grid; grid-template-columns: 1fr 1fr; background: white;
+            max-width: 1400px; margin: -50px auto 100px; position: relative; z-index: 10;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
         }
-        .history-text h2 { 
-            font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--p-green); 
-            background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 25px;
-        }
-        .history-text p { line-height: 1.8; font-size: 1.1rem; color: #444; }
-        .history-img img { width: 100%; border-radius: 10px; box-shadow: 20px 20px 0 var(--gold-dark); }
+        .history-img { background: url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=1000') center/cover; min-height: 500px; }
+        .history-text { padding: 80px; display: flex; flex-direction: column; justify-content: center; }
+        .history-text h2 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: var(--p-green); margin: 0 0 30px 0; font-weight: 500; line-height: 1; }
+        .history-text p { font-family: 'Niramit', sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 2; color: var(--text-sub); text-align: justify; }
 
-        /* --- ✨ Brand Grid (แน่นขึ้น ลดสเปซ) ✨ --- */
-        .brands-container { padding: 80px 5%; background: #f4f4f4; }
-        .section-tag { text-align: center; color: var(--gold-dark); font-family: 'Prompt'; letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 10px; display: block; }
-        .section-title { 
-            text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; 
-            margin-bottom: 60px; color: var(--p-green); position: relative;
-        }
-        .brand-card { 
-            background: white; display: grid; grid-template-columns: 1fr 1.2fr; 
-            margin-bottom: 40px; border-radius: 15px; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;
-        }
-        .brand-card.rev { grid-template-columns: 1.2fr 1fr; }
-        .brand-info { padding: 50px; display: flex; flex-direction: column; justify-content: center; }
-        .brand-info h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: var(--p-green); margin: 0 0 15px 0; }
-        .brand-info h4 { font-family: 'Prompt'; color: var(--gold-dark); font-weight: 400; letter-spacing: 2px; margin-bottom: 20px; }
-        .brand-img img { width: 100%; height: 100%; object-fit: cover; }
+        /* --- ✨ Brand Story Cards & Links ✨ --- */
+        .brands-wrapper { padding: 0 5% 100px; max-width: 1300px; margin: 0 auto; }
+        .brand-header { text-align: center; margin-bottom: 80px; }
+        .brand-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 4rem; color: var(--p-green); margin: 0; }
+        .brand-header span { font-size: 0.8rem; letter-spacing: 4px; color: var(--gold-dark); text-transform: uppercase; }
 
-        /* --- ✨ Footer (ถอดแบบจากหน้าหลัก) ✨ --- */
-        footer { background: var(--p-green); color: white; padding: 80px 0 40px 0; border-top: 5px solid var(--gold-dark); }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; max-width: 1300px; margin: 0 auto; padding: 0 20px; }
-        .footer-section h4 { color: var(--gold-light); border-left: 4px solid var(--gold-dark); padding-left: 15px; margin-bottom: 25px; }
+        .brand-card { display: grid; grid-template-columns: 1.2fr 1fr; background: white; margin-bottom: 60px; overflow: hidden; border: 1px solid #f0f0f0; }
+        .brand-card.reverse { grid-template-columns: 1fr 1.2fr; }
+        .brand-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+        .brand-card.reverse .brand-content { align-items: flex-start; }
+        
+        .brand-content h3 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; color: var(--p-green); margin: 0 0 10px 0; font-weight: 500; }
+        .brand-content h4 { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem; color: var(--gold-dark); margin: 0 0 25px 0; font-weight: 400; letter-spacing: 1px; }
+        .brand-content p { font-family: 'Niramit', sans-serif; font-weight: 300; line-height: 1.9; color: var(--text-sub); margin-bottom: 30px; }
+        
+        /* สไตล์ปุ่มลิงก์แบรนด์ */
+        .brand-link {
+            display: inline-block; text-decoration: none; color: var(--gold-dark);
+            font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.1rem;
+            letter-spacing: 2px; border: 1px solid var(--gold-dark); padding: 12px 30px;
+            transition: 0.4s ease; text-transform: uppercase;
+        }
+        .brand-link:hover { background: var(--gold-gradient); color: white; border-color: transparent; padding: 12px 40px; }
 
-        @media (max-width: 768px) {
-            .history-box, .brand-card, .brand-card.rev { grid-template-columns: 1fr; }
-            .brand-img { order: -1; height: 250px; }
-            .about-hero h1 { font-size: 2.5rem; }
+        .brand-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: 0.6s; }
+        .brand-card:hover .brand-photo img { transform: scale(1.05); }
+
+        /* --- ✨ Footer ✨ --- */
+        footer { background: var(--p-green); color: white; padding: 100px 5% 50px; border-top: 5px solid var(--gold-dark); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 100px; max-width: 1300px; margin: 0 auto; }
+        .footer-logo h3 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--gold-light); margin-bottom: 20px; }
+        .footer-section h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold-light); text-transform: uppercase; letter-spacing: 2px; border-left: 3px solid var(--gold-dark); padding-left: 15px; margin-bottom: 30px; }
+        .footer-section p, address { font-family: 'Niramit'; font-weight: 200; font-style: normal; line-height: 2; opacity: 0.8; }
+
+        @media (max-width: 992px) {
+            .history-container, .brand-card, .brand-card.reverse { grid-template-columns: 1fr; }
+            .hero-section h1 { font-size: 3rem; }
+            .history-text, .brand-content { padding: 40px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 50px; }
         }
     </style>
 </head>
@@ -101,75 +117,78 @@
 <nav class="top-nav">
     <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
     <div class="nav-links">
-        <a href="index.html" id="nav-home">หน้าแรก</a>
-        <a href="about.html" class="active" id="nav-about">เกี่ยวกับเรา</a>
-        <a href="contact.html" id="nav-contact">ติดต่อเรา</a>
+        <a href="index.html" id="nav-home">HOME</a>
+        <a href="about.html" class="active" id="nav-about">ABOUT US</a>
+        <a href="contact.html" id="nav-contact">CONTACT US</a>
         <button class="lang-switch" onclick="rotateLanguage()" id="langBtn">EN</button>
     </div>
 </nav>
 
-<section class="about-hero">
+<section class="hero-section">
     <div>
-        <p id="hero-sub">ESTABLISHED 2026</p>
-        <h1 id="hero-title">OUR STORY</h1>
+        <p id="hero-sub">PREMIUM KOREAN CURATOR</p>
+        <h1 id="hero-title">Our Heritage</h1>
     </div>
 </section>
 
-<section class="history-box">
+<section class="history-container">
+    <div class="history-img"></div>
     <div class="history-text">
-        <h2 id="hj-title">HJ COSMETICS</h2>
-        <p id="hj-desc">เราคือผู้นำเข้าและจัดจำหน่ายผลิตภัณฑ์ดูแลผิวระดับพรีเมียมจากประเทศเกาหลีใต้ โดยมุ่งเน้นการคัดสรรแบรนด์ที่ผสานพลังของธรรมชาติเข้ากับนวัตกรรม เพื่อมอบผลลัพธ์ที่ดีที่สุดและปลอดภัยที่สุดสำหรับผิวพรรณของคุณ</p>
-    </div>
-    <div class="history-img">
-        <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=800" alt="HJ Heritage">
+        <h2 id="hj-title">The HJ Origin</h2>
+        <p id="hj-desc">เราเริ่มต้นด้วยความเชื่อที่ว่า ความงามที่แท้จริงต้องมาพร้อมกับสุขภาพผิวที่ยั่งยืน HJ COSMETICS จึงถือกำเนิดขึ้นเพื่อเป็นสะพานเชื่อมระหว่างนวัตกรรมสกินแคร์ระดับโลกจากเกาหลีใต้สู่มือคุณ เราคัดสรรเฉพาะแบรนด์ที่มีจิตวิญญาณในการเลือกใช้สารสกัดธรรมชาติ เพื่อมอบประสบการณ์การดูแลผิวที่ซื่อสัตย์และเห็นผลลัพธ์จริง</p>
     </div>
 </section>
 
-<section class="brands-container">
-    <span class="section-tag">PREMIUM SELECTION</span>
-    <h2 class="section-title" id="page-title">แบรนด์ในเครือของเรา</h2>
+<section class="brands-wrapper">
+    <div class="brand-header">
+        <span id="brand-span">CURATED SELECTION</span>
+        <h2 id="page-title">Our Brand Story</h2>
+    </div>
 
     <div class="brand-card">
-        <div class="brand-img"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=800" alt="Fraijour"></div>
-        <div class="brand-info">
+        <div class="brand-photo"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1000" alt="Fraijour"></div>
+        <div class="brand-content">
             <h3>Fraijour</h3>
-            <h4 id="f-tag">Natural Skin Healing</h4>
-            <p id="f-desc">พลังจากสมุนไพรพื้นเมืองเกาหลี (Original Herb) ที่ช่วยฟื้นบำรุงและปลอบประโลมผิวอย่างล้ำลึก</p>
+            <h4 id="f-tag">Natural Skin Healing Power</h4>
+            <p id="f-desc">กว่า 40 ปีแห่งความเชี่ยวชาญ Fraijour มุ่งเน้นการบำบัดผิวด้วยพลังสมุนไพร โดยเฉพาะ 'Wormwood' ที่ช่วยปลอบประโลมผิวบอบบางแพ้ง่าย</p>
+            <a href="http://fraijour.co.kr/" target="_blank" class="brand-link btn-text">Visit Official Website</a>
         </div>
     </div>
 
-    <div class="brand-card rev">
-        <div class="brand-info">
+    <div class="brand-card reverse">
+        <div class="brand-content">
             <h3>Bathpa</h3>
-            <h4 id="b-tag">Luxury Body Care</h4>
-            <p id="b-desc">ยกระดับการดูแลผิวกายด้วยกลิ่นหอมและสารสกัดระดับสปาพรีเมียม เพื่อผิวที่เนียนนุ่มและกระจ่างใส</p>
+            <h4 id="b-tag">Luxury Body Care Ritual</h4>
+            <p id="b-desc">สัมผัสประสบการณ์การดูแลผิวกายที่เหนือระดับ Bathpa ผสมผสานกลิ่นหอมที่เป็นเอกลักษณ์เข้ากับสารสกัดบำรุงผิวที่เข้มข้น</p>
+            <a href="http://bathpa.co.kr/" target="_blank" class="brand-link btn-text">Visit Official Website</a>
         </div>
-        <div class="brand-img"><img src="https://images.unsplash.com/photo-1559591937-e620a8a6503c?q=80&w=800" alt="Bathpa"></div>
+        <div class="brand-photo"><img src="https://images.unsplash.com/photo-1559591937-e620a8a6503c?q=80&w=1000" alt="Bathpa"></div>
     </div>
 
     <div class="brand-card">
-        <div class="brand-img"><img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?q=80&w=800" alt="Char Char"></div>
-        <div class="brand-info">
+        <div class="brand-photo"><img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?q=80&w=1000" alt="Char Char"></div>
+        <div class="brand-content">
             <h3>Char Char</h3>
-            <h4 id="c-tag">Argan Oil Hair Solution</h4>
-            <p id="c-desc">ผู้เชี่ยวชาญด้านการดูแลเส้นผมจากเกาหลี เน้นการฟื้นบำรุงด้วย Argan Oil บริสุทธิ์</p>
+            <h4 id="c-tag">Argan Hair Solution</h4>
+            <p id="c-desc">ทางออกของเส้นผมที่แห้งเสีย Char Char นำพลังจาก Argan Oil และโปรตีนเข้มข้นมาฟื้นฟูเส้นผมจากภายใน มอบความเงางามและสุขภาพดี</p>
+            <a href="http://evas.co.kr/product/list.html?cate_no=348" target="_blank" class="brand-link btn-text">Visit Official Website</a>
         </div>
     </div>
 </section>
 
 <footer>
     <div class="footer-grid">
-        <div class="footer-section">
-            <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--gold-light); margin:0 0 20px;">HJ COSMETICS</h3>
-            <p id="foot-desc">คัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ</p>
+        <div class="footer-logo">
+            <h3>HJ COSMETICS</h3>
+            <p id="foot-desc">Premium Korean skincare importer in Thailand. We bring the best of K-Beauty to your doorstep.</p>
         </div>
         <div class="footer-section">
-            <h4 id="h-addr">ADDRESS</h4>
-            <address id="f-addr">เลขที่ 323/11-12 จ.ชลบุรี 20230</address>
+            <h4 id="h-addr">Office Address</h4>
+            <address id="f-addr">323/11-12 Huayprab Muangthong 5, Chon Buri 20230</address>
         </div>
         <div class="footer-section">
-            <h4 id="h-cont">CONTACT</h4>
-            <p id="f-cont">Line: @thaihj11</p>
+            <h4 id="h-cont">Contact Us</h4>
+            <p id="f-cont">Tel: 03-8182-577<br>Line: @thaihj11</p>
         </div>
     </div>
 </footer>
@@ -181,66 +200,69 @@
     const trans = {
         th: {
             home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา",
-            heroTitle: "เรื่องราวของเรา", heroSub: "ก่อตั้งเมื่อปี 2026",
-            pageTitle: "แบรนด์ในเครือของเรา",
-            hjTitle: "เกี่ยวกับ HJ COSMETICS",
-            hjDesc: "HJ COSMETICS คือตัวแทนความงามที่ส่งตรงจากเกาหลีใต้ เรามุ่งมั่นในการนำเสนอสกินแคร์ที่ซื่อสัตย์ต่อผู้บริโภค โดยคัดเลือกเฉพาะแบรนด์ที่ใช้พลังจากพืชพรรณธรรมชาติ (Botanical) และงานวิจัยที่ทันสมัยที่สุด",
-            fTag: "พลังแห่งการบำบัดจากสมุนไพร",
-            fDesc: "Fraijour (프라이주어) โดดเด่นด้วยสารสกัดจาก 'Wormwood' ที่ช่วยแก้ปัญหาผิวแพ้ง่ายอย่างตรงจุด มอบสัมผัสที่บริสุทธิ์และปลอดภัย",
+            heroTitle: "มรดกแห่งความงาม", heroSub: "ผู้นำเข้าสกินแคร์เกาหลีระดับพรีเมียม",
+            hjTitle: "ที่มาของ HJ COSMETICS",
+            hjDesc: "เราเริ่มต้นด้วยความเชื่อที่ว่า ความงามที่แท้จริงต้องมาพร้อมกับสุขภาพผิวที่ยั่งยืน HJ COSMETICS จึงถือกำเนิดขึ้นเพื่อเป็นสะพานเชื่อมระหว่างนวัตกรรมสกินแคร์ระดับโลกจากเกาหลีใต้สู่มือคุณ เราคัดสรรเฉพาะแบรนด์ที่มีจิตวิญญาณในการเลือกใช้สารสกัดธรรมชาติ เพื่อมอบประสบการณ์การดูแลผิวที่ซื่อสัตย์และเห็นผลลัพธ์จริง",
+            brandSpan: "แบรนด์ที่เราคัดสรร", pageTitle: "เรื่องราวของแบรนด์",
+            visit: "เยี่ยมชมเว็บไซต์หลัก",
+            fTag: "พลังแห่งการบำบัดจากสมุนไพรธรรมชาติ",
+            fDesc: "Fraijour (프라이주어) ก่อตั้งในปี 1974 โดดเด่นด้วยสารสกัดจากสมุนไพร Wormwood ที่ช่วยปลอบประโลมผิวแพ้ง่ายและเติมความชุ่มชื้นอย่างอ่อนโยน",
             bTag: "การดูแลผิวกายระดับลักชูรี",
-            bDesc: "Bathpa (배스파) มอบประสบการณ์การอาบน้ำที่เหนือระดับ เปลี่ยนทุกวันให้เป็นช่วงเวลาสปาที่ผ่อนคลายและหรูหรา",
+            bDesc: "Bathpa (배스파) มอบประสบการณ์สปาผิวกายที่บ้าน ด้วยผลิตภัณฑ์บำรุงผิวที่เน้นความกระจ่างใสและกลิ่นหอมผ่อนคลายระดับพรีเมียม",
             cTag: "ทางออกเพื่อเส้นผมและหนังศีรษะ",
-            cDesc: "Char Char (차차) เน้นการฟื้นฟูเส้นผมอย่างเร่งด่วนด้วยโปรตีนและ Argan Oil ให้ผมกลับมามีชีวิตชีวาอีกครั้ง",
-            footDesc: "คัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ",
-            promo: "✨ HJ COSMETICS LUXURY SELECTION | PREMIUM KOREAN SKINCARE ✨",
-            hAddr: "ที่อยู่บริษัท", hCont: "ติดต่อ", btn: "EN"
+            cDesc: "Char Char (차차) ผู้เชี่ยวชาญด้านเส้นผมที่เน้นการฟื้นบำรุงด้วย Argan Oil ช่วยเปลี่ยนผมแห้งเสียให้เงางาม มีน้ำหนัก และแข็งแรง",
+            footDesc: "เราคัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ",
+            promo: "✨ HJ COSMETICS | THE BEST KOREAN SKINCARE SELECTION ✨",
+            hAddr: "ที่อยู่บริษัท", hCont: "ติดต่อเรา", btn: "EN"
         },
         en: {
-            home: "HOME", about: "ABOUT", contact: "CONTACT",
-            heroTitle: "OUR STORY", heroSub: "ESTABLISHED 2026",
-            pageTitle: "OUR BRANDS",
-            hjTitle: "ABOUT HJ COSMETICS",
-            hjDesc: "HJ COSMETICS is a premium skincare curator from South Korea. We represent brands that harmonize botanical wisdom with advanced science to deliver safe and visible results for all skin types.",
-            fTag: "Botanical Skin Therapy",
-            fDesc: "Fraijour specializes in Wormwood-based skincare, providing an ultimate solution for sensitive skin with pure, natural ingredients.",
-            bTag: "Luxury Body Care",
-            bDesc: "Bathpa offers a sophisticated spa-at-home experience with premium fragrances and nourishing formulas for radiant skin.",
-            cTag: "Hair & Scalp Solutions",
-            cDesc: "Char Char provides intensive hair restoration through Argan Oil, transforming damaged hair into silk-like perfection.",
-            footDesc: "Curating the finest natural extracts for your best skin results.",
-            promo: "✨ HJ COSMETICS LUXURY SELECTION | PREMIUM KOREAN SKINCARE ✨",
-            hAddr: "ADDRESS", hCont: "CONTACT", btn: "KR"
+            home: "HOME", about: "ABOUT US", contact: "CONTACT US",
+            heroTitle: "Our Heritage", heroSub: "PREMIUM KOREAN CURATOR",
+            hjTitle: "The HJ Origin",
+            hjDesc: "HJ COSMETICS was founded on the belief that true beauty comes from sustainable skin health. We act as a bridge between South Korea's world-class skincare innovations and your skin. We select brands with a soul, focusing on natural extracts to deliver honest and visible results.",
+            brandSpan: "CURATED SELECTION", pageTitle: "Our Brand Story",
+            visit: "Visit Official Website",
+            fTag: "Natural Skin Healing Power",
+            fDesc: "Established in 1974, Fraijour specializes in herb-based therapy. Their iconic Wormwood extracts offer a sanctuary for sensitive skin with pure hydration.",
+            bTag: "Luxury Body Care Ritual",
+            bDesc: "Bathpa brings a high-end spa aesthetic to daily life, focusing on brightening skin tone and premium fragrances for a luxury ritual.",
+            cTag: "Argan Hair Solution",
+            cDesc: "Char Char focuses on intensive hair restoration using pure Argan Oil, transforming damaged hair into a masterpiece of shine.",
+            footDesc: "Curating the finest natural extracts for your most radiant results.",
+            promo: "✨ HJ COSMETICS | THE BEST KOREAN SKINCARE SELECTION ✨",
+            hAddr: "Office Address", hCont: "Contact Us", btn: "KR"
         },
         kr: {
-            home: "홈", about: "회사소개", contact: "고객문의",
-            heroTitle: "브랜드 스토리", heroSub: "2026년 설립",
-            pageTitle: "보유 브랜드",
-            hjTitle: "HJ 코스메틱 소개",
-            hjDesc: "HJ 코스메틱은 한국의 프리미엄 스킨케어 전문 유통사입니다. 자연의 지혜와 첨단 과학이 조화를 이루는 브랜드를 엄선하여 고객의 피부에 가장 안전하고 확실한 변화를 약속합니다.",
-            fTag: "자연이 주는 스킨 테라피",
-            fDesc: "프라이주어(Fraijour)는 약쑥 성분을 바탕으로 민감한 피부를 진정시키고 본연의 건강함을 되찾아주는 허브 전문 브랜드입니다.",
-            bTag: "고품격 바디 케어 솔루션",
-            bDesc: "배스파(Bathpa)는 프리미엄 향기와 고농축 영양 성분으로 매일의 일상을 특별한 스파 경험으로 바꿔줍니다.",
-            cTag: "건강한 모발과 두피를 위하여",
-            cDesc: "차차(Char Char)는 아르간 오일을 통해 손상된 모발에 풍부한 영양을 공급하고 활력을 불어넣는 헤어 케어 전문가입니다.",
+            home: "홈", about: "회사소개", contact: "문의하기",
+            heroTitle: "아름다운 유산", heroSub: "프리미엄 한국 스킨케어 큐레이터",
+            hjTitle: "HJ 코스메틱의 시작",
+            hjDesc: "HJ 코스메틱은 진정한 아름다움이 지속 가능한 피부 건강에서 온다는 믿음으로 설립되었습니다. 한국의 세계적인 스킨케어 혁신과 고객을 잇는 가교 역할을 하며, 정직하고 확실한 효과를 위해 자연 추출물을 고집하는 브랜드만을 엄선합니다.",
+            brandSpan: "엄선된 브랜드", pageTitle: "브랜드 스토리",
+            visit: "공식 웹사이트 방문",
+            fTag: "자연의 힘으로 치유하는 스킨케어",
+            fDesc: "1974년에 설립된 프라이주어는 약쑥 성분을 바탕으로 민감한 피부를 진정시키고 자연스러운 보습을 선사하는 허브 테라피 전문 브랜드입니다.",
+            bTag: "럭셔리 바디 케어 리추얼",
+            bDesc: "배스파는 프리미엄 향기와 영양 성분으로 매일의 일상을 하이엔드 스파의 경험으로 바꿔주는 바디 브라이트닝 솔루션입니다.",
+            cTag: "아르간 헤어 솔루션",
+            cDesc: "차차는 아르간 오일 성분을 통해 손상된 모발에 생기를 불어넣고 모발 본연의 빛과 탄력을 되찾아주는 헤어 전문가입니다.",
             footDesc: "자연에서 얻은 최상의 성분으로 피부의 아름다움을 완성합니다.",
-            promo: "✨ HJ COSMETICS LUXURY SELECTION | 프리미엄 한국 스킨케어 ✨",
-            hAddr: "회사 주소", hCont: "문의처", btn: "TH"
+            promo: "✨ HJ 코스메틱 | 최상의 한국 스킨케어 셀렉션 ✨",
+            hAddr: "주소", hCont: "고객센터", btn: "TH"
         }
     };
 
     function updateContent() {
         const cur = languages[langIndex];
         const l = trans[cur];
-        
         document.getElementById('nav-home').textContent = l.home;
         document.getElementById('nav-about').textContent = l.about;
         document.getElementById('nav-contact').textContent = l.contact;
         document.getElementById('hero-title').textContent = l.heroTitle;
         document.getElementById('hero-sub').textContent = l.heroSub;
-        document.getElementById('page-title').textContent = l.pageTitle;
         document.getElementById('hj-title').textContent = l.hjTitle;
         document.getElementById('hj-desc').textContent = l.hjDesc;
+        document.getElementById('page-title').textContent = l.pageTitle;
+        document.getElementById('brand-span').textContent = l.brandSpan;
         document.getElementById('f-tag').textContent = l.fTag;
         document.getElementById('f-desc').textContent = l.fDesc;
         document.getElementById('b-tag').textContent = l.bTag;
@@ -250,7 +272,13 @@
         document.getElementById('foot-desc').textContent = l.footDesc;
         document.getElementById('h-addr').textContent = l.hAddr;
         document.getElementById('h-cont').textContent = l.hCont;
+        document.getElementById('f-addr').innerHTML = l.addr || l.fAddr;
+        document.getElementById('f-cont').innerHTML = l.cont || l.fCont;
         document.getElementById('langBtn').textContent = l.btn;
+
+        // อัปเดตข้อความบนปุ่ม Visit Website
+        const btnTexts = document.querySelectorAll('.btn-text');
+        btnTexts.forEach(btn => btn.textContent = l.visit);
 
         const marqueeInner = document.getElementById('marquee-inner');
         marqueeInner.innerHTML = `<div class="marquee-item">${l.promo}</div>`.repeat(10);
@@ -260,7 +288,6 @@
         langIndex = (langIndex + 1) % languages.length;
         updateContent();
     }
-
     updateContent();
 </script>
 
