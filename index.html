@@ -45,9 +45,9 @@
         .header-content p { font-size: 0.85rem; letter-spacing: 6px; color: var(--gold-light); text-transform: uppercase; margin-top: 15px; }
 
         /* --- ✨ Brand Category Header ✨ --- */
-        .brand-section { padding: 100px 5% 40px; position: relative; }
+        .brand-section { padding: 80px 5% 40px; position: relative; }
         .brand-header { text-align: center; margin-bottom: 60px; }
-        .brand-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 4rem; color: var(--p-green); margin: 0; font-weight: 400; }
+        .brand-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 3.8rem; color: var(--p-green); margin: 0; font-weight: 400; }
         .brand-header p { font-size: 0.75rem; letter-spacing: 5px; color: var(--gold-dark); text-transform: uppercase; }
 
         /* --- ✨ Product Grid ✨ --- */
@@ -56,7 +56,7 @@
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
             gap: 45px 30px; 
-            margin-bottom: 100px;
+            margin-bottom: 60px;
         }
 
         .card { 
@@ -126,12 +126,20 @@
         <div class="product-grid" id="grid-fraijour"></div>
     </section>
 
-    <section class="brand-section" style="background: rgba(197, 160, 89, 0.03);">
+    <section class="brand-section" style="background: rgba(197, 160, 89, 0.02);">
         <div class="brand-header">
-            <p id="b-tag">Body & Hair Care Ritual</p>
-            <h2 id="b-title">Bathpa & Char Char</h2>
+            <p id="b-tag">Luxury Body Ritual</p>
+            <h2>Bathpa</h2>
         </div>
-        <div class="product-grid" id="grid-others"></div>
+        <div class="product-grid" id="grid-bathpa"></div>
+    </section>
+
+    <section class="brand-section">
+        <div class="brand-header">
+            <p id="c-tag">Intensive Hair & Skin Solution</p>
+            <h2>Char Char</h2>
+        </div>
+        <div class="product-grid" id="grid-charchar"></div>
     </section>
 </div>
 
@@ -160,6 +168,7 @@
     let langIndex = 0;
 
     const products = [
+        // --- Fraijour ---
         { brand: "Fraijour", name: "Original Herb Wormwood Calming Watery Cream", sale: 250, old: 369, badge: "BEST SELLER", img: "1.jpeg" },
         { brand: "Fraijour", name: "Original Herb Wormwood Calming Toner", sale: 350, old: 459, badge: "RECOMMENDED", img: "2.jpeg" },
         { brand: "Fraijour", name: "Original Herb Wormwood Cleansing Water", sale: 250, old: 400, badge: "GENTLE", img: "3.jpeg" },
@@ -173,8 +182,12 @@
         { brand: "Fraijour", name: "Heartleaf Airy Fit Sun Cream", sale: 280, old: 450, badge: "UV PROTECT", img: "Heartleaf Airy Fit Sun Cream 50g ผลิตภัณฑ์.png" },
         { brand: "Fraijour", name: "Heartleaf Water Fit Sun Screen", sale: 320, old: 590, badge: "WATER FIT", img: "https://via.placeholder.com/300?text=Product+12" },
         { brand: "Fraijour", name: "Original Herb Wormwood Sheet Mask", sale: 17, old: 29, badge: "MASK", img: "https://via.placeholder.com/300?text=Product+13" },
-        { brand: "Fraijour", name: "Mung Bean Cica Cleansing Foam", sale: 120, old: 199, badge: "CICA", img: "https://via.placeholder.com/300?text=Product+15" },
-        { brand: "Others", name: "Bathpa Body Tone Up Cream", sale: 150, old: 529, badge: "BRIGHT", img: "13.jpeg" }
+        
+        // --- Bathpa ---
+        { brand: "Bathpa", name: "Bathpa Body Tone Up Cream", sale: 150, old: 529, badge: "BRIGHT", img: "13.jpeg" },
+        
+        // --- Char Char (Mung Bean is here) ---
+        { brand: "CharChar", name: "Mung Bean Cica Cleansing Foam", sale: 120, old: 199, badge: "CICA CARE", img: "https://via.placeholder.com/300?text=CharChar+MungBean" }
     ];
 
     const trans = {
@@ -182,7 +195,8 @@
             home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา",
             heroSub: "แก่นแท้ของการคัดสรรสกินแคร์จากเกาหลี",
             fTag: "พลังแห่งการบำบัดจากสมุนไพร",
-            bTag: "การดูแลผิวกายและเส้นผม", bTitle: "แบรนด์อื่นๆ",
+            bTag: "สุนทรียภาพแห่งการดูแลผิวกาย",
+            cTag: "การฟื้นบำรุงผิวและเส้นผมอย่างล้ำลึก",
             shop: "เลือกซื้อสินค้า",
             footDesc: "เราคัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ มั่นใจในความปลอดภัยและคุณภาพระดับพรีเมียม",
             hAddr: "ที่อยู่บริษัท", hCont: "ติดต่อเรา", btn: "EN"
@@ -191,18 +205,20 @@
             home: "HOME", about: "ABOUT US", contact: "CONTACT US",
             heroSub: "The Essence of Korean Beauty Selection",
             fTag: "Botanical Therapy",
-            bTag: "Body & Hair Care Ritual", bTitle: "Bathpa & Char Char",
+            bTag: "Luxury Body Ritual",
+            cTag: "Intensive Hair & Skin Solution",
             shop: "SHOP NOW",
-            footDesc: "Premium Korean Skincare Curator. Handpicked for your skin's long-term health and radiance through the power of nature.",
+            footDesc: "Premium Korean Skincare Curator. Handpicked for your skin's long-term health and radiance.",
             hAddr: "ADDRESS", hCont: "CONTACT", btn: "KR"
         },
         kr: {
             home: "홈", about: "회사소개", contact: "문의하기",
             heroSub: "한국 뷰티 셀렉션의 정수",
             fTag: "보태니컬 테라피",
-            bTag: "바디 & 헤어 케어 리추얼", bTitle: "기타 브랜드",
+            bTag: "럭셔리 바디 리추얼",
+            cTag: "헤어 & 스킨 집중 솔루션",
             shop: "구매하기",
-            footDesc: "자연의 힘으로 피부의 건강과 광채를 되찾아주는 최상의 한국 스킨เค어만을 엄선하여 선보입니다.",
+            footDesc: "자연의 힘으로 피부의 건강과 광채를 되찾아주는 최상의 스킨케어를 엄선하여 선보입니다.",
             hAddr: "주소", hCont: "고객센터", btn: "TH"
         }
     };
@@ -215,7 +231,7 @@
         document.getElementById('hero-sub').textContent = l.heroSub;
         document.getElementById('f-tag').textContent = l.fTag;
         document.getElementById('b-tag').textContent = l.bTag;
-        document.getElementById('b-title').textContent = l.bTitle;
+        document.getElementById('c-tag').textContent = l.cTag;
         document.getElementById('foot-desc').textContent = l.footDesc;
         document.getElementById('h-addr').textContent = l.hAddr;
         document.getElementById('h-cont').textContent = l.hCont;
@@ -224,10 +240,13 @@
     }
 
     function renderProducts() {
-        const fraijourGrid = document.getElementById('grid-fraijour');
-        const othersGrid = document.getElementById('grid-others');
-        fraijourGrid.innerHTML = "";
-        othersGrid.innerHTML = "";
+        const grids = {
+            Fraijour: document.getElementById('grid-fraijour'),
+            Bathpa: document.getElementById('grid-bathpa'),
+            CharChar: document.getElementById('grid-charchar')
+        };
+        
+        Object.values(grids).forEach(g => g.innerHTML = "");
 
         products.forEach(p => {
             const html = `
@@ -242,8 +261,7 @@
                     <a href="#" class="btn-buy">${trans[languages[langIndex]].shop}</a>
                 </div>
             `;
-            if(p.brand === "Fraijour") fraijourGrid.innerHTML += html;
-            else othersGrid.innerHTML += html;
+            if(grids[p.brand]) grids[p.brand].innerHTML += html;
         });
     }
 
