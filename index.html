@@ -21,6 +21,17 @@
             line-height: 1.5; 
             letter-spacing: -0.2px; 
         }
+
+        /* --- ✨ แก้ไขปัญหาภาษาไทยห่าง --- */
+        body.lang-th { letter-spacing: 0px; }
+        body.lang-th .btn-buy, 
+        body.lang-th .nav-links a, 
+        body.lang-th .brand-header p,
+        body.lang-th .header-content p,
+        body.lang-th .footer-col h4 { 
+            letter-spacing: 0px !important; 
+        }
+
         body.lang-kr { font-family: 'Nanum-Bold', serif; letter-spacing: 0; line-height: 1.6; }
 
         /* --- Navigation --- */
@@ -54,22 +65,13 @@
         .price-box { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; }
         .sale { color: var(--p-green); font-weight: 700; font-size: 1.3rem; }
         .old { color: #aaa; text-decoration: line-through; font-size: 0.85rem; }
-        .btn-buy { border: 1px solid var(--p-green); color: var(--p-green); text-align: center; text-decoration: none; padding: 12px; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
+        .btn-buy { border: 1px solid var(--p-green); color: var(--p-green); text-align: center; text-decoration: none; padding: 12px; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
         .btn-buy:hover { background: var(--p-green); color: white; }
 
-        /* --- ✨ Premium Footer ✨ --- */
-        footer { 
-            background: #0a1410; color: rgba(255,255,255,0.8); padding: 80px 8% 40px; 
-            border-top: 5px solid var(--gold-dark); margin-top: 100px; 
-        }
-        .footer-grid { 
-            display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px; 
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 50px; 
-        }
-        .footer-col h4 { 
-            font-size: 1.6rem; color: var(--gold-light); margin-bottom: 25px; 
-            letter-spacing: 2px; font-weight: 400; text-transform: uppercase; 
-        }
+        /* --- Footer --- */
+        footer { background: #0a1410; color: rgba(255,255,255,0.8); padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); margin-top: 100px; }
+        .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px; border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 50px; }
+        .footer-col h4 { font-size: 1.6rem; color: var(--gold-light); margin-bottom: 25px; letter-spacing: 2px; font-weight: 400; text-transform: uppercase; }
         .footer-col p { font-size: 0.95rem; line-height: 1.7; margin: 0 0 10px; letter-spacing: 0; }
         .footer-col strong { color: var(--gold-dark); display: block; margin-bottom: 5px; font-size: 0.8rem; letter-spacing: 1px; }
         .footer-bottom { padding-top: 30px; text-align: center; font-size: 0.8rem; color: rgba(197, 160, 89, 0.5); letter-spacing: 1px; }
@@ -125,16 +127,10 @@
             <p id="foot-desc">Premium Korean Skincare Curator.</p>
             <p style="color: var(--gold-dark); font-weight: 600;">Selection of Excellence</p>
         </div>
-
         <div class="footer-col">
             <h4 id="h-addr-foot">ADDRESS</h4>
-            <p>
-                323/11-12 Huayprab Muangthong 5, <br>
-                Moo 3, Bowin, Sriracha, <br>
-                Chon Buri 20230, Thailand
-            </p>
+            <p>323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, <br>Chon Buri 20230, Thailand</p>
         </div>
-
         <div class="footer-col">
             <h4 id="h-cont-foot">CONTACT</h4>
             <p><strong>TEL:</strong> 03-8182-577</p>
@@ -142,9 +138,7 @@
             <p><strong>LINE ID:</strong> @thaihj11</p>
         </div>
     </div>
-    <div class="footer-bottom">
-        &copy; 2024 HJ COSMETICS. ALL RIGHTS RESERVED.
-    </div>
+    <div class="footer-bottom">&copy; 2024 HJ COSMETICS. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
@@ -158,28 +152,25 @@
         { brand: "Fraijour", name: "Original Herb Wormwood Cleansing Water", sale: 250, old: 400, badge: "GENTLE", img: "3.jpeg" },
         { brand: "Fraijour", name: "Original Herb Wormwood Cleansing Foam", sale: 290, old: 399, badge: "NEW", img: "4.jpeg" },
         { brand: "Fraijour", name: "Heartleaf Blemish Moisture Cream", sale: 310, old: 590, badge: "EXCLUSIVE", img: "5.jpeg" },
-        { brand: "Fraijour", name: "Heartleaf Blemish Toner", sale: 360, old: 529, badge: "SOOTHING", img: "https://via.placeholder.com/300" },
-        { brand: "Fraijour", name: "Retin-Collagen 3D Core Cream", sale: 250, old: 459, badge: "3D CORE", img: "https://via.placeholder.com/300" },
-        { brand: "Fraijour", name: "Retin-Collagen 3D Core Eye Cream", sale: 195, old: 370, badge: "LIFTING", img: "https://via.placeholder.com/300" },
-        { brand: "Fraijour", name: "Retin-Collagen 3D Core Toner", sale: 290, old: 500, badge: "FIRMING", img: "https://via.placeholder.com/300" },
-        { brand: "Fraijour", name: "Retin-Collagen 3D Core Lip Oil", sale: 125, old: 259, badge: "GLOWY", img: "https://via.placeholder.com/300" },
         { brand: "Fraijour", name: "Heartleaf Airy Fit Sun Cream 50g", sale: 280, old: 450, badge: "UV PROTECT", img: "Heartleaf Airy Fit Sun Cream 50g ผลิตภัณฑ์.png" },
-        { brand: "Fraijour", name: "Heartleaf Water Fit Sun Screen", sale: 320, old: 590, badge: "WATER FIT", img: "https://via.placeholder.com/300" },
-        { brand: "Fraijour", name: "Original Herb Wormwood Sheet Mask", sale: 17, old: 29, badge: "MASK", img: "https://via.placeholder.com/300" },
-        { brand: "Bathpa", name: "Bathpa Body Tone Up Cream", sale: 150, old: 529, badge: "BRIGHT", img: "13.jpeg" },
-        { brand: "CharChar", name: "Mung Bean Cica Cleansing Foam", sale: 120, old: 199, badge: "CICA CARE", img: "https://via.placeholder.com/300" }
+        { brand: "Bathpa", name: "Bathpa Body Tone Up Cream", sale: 150, old: 529, badge: "BRIGHT", img: "13.jpeg" }
+        // ... เพิ่มรายการอื่นได้ตามต้องการ
     ];
 
     const trans = {
         th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroSub: "แก่นแท้ของการคัดสรรสกินแคร์จากเกาหลี", fTag: "พลังแห่งการบำบัดจากสมุนไพร", bTag: "สุนทรียภาพแห่งการดูแลผิวกาย", cTag: "การฟื้นบำรุงผิวและเส้นผมอย่างล้ำลึก", shop: "เลือกซื้อสินค้า", footDesc: "เราคัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ", hAddr: "ที่อยู่บริษัท", hCont: "ติดต่อเรา", btn: "EN" },
         en: { home: "HOME", about: "ABOUT US", contact: "CONTACT US", heroSub: "The Essence of Korean Beauty Selection", fTag: "Botanical Therapy", bTag: "Luxury Body Ritual", cTag: "Intensive Hair & Skin Solution", shop: "SHOP NOW", footDesc: "Premium Korean Skincare Curator.", hAddr: "ADDRESS", hCont: "CONTACT", btn: "KR" },
-        kr: { home: "홈", about: "회사소개", contact: "문의하기", heroSub: "한국 뷰티 셀렉션의 정수", fTag: "보태니컬 테라피", bTag: "럭셔리 바디 리추얼", cTag: "헤어 & ส킨 집중 솔루션", shop: "구매하기", footDesc: "자연의 힘으로 완성하는 최상의 스킨케어", hAddr: "주소", hCont: "고객센터", btn: "TH" }
+        kr: { home: "홈", about: "회사소개", contact: "문의하기", heroSub: "한국 뷰티 셀렉션의 정수", fTag: "보태니컬 테라피", bTag: "럭셔리 바디 리추얼", cTag: "헤어 & 스킨 집중 솔루션", shop: "구매하기", footDesc: "자연의 힘으로 완성하는 최상의 스킨케어", hAddr: "주소", hCont: "고객센터", btn: "TH" }
     };
 
     function updateContent() {
         const l = trans[languages[langIndex]];
         const body = document.getElementById('main-body');
-        if (languages[langIndex] === 'kr') body.classList.add('lang-kr'); else body.classList.remove('lang-kr');
+        
+        // สลับคลาสเพื่อจัดการ Letter Spacing
+        body.classList.remove('lang-kr', 'lang-th');
+        if (languages[langIndex] === 'kr') body.classList.add('lang-kr');
+        else if (languages[langIndex] === 'th') body.classList.add('lang-th');
         
         document.getElementById('nav-home').textContent = l.home;
         document.getElementById('nav-about').textContent = l.about;
@@ -189,24 +180,23 @@
         document.getElementById('b-tag').textContent = l.bTag;
         document.getElementById('c-tag').textContent = l.cTag;
         document.getElementById('foot-desc').textContent = l.footDesc;
-        
-        // อัปเดตหัวข้อ Footer ตามภาษา
         document.getElementById('h-addr-foot').textContent = l.hAddr;
         document.getElementById('h-cont-foot').textContent = l.hCont;
-        
         document.getElementById('langBtn').textContent = l.btn;
+        
         localStorage.setItem('selectedLang', languages[langIndex]);
         renderProducts();
     }
 
     function renderProducts() {
         const grids = { Fraijour: document.getElementById('grid-fraijour'), Bathpa: document.getElementById('grid-bathpa'), CharChar: document.getElementById('grid-charchar') };
-        Object.values(grids).forEach(g => g.innerHTML = "");
+        Object.values(grids).forEach(g => { if(g) g.innerHTML = ""; });
         products.forEach(p => {
-            const html = `<div class="card"><div class="badge">${p.badge}</div><div class="img-box"><img src="${p.img}"></div><h3>${p.name}</h3><div class="price-box"><span class="sale">฿${p.sale}</span><span class="old">฿${p.old}</span></div><a href="#" class="btn-buy">${trans[languages[langIndex]].shop}</a></div>`;
+            const html = `<div class="card"><div class="badge">${p.badge}</div><div class="img-box"><img src="${p.img}"></div><h3>${p.name}</h3><div class="price-box"><span class="sale">฿${p.sale}</span><span class="old">฿${p.old}</span></div><a class="btn-buy">${trans[languages[langIndex]].shop}</a></div>`;
             if(grids[p.brand]) grids[p.brand].innerHTML += html;
         });
     }
+
     function rotateLanguage() { langIndex = (langIndex + 1) % languages.length; updateContent(); }
     updateContent();
 </script>
