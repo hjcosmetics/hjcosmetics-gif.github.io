@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - HJ COSMETICS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Prompt:wght@200;300;400;500;600&family=Sarabun:wght@200;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Noto+Sans+KR:wght@300;500;700&family=Prompt:wght@200;300;400;500;600&family=Sarabun:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
-        /* --- 🎨 คัดลอก CSS Root & Base จากหน้าหลักมาทั้งหมดเพื่อให้ดีไซน์ต่อเนื่อง --- */
         :root {
             --p-green: #1b4332;
             --gold-light: #f1d38e;
@@ -17,128 +16,197 @@
         }
 
         * { box-sizing: border-box; }
-        body { font-family: 'Sarabun', 'Prompt', sans-serif; margin: 0; background-color: var(--bg); color: #333; overflow-x: hidden; }
+        body { font-family: 'Sarabun', 'Noto Sans KR', 'Prompt', sans-serif; margin: 0; background-color: var(--bg); color: #333; overflow-x: hidden; }
 
-        /* --- ✨ ส่วนเสริมเฉพาะหน้า About Us ✨ --- */
-        .about-section { padding: 100px 0; overflow: hidden; }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 120px; }
-        .about-image { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid var(--gold-light); }
-        .about-image img { width: 100%; display: block; transition: 0.5s; }
-        .about-image:hover img { transform: scale(1.05); }
-        
-        .content-box h2 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--p-green); margin-bottom: 20px; }
-        .content-box p { line-height: 1.9; font-weight: 300; color: #555; font-size: 1.1rem; }
-        
-        .vision-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-        .v-card { background: white; padding: 40px; border-radius: 15px; border: 1px solid #eee; text-align: center; transition: 0.3s; }
-        .v-card:hover { border-color: var(--gold-dark); transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-        .v-card i { font-size: 2.5rem; color: var(--gold-dark); margin-bottom: 20px; display: block; }
-
-        /* --- ✨ นำสไตล์เดิมจากหน้าหลักมาใช้ (Nav, Footer, Title) ✨ --- */
-        .top-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.95rem; font-family: 'Prompt'; font-weight: 500; }
-        
-        .section-title { 
-            font-family: 'Cormorant Garamond', 'Prompt', serif; text-align: center;
-            font-size: 3.5rem; font-weight: 700; background: linear-gradient(to bottom, #c5a059 20%, #f1d38e 50%, #c5a059 80%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 4px; margin-bottom: 60px;
+        /* --- ✨ Navigation ✨ --- */
+        .top-nav {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
+        .logo-box img { height: 55px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold-dark); }
+        
+        .lang-switch {
+            background: white; color: var(--p-green); border: 1.5px solid var(--gold-dark);
+            padding: 5px 18px; border-radius: 20px; cursor: pointer; font-weight: 600; min-width: 60px;
+        }
+        .lang-switch:hover { background: var(--gold-gradient); color: white; border-color: transparent; }
 
-        footer { background: var(--p-green); color: white; padding: 80px 0 40px 0; border-top: 5px solid var(--gold-dark); }
+        /* --- ✨ Luxury Section Title ✨ --- */
+        .title-container { text-align: center; margin: 60px auto; padding: 0 20px; }
+        .section-title { 
+            font-family: 'Cormorant Garamond', serif; 
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 3.5rem; font-weight: 700; position: relative;
+            background: linear-gradient(to bottom, #c5a059 20%, #f1d38e 50%, #c5a059 80%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: 4px;
+        }
+        .section-title::before, .section-title::after { content: ''; width: 60px; height: 1px; background: var(--gold-gradient); margin: 0 30px; opacity: 0.7; }
+
+        /* --- ✨ Brand Story Sections ✨ --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; }
+        .brand-image { border-radius: 20px; overflow: hidden; border: 1px solid var(--gold-light); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .brand-image img { width: 100%; display: block; }
+        .brand-content h2 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--p-green); margin-bottom: 15px; }
+        .brand-content h3 { font-weight: 500; color: var(--gold-dark); margin-bottom: 20px; letter-spacing: 1px; }
+        .brand-content p { line-height: 1.9; font-weight: 300; font-size: 1.05rem; color: #444; }
+
+        /* --- ✨ Footer ✨ --- */
+        footer { background: var(--p-green); color: white; padding: 80px 0 40px 0; border-top: 5px solid var(--gold-dark); margin-top: 100px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; }
+        .footer-section h4 { font-weight: 600; color: var(--gold-light); margin-bottom: 25px; border-left: 4px solid var(--gold-dark); padding-left: 15px; }
+        .footer-section p, .footer-section address { font-style: normal; font-weight: 300; line-height: 2; opacity: 0.85; font-size: 0.95rem; }
 
         @media (max-width: 768px) {
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
-            .about-grid:nth-child(even) .about-image { order: 2; }
+            .brand-grid { grid-template-columns: 1fr; gap: 30px; }
+            .section-title { font-size: 2.2rem; }
+            .brand-grid:nth-child(even) .brand-image { order: 2; }
         }
     </style>
 </head>
 <body>
 
 <nav class="top-nav">
-    <div class="logo-box"><img src="HJ (5).png" height="55" onerror="this.src='https://via.placeholder.com/150x60/1b4332/ffffff?text=HJ+COSMETICS'"></div>
+    <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO" onerror="this.src='https://via.placeholder.com/150x60/1b4332/ffffff?text=HJ+COSMETICS'"></a></div>
     <div class="nav-links">
-        <a href="index.html">HOME</a>
-        <a href="#" style="color: var(--gold-dark);">ABOUT US</a>
-        <a href="#main-footer">CONTACT</a>
+        <a href="index.html" id="nav-home">หน้าแรก</a>
+        <a href="about.html" id="nav-about" style="color: var(--gold-dark);">เกี่ยวกับเรา</a>
+        <a href="contact.html" id="nav-contact">ติดต่อเรา</a>
+        <button class="lang-switch" onclick="rotateLanguage()" id="langBtn">KR</button>
     </div>
 </nav>
 
-<div class="container" style="max-width: 1200px; margin: 80px auto;">
-    <h1 class="section-title" id="page-title">OUR STORY</h1>
+<div class="title-container">
+    <h2 class="section-title" id="page-title">OUR BRANDS</h2>
+</div>
 
-    <div class="about-grid">
-        <div class="about-image">
-            <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&q=80&w=800" alt="Laboratory">
-        </div>
-        <div class="content-box">
-            <h2 id="h-story">จุดเริ่มต้นของเรา</h2>
-            <p id="p-story">
-                HJ COSMETICS ก่อตั้งขึ้นจากความหลงใหลในคุณค่าของธรรมชาติและการแสวงหานวัตกรรมที่ดีที่สุดเพื่อผิวพรรณ 
-                เราเชื่อว่าความงามที่แท้จริงเริ่มต้นจากความสมดุลและการดูแลที่อ่อนโยนที่สุด เราจึงคัดสรรสารสกัดจากทั่วทุกมุมโลก 
-                โดยเฉพาะสมุนไพรเกาหลีระดับพรีเมียม เพื่อส่งต่อผลลัพธ์ที่ยอดเยี่ยมถึงมือคุณ
-            </p>
+<div class="container">
+    <div class="brand-grid">
+        <div class="brand-image"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800" alt="Fraijour"></div>
+        <div class="brand-content">
+            <h2>Fraijour</h2>
+            <h3 id="f-tag">Natural Skin Healing</h3>
+            <p id="f-desc"></p>
         </div>
     </div>
 
-    <div class="about-grid" style="direction: rtl; text-align: left;">
-        <div class="about-image" style="direction: ltr;">
-            <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&q=80&w=800" alt="Product">
-        </div>
-        <div class="content-box" style="direction: ltr;">
-            <h2 id="h-mission">พันธกิจของเรา</h2>
-            <p id="p-mission">
-                พันธกิจของเราคือการมอบประสบการณ์การดูแลผิวที่เหนือระดับ (Luxury Care) 
-                ที่ทุกคนสามารถเข้าถึงได้ เราใส่ใจในทุกขั้นตอนการผลิต ตั้งแต่การคัดเลือกวัตถุดิบ 
-                ไปจนถึงการทดสอบความปลอดภัย เพื่อให้มั่นใจว่าผลิตภัณฑ์ทุกชิ้นของ HJ COSMETICS 
-                จะสร้างความประทับใจและผลลัพธ์ที่พึงพอใจสูงสุด
-            </p>
+    <div class="brand-grid" style="direction: rtl; text-align: left;">
+        <div class="brand-image" style="direction: ltr;"><img src="https://images.unsplash.com/photo-1559591937-e620a8a6503c?auto=format&fit=crop&q=80&w=800" alt="Bathpa"></div>
+        <div class="brand-content" style="direction: ltr;">
+            <h2>Bathpa</h2>
+            <h3 id="b-tag">Luxury Body Care</h3>
+            <p id="b-desc"></p>
         </div>
     </div>
 
-    <div class="vision-cards">
-        <div class="v-card">
-            <h3 style="color: var(--p-green); font-family: 'Prompt';">Premium Quality</h3>
-            <p style="font-size: 0.9rem; font-weight: 300;">คัดสรรเฉพาะสารสกัดเกรดพรีเมียมที่ผ่านการวิจัยและทดสอบประสิทธิภาพ</p>
-        </div>
-        <div class="v-card">
-            <h3 style="color: var(--p-green); font-family: 'Prompt';">Safe & Gentle</h3>
-            <p style="font-size: 0.9rem; font-weight: 300;">อ่อนโยนต่อทุกสภาพผิว ปราศจากสารอันตรายที่ทำร้ายผิวในระยะยาว</p>
-        </div>
-        <div class="v-card">
-            <h3 style="color: var(--p-green); font-family: 'Prompt';">Natural Power</h3>
-            <p style="font-size: 0.9rem; font-weight: 300;">ดึงพลังจากธรรมชาติมาปรับใช้กับเทคโนโลยีสมัยใหม่ได้อย่างลงตัว</p>
+    <div class="brand-grid">
+        <div class="brand-image"><img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&q=80&w=800" alt="Char Char"></div>
+        <div class="brand-content">
+            <h2>Char Char</h2>
+            <h3 id="c-tag">Hair & Scalp Solution</h3>
+            <p id="c-desc"></p>
         </div>
     </div>
 </div>
 
 <footer id="main-footer">
-    <div class="container" style="max-width: 1300px; margin: 0 auto; padding: 0 20px;">
+    <div class="container">
         <div class="footer-grid">
             <div class="footer-section">
                 <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--gold-light); margin-bottom: 20px;">HJ COSMETICS</h3>
-                <p id="f-desc">คัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ มั่นใจในความปลอดภัยและคุณภาพระดับพรีเมียม</p>
+                <p id="foot-desc"></p>
             </div>
             <div class="footer-section">
                 <h4 id="h-addr">ADDRESS</h4>
-                <address id="f-addr">
-                    บริษัท ไทย เอชเจ โกลบอล จำกัด <br>
-                    เลขที่ 323/11-12 ห้วยปราบเมืองทอง 5 <br>
-                    หมู่ 3 ต.บ่อวิน อ.ศรีราชา จ.ชลบุรี 20230
-                </address>
+                <address id="f-addr"></address>
             </div>
             <div class="footer-section">
                 <h4 id="h-cont">CONTACT</h4>
-                <p id="f-cont">โทร: 03-8182-577 <br>อีเมล: thaihjglobal@gmail.com <br>Line Official: @thaihj11</p>
+                <p id="f-cont"></p>
             </div>
         </div>
     </div>
 </footer>
 
 <script>
-    // คุณสามารถนำระบบสลับภาษาจากหน้าหลักมาใส่ตรงนี้เพิ่มได้เช่นกัน 
-    // เพื่อให้หน้า About Us รองรับ 2 ภาษาเหมือนหน้าหลักครับ
+    const languages = ['th', 'en', 'kr'];
+    let langIndex = 0;
+
+    const trans = {
+        th: {
+            home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", title: "แบรนด์ของเรา",
+            fTag: "พลังแห่งการบำบัดจากสมุนไพรธรรมชาติ",
+            fDesc: "Fraijour มุ่งเน้นการบำบัดผิวด้วยพลังจากธรรมชาติ ก่อตั้งในปี 1974 โดดเด่นด้วยสารสกัดจากสมุนไพร (Wormwood) ที่ช่วยปลอบประโลมผิวแพ้ง่ายและเติมความชุ่มชื้นอย่างอ่อนโยน",
+            bTag: "การดูแลผิวกายระดับลักชูรี",
+            bDesc: "Bathpa มอบประสบการณ์สปาผิวกายที่บ้าน ด้วยผลิตภัณฑ์บำรุงผิวที่เน้นความกระจ่างใสและกลิ่นหอมผ่อนคลายระดับพรีเมียม เปลี่ยนการอาบน้ำให้เป็นการดูแลผิวอย่างเหนือระดับ",
+            cTag: "ทางออกเพื่อเส้นผมและหนังศีรษะ",
+            cDesc: "Char Char ผู้เชี่ยวชาญด้านเส้นผมที่เน้นการฟื้นบำรุงด้วย Argan Oil และโปรตีนธรรมชาติ ช่วยเปลี่ยนผมแห้งเสียให้เงางาม มีน้ำหนัก และแข็งแรงจากรากจรดปลาย",
+            footDesc: "คัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ",
+            hAddr: "ที่อยู่บริษัท", hCont: "ช่องทางติดต่อ",
+            addr: "บริษัท ไทย เอชเจ โกลบอล จำกัด <br>เลขที่ 323/11-12 ห้วยปราบเมืองทอง 5 <br>หมู่ 3 ต.บ่อวิน อ.ศรีราชา จ.ชลบุรี 20230",
+            cont: "โทร: 03-8182-577 <br>อีเมล: thaihjglobal@gmail.com <br>Line: @thaihj11", btn: "EN"
+        },
+        en: {
+            home: "HOME", about: "ABOUT US", contact: "CONTACT", title: "OUR BRANDS",
+            fTag: "Natural Skin Healing Power",
+            fDesc: "Fraijour, established in 1974, focuses on skin healing through nature. Renowned for its Original Herb Wormwood extracts that soothe sensitive skin and provide deep, gentle hydration.",
+            bTag: "Luxury Body Care Experience",
+            bDesc: "Bathpa brings a high-end spa experience to your home. Specialized in skin brightening and premium fragrances that transform your daily routine into a luxury self-care moment.",
+            cTag: "Hair & Scalp Solutions",
+            cDesc: "Char Char specializes in professional hair care using Argan Oil and natural proteins. Expertly formulated to restore damaged hair, providing lasting shine, volume, and strength.",
+            footDesc: "Specially selected natural extracts for your best skin results.",
+            hAddr: "OFFICE ADDRESS", hCont: "CONTACT CHANNELS",
+            addr: "Thai HJ Global Co., Ltd. <br>323/11-12 Huayprab Muangthong 5 <br>Moo 3, Bo Win, Si Racha, Chon Buri 20230",
+            cont: "Tel: 03-8182-577 <br>Email: thaihjglobal@gmail.com <br>Line: @thaihj11", btn: "KR"
+        },
+        kr: {
+            home: "홈", about: "회사 소개", contact: "문의하기", title: "브랜드 스토리",
+            fTag: "자연의 힘으로 치유하는 스킨케어",
+            fDesc: "프라이주어(Fraijour)는 1974년부터 자연 친화적인 성분으로 피부를 치유해 온 브랜드입니다. 특히 강화약쑥 성분을 통해 민감한 피부를 진정시키고 깊은 보습을 선사하는 것으로 잘 알려져 있습니다.",
+            bTag: "럭셔리 바디 케어의 시작",
+            bDesc: "배스파(Bathpa)는 프리미엄 향기와 고농축 영양 성분으로 집에서도 하이엔드 스파의 경험을 제공합니다. 피부 톤업과 부드러운 결을 완성하는 바디 솔루션을 제안합니다.",
+            cTag: "건강한 모발과 두피를 위한 솔루션",
+            cDesc: "차차(Char Char)는 아르간 오일과 천연 단백질 성분을 통해 모발 본연의 건강함을 되찾아주는 헤어 전문 브랜드입니다. 손상된 모발에 영양을 공급하여 윤기 있고 탄력 있는 머릿결을 선사합니다.",
+            footDesc: "자연에서 얻은 최상의 성분으로 당신의 피부에 가장 좋은 결과를 선사합니다.",
+            hAddr: "회사 주소", hCont: "고객 센터",
+            addr: "Thai HJ Global Co., Ltd. <br>323/11-12 Huayprab Muangthong 5 <br>Moo 3, Bo Win, Si Racha, Chon Buri 20230",
+            cont: "전화: 03-8182-577 <br>이메일: thaihjglobal@gmail.com <br>카카오톡/Line: @thaihj11", btn: "TH"
+        }
+    };
+
+    function updateContent() {
+        const cur = languages[langIndex];
+        const l = trans[cur];
+        
+        document.getElementById('nav-home').textContent = l.home;
+        document.getElementById('nav-about').textContent = l.about;
+        document.getElementById('nav-contact').textContent = l.contact;
+        document.getElementById('page-title').textContent = l.title;
+        document.getElementById('f-tag').textContent = l.fTag;
+        document.getElementById('f-desc').textContent = l.fDesc;
+        document.getElementById('b-tag').textContent = l.bTag;
+        document.getElementById('b-desc').textContent = l.bDesc;
+        document.getElementById('c-tag').textContent = l.cTag;
+        document.getElementById('c-desc').textContent = l.cDesc;
+        document.getElementById('foot-desc').textContent = l.footDesc;
+        document.getElementById('h-addr').textContent = l.hAddr;
+        document.getElementById('h-cont').textContent = l.hCont;
+        document.getElementById('f-addr').innerHTML = l.addr;
+        document.getElementById('f-cont').innerHTML = l.cont;
+        document.getElementById('langBtn').textContent = l.btn;
+    }
+
+    function rotateLanguage() {
+        langIndex = (langIndex + 1) % languages.length;
+        updateContent();
+    }
+
+    updateContent();
 </script>
 
 </body>
