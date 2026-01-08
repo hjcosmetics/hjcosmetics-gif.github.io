@@ -3,253 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HJ COSMETICS - Luxury Experience</title>
+    <title>HJ COSMETICS - Ultra Luxury</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @font-face { font-family: 'IBM-Plex-Light'; src: url('IBMPlexSansThai-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; }
-        @font-face { font-family: 'Nanum-Bold'; src: url('NanumMyeongjo-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
 
         :root { 
             --p-green: #1b4332; 
             --gold-dark: #c5a059; 
             --gold-light: #f1d38e; 
             --bg-creme: #fdfcf9;
+            --glass: rgba(255, 255, 255, 0.8);
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        
         body { 
-            font-family: 'IBM-Plex-Light', sans-serif; 
-            margin: 0; background-color: var(--bg-creme); 
-            color: var(--p-green); overflow-x: hidden;
-            background: linear-gradient(45deg, #fdfcf9, #f9f5eb, #f1e9d2, #fdfcf9);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            font-family: 'Inter', sans-serif; margin: 0; background: var(--bg-creme); color: var(--p-green); overflow-x: hidden;
+            background: linear-gradient(-45deg, #fdfcf9, #f9f5eb, #ece3ca, #fdfcf9);
+            background-size: 400% 400%; animation: gradientBG 20s ease infinite;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        /* --- Navigation --- */
+        /* --- ✨ Navigation (Minimalist Luxe) --- */
         .top-nav { 
-            background: rgba(255, 255, 255, 0.7); 
-            backdrop-filter: blur(20px); 
-            padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 1000;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 30px 8%; display: flex; justify-content: space-between; align-items: center; 
+            position: fixed; width: 100%; z-index: 1000; transition: 0.5s;
         }
-        .logo-box img { height: 45px; }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px; }
+        .top-nav.scrolled { background: var(--glass); backdrop-filter: blur(15px); padding: 15px 8%; border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+        .logo-box img { height: 40px; }
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.7rem; font-weight: 600; letter-spacing: 3px; }
+        .lang-switch { background: transparent; border: 1px solid var(--p-green); padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.7rem; transition: 0.3s; }
+        .lang-switch:hover { background: var(--p-green); color: white; }
 
-        .lang-switch { 
-            background: var(--p-green); color: var(--gold-light); 
-            border: 1px solid var(--gold-dark); padding: 8px 18px; 
-            border-radius: 30px; cursor: pointer; font-weight: bold; min-width: 60px;
-        }
+        /* --- 🎬 Cinematic Hero --- */
+        header { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: #000; }
+        .header-video { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transform: scale(1.1); animation: zoomOut 20s infinite alternate; }
+        @keyframes zoomOut { from { transform: scale(1.1); } to { transform: scale(1); } }
+        .header-content { position: relative; z-index: 10; text-align: center; }
+        .header-content h1 { font-family: 'Playfair Display', serif; font-size: 7vw; color: white; margin: 0; letter-spacing: 20px; font-weight: 400; text-transform: uppercase; }
+        .header-content p { color: var(--gold-light); letter-spacing: 12px; font-size: 0.9rem; margin-top: 20px; opacity: 0; animation: fadeInUp 1.5s 0.5s forwards; }
 
-        /* --- Hero --- */
-        header { height: 75vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #000; }
-        .header-video { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-        .header-overlay { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.4) 100%); z-index: 1; }
-        .header-content { position: relative; z-index: 2; text-align: center; }
-        .header-content h1 { font-size: 5.5rem; margin: 0; color: white; letter-spacing: 18px; font-weight: 300; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .header-content p { color: var(--gold-light); letter-spacing: 8px; text-transform: uppercase; font-size: 1rem; margin-top: 20px; }
-
-        /* --- Sections --- */
-        .brand-section { padding: 100px 0; position: relative; }
-        .bg-text { 
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            font-size: 14vw; font-weight: 800; color: rgba(27, 67, 50, 0.035);
-            z-index: 0; pointer-events: none; text-transform: uppercase;
+        /* --- 🖼 Section Styling (Broken Grid) --- */
+        .brand-section { padding: 150px 0; position: relative; }
+        .bg-watermark { 
+            position: absolute; top: 10%; left: 5%; font-family: 'Playfair Display', serif;
+            font-size: 18vw; font-style: italic; color: rgba(27, 67, 50, 0.03); z-index: 0; white-space: nowrap; 
         }
 
-        .brand-header { text-align: center; margin-bottom: 50px; position: relative; z-index: 1; }
-        .brand-header h2 { font-size: 3.5rem; margin: 0; font-weight: 300; font-family: serif; }
-        .brand-header p { font-size: 0.85rem; letter-spacing: 4px; color: var(--gold-dark); text-transform: uppercase; }
+        .section-title-box { padding: 0 8% 80px; position: relative; z-index: 1; }
+        .section-title-box h2 { font-family: 'Playfair Display', serif; font-size: 4rem; margin: 0; font-weight: 400; }
+        .section-title-box p { color: var(--gold-dark); letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; }
 
-        .slider-outer { position: relative; z-index: 1; padding: 0 5%; }
-        .product-slider { display: flex; gap: 35px; overflow-x: auto; padding: 30px 20px 60px; scrollbar-width: none; }
-        .product-slider::-webkit-scrollbar { display: none; }
-
-        /* --- Card --- */
-        .card { 
-            flex: 0 0 340px; background: rgba(255, 255, 255, 0.95); 
-            border-radius: 50px 10px; padding: 35px; transition: 0.6s;
-            box-shadow: 15px 15px 40px rgba(0,0,0,0.03); border: 1px solid white; position: relative;
+        /* --- 📦 Product Cards (New Concept) --- */
+        .product-grid { 
+            display: flex; gap: 50px; overflow-x: auto; padding: 0 8% 100px; 
+            scroll-snap-type: x mandatory; scrollbar-width: none; 
         }
-        .card:hover { transform: translateY(-15px); box-shadow: 25px 25px 60px rgba(197, 160, 89, 0.15); border-color: var(--gold-dark); }
-        .badge { position: absolute; top: 25px; left: -10px; background: var(--p-green); color: var(--gold-light); padding: 7px 15px; font-size: 10px; font-weight: 700; border-radius: 0 20px 20px 0; }
-        .img-box { width: 100%; height: 260px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; }
-        .img-box img { max-width: 85%; max-height: 85%; object-fit: contain; }
-        .card h3 { font-size: 1.05rem; text-align: center; margin-bottom: 15px; font-weight: 500; height: 3rem; overflow: hidden; }
-        .price-box { text-align: center; margin-bottom: 25px; }
-        .sale { font-size: 1.6rem; font-weight: 600; }
-        .old { font-size: 0.9rem; color: #bbb; text-decoration: line-through; margin-left: 8px; }
-        .btn-buy { display: block; width: 100%; padding: 16px; border-radius: 40px; background: var(--p-green); color: var(--gold-light); text-align: center; text-decoration: none; font-size: 0.85rem; font-weight: 700; }
+        .product-grid::-webkit-scrollbar { display: none; }
 
-        .arrow-btn { position: absolute; top: 50%; width: 50px; height: 50px; border-radius: 50%; background: white; border: none; cursor: pointer; z-index: 10; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .arrow-prev { left: 15px; }
-        .arrow-next { right: 15px; }
+        .item-wrapper { flex: 0 0 400px; scroll-snap-align: start; transition: 0.8s; opacity: 0; transform: translateY(50px); }
+        .item-wrapper.visible { opacity: 1; transform: translateY(0); }
 
-        /* --- Footer (Updated) --- */
-        footer { background: #0a1410; color: rgba(255,255,255,0.8); padding: 80px 8% 40px; border-top: 4px solid var(--gold-dark); }
-        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
-        .footer-col h4 { color: #fff; font-size: 1.1rem; margin-bottom: 25px; letter-spacing: 2px; border-left: 3px solid var(--gold-dark); padding-left: 15px; }
-        .footer-col p { line-height: 1.8; font-size: 0.9rem; margin: 10px 0; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 50px; padding-top: 30px; text-align: center; font-size: 0.75rem; letter-spacing: 1px; }
+        .product-card { 
+            background: white; border-radius: 4px; padding: 50px 40px; position: relative; overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.02); transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .product-card::before { 
+            content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.05) 0%, transparent 70%); opacity: 0; transition: 0.5s;
+        }
+        .product-card:hover { transform: translateY(-15px); box-shadow: 0 50px 80px rgba(0,0,0,0.05); }
+        .product-card:hover::before { opacity: 1; }
+
+        .p-count { position: absolute; top: 30px; right: 30px; font-family: 'Playfair Display', serif; font-size: 3rem; color: #f0f0f0; z-index: 0; }
+        .p-img { width: 100%; height: 320px; position: relative; z-index: 1; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; }
+        .p-img img { max-width: 80%; max-height: 80%; object-fit: contain; transition: 0.6s; }
+        .product-card:hover .p-img img { transform: scale(1.1) rotate(2deg); }
+
+        .p-info { position: relative; z-index: 1; text-align: left; }
+        .p-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; margin: 0 0 15px; min-height: 3.5rem; line-height: 1.3; }
+        .p-price { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+        .p-price .sale { font-size: 1.8rem; font-weight: 300; }
+        .p-price .old { color: #bbb; text-decoration: line-through; font-size: 0.9rem; }
+
+        .buy-link { 
+            display: inline-block; padding: 15px 40px; background: var(--p-green); color: var(--gold-light);
+            text-decoration: none; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; border-radius: 0;
+            transition: 0.4s; position: relative;
+        }
+        .buy-link:hover { background: var(--gold-dark); color: white; padding-right: 55px; }
+        .buy-link::after { content: "→"; position: absolute; right: 20px; opacity: 0; transition: 0.3s; }
+        .buy-link:hover::after { opacity: 1; right: 25px; }
+
+        /* --- 🏺 Footer --- */
+        footer { background: #080f0c; color: #fff; padding: 120px 8% 60px; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; }
+        .f-col h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; letter-spacing: 5px; margin-bottom: 30px; }
+        .f-col h4 { font-size: 0.8rem; letter-spacing: 3px; color: var(--gold-dark); margin-bottom: 20px; text-transform: uppercase; }
+        .f-col p { opacity: 0.6; font-size: 0.9rem; line-height: 2; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 900px) {
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .header-content h1 { font-size: 3rem; letter-spacing: 8px; }
+            .f-grid { grid-template-columns: 1fr; }
+            .header-content h1 { font-size: 12vw; letter-spacing: 10px; }
+            .item-wrapper { flex: 0 0 300px; }
         }
     </style>
 </head>
 <body>
 
-<nav class="top-nav">
-    <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
+<nav class="top-nav" id="mainNav">
+    <div class="logo-box"><img src="HJ (5).png" alt="HJ LOGO"></div>
     <div class="nav-links">
-        <a href="index.html" id="nav-home">HOME</a>
-        <a href="about.html" id="nav-about">ABOUT</a>
-        <a href="contact.html" id="nav-contact">CONTACT</a>
+        <a href="#" id="n-home">HOME</a>
+        <a href="#" id="n-about">ABOUT</a>
         <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">EN</button>
     </div>
 </nav>
 
 <header>
     <video autoplay muted loop playsinline class="header-video"><source src="Video.mp4" type="video/mp4"></video>
-    <div class="header-overlay"></div>
     <div class="header-content">
         <h1>HJ COSMETICS</h1>
-        <p id="hero-sub">The Essence of Korean Beauty Selection</p>
+        <p id="h-sub">REDEFINING KOREAN EXCELLENCE</p>
     </div>
 </header>
 
-<main class="wrapper">
+<main>
     <section class="brand-section">
-        <div class="bg-text">FRAIJOUR</div>
-        <div class="brand-header"><p id="f-tag">Pure Botanical</p><h2>Fraijour</h2></div>
-        <div class="slider-outer">
-            <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-fraijour', -1)"><i class="fas fa-chevron-left"></i></button>
-            <div class="product-slider" id="grid-fraijour"></div>
-            <button class="arrow-btn arrow-next" onclick="moveSlider('grid-fraijour', 1)"><i class="fas fa-chevron-right"></i></button>
+        <div class="bg-watermark">Fraijour</div>
+        <div class="section-title-box">
+            <p>Botanical Balance</p>
+            <h2>Fraijour</h2>
         </div>
+        <div class="product-grid" id="grid-fraijour"></div>
     </section>
 
     <section class="brand-section">
-        <div class="bg-text">BATHPA</div>
-        <div class="brand-header"><p id="b-tag">The Body Ritual</p><h2>Bathpa</h2></div>
-        <div class="slider-outer">
-            <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-bathpa', -1)"><i class="fas fa-chevron-left"></i></button>
-            <div class="product-slider" id="grid-bathpa"></div>
-            <button class="arrow-btn arrow-next" onclick="moveSlider('grid-bathpa', 1)"><i class="fas fa-chevron-right"></i></button>
+        <div class="bg-watermark">Bathpa</div>
+        <div class="section-title-box">
+            <p>Aromatic Ritual</p>
+            <h2>Bathpa</h2>
         </div>
-    </section>
-
-    <section class="brand-section">
-        <div class="bg-text">CHAR CHAR</div>
-        <div class="brand-header"><p id="c-tag">Intensive Care</p><h2>Char Char</h2></div>
-        <div class="slider-outer">
-            <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-charchar', -1)"><i class="fas fa-chevron-left"></i></button>
-            <div class="product-slider" id="grid-charchar"></div>
-            <button class="arrow-btn arrow-next" onclick="moveSlider('grid-charchar', 1)"><i class="fas fa-chevron-right"></i></button>
-        </div>
+        <div class="product-grid" id="grid-bathpa"></div>
     </section>
 </main>
 
 <footer>
-    <div class="footer-grid">
-        <div class="footer-col">
-            <h4 style="border:none; padding:0; font-size: 2rem;">HJ COSMETICS</h4>
-            <p id="foot-desc">Premium Korean Skincare Curator. We select only the best for your skin health and beauty journey.</p>
+    <div class="f-grid">
+        <div class="f-col">
+            <h2>HJ COSMETICS</h2>
+            <p id="f-desc">A premium curation of South Korea's most effective beauty secrets. We believe in transparency, purity, and results.</p>
         </div>
-        <div class="footer-col">
-            <h4 id="h-addr">ADDRESS</h4>
-            <p id="addr-text">323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, <br>Chon Buri 20230, Thailand</p>
+        <div class="f-col">
+            <h4 id="f-h-addr">LOCATION</h4>
+            <p id="f-addr">323/11-12 Huayprab Muangthong 5, Moo 3,<br>Bowin, Sriracha, Chon Buri 20230</p>
         </div>
-        <div class="footer-col">
-            <h4 id="h-cont">CONTACT</h4>
-            <p><strong>TEL:</strong> 03-8182-577</p>
-            <p><strong>EMAIL:</strong> thaihjglobal@gmail.com</p>
-            <p><strong>LINE ID:</strong> thaihj11</p>
+        <div class="f-col">
+            <h4 id="f-h-cont">CONTACT</h4>
+            <p>T: 03-8182-577<br>L: @thaihj11<br>E: thaihjglobal@gmail.com</p>
         </div>
     </div>
-    <div class="footer-bottom">&copy; 2024 HJ COSMETICS. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
     const products = [
-        { id: 1, brand: "Fraijour", name: "Wormwood Calming Watery Cream", sale: 250, old: 369, badge: "BEST SELLER", img: "1.jpeg" },
-        { id: 2, brand: "Fraijour", name: "Wormwood Calming Toner", sale: 350, old: 459, badge: "RECOMMENDED", img: "2.jpeg" },
-        { id: 3, brand: "Fraijour", name: "Wormwood Cleansing Water", sale: 250, old: 400, badge: "GENTLE", img: "3.jpeg" },
-        { id: 4, brand: "Fraijour", name: "Wormwood Cleansing Foam", sale: 290, old: 399, badge: "HOT", img: "4.jpeg" },
-        { id: 5, brand: "Fraijour", name: "Heartleaf Blemish Moisture Cream", sale: 310, old: 590, badge: "ACNE", img: "5.jpeg" },
-        { id: 6, brand: "Fraijour", name: "Heartleaf Blemish Toner", sale: 360, old: 529, badge: "CALM", img: "6.jpeg" },
-        { id: 7, brand: "Fraijour", name: "Retin-Collagen 3D Core Cream", sale: 250, old: 459, badge: "LIFT", img: "7.jpeg" },
-        { id: 8, brand: "Fraijour", name: "Retin-Collagen 3D Core Eye Cream", sale: 195, old: 370, badge: "EYE", img: "8.jpeg" },
-        { id: 9, brand: "Fraijour", name: "Retin-Collagen 3D Core Toner", sale: 290, old: 500, badge: "FIRM", img: "9.jpeg" },
-        { id: 10, brand: "Fraijour", name: "Retin-Collagen 3D Core Lip Oil", sale: 125, old: 259, badge: "GLOSS", img: "10.jpeg" },
-        { id: 11, brand: "Fraijour", name: "Heartleaf Airy Fit Sun Cream", sale: 280, old: 450, badge: "UV", img: "11.jpeg" },
-        { id: 12, brand: "Fraijour", name: "Heartleaf Water Fit Sun Screen", sale: 320, old: 590, badge: "SUN", img: "12.jpeg" },
-        { id: 13, brand: "Fraijour", name: "Original Herb Sheet Mask", sale: 17, old: 29, badge: "DAILY", img: "15.jpeg" },
-        { id: 14, brand: "Bathpa", name: "Body Tone Up Cream", sale: 150, old: 529, badge: "BODY", img: "13.jpeg" },
-        { id: 15, brand: "CharChar", name: "Mung Bean Cica Cleansing Foam", sale: 120, old: 199, badge: "DETOX", img: "14.jpeg" }
+        { id: 1, brand: "Fraijour", name: "Wormwood Calming Watery Cream", sale: 250, old: 369, img: "1.jpeg" },
+        { id: 2, brand: "Fraijour", name: "Wormwood Calming Toner", sale: 350, old: 459, img: "2.jpeg" },
+        { id: 3, brand: "Fraijour", name: "Wormwood Cleansing Water", sale: 250, old: 400, img: "3.jpeg" },
+        { id: 4, brand: "Fraijour", name: "Wormwood Cleansing Foam", sale: 290, old: 399, img: "4.jpeg" },
+        { id: 5, brand: "Fraijour", name: "Heartleaf Blemish Moisture Cream", sale: 310, old: 590, img: "5.jpeg" },
+        { id: 14, brand: "Bathpa", name: "Body Tone Up Cream", sale: 150, old: 529, img: "13.jpeg" }
     ];
 
-    const languages = ['th', 'en', 'kr'];
     let currentLang = localStorage.getItem('selectedLang') || 'th';
-
+    const languages = ['th', 'en'];
     const trans = {
-        th: { 
-            home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", hero: "แก่นแท้ความงามจากเกาหลี", shop: "สั่งซื้อสินค้า", btn: "EN", 
-            addrTitle: "ที่อยู่", contTitle: "ติดต่อเรา", 
-            addr: "323/11-12 ห้วยปราบเมืองทอง 5, <br>หมู่ 3, บ่อวิน, ศรีราชา, <br>ชลบุรี 20230, ประเทศไทย"
-        },
-        en: { 
-            home: "HOME", about: "ABOUT", contact: "CONTACT", hero: "The Essence of Korean Beauty", shop: "SHOP NOW", btn: "KR", 
-            addrTitle: "ADDRESS", contTitle: "CONTACT", 
-            addr: "323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, <br>Chon Buri 20230, Thailand"
-        },
-        kr: { 
-            home: "홈", about: "소개", contact: "문의", hero: "한국 뷰티의 정수", shop: "구매하기", btn: "TH", 
-            addrTitle: "주소", contTitle: "고객센터", 
-            addr: "323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, <br>Chon Buri 20230, Thailand"
-        }
+        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", shop: "DISCOVER NOW", next: "EN", sub: "นิยามใหม่ของความงามจากเกาหลี" },
+        en: { home: "HOME", about: "ABOUT", shop: "DISCOVER NOW", next: "TH", sub: "REDEFINING KOREAN EXCELLENCE" }
     };
 
-    function moveSlider(id, dir) { document.getElementById(id).scrollBy({ left: dir * 350, behavior: 'smooth' }); }
-
-    function updateContent() {
-        const l = trans[currentLang];
-        document.getElementById('nav-home').textContent = l.home;
-        document.getElementById('nav-about').textContent = l.about;
-        document.getElementById('nav-contact').textContent = l.contact;
-        document.getElementById('hero-sub').textContent = l.hero;
-        document.getElementById('langBtn').textContent = l.btn;
-        document.getElementById('h-addr').textContent = l.addrTitle;
-        document.getElementById('h-cont').textContent = l.contTitle;
-        document.getElementById('addr-text').innerHTML = l.addr;
-        
-        const containers = { Fraijour: 'grid-fraijour', Bathpa: 'grid-bathpa', CharChar: 'grid-charchar' };
+    function render() {
+        const containers = { Fraijour: 'grid-fraijour', Bathpa: 'grid-bathpa' };
         Object.values(containers).forEach(id => document.getElementById(id).innerHTML = '');
         
-        products.forEach(p => {
-            const html = `<div class="card"><div class="badge">${p.badge}</div><div class="img-box"><img src="${p.img}"></div><h3>${p.name}</h3><div class="price-box"><span class="sale">฿${p.sale}</span><span class="old">฿${p.old}</span></div><a href="product.html?id=${p.id}" class="btn-buy">${l.shop}</a></div>`;
-            document.getElementById(containers[p.brand]).innerHTML += html;
+        products.forEach((p, index) => {
+            const html = `
+                <div class="item-wrapper">
+                    <div class="product-card">
+                        <div class="p-count">0${index + 1}</div>
+                        <div class="p-img"><img src="${p.img}"></div>
+                        <div class="p-info">
+                            <h3>${p.name}</h3>
+                            <div class="p-price">
+                                <span class="sale">฿${p.sale}</span>
+                                <span class="old">฿${p.old}</span>
+                            </div>
+                            <a href="product.html?id=${p.id}" class="buy-link">${trans[currentLang].shop}</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            if(containers[p.brand]) document.getElementById(containers[p.brand]).innerHTML += html;
         });
+
+        // Animation on scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.item-wrapper').forEach(i => observer.observe(i));
     }
 
     function rotateLanguage() {
-        currentLang = languages[(languages.indexOf(currentLang) + 1) % languages.length];
+        currentLang = currentLang === 'th' ? 'en' : 'th';
         localStorage.setItem('selectedLang', currentLang);
-        updateContent();
+        location.reload();
     }
 
-    updateContent();
+    window.onscroll = () => {
+        const nav = document.getElementById('mainNav');
+        if(window.scrollY > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+    };
+
+    document.getElementById('n-home').textContent = trans[currentLang].home;
+    document.getElementById('n-about').textContent = trans[currentLang].about;
+    document.getElementById('langBtn').textContent = trans[currentLang].next;
+    document.getElementById('h-sub').textContent = trans[currentLang].sub;
+
+    render();
 </script>
 </body>
 </html>
