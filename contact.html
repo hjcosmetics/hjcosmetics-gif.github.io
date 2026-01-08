@@ -3,91 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - HJ COSMETICS</title>
+    <title>Contact Us - HJ COSMETICS | The Concierge</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* นำฟอนต์ดั้งเดิมจากหน้า Index กลับมา */
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@200;300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;600&display=swap');
 
         :root { 
             --p-green: #1b4332; 
+            --deep-green: #0d2b1f;
             --gold-dark: #c5a059; 
             --gold-light: #f1d38e; 
-            --bg-creme: #fdfcf9; 
+            --bg-marble: #f4f1ea;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
         body { 
             font-family: 'IBM Plex Sans Thai', sans-serif; 
-            margin: 0; background-color: var(--bg-creme); color: var(--p-green);
-            background: linear-gradient(135deg, #fdfcf9 0%, #f7f1e3 100%);
+            margin: 0; background-color: var(--bg-marble); color: var(--p-green);
+            background-image: url('https://www.transparenttextures.com/patterns/white-marble.png');
+            overflow-x: hidden;
         }
 
-        h1, h2, h4, .hero-title { font-family: 'Nanum Myeongjo', serif; }
+        h1, h2, h3, h4 { font-family: 'Nanum Myeongjo', serif; }
 
-        /* --- ✨ Navigation (ให้เหมือนหน้า Index) --- */
+        /* --- ✨ Navigation (Same as Theme) --- */
         .top-nav { 
-            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); 
-            padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            background: var(--deep-green); 
+            padding: 18px 8%; display: flex; justify-content: space-between; align-items: center; 
+            position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid var(--gold-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .logo-box img { height: 45px; }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--gold-dark); }
+        .logo-box img { height: 50px; filter: brightness(0) invert(1); }
+        .nav-links a { text-decoration: none; color: var(--gold-light); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: white; }
 
-        /* 🌐 ปุ่มเปลี่ยนภาษา 3 ภาษา (เหมือนหน้า Index) */
         .lang-switch { 
-            background: var(--p-green); color: var(--gold-light); 
-            border: 1px solid var(--gold-dark); padding: 8px 18px; 
-            border-radius: 4px; cursor: pointer; font-weight: 700; font-size: 0.75rem;
-            min-width: 120px; transition: 0.3s;
+            background: none; border: 1px solid var(--gold-dark); color: var(--gold-light); 
+            padding: 8px 18px; cursor: pointer; font-weight: 700; font-size: 0.75rem; transition: 0.3s; margin-left: 20px;
         }
-        .lang-switch:hover { background: var(--gold-dark); color: white; }
 
         /* --- Hero --- */
         .hero { height: 40vh; position: relative; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80') center/cover; opacity: 0.5; }
-        .hero-content { position: relative; z-index: 3; text-align: center; color: white; }
-        .hero h1 { font-size: 3.5rem; margin: 0; letter-spacing: 10px; font-weight: 400; text-transform: uppercase; }
+        .hero-bg { position: absolute; width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80') center/cover; opacity: 0.4; filter: grayscale(0.4); }
+        .hero-content { 
+            position: relative; z-index: 3; text-align: center; color: white; 
+            border: 2px solid var(--gold-dark); padding: 40px 80px;
+            background: rgba(13, 43, 31, 0.4); backdrop-filter: blur(8px);
+        }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin: 0; letter-spacing: 12px; font-weight: 700; color: var(--gold-light); text-transform: uppercase; }
 
-        /* --- Contact Content --- */
-        .contact-container { max-width: 1200px; margin: -60px auto 50px; padding: 0 20px; position: relative; z-index: 10; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; }
-
-        .info-card { background: var(--p-green); color: white; padding: 60px; border-radius: 2px; box-shadow: 10px 10px 30px rgba(0,0,0,0.1); }
-        .info-card h2 { color: var(--gold-light); font-size: 2.2rem; margin-bottom: 30px; font-weight: 400; }
-        .info-item { margin-bottom: 25px; }
-        .info-item h4 { color: var(--gold-dark); margin: 0 0 5px; letter-spacing: 2px; font-size: 0.9rem; }
-        .info-item p { margin: 0; font-size: 1rem; opacity: 0.9; line-height: 1.6; }
-
-        .form-card { background: white; padding: 60px; border: 1px solid rgba(197, 160, 89, 0.2); border-radius: 2px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-size: 0.85rem; color: var(--p-green); font-weight: 700; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #eee; background: #fafafa; outline: none; transition: 0.3s; }
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--gold-dark); background: white; }
+        /* --- 🏛️ Contact Container (Marble & Gold Dust Style) --- */
+        .contact-container { max-width: 1300px; margin: -80px auto 80px; padding: 0 20px; position: relative; z-index: 10; }
         
-        .btn-submit { background: var(--p-green); color: var(--gold-light); border: 1px solid var(--gold-dark); padding: 15px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; letter-spacing: 2px; text-transform: uppercase; }
+        /* Background Decoration */
+        .contact-container::after {
+            content: 'HJ'; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-family: 'Nanum Myeongjo'; font-size: 35rem; color: var(--gold-dark); opacity: 0.03; font-weight: 800; pointer-events: none; z-index: -1;
+        }
+
+        .contact-grid { 
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; 
+            background: rgba(255,255,255,0.4); backdrop-filter: blur(15px);
+            padding: 40px; border-radius: 40px; border: 1px solid rgba(197, 160, 89, 0.2);
+            background-image: radial-gradient(var(--gold-dark) 0.6px, transparent 0.6px);
+            background-size: 40px 40px;
+        }
+
+        .info-card { background: var(--deep-green); color: white; padding: 60px; border: 2px solid var(--gold-dark); position: relative; }
+        .info-card h2 { color: var(--gold-light); font-size: 2.5rem; margin-bottom: 40px; }
+        .info-item { margin-bottom: 35px; border-left: 2px solid var(--gold-dark); padding-left: 20px; }
+        .info-item h4 { color: var(--gold-dark); margin: 0 0 10px; letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase; }
+        .info-item p { margin: 0; font-size: 1rem; opacity: 0.9; line-height: 1.8; }
+
+        .form-card { background: white; padding: 60px; border: 1px solid rgba(197, 160, 89, 0.1); }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 10px; font-size: 0.8rem; color: var(--p-green); font-weight: 700; letter-spacing: 1px; }
+        .form-group input, .form-group textarea { 
+            width: 100%; padding: 15px; border: 1px solid #eee; background: #fdfdfd; outline: none; 
+            transition: 0.3s; font-family: inherit; font-size: 1rem;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--gold-dark); background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        
+        .btn-submit { 
+            background: var(--deep-green); color: var(--gold-light); border: 1px solid var(--gold-dark); 
+            padding: 18px; font-weight: 700; cursor: pointer; transition: 0.4s; width: 100%; 
+            letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem;
+        }
         .btn-submit:hover { background: var(--gold-dark); color: white; }
 
         /* --- Map Section --- */
-        .map-section { width: 100%; max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; text-align: center; }
-        .map-wrapper { width: 100%; height: 450px; border: 1px solid var(--gold-dark); overflow: hidden; margin-bottom: 20px; }
-        .map-wrapper iframe { width: 100%; height: 100%; border: none; }
-        .btn-maps { display: inline-block; border: 1px solid var(--p-green); color: var(--p-green); padding: 12px 30px; text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s; }
-        .btn-maps:hover { background: var(--p-green); color: var(--gold-light); }
+        .map-section { width: 100%; max-width: 1300px; margin: 0 auto 100px; padding: 0 20px; text-align: center; }
+        .map-wrapper { 
+            width: 100%; height: 500px; border: 5px solid white; 
+            box-shadow: 0 30px 60px rgba(13, 43, 31, 0.1); overflow: hidden; margin-bottom: 30px; 
+            outline: 1px solid var(--gold-dark);
+        }
+        .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: grayscale(0.2); }
+        .btn-maps { 
+            display: inline-block; background: var(--deep-green); color: var(--gold-light); 
+            padding: 15px 40px; text-decoration: none; font-weight: 700; font-size: 0.8rem; 
+            letter-spacing: 2px; transition: 0.4s; border: 1px solid var(--gold-dark);
+        }
+        .btn-maps:hover { background: white; color: var(--deep-green); }
 
-        /* --- 🏺 Footer (เหมือนหน้า Index) --- */
-        footer { background: #0a1410; color: #fff; padding: 80px 8% 40px; }
-        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; }
-        .f-col h4 { color: var(--gold-light); letter-spacing: 2px; margin-bottom: 25px; font-weight: 700; border-bottom: 1px solid rgba(241, 211, 142, 0.3); display: inline-block; padding-bottom: 5px; font-family: 'IBM Plex Sans Thai'; }
-        .f-col p { opacity: 0.7; line-height: 2; font-size: 0.9rem; margin: 5px 0; }
-        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; opacity: 0.5; }
+        /* --- 🏺 Footer (Consistent Theme) --- */
+        footer { background: var(--deep-green); color: white; padding: 100px 8% 50px; border-top: 5px solid var(--gold-dark); }
+        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 60px; }
+        .f-brand h2 { font-size: 2.2rem; color: var(--gold-light); margin-bottom: 20px; }
+        .f-brand p { opacity: 0.6; line-height: 2; font-size: 0.85rem; }
+        .f-info h4 { color: var(--gold-light); margin-bottom: 25px; letter-spacing: 2px; border-bottom: 1px solid rgba(241, 211, 142, 0.2); display: inline-block; padding-bottom: 5px; }
+        .f-info p { opacity: 0.8; font-size: 0.85rem; margin: 8px 0; }
+        .footer-bottom { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px; }
 
-        @media (max-width: 900px) { 
-            .contact-grid { grid-template-columns: 1fr; } 
-            .nav-links { display: none; }
+        @media (max-width: 1000px) { 
+            .contact-grid { grid-template-columns: 1fr; padding: 20px; } 
+            .info-card { padding: 40px 30px; }
+            .hero-content { padding: 30px 40px; }
         }
     </style>
 </head>
@@ -98,12 +130,15 @@
     <div class="nav-links">
         <a href="index.html" id="nav-home">HOME</a>
         <a href="about.html" id="nav-about">ABOUT</a>
-        <a href="contact.html" id="nav-contact" style="color:var(--gold-dark)">CONTACT</a>
+        <a href="contact.html" id="nav-contact" class="active">CONTACT</a>
         <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">EN / KR</button>
     </div>
 </nav>
 
-<header class="hero"><div class="hero-bg"></div><div class="hero-content"><h1 id="hero-title">Contact Us</h1></div></header>
+<header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content"><h1 id="hero-title">Contact Us</h1></div>
+</header>
 
 <div class="contact-container">
     <div class="contact-grid">
@@ -114,7 +149,7 @@
                 <p id="addr-text">323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
             </div>
             <div class="info-item">
-                <h4 id="h-cont-label">CONTACT</h4>
+                <h4 id="h-cont-label">CONCIERGE</h4>
                 <p><strong>TEL:</strong> 03-8182-577</p>
                 <p><strong>LINE ID:</strong> @thaihj11</p>
                 <p><strong>EMAIL:</strong> thaihjglobal@gmail.com</p>
@@ -124,7 +159,7 @@
             <form>
                 <div class="form-group"><label id="l-name">NAME</label><input type="text" placeholder="..."></div>
                 <div class="form-group"><label id="l-email">EMAIL</label><input type="email" placeholder="..."></div>
-                <div class="form-group"><label id="l-msg">MESSAGE</label><textarea rows="4" placeholder="..."></textarea></div>
+                <div class="form-group"><label id="l-msg">MESSAGE</label><textarea rows="5" placeholder="..."></textarea></div>
                 <button type="submit" class="btn-submit" id="btn-send">Send Message</button>
             </form>
         </div>
@@ -133,29 +168,29 @@
 
 <section class="map-section">
     <div class="map-wrapper">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882.123456789!2d101.0!3d13.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAwJzAwLjAiTiAxMDHCsDAwJzAwLjAiRQ!5e0!3m2!1sen!2sth!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882.358241473634!2d101.0772428!3d13.0128362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAwJzQ2LjIiTiAxMDHCsDA0JzM4LjEiRQ!5e0!3m2!1sth!2sth!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
     </div>
-    <a href="#" target="_blank" class="btn-maps">📍 OPEN IN GOOGLE MAPS</a>
+    <a href="https://maps.app.goo.gl/..." target="_blank" class="btn-maps">📍 OPEN IN GOOGLE MAPS</a>
 </section>
 
 <footer>
     <div class="f-grid">
-        <div class="f-col">
-            <h2 style="font-family: 'Nanum Myeongjo'; font-size: 2rem; color: var(--gold-light); margin-top: 0;">HJ COSMETICS</h2>
+        <div class="f-brand">
+            <h2>HJ COSMETICS</h2>
             <p id="f-desc">Premium Korean Skincare Curator.</p>
         </div>
-        <div class="f-col">
-            <h4 id="f-h-addr">ADDRESS</h4>
+        <div class="f-info">
+            <h4 id="f-h-addr">OUR OFFICE</h4>
             <p id="f-addr">323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, <br>Chon Buri 20230, Thailand</p>
         </div>
-        <div class="f-col">
+        <div class="f-info">
             <h4 id="f-h-cont">CONTACT</h4>
             <p><strong>TEL:</strong> 03-8182-577</p>
             <p><strong>LINE ID:</strong> @thaihj11</p>
             <p><strong>EMAIL:</strong> thaihjglobal@gmail.com</p>
         </div>
     </div>
-    <div class="footer-bottom">© 2024 HJ COSMETICS. ALL RIGHTS RESERVED.</div>
+    <div class="footer-bottom">© 2026 HJ COSMETICS. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
@@ -163,8 +198,8 @@
     let currentLang = localStorage.getItem('selectedLang') || 'th';
 
     const trans = {
-        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", hAddr: "ที่อยู่", hCont: "ข้อมูลติดต่อ", lName: "ชื่อ", lEmail: "อีเมล", lMsg: "ข้อความ", btnSend: "ส่งข้อความ", footDesc: "ผู้นำเข้าผลิตภัณฑ์ความงามพรีเมียมจากเกาหลี", next: "ENGLISH / 한국어" },
-        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", heroTitle: "Contact Us", infoH: "Get In Touch", hAddr: "ADDRESS", hCont: "CONTACT INFO", lName: "NAME", lEmail: "EMAIL", lMsg: "MESSAGE", btnSend: "SEND MESSAGE", footDesc: "Premium Korean Skincare Curator.", next: "ภาษาไทย / 한국어" },
+        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", hAddr: "ที่อยู่", hCont: "ข้อมูลติดต่อ", lName: "ชื่อของคุณ", lEmail: "อีเมล", lMsg: "ข้อความ", btnSend: "ส่งข้อความ", footDesc: "ผู้นำเข้าผลิตภัณฑ์ความงามพรีเมียมจากเกาหลี", next: "ENGLISH / 한국어" },
+        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", heroTitle: "Contact Us", infoH: "Get In Touch", hAddr: "ADDRESS", hCont: "CONTACT INFO", lName: "YOUR NAME", lEmail: "EMAIL", lMsg: "MESSAGE", btnSend: "SEND MESSAGE", footDesc: "Premium Korean Skincare Curator.", next: "ภาษาไทย / 한국어" },
         kr: { home: "홈", about: "정보", contact: "문의하기", heroTitle: "문의하기", infoH: "연락처", hAddr: "주소", hCont: "연락처 정보", lName: "성함", lEmail: "이메일", lMsg: "메시지", btnSend: "보내기", footDesc: "한국 프리미엄 뷰티 큐레이터.", next: "ภาษาไทย / ENGLISH" }
     };
 
