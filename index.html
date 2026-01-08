@@ -22,7 +22,6 @@
             font-family: 'IBM-Plex-Light', sans-serif; 
             margin: 0; background-color: var(--bg-creme); 
             color: var(--p-green); overflow-x: hidden;
-            /* ✨ Luxury Moving Background */
             background: linear-gradient(45deg, #fdfcf9, #f9f5eb, #f1e9d2, #fdfcf9);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -34,95 +33,102 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- Glass Navigation --- */
+        /* --- Navigation --- */
         .top-nav { 
             background: rgba(255, 255, 255, 0.7); 
             backdrop-filter: blur(20px); 
-            padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; 
+            padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; 
             position: sticky; top: 0; z-index: 1000;
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
-        .logo-box img { height: 40px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
-        .nav-links { display: flex; gap: 40px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; }
-        .lang-switch { background: var(--p-green); color: var(--gold-light); border: none; padding: 8px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; }
+        .logo-box img { height: 45px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px; }
 
-        /* --- 🎬 Cinematic Hero (Fixed Header) --- */
+        /* ✨ ปุ่มเปลี่ยนภาษาแบบชัดเจน */
+        .lang-switch { 
+            background: var(--p-green); 
+            color: var(--gold-light); 
+            border: 1px solid var(--gold-dark); 
+            padding: 8px 18px; 
+            border-radius: 30px; 
+            cursor: pointer; 
+            font-weight: bold;
+            font-size: 0.75rem;
+            transition: 0.3s;
+            min-width: 60px;
+        }
+        .lang-switch:hover { background: var(--gold-dark); color: white; }
+
+        /* --- Hero --- */
         header { height: 75vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #000; }
-        .header-video { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.65; }
+        .header-video { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
         .header-overlay { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.4) 100%); z-index: 1; }
         .header-content { position: relative; z-index: 2; text-align: center; }
-        .header-content h1 { font-size: 5.5rem; margin: 0; color: white; letter-spacing: 18px; font-weight: 300; text-shadow: 0 15px 35px rgba(0,0,0,0.3); }
-        .header-content p { color: var(--gold-light); letter-spacing: 10px; text-transform: uppercase; font-size: 1rem; margin-top: 25px; font-weight: 300; }
+        .header-content h1 { font-size: 5.5rem; margin: 0; color: white; letter-spacing: 18px; font-weight: 300; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .header-content p { color: var(--gold-light); letter-spacing: 8px; text-transform: uppercase; font-size: 1rem; margin-top: 20px; }
 
-        /* --- Brand Sections --- */
-        .brand-section { padding: 120px 0; position: relative; }
+        /* --- Sections --- */
+        .brand-section { padding: 100px 0; position: relative; }
         .bg-text { 
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            font-size: 15vw; font-weight: 800; color: rgba(27, 67, 50, 0.035);
-            white-space: nowrap; z-index: 0; pointer-events: none; text-transform: uppercase;
+            font-size: 14vw; font-weight: 800; color: rgba(27, 67, 50, 0.03);
+            z-index: 0; pointer-events: none; text-transform: uppercase;
         }
 
-        .brand-header { text-align: center; margin-bottom: 60px; position: relative; z-index: 1; }
-        .brand-header h2 { font-size: 4rem; margin: 0; font-weight: 300; font-family: serif; }
-        .brand-header p { font-size: 0.9rem; letter-spacing: 5px; color: var(--gold-dark); text-transform: uppercase; }
+        .brand-header { text-align: center; margin-bottom: 50px; position: relative; z-index: 1; }
+        .brand-header h2 { font-size: 3.5rem; margin: 0; font-weight: 300; font-family: serif; }
+        .brand-header p { font-size: 0.85rem; letter-spacing: 4px; color: var(--gold-dark); text-transform: uppercase; }
 
         .slider-outer { position: relative; z-index: 1; padding: 0 5%; }
-        .product-slider { 
-            display: flex; gap: 40px; overflow-x: auto; 
-            padding: 40px 20px; scrollbar-width: none;
-        }
+        .product-slider { display: flex; gap: 35px; overflow-x: auto; padding: 30px 20px 60px; scrollbar-width: none; }
         .product-slider::-webkit-scrollbar { display: none; }
 
-        /* --- Luxury Card --- */
+        /* --- Card --- */
         .card { 
-            flex: 0 0 350px; background: rgba(255, 255, 255, 0.9); 
-            border-radius: 50px 10px 50px 10px; 
-            padding: 40px; transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 20px 20px 60px rgba(0,0,0,0.03), -20px -20px 60px rgba(255,255,255,0.8);
-            border: 1px solid rgba(255,255,255,0.5); position: relative;
+            flex: 0 0 340px; background: rgba(255, 255, 255, 0.95); 
+            border-radius: 50px 10px; padding: 35px; transition: 0.6s;
+            box-shadow: 15px 15px 40px rgba(0,0,0,0.03); border: 1px solid white; position: relative;
         }
-        .card:hover { transform: translateY(-20px); box-shadow: 30px 30px 80px rgba(197, 160, 89, 0.15); border-color: var(--gold-dark); }
+        .card:hover { transform: translateY(-15px); box-shadow: 25px 25px 60px rgba(197, 160, 89, 0.15); border-color: var(--gold-dark); }
         
         .badge { 
-            position: absolute; top: 30px; left: -10px; background: var(--p-green); 
-            color: var(--gold-light); padding: 8px 18px; font-size: 10px; font-weight: 700; 
-            border-radius: 0 20px 20px 0; box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+            position: absolute; top: 25px; left: -10px; background: var(--p-green); 
+            color: var(--gold-light); padding: 7px 15px; font-size: 10px; font-weight: 700; 
+            border-radius: 0 20px 20px 0;
         }
         
-        .img-box { width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; margin-bottom: 30px; transition: 0.5s; }
-        .img-box img { max-width: 85%; max-height: 85%; object-fit: contain; }
-        .card:hover .img-box { transform: scale(1.08); }
+        .img-box { width: 100%; height: 260px; display: flex; align-items: center; justify-content: center; margin-bottom: 25px; }
+        .img-box img { max-width: 85%; max-height: 85%; object-fit: contain; transition: 0.5s; }
+        .card:hover .img-box img { transform: scale(1.05); }
         
-        .card h3 { font-size: 1.1rem; text-align: center; margin-bottom: 15px; font-weight: 500; height: 3.2rem; overflow: hidden; color: var(--p-green); }
-        .price-box { text-align: center; margin-bottom: 30px; }
-        .sale { font-size: 1.8rem; font-weight: 400; color: var(--p-green); }
-        .old { font-size: 1rem; color: #bbb; text-decoration: line-through; margin-left: 10px; }
+        .card h3 { font-size: 1.05rem; text-align: center; margin-bottom: 15px; font-weight: 500; height: 3rem; overflow: hidden; }
+        .price-box { text-align: center; margin-bottom: 25px; }
+        .sale { font-size: 1.6rem; font-weight: 600; }
+        .old { font-size: 0.9rem; color: #bbb; text-decoration: line-through; margin-left: 8px; }
         
         .btn-buy { 
-            display: block; width: 100%; padding: 18px; border-radius: 40px;
+            display: block; width: 100%; padding: 16px; border-radius: 40px;
             background: var(--p-green); color: var(--gold-light); text-align: center;
-            text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px;
-            transition: 0.4s; border: 1.5px solid var(--p-green);
+            text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 1px;
+            transition: 0.4s;
         }
-        .btn-buy:hover { background: transparent; color: var(--p-green); }
+        .btn-buy:hover { background: var(--gold-dark); color: white; }
 
         .arrow-btn {
-            position: absolute; top: 50%; width: 55px; height: 55px; border-radius: 50%;
+            position: absolute; top: 50%; width: 50px; height: 50px; border-radius: 50%;
             background: white; border: none; cursor: pointer; z-index: 10;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08); font-size: 1rem; transition: 0.3s; color: var(--p-green);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); color: var(--p-green);
         }
-        .arrow-btn:hover { background: var(--p-green); color: white; transform: scale(1.1); }
-        .arrow-prev { left: 20px; }
-        .arrow-next { right: 20px; }
+        .arrow-prev { left: 15px; }
+        .arrow-next { right: 15px; }
 
-        footer { background: #0a1410; color: white; padding: 120px 8% 60px; border-top: 1px solid var(--gold-dark); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 100px; }
+        footer { background: #0a1410; color: white; padding: 100px 8% 50px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
 
         @media (max-width: 900px) {
-            .header-content h1 { font-size: 2.8rem; letter-spacing: 8px; }
+            .header-content h1 { font-size: 3rem; letter-spacing: 8px; }
             .card { flex: 0 0 300px; }
-            .bg-text { display: none; }
         }
     </style>
 </head>
@@ -131,9 +137,9 @@
 <nav class="top-nav">
     <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
     <div class="nav-links">
-        <a href="index.html">HOME</a>
-        <a href="about.html">ABOUT</a>
-        <a href="contact.html">CONTACT</a>
+        <a href="index.html" id="nav-home">HOME</a>
+        <a href="about.html" id="nav-about">ABOUT</a>
+        <a href="contact.html" id="nav-contact">CONTACT</a>
         <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">EN</button>
     </div>
 </nav>
@@ -150,7 +156,7 @@
 <main class="wrapper">
     <section class="brand-section">
         <div class="bg-text">FRAIJOUR</div>
-        <div class="brand-header"><p>Pure Botanical</p><h2>Fraijour</h2></div>
+        <div class="brand-header"><p id="f-tag">Pure Botanical</p><h2>Fraijour</h2></div>
         <div class="slider-outer">
             <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-fraijour', -1)"><i class="fas fa-chevron-left"></i></button>
             <div class="product-slider" id="grid-fraijour"></div>
@@ -160,7 +166,7 @@
 
     <section class="brand-section">
         <div class="bg-text">BATHPA</div>
-        <div class="brand-header"><p>The Body Ritual</p><h2>Bathpa</h2></div>
+        <div class="brand-header"><p id="b-tag">The Body Ritual</p><h2>Bathpa</h2></div>
         <div class="slider-outer">
             <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-bathpa', -1)"><i class="fas fa-chevron-left"></i></button>
             <div class="product-slider" id="grid-bathpa"></div>
@@ -170,7 +176,7 @@
 
     <section class="brand-section">
         <div class="bg-text">CHAR CHAR</div>
-        <div class="brand-header"><p>Intensive Care</p><h2>Char Char</h2></div>
+        <div class="brand-header"><p id="c-tag">Intensive Care</p><h2>Char Char</h2></div>
         <div class="slider-outer">
             <button class="arrow-btn arrow-prev" onclick="moveSlider('grid-charchar', -1)"><i class="fas fa-chevron-left"></i></button>
             <div class="product-slider" id="grid-charchar"></div>
@@ -181,18 +187,9 @@
 
 <footer>
     <div class="footer-grid">
-        <div class="footer-col">
-            <h2 style="font-weight: 300; letter-spacing: 10px; margin-bottom: 20px;">HJ COSMETICS</h2>
-            <p style="opacity: 0.6; line-height: 2;">Premium Korean Beauty Selection. Curated with expertise for your ultimate skin health.</p>
-        </div>
-        <div class="footer-col">
-            <h4 style="color: var(--gold-light);">VISIT US</h4>
-            <p>Sriracha, Chon Buri, Thailand</p>
-        </div>
-        <div class="footer-col">
-            <h4 style="color: var(--gold-light);">CONTACT</h4>
-            <p>Line: @thaihj11<br>info@hjcosmetics.com</p>
-        </div>
+        <div class="footer-col"><h2>HJ COSMETICS</h2><p>Premium Korean Beauty Selection.</p></div>
+        <div class="footer-col"><h4 id="h-addr">ADDRESS</h4><p>Bowin, Chon Buri, Thailand</p></div>
+        <div class="footer-col"><h4 id="h-cont">CONTACT</h4><p>Line: @thaihj11</p></div>
     </div>
 </footer>
 
@@ -215,13 +212,27 @@
         { id: 15, brand: "CharChar", name: "Mung Bean Cica Cleansing Foam", sale: 120, old: 199, badge: "DETOX", img: "14.jpeg" }
     ];
 
+    const languages = ['th', 'en', 'kr'];
     let currentLang = localStorage.getItem('selectedLang') || 'th';
 
-    function moveSlider(id, dir) {
-        document.getElementById(id).scrollBy({ left: dir * 380, behavior: 'smooth' });
-    }
+    const trans = {
+        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", hero: "แก่นแท้ความงามจากเกาหลี", shop: "สั่งซื้อสินค้า", btn: "EN", addr: "ที่อยู่", cont: "ติดต่อ" },
+        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", hero: "The Essence of Korean Beauty", shop: "SHOP NOW", btn: "KR", addr: "ADDRESS", cont: "CONTACT" },
+        kr: { home: "홈", about: "소개", contact: "문의", hero: "한국 뷰티의 정수", shop: "구매하기", btn: "TH", addr: "주소", cont: "고객센터" }
+    };
 
-    function renderProducts() {
+    function moveSlider(id, dir) { document.getElementById(id).scrollBy({ left: dir * 350, behavior: 'smooth' }); }
+
+    function updateContent() {
+        const l = trans[currentLang];
+        document.getElementById('nav-home').textContent = l.home;
+        document.getElementById('nav-about').textContent = l.about;
+        document.getElementById('nav-contact').textContent = l.contact;
+        document.getElementById('hero-sub').textContent = l.hero;
+        document.getElementById('langBtn').textContent = l.btn;
+        document.getElementById('h-addr').textContent = l.addr;
+        document.getElementById('h-cont').textContent = l.cont;
+        
         const containers = { Fraijour: 'grid-fraijour', Bathpa: 'grid-bathpa', CharChar: 'grid-charchar' };
         Object.values(containers).forEach(id => document.getElementById(id).innerHTML = '');
         
@@ -231,24 +242,21 @@
                     <div class="badge">${p.badge}</div>
                     <div class="img-box"><img src="${p.img}"></div>
                     <h3>${p.name}</h3>
-                    <div class="price-box">
-                        <span class="sale">฿${p.sale}</span>
-                        <span class="old">฿${p.old}</span>
-                    </div>
-                    <a href="product.html?id=${p.id}" class="btn-buy">${currentLang === 'th' ? 'สั่งซื้อสินค้า' : 'SHOP NOW'}</a>
-                </div>
-            `;
+                    <div class="price-box"><span class="sale">฿${p.sale}</span><span class="old">฿${p.old}</span></div>
+                    <a href="product.html?id=${p.id}" class="btn-buy">${l.shop}</a>
+                </div>`;
             document.getElementById(containers[p.brand]).innerHTML += html;
         });
     }
 
     function rotateLanguage() {
-        currentLang = currentLang === 'th' ? 'en' : 'th';
+        const idx = (languages.indexOf(currentLang) + 1) % languages.length;
+        currentLang = languages[idx];
         localStorage.setItem('selectedLang', currentLang);
-        location.reload();
+        updateContent();
     }
 
-    renderProducts();
+    updateContent();
 </script>
 </body>
 </html>
