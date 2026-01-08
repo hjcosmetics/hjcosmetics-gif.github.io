@@ -87,7 +87,7 @@
         .btn-buy { border: 1.5px solid var(--p-green); color: var(--p-green); text-align: center; text-decoration: none; padding: 12px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; cursor: pointer; border-radius: 50px; }
         .btn-buy:hover { background: var(--p-green); color: white; }
 
-        /* --- Footer (ส่วนเดิม) --- */
+        /* --- Footer --- */
         footer { background: #0a1410; color: rgba(255,255,255,0.8); padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); margin-top: 100px; }
         .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 60px; border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 50px; }
         .footer-col h4 { font-size: 1.6rem; color: var(--gold-light); margin-bottom: 25px; letter-spacing: 2px; font-weight: 400; text-transform: uppercase; }
@@ -172,29 +172,29 @@
     let langIndex = languages.indexOf(localStorage.getItem('selectedLang')) || 0;
     if (langIndex === -1) langIndex = 0;
 
-    // --- ✨ สินค้าครบ 15 รายการ ---
+    // --- ✨ รายการสินค้า ---
     const products = [
-        { brand: "Fraijour", name: "Original Herb Wormwood Calming Watery Cream", sale: 250, old: 369, badge: "BEST SELLER", img: "1.jpeg" },
-        { brand: "Fraijour", name: "Original Herb Wormwood Calming Toner", sale: 350, old: 459, badge: "RECOMMENDED", img: "2.jpeg" },
-        { brand: "Fraijour", name: "Original Herb Wormwood Cleansing Water", sale: 250, old: 400, badge: "GENTLE", img: "3.jpeg" },
-        { brand: "Fraijour", name: "Original Herb Wormwood Cleansing Foam", sale: 290, old: 399, badge: "NEW", img: "4.jpeg" },
-        { brand: "Fraijour", name: "Heartleaf Blemish Moisture Cream", sale: 310, old: 590, badge: "EXCLUSIVE", img: "5.jpeg" },
-        { brand: "Fraijour", name: "Heartleaf Blemish Toner", sale: 360, old: 529, badge: "SOOTHING", img: "https://via.placeholder.com/300" },
-        { brand: "Fraijour", name: "Retin-Collagen 3D Core Cream", sale: 250, old: 459, badge: "3D CORE", img: "https://via.placeholder.com/300" },
-        { brand: "Fraijour", name: "Retin-Collagen 3D Core Eye Cream", sale: 195, old: 370, badge: "LIFTING", img: "https://via.placeholder.com/300" },
-        { brand: "Fraijour", name: "Retin-Collagen 3D Core Toner", sale: 290, old: 500, badge: "FIRMING", img: "https://via.placeholder.com/300" },
-        { brand: "Fraijour", name: "Retin-Collagen 3D Core Lip Oil", sale: 125, old: 259, badge: "GLOWY", img: "https://via.placeholder.com/300" },
-        { brand: "Fraijour", name: "Heartleaf Airy Fit Sun Cream 50g", sale: 280, old: 450, badge: "UV PROTECT", img: "Heartleaf Airy Fit Sun Cream 50g ผลิตภัณฑ์.png" },
-        { brand: "Fraijour", name: "Heartleaf Water Fit Sun Screen", sale: 320, old: 590, badge: "WATER FIT", img: "https://via.placeholder.com/300" },
-        { brand: "Fraijour", name: "Original Herb Wormwood Sheet Mask", sale: 17, old: 29, badge: "MASK", img: "https://via.placeholder.com/300" },
-        { brand: "Bathpa", name: "Bathpa Body Tone Up Cream", sale: 150, old: 529, badge: "BRIGHT", img: "13.jpeg" },
-        { brand: "CharChar", name: "Mung Bean Cica Cleansing Foam", sale: 120, old: 199, badge: "CICA CARE", img: "https://via.placeholder.com/300" }
+        { id: 1, brand: "Fraijour", name: "Original Herb Wormwood Calming Watery Cream", sale: 250, old: 369, badge: "BEST SELLER", img: "1.jpeg" },
+        { id: 2, brand: "Fraijour", name: "Original Herb Wormwood Calming Toner", sale: 350, old: 459, badge: "RECOMMENDED", img: "2.jpeg" },
+        { id: 3, brand: "Fraijour", name: "Original Herb Wormwood Cleansing Water", sale: 250, old: 400, badge: "GENTLE", img: "3.jpeg" },
+        { id: 4, brand: "Fraijour", name: "Original Herb Wormwood Cleansing Foam", sale: 290, old: 399, badge: "NEW", img: "4.jpeg" },
+        { id: 5, brand: "Fraijour", name: "Heartleaf Blemish Moisture Cream", sale: 310, old: 590, badge: "EXCLUSIVE", img: "5.jpeg" },
+        { id: 6, brand: "Fraijour", name: "Heartleaf Blemish Toner", sale: 360, old: 529, badge: "SOOTHING", img: "https://via.placeholder.com/300" },
+        { id: 7, brand: "Fraijour", name: "Retin-Collagen 3D Core Cream", sale: 250, old: 459, badge: "3D CORE", img: "https://via.placeholder.com/300" },
+        { id: 8, brand: "Fraijour", name: "Retin-Collagen 3D Core Eye Cream", sale: 195, old: 370, badge: "LIFTING", img: "https://via.placeholder.com/300" },
+        { id: 9, brand: "Fraijour", name: "Retin-Collagen 3D Core Toner", sale: 290, old: 500, badge: "FIRMING", img: "https://via.placeholder.com/300" },
+        { id: 10, brand: "Fraijour", name: "Retin-Collagen 3D Core Lip Oil", sale: 125, old: 259, badge: "GLOWY", img: "https://via.placeholder.com/300" },
+        { id: 11, brand: "Fraijour", name: "Heartleaf Airy Fit Sun Cream 50g", sale: 280, old: 450, badge: "UV PROTECT", img: "Heartleaf Airy Fit Sun Cream 50g ผลิตภัณฑ์.png" },
+        { id: 12, brand: "Fraijour", name: "Heartleaf Water Fit Sun Screen", sale: 320, old: 590, badge: "WATER FIT", img: "https://via.placeholder.com/300" },
+        { id: 13, brand: "Fraijour", name: "Original Herb Wormwood Sheet Mask", sale: 17, old: 29, badge: "MASK", img: "https://via.placeholder.com/300" },
+        { id: 14, brand: "Bathpa", name: "Bathpa Body Tone Up Cream", sale: 150, old: 529, badge: "BRIGHT", img: "13.jpeg" },
+        { id: 15, brand: "CharChar", name: "Mung Bean Cica Cleansing Foam", sale: 120, old: 199, badge: "CICA CARE", img: "https://via.placeholder.com/300" }
     ];
 
     const trans = {
         th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroSub: "แก่นแท้ของการคัดสรรสกินแคร์จากเกาหลี", fTag: "พลังแห่งการบำบัดจากสมุนไพร", bTag: "สุนทรียภาพแห่งการดูแลผิวกาย", cTag: "การฟื้นบำรุงผิวและเส้นผมอย่างล้ำลึก", shop: "เลือกซื้อสินค้า", footDesc: "เราคัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ", hAddr: "ที่อยู่บริษัท", hCont: "ติดต่อเรา", btn: "EN" },
         en: { home: "HOME", about: "ABOUT US", contact: "CONTACT US", heroSub: "The Essence of Korean Beauty Selection", fTag: "Botanical Therapy", bTag: "Luxury Body Ritual", cTag: "Intensive Hair & Skin Solution", shop: "SHOP NOW", footDesc: "Premium Korean Skincare Curator.", hAddr: "ADDRESS", hCont: "CONTACT", btn: "KR" },
-        kr: { home: "홈", about: "회사소개", contact: "문의하기", heroSub: "한국 뷰티 셀렉션의 정수", fTag: "보태니컬 테라피", bTag: "럭셔리 바디 리추얼", cTag: "헤어 & ส킨 집중 솔루션", shop: "구매하기", footDesc: "자연의 힘으로 완성하는 최상의 ส킨케어", hAddr: "주소", hCont: "고객센터", btn: "TH" }
+        kr: { home: "홈", about: "회사소개", contact: "문의하기", heroSub: "한국 뷰티 셀렉션의 정수", fTag: "보태니컬 테라피", bTag: "럭셔리 바디 리추얼", cTag: "헤อ & สกิน 집중 솔루션", shop: "구매하기", footDesc: "자연의 힘으로 완성하는 최상의 스킨케어", hAddr: "주소", hCont: "고객센터", btn: "TH" }
     };
 
     function updateContent() {
@@ -223,6 +223,7 @@
         const grids = { Fraijour: document.getElementById('grid-fraijour'), Bathpa: document.getElementById('grid-bathpa'), CharChar: document.getElementById('grid-charchar') };
         Object.values(grids).forEach(g => { if(g) g.innerHTML = ""; });
         products.forEach(p => {
+            // แก้ไขตรงลิงก์ปุ่มสั่งซื้อให้ไปที่ productX.html
             const html = `
                 <div class="card">
                     <div class="badge">${p.badge}</div>
@@ -232,7 +233,7 @@
                         <span class="sale">฿${p.sale}</span>
                         <span class="old">฿${p.old}</span>
                     </div>
-                    <a href="#" class="btn-buy">${trans[languages[langIndex]].shop}</a>
+                    <a href="product${p.id}.html" class="btn-buy">${trans[languages[langIndex]].shop}</a>
                 </div>`;
             if(grids[p.brand]) grids[p.brand].innerHTML += html;
         });
