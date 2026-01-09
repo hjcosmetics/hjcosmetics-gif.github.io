@@ -30,7 +30,6 @@
         h1, h2, h3, h4 { font-family: var(--font-luxury); transition: 0.3s; }
         .use-ibm-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; font-weight: 600 !important; }
 
-        /* --- ✨ Navigation --- */
         .top-nav { 
             background: var(--deep-green); 
             padding: 18px 8%; display: flex; justify-content: space-between; align-items: center; 
@@ -48,7 +47,6 @@
             margin-left: 25px; transition: 0.3s; letter-spacing: 1px; min-width: 60px; text-align: center;
         }
 
-        /* --- Hero --- */
         .hero { height: 50vh; position: relative; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1556228578-0f192f4709b3?q=80') center/cover; opacity: 0.4; filter: grayscale(0.5); }
         .hero-content { 
@@ -59,7 +57,6 @@
         .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 0; letter-spacing: 8px; color: var(--gold-light); }
         .hero p { font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; margin-top: 15px; opacity: 0.9; }
 
-        /* --- 🏛️ Main Container with Pattern --- */
         .main-container { 
             padding: 80px 8%; 
             max-width: 1400px; 
@@ -81,9 +78,8 @@
         .story-img img { width: 100%; max-width: 300px; background: white; padding: 30px; border: 1px solid rgba(197, 160, 89, 0.1); }
         .story-text { flex: 1.5; }
         .story-text h2 { font-size: 3rem; color: var(--deep-green); margin-bottom: 25px; border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; }
-        .story-text p { font-size: 1.1rem; color: var(--deep-green); line-height: 1.8; font-weight: 300; }
+        .story-text p { font-size: 1.1rem; color: var(--deep-green); line-height: 1.8; font-weight: 300; text-align: left; }
 
-        /* --- Brand Cards --- */
         .brand-grid { 
             display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 60px; 
             background: white; border: 1px solid rgba(197, 160, 89, 0.2); overflow: hidden;
@@ -105,7 +101,15 @@
         
         .brand-content span { color: var(--gold-light); letter-spacing: 3px; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 15px; display: block; }
         .brand-content h3 { font-size: 3rem; margin: 0 0 20px; color: var(--gold-light); }
-        .brand-content p { line-height: 1.8; color: rgba(255,255,255,0.75); font-size: 0.95rem; margin-bottom: 35px; font-weight: 300; text-align: justify; }
+        .brand-content p { 
+            line-height: 1.8; 
+            color: rgba(255,255,255,0.75); 
+            font-size: 0.95rem; 
+            margin-bottom: 35px; 
+            font-weight: 300; 
+            text-align: left; /* แก้ไขช่องไฟให้สวยงาม */
+            word-break: keep-all; 
+        }
         
         .btn-visit { 
             align-self: flex-start; text-decoration: none; color: var(--gold-light); 
@@ -114,7 +118,6 @@
         }
         .btn-visit:hover { background: var(--gold-dark); color: white; }
 
-        /* --- Footer --- */
         footer { background: var(--deep-green); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); margin-top: 50px; }
         .f-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
         .f-brand h2 { font-size: 2.2rem; color: var(--gold-light); margin-bottom: 20px; }
@@ -128,7 +131,6 @@
             .f-container { grid-template-columns: 1fr; gap: 40px; } 
             .brand-grid { grid-template-columns: 1fr; }
             .story-flex { flex-direction: column; text-align: center; }
-            .brand-image { height: 350px; }
         }
     </style>
 </head>
@@ -223,10 +225,10 @@
             home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", 
             heroTitle: "มรดกแห่งความงาม", heroSub: "แก่นแท้ของการคัดสรรสกินแคร์จากเกาหลี", 
             hjTitle: "เส้นทางของ HJ", 
-            hjDesc: "เราเริ่มต้นด้วยเจตนารมณ์ที่เรียบง่าย คือการนำเข้าสกินแคร์คุณภาพสูงจากเกาหลีเพื่อตอบโจทย์ผิวชาวไทยโดยเฉพาะ HJ COSMETICS เชื่อมั่นในการผสานพลังของธรรมชาติและนวัตกรรมทางวิทยาศาสตร์ที่ทันสมัย เราไม่ได้คัดเลือกเพียงแค่ผลิตภัณฑ์ที่โด่งดัง แต่เราเลือกสิ่งที่จะช่วยฟื้นฟูผิวของคุณได้อย่างลึกซึ้งและยั่งยืน เพื่อให้ลูกค้าได้รับประสบการณ์ความงามที่แท้จริงในระดับพรีเมียม", 
-            fDesc: "แบรนด์ที่เชี่ยวชาญด้าน Botanical Therapy โดยเน้นการใช้สารสกัดจากพืชพรรณธรรมชาติ โดยเฉพาะ 'Wormwood' (จิงจูฉ่าย) ที่ได้รับการวิจัยมาอย่างยาวนานว่าช่วยปลอบประโลมผิวบอบบางและลดการระคายเคืองได้อย่างดีเยี่ยม Fraijour มุ่งเน้นการฟื้นฟูความแข็งแรงของปราการผิวจากภายในสู่ภายนอก เหมาะสำหรับผู้ที่แสวงหาผลิตภัณฑ์ที่อ่อนโยนแต่เปี่ยมไปด้วยประสิทธิภาพในการดูแลผิวในทุกวัน", 
+            hjDesc: "เราเริ่มต้นด้วยเจตนารมณ์ที่เรียบง่าย คือการนำเข้าสกินแคร์คุณภาพสูงจากเกาหลีเพื่อตอบโจทย์ผิวชาวไทยโดยเฉพาะ HJ COSMETICS เชื่อมั่นในการผสานพลังของธรรมชาติและนวัตกรรมทางวิทยาศาสตร์ที่ทันสมัย เราคัดสรรสิ่งที่จะช่วยฟื้นฟูผิวของคุณได้อย่างลึกซึ้งและยั่งยืน เพื่อมอบประสบการณ์ความงามที่แท้จริงในระดับพรีเมียม", 
+            fDesc: "แบรนด์ที่เชี่ยวชาญด้าน Botanical Therapy โดยเน้นการใช้สารสกัดจากพืชพรรณธรรมชาติ โดยเฉพาะ 'Wormwood' ที่ได้รับการวิจัยมาอย่างยาวนานว่าช่วยปลอบประโลมผิวบอบบางและลดการระคายเคืองได้อย่างดีเยี่ยม Fraijour มุ่งเน้นการฟื้นฟูความแข็งแรงของปราการผิวจากภายในสู่ภายนอก เหมาะสำหรับผู้ที่แสวงหาผลิตภัณฑ์ที่อ่อนโยนแต่เปี่ยมไปด้วยประสิทธิภาพ", 
             bDesc: "เปลี่ยนการดูแลผิวกายในทุกวันให้กลายเป็นพิธีกรรมแห่งความสุข Bathpa นำเสนอผลิตภัณฑ์ดูแลผิวกายระดับสปาพรีเมียมที่โดดเด่นด้วยกลิ่นหอมอันเป็นเอกลักษณ์และเนื้อสัมผัสที่หรูหรา ช่วยปลอบประโลมผิวที่เหนื่อยล้าจากมลภาวะและเติมความชุ่มชื้นให้ผิวกลับมาเนียนนุ่มกระจ่างใส พร้อมความหอมที่ติดทนยาวนานที่จะสร้างความมั่นใจให้คุณตลอดทั้งวัน", 
-            cDesc: "ผู้นำด้านผลิตภัณฑ์ดูแลเส้นผมและหนังศีรษะสูตรเข้มข้น (Intensive Care) ที่ผสานคุณค่าจาก Argan Oil และสารสกัดพรีเมียม เพื่อแก้ปัญหาผมแห้งเสียและหนังศีรษะอย่างตรงจุด Char Char มอบผลลัพธ์ดุจทำทรีทเมนท์ที่ซาลอนชั้นนำ ให้เส้นผมของคุณนุ่มสลวย มีน้ำหนัก และสุขภาพดีจากรากจรดปลาย พร้อมสูตรเฉพาะที่พัฒนาขึ้นเพื่อการดูแลอย่างล้ำลึกโดยเฉพาะ", 
+            cDesc: "ผู้นำด้านผลิตภัณฑ์ดูแลเส้นผมและหนังศีรษะสูตรเข้มข้นที่ผสานคุณค่าจาก Argan Oil และสารสกัดพรีเมียม เพื่อแก้ปัญหาผมแห้งเสียและหนังศีรษะอย่างตรงจุด Char Char มอบผลลัพธ์ดุจทำทรีทเมนท์ที่ซาลอนชั้นนำ ให้เส้นผมของคุณนุ่มสลวย มีน้ำหนัก และสุขภาพดีจากรากจรดปลาย พร้อมสูตรเฉพาะที่พัฒนาขึ้นเพื่อการดูแลอย่างล้ำลึกโดยเฉพาะ", 
             footDesc: "เราคัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณอย่างยั่งยืน", 
             hAddr: "สำนักงานของเรา", hCont: "ฝ่ายบริการ", visit: "เข้าชมเว็บไซต์", label: "TH" 
         },
@@ -234,10 +236,10 @@
             home: "HOME", about: "ABOUT", contact: "CONTACT", 
             heroTitle: "Our Heritage", heroSub: "The Essence of Korean Beauty Selection", 
             hjTitle: "The HJ Story", 
-            hjDesc: "Born from a simple vision to curate excellence, HJ COSMETICS delivers premium South Korean innovation directly to you. We believe in the profound synergy of natural purity and scientific advancement. Our selection process is rigorous, focusing on long-term skin health and sustainable results, ensuring that every product we bring into your routine is a masterpiece of modern dermatology.", 
-            fDesc: "Specializing in Botanical Therapy, Fraijour harnesses the healing power of natural herbs, most notably Wormwood. This time-honored ingredient is meticulously extracted to provide deep calming effects for sensitive skin and restore the natural balance. Fraijour is dedicated to strengthening the skin's barrier, offering a gentle yet powerful daily solution for resilient, healthy, and glowing skin.", 
-            bDesc: "Elevate your daily bath ritual into a premium spa escape. Bathpa offers sophisticated body care solutions that combine exquisite fragrances with high-performance ingredients. Our formulas are designed to deeply hydrate, brighten, and soothe the skin, leaving a lasting trail of luxury scent. It is more than just skin care; it is an urban spa experience designed to rejuvenate both body and mind.", 
-            cDesc: "A pioneer in professional-grade hair and scalp solutions. Char Char focuses on intensive treatment using concentrated extracts like premium Argan oil and silk proteins. Designed to repair severely damaged hair and revitalize the scalp, our products deliver salon-quality results at home. Experience the transformation of your hair into a silky, voluminous, and healthy state from the very first use.", 
+            hjDesc: "Born from a simple vision to curate excellence, HJ COSMETICS delivers premium South Korean innovation directly to you. We believe in the profound synergy of natural purity and scientific advancement. Our selection process is rigorous, focusing on long-term skin health and sustainable results.", 
+            fDesc: "Specializing in Botanical Therapy, Fraijour harnesses the healing power of natural herbs, most notably Wormwood. This ingredient is meticulously extracted to provide deep calming effects for sensitive skin and restore natural balance. Fraijour is dedicated to strengthening the skin's barrier for resilient and glowing skin.", 
+            bDesc: "Elevate your daily bath ritual into a premium spa escape. Bathpa offers sophisticated body care solutions that combine exquisite fragrances with high-performance ingredients. Our formulas are designed to deeply hydrate, brighten, and soothe the skin, leaving a lasting trail of luxury scent.", 
+            cDesc: "A pioneer in professional-grade hair and scalp solutions. Char Char focuses on intensive treatment using concentrated extracts like premium Argan oil and silk proteins. Designed to repair damaged hair and revitalize the scalp, our products deliver salon-quality results at home.", 
             footDesc: "Premium Korean beauty curator delivering excellence and sustainable results to your skin.", 
             hAddr: "OUR OFFICE", hCont: "CONCIERGE", visit: "OFFICIAL SITE", label: "EN" 
         },
@@ -245,11 +247,11 @@
             home: "홈", about: "회사소개", contact: "문의", 
             heroTitle: "아름다운 유산", heroSub: "한국 뷰티 셀렉션의 정수", 
             hjTitle: "HJ 코스메틱 이야기", 
-            hjDesc: "최고만을 선별하겠다는 단순한 비전에서 시작되었습니다. HJ COSMETICS는 진심을 담아 당신의 피부를 돌보는 제품만을 선보입니다.", 
-            fDesc: "자연의 치유력을 경험해 보세요. 프라이주어는 당신의 피부 본연의 건강함을 되찾아줍니다. 쑥 추출물을 주성분으로 하여 민감한 피부를 진정시키고 피부 장벽을 강화하는 데 주력하는 보태니컬 테라피 브랜드입니다.", 
-            bDesc: "일상의 루틴을 프리미엄 휴식으로 바꿔보세요. 배스파가 선사하는 고품격 리추얼. 감각적인 향기와 고급스러운 텍스처로 지친 몸과 마음을 치유하고 피부에 깊은 수분을 공급합니다.", 
-            cDesc: "고농축 추출물을 통한 집중 케어, 피부와 헤어 건강을 위한 최적의 솔루션을 제공합니다. 아르간 오일과 엄선된 성분으로 손상된 모발을 회복시키고 두피 건강을 책임지는 전문 헤어 케어 브랜드입니다.", 
-            footDesc: "탁월함과 지속 가능한 결과를 선사하는 프리미엄 한국 뷰티 큐레이터.", 
+            hjDesc: "최고만을 선별하겠다는 단순한 비전에서 시작되었습니다 HJ COSMETICS는 진심을 담아 당신의 피부를 돌보는 제품만을 선보입니다", 
+            fDesc: "자연의 치유력을 경험해 보세요 프라이주어는 당신의 피부 본연의 건강함을 되찾아줍니다 쑥 추출물을 주성분으로 하여 민감한 피부를 진정시키고 피부 장벽을 강화하는 데 주력하는 보태니컬 테라피 브랜드입니다", 
+            bDesc: "일상의 루틴을 프리미엄 휴식으로 바꿔보세요 배스파가 선사하는 고품격 리추얼 감각적인 향기와 고급스러운 텍스처로 지친 몸과 마음을 치유하고 피부에 깊은 수분을 공급합니다", 
+            cDesc: "고농축 추출물을 통한 집중 케어 피부와 헤어 건강을 위한 최적의 솔루션을 제공합니다 아르간 오일과 엄선된 성분으로 손상된 모발을 회복시키고 두피 건강을 책임지는 전문 헤어 케어 브랜드입니다", 
+            footDesc: "탁월함과 지속 가능한 결과를 선사하는 프리미엄 한국 뷰티 큐레이터", 
             hAddr: "오피스", hCont: "고객 서비스", visit: "공식 사이트", label: "KR" 
         }
     };
