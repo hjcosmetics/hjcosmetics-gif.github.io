@@ -6,7 +6,8 @@
     <title>About Us - HJ COSMETICS | The Heritage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;600&display=swap');
+        /* นำเข้าฟอนต์ IBM Plex Sans Thai ทุกน้ำหนัก */
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap');
 
         :root { 
             --p-green: #1b4332; 
@@ -14,20 +15,30 @@
             --gold-dark: #c5a059; 
             --gold-light: #f1d38e; 
             --bg-marble: #f4f1ea;
+            --font-thai: 'IBM Plex Sans Thai', sans-serif;
+            --font-luxury: 'Nanum Myeongjo', serif;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
         body { 
-            font-family: 'IBM Plex Sans Thai', sans-serif; 
+            font-family: var(--font-thai); /* ใช้ IBM เป็นฐานหลัก */
             margin: 0; background-color: var(--bg-marble); color: var(--p-green);
             background-image: url('https://www.transparenttextures.com/patterns/white-marble.png');
             overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: 'Nanum Myeongjo', serif; }
+        /* --- 🏛️ Headings Management --- */
+        h1, h2, h3 { font-family: var(--font-luxury); font-weight: 700; transition: 0.3s ease; }
+        
+        /* บังคับใช้ IBM Plex เมื่อเป็นหัวข้อภาษาไทย */
+        .use-ibm-thai { 
+            font-family: var(--font-thai) !important; 
+            letter-spacing: 0px !important; 
+            font-weight: 600 !important; 
+        }
 
-        /* --- ✨ Navigation (Same as Index) --- */
+        /* --- ✨ Navigation --- */
         .top-nav { 
             background: var(--deep-green); 
             padding: 18px 8%; display: flex; justify-content: space-between; align-items: center; 
@@ -35,12 +46,11 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         .logo-box img { height: 50px; filter: brightness(0) invert(1); }
-        .nav-links a { text-decoration: none; color: var(--gold-light); font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: white; }
-
+        .nav-links a { text-decoration: none; color: var(--gold-light); font-size: 0.85rem; font-weight: 500; letter-spacing: 2px; margin-left: 30px; }
+        .nav-links a.active { color: white; font-weight: 700; }
         .lang-switch { 
             background: none; border: 1px solid var(--gold-dark); color: var(--gold-light); 
-            padding: 8px 18px; cursor: pointer; font-weight: 700; font-size: 0.75rem; transition: 0.3s; margin-left: 20px;
+            padding: 8px 18px; cursor: pointer; font-weight: 600; font-size: 0.75rem; font-family: var(--font-thai); margin-left: 20px;
         }
 
         /* --- Hero Section --- */
@@ -51,72 +61,58 @@
             border: 2px solid var(--gold-dark); padding: 40px 60px;
             background: rgba(13, 43, 31, 0.4); backdrop-filter: blur(8px);
         }
-        .hero h1 { font-size: clamp(2rem, 5vw, 4rem); margin: 0; letter-spacing: 12px; font-weight: 700; color: var(--gold-light); text-transform: uppercase; }
-        .hero p { font-size: 0.9rem; letter-spacing: 5px; color: white; text-transform: uppercase; margin-top: 15px; opacity: 0.9; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 0; letter-spacing: 8px; color: var(--gold-light); }
+        .hero p { font-size: 0.85rem; letter-spacing: 4px; text-transform: uppercase; margin-top: 15px; opacity: 0.9; }
 
-        /* --- 🏛️ Content Container (Marble & Gold Dust Style) --- */
-        .main-container { padding: 100px 8%; max-width: 1400px; margin: 0 auto; position: relative; }
-
-        /* Background Decor */
-        .main-container::before {
-            content: 'HJ'; position: fixed; top: 50%; left: 50%;
-            transform: translate(-50%, -50%); font-family: 'Nanum Myeongjo';
-            font-size: 35rem; color: var(--gold-dark); opacity: 0.03; font-weight: 800; pointer-events: none;
-        }
+        /* --- 🏛️ Content Container --- */
+        .main-container { padding: 80px 8%; max-width: 1400px; margin: 0 auto; position: relative; }
 
         /* --- Story Section --- */
         .origin-section { 
             background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px);
-            padding: 80px; border-radius: 40px; border: 1px solid rgba(197, 160, 89, 0.2);
-            background-image: radial-gradient(var(--gold-dark) 0.6px, transparent 0.6px);
-            background-size: 40px 40px; margin-bottom: 100px;
+            padding: 70px; border-radius: 40px; border: 1px solid rgba(197, 160, 89, 0.2);
+            margin-bottom: 100px;
         }
         .story-flex { display: flex; align-items: center; gap: 80px; }
-        .story-img { flex: 1; position: relative; }
-        .story-img::after { content: ''; position: absolute; top: -20px; left: -20px; width: 100%; height: 100%; border: 2px solid var(--gold-dark); z-index: -1; }
-        .story-img img { width: 100%; background: white; padding: 40px; border: 1px solid rgba(197, 160, 89, 0.1); }
+        .story-img { flex: 1; }
+        .story-img img { width: 100%; background: white; padding: 30px; border: 1px solid rgba(197, 160, 89, 0.1); }
         .story-text { flex: 1.5; }
-        .story-text h2 { font-size: 3.5rem; color: var(--deep-green); margin-bottom: 30px; border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; }
-        .story-text p { font-size: 1.15rem; color: var(--deep-green); line-height: 2; opacity: 0.9; }
+        .story-text h2 { font-size: 3rem; color: var(--deep-green); margin-bottom: 25px; border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; }
+        .story-text p { font-size: 1.1rem; color: var(--deep-green); line-height: 1.8; font-weight: 300; }
 
-        /* --- Brand Cards (Boutique Style) --- */
+        /* --- Brand Cards --- */
         .brand-grid { 
             display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 60px; 
             background: white; border: 1px solid rgba(197, 160, 89, 0.2); overflow: hidden;
-            box-shadow: 0 30px 60px rgba(13, 43, 31, 0.1); transition: 0.5s;
+            box-shadow: 0 20px 50px rgba(13, 43, 31, 0.08); transition: 0.5s;
         }
-        .brand-grid:hover { transform: translateY(-10px); border-color: var(--gold-dark); }
+        .brand-grid:hover { transform: translateY(-5px); border-color: var(--gold-dark); }
         
         .brand-image { height: 500px; overflow: hidden; }
-        .brand-image img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s; }
-        .brand-grid:hover .brand-image img { transform: scale(1.1); }
+        .brand-image img { width: 100%; height: 100%; object-fit: cover; }
 
         .brand-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; background: var(--deep-green); color: white; }
-        .brand-content span { color: var(--gold-light); letter-spacing: 4px; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 20px; }
-        .brand-content h3 { font-size: 3.5rem; margin: 0 0 25px; color: var(--gold-light); font-weight: 700; }
-        .brand-content p { line-height: 1.8; color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 40px; }
+        .brand-content span { color: var(--gold-light); letter-spacing: 3px; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .brand-content h3 { font-size: 3rem; margin: 0 0 20px; color: var(--gold-light); }
+        .brand-content p { line-height: 1.7; color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 35px; font-weight: 300; }
         
         .btn-visit { 
             align-self: flex-start; text-decoration: none; color: var(--gold-light); 
-            border: 1px solid var(--gold-dark); padding: 15px 40px; font-size: 0.8rem; 
-            letter-spacing: 3px; font-weight: 700; transition: 0.4s; 
+            border: 1px solid var(--gold-dark); padding: 14px 35px; font-size: 0.75rem; 
+            letter-spacing: 2px; font-weight: 600; transition: 0.4s; font-family: var(--font-thai);
         }
         .btn-visit:hover { background: var(--gold-dark); color: white; }
 
-        /* --- Footer (Same as Index) --- */
-        footer { background: var(--deep-green); color: white; padding: 100px 8% 50px; border-top: 5px solid var(--gold-dark); position: relative; z-index: 10; }
-        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 60px; }
-        .f-brand h2 { font-size: 2.2rem; color: var(--gold-light); margin: 0 0 20px; }
-        .f-brand p { opacity: 0.6; line-height: 2; font-size: 0.85rem; }
-        .f-info h4 { color: var(--gold-light); margin-bottom: 25px; letter-spacing: 2px; font-size: 0.9rem; border-bottom: 1px solid rgba(241, 211, 142, 0.2); display: inline-block; padding-bottom: 5px; }
-        .f-info p { opacity: 0.8; font-size: 0.85rem; margin: 8px 0; }
-        .footer-bottom { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; opacity: 0.4; letter-spacing: 2px; }
+        /* --- Footer --- */
+        footer { background: var(--deep-green); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); position: relative; }
+        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
+        .f-brand h2 { font-size: 1.8rem; color: var(--gold-light); margin: 0 0 15px; }
+        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; opacity: 0.5; }
 
         @media (max-width: 1000px) { 
             .brand-grid { grid-template-columns: 1fr; } 
             .story-flex { flex-direction: column; text-align: center; }
-            .hero-content { padding: 30px; }
-            .origin-section { padding: 40px 20px; }
+            .brand-image { height: 350px; }
         }
     </style>
 </head>
@@ -128,7 +124,7 @@
         <a href="index.html" id="nav-home">HOME</a>
         <a href="about.html" id="nav-about" class="active">ABOUT</a>
         <a href="contact.html" id="nav-contact">CONTACT</a>
-        <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">EN / KR</button>
+        <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">EN / KR / TH</button>
     </div>
 </nav>
 
@@ -155,9 +151,9 @@
         <div class="brand-image"><img src="IMG_5808.jpeg"></div>
         <div class="brand-content">
             <span id="f-tag-sub">Botanical Therapy</span>
-            <h3>Fraijour</h3>
+            <h3 id="brand-f">Fraijour</h3>
             <p id="f-desc">...</p>
-            <a href="https://fraijour.co.kr/index.html" target="_blank" class="btn-visit">OFFICIAL SITE</a>
+            <a href="https://fraijour.co.kr/" target="_blank" class="btn-visit">OFFICIAL SITE</a>
         </div>
     </div>
 
@@ -165,7 +161,7 @@
         <div class="brand-image"><img src="IMG_5805.jpeg"></div>
         <div class="brand-content" style="direction: ltr;">
             <span id="b-tag-sub">Body Ritual</span>
-            <h3>Bathpa</h3>
+            <h3 id="brand-b">Bathpa</h3>
             <p id="b-desc">...</p>
             <a href="https://www.evascosmetic.com/bathpa" target="_blank" class="btn-visit">OFFICIAL SITE</a>
         </div>
@@ -175,7 +171,7 @@
         <div class="brand-image"><img src="IMG_5807.jpeg"></div>
         <div class="brand-content">
             <span id="c-tag-sub">Intensive Hair & Skin Care</span>
-            <h3>Char Char</h3>
+            <h3 id="brand-c">Char Char</h3>
             <p id="c-desc">...</p>
             <a href="https://www.evascosmetic.com/charchar" target="_blank" class="btn-visit">OFFICIAL SITE</a>
         </div>
@@ -185,18 +181,16 @@
 <footer>
     <div class="f-grid">
         <div class="f-brand">
-            <h2>HJ COSMETICS</h2>
+            <h2 id="f-logo">HJ COSMETICS</h2>
             <p id="foot-desc">Premium Korean Skincare Curator.</p>
         </div>
         <div class="f-info">
             <h4 id="h-addr-foot">ADDRESS</h4>
-            <p>323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, <br>Chon Buri 20230, Thailand</p>
+            <p>323/11-12 Huayprab Muangthong 5, Bowin, Sriracha, Chon Buri 20230</p>
         </div>
         <div class="f-info">
             <h4 id="h-cont-foot">CONTACT</h4>
-            <p><strong>TEL:</strong> 03-8182-577</p>
-            <p><strong>LINE ID:</strong> @thaihj11</p>
-            <p><strong>EMAIL:</strong> thaihjglobal@gmail.com</p>
+            <p>Tel: 03-8182-577<br>Line: @thaihj11</p>
         </div>
     </div>
     <div class="footer-bottom">© 2026 HJ COSMETICS. ALL RIGHTS RESERVED.</div>
@@ -207,9 +201,39 @@
     let currentLang = localStorage.getItem('selectedLang') || 'th';
 
     const trans = {
-        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroTitle: "มรดกแห่งความงาม", heroSub: "แก่นแท้ของการคัดสรรสกินแคร์จากเกาหลี", hjTitle: "เส้นทางของ HJ", hjDesc: "เราเริ่มต้นด้วยเจตนารมณ์ที่เรียบง่าย คือการคัดสรรสิ่งที่ดีที่สุด HJ COSMETICS เชื่อมั่นในพลังของส่วนผสมจากธรรมชาติที่ผสานกับเทคโนโลยีอันล้ำสมัยจากเกาหลี เพื่อส่งต่อผลิตภัณฑ์ที่ดูแลผิวของคุณอย่างทะนุถนอมและลึกซึ้ง", fDesc: "สัมผัสพลังแห่งการฟื้นฟูจากพืชพรรณธรรมชาติ ด้วยสารสกัดจาก Wormwood เพื่อสุขภาพผิวที่แข็งแรงอย่างยั่งยืน", bDesc: "เปลี่ยนกิจวัตรประจำวันให้เป็นช่วงเวลาแห่งการพักผ่อนระดับพรีเมียม ปรนนิบัติผิวกายให้กระจ่างใสด้วยกลิ่นหอมอันเป็นเอกลักษณ์", cDesc: "การดูแลอย่างล้ำลึกด้วยสารสกัดเข้มข้น มอบทางออกที่ดีที่สุดสำหรับปัญหาผิวและเส้นผมในหนึ่งเดียว", footDesc: "เราคัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ", hAddr: "ที่อยู่บริษัท", hCont: "ติดต่อเรา", visit: "เข้าชมเว็บไซต์", next: "ENGLISH / 한국어" },
-        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", heroTitle: "Our Heritage", heroSub: "The Essence of Korean Beauty Selection", hjTitle: "The HJ Story", hjDesc: "Born from a simple vision to curate excellence. HJ COSMETICS believes in the profound synergy of natural ingredients and South Korean innovation.", fDesc: "Experience the healing power of nature. Fraijour’s formulas are crafted for purity and long-term resilience.", bDesc: "Elevate your daily ritual into a premium escape with Bathpa’s scents and textures.", cDesc: "Intensive care with concentrated extracts, providing the ultimate solution for skin and hair health.", footDesc: "Premium Korean Skincare Curator.", hAddr: "ADDRESS", hCont: "CONTACT INFO", visit: "OFFICIAL SITE", next: "ภาษาไทย / 한국어" },
-        kr: { home: "홈", about: "회사소개", contact: "문의", heroTitle: "아름다운 유산", heroSub: "한국 뷰티 셀렉션의 정수", hjTitle: "HJ 코스메틱 이야기", hjDesc: "최고만을 선별하겠다는 단순한 비전에서 시작되었습니다. HJ COSMETICS는 진심을 담아 당신의 피부를 돌보는 제품만을 선보입니다.", fDesc: "자연의 치유력을 경험해 보세요. 프라이주어는 당신의 피부 본연의 건강함을 되찾아줍니다.", bDesc: "일상의 루틴을 프리미엄 휴식으로 바꿔보세요. 배스파가 선사하는 고품격 리추얼.", cDesc: "고농축 추출물을 통한 집중 케어, 피부와 헤어 건강을 위한 최적의 솔루션을 제공합니다.", footDesc: "한국 프리미엄 뷰티 큐레이터.", hAddr: "주소", hCont: "연락처 정보", visit: "공식 사이트", next: "ภาษาไทย / ENGLISH" }
+        th: { 
+            home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", 
+            heroTitle: "มรดกแห่งความงาม", heroSub: "แก่นแท้ของการคัดสรรสกินแคร์จากเกาหลี", 
+            hjTitle: "เส้นทางของ HJ", 
+            hjDesc: "เราเริ่มต้นด้วยเจตนารมณ์ที่เรียบง่าย คือการคัดสรรสิ่งที่ดีที่สุด HJ COSMETICS เชื่อมั่นในพลังของส่วนผสมจากธรรมชาติที่ผสานกับเทคโนโลยีอันล้ำสมัยจากเกาหลี เพื่อส่งต่อผลิตภัณฑ์ที่ดูแลผิวของคุณอย่างทะนุถนอมและลึกซึ้ง", 
+            fDesc: "สัมผัสพลังแห่งการฟื้นฟูจากพืชพรรณธรรมชาติ ด้วยสารสกัดจาก Wormwood เพื่อสุขภาพผิวที่แข็งแรงอย่างยั่งยืน", 
+            bDesc: "เปลี่ยนกิจวัตรประจำวันให้เป็นช่วงเวลาแห่งการพักผ่อนระดับพรีเมียม ปรนนิบัติผิวกายให้กระจ่างใสด้วยกลิ่นหอมอันเป็นเอกลักษณ์", 
+            cDesc: "การดูแลอย่างล้ำลึกด้วยสารสกัดเข้มข้น มอบทางออกที่ดีที่สุดสำหรับปัญหาผิวและเส้นผมในหนึ่งเดียว", 
+            footDesc: "เราคัดสรรสารสกัดจากธรรมชาติ เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ", 
+            hAddr: "ที่อยู่บริษัท", hCont: "ติดต่อเรา", visit: "เข้าชมเว็บไซต์", next: "ENGLISH / 한국어" 
+        },
+        en: { 
+            home: "HOME", about: "ABOUT", contact: "CONTACT", 
+            heroTitle: "Our Heritage", heroSub: "The Essence of Korean Beauty Selection", 
+            hjTitle: "The HJ Story", 
+            hjDesc: "Born from a simple vision to curate excellence. HJ COSMETICS believes in the profound synergy of natural ingredients and South Korean innovation.", 
+            fDesc: "Experience the healing power of nature. Fraijour’s formulas are crafted for purity and long-term resilience.", 
+            bDesc: "Elevate your daily ritual into a premium escape with Bathpa’s scents and textures.", 
+            cDesc: "Intensive care with concentrated extracts, providing the ultimate solution for skin and hair health.", 
+            footDesc: "Premium Korean Skincare Curator.", 
+            hAddr: "ADDRESS", hCont: "CONTACT INFO", visit: "OFFICIAL SITE", next: "ภาษาไทย / 한국어" 
+        },
+        kr: { 
+            home: "홈", about: "회사소개", contact: "문의", 
+            heroTitle: "아름다운 유산", heroSub: "한국 뷰티 셀렉션의 정수", 
+            hjTitle: "HJ 코스메틱 이야기", 
+            hjDesc: "최고만을 선별하겠다는 단순한 비전에서 시작되었습니다. HJ COSMETICS는 진심을 담아 당신의 피부를 돌보는 제품만을 선보입니다.", 
+            fDesc: "자연의 치유력을 경험해 보세요. 프라이주어는 당신의 피부 본연의 건강함을 되찾아줍니다.", 
+            bDesc: "일상의 루틴을 프리미엄 휴식으로 바꿔보세요. 배스파가 선사하는 고품격 리추얼.", 
+            cDesc: "고농축 추출물을 통한 집중 케어, 피부와 헤어 건강을 위한 최적의 솔루션을 제공합니다.", 
+            footDesc: "한국 프리미엄 뷰티 큐레이터.", 
+            hAddr: "주소", hCont: "연락처 정보", visit: "공식 사이트", next: "ภาษาไทย / ENGLISH" 
+        }
     };
 
     function updateContent() {
@@ -229,6 +253,14 @@
         document.getElementById('h-cont-foot').textContent = l.hCont;
         document.querySelectorAll('.btn-visit').forEach(b => b.textContent = l.visit);
         document.getElementById('langBtn').textContent = l.next;
+
+        // เปลี่ยนฟอนต์หัวข้อหลักให้เป็น IBM ทั้งหมดเมื่อเป็นภาษาไทย
+        const headings = document.querySelectorAll('h1, h2, h3, h4, .btn-visit');
+        headings.forEach(el => {
+            if(currentLang === 'th') el.classList.add('use-ibm-thai');
+            else el.classList.remove('use-ibm-thai');
+        });
+
         localStorage.setItem('selectedLang', currentLang);
     }
 
