@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - HJ COSMETICS</title>
+    <title>HJ COSMETICS - The Luxury Boutique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap');
@@ -11,7 +11,9 @@
         :root { 
             --p-green: #1b4332; 
             --deep-green: #0d2b1f;
-            --bg-marble: #f4f1ea;
+            --gold-metallic: linear-gradient(145deg, #b8860b 0%, #e1b941 25%, #fbf5b7 50%, #e1b941 75%, #b8860b 100%);
+            --gold-dark: #c5a059; 
+            --gold-light: #f1d38e; 
             --font-thai: 'IBM Plex Sans Thai', sans-serif;
             --font-luxury: 'Nanum Myeongjo', serif;
         }
@@ -20,219 +22,208 @@
         
         body { 
             font-family: var(--font-thai); 
-            margin: 0; background-color: var(--bg-marble); color: var(--p-green);
-            background-image: url('https://www.transparenttextures.com/patterns/white-marble.png');
+            margin: 0; background-color: #000; color: var(--p-green);
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* --- ✨ Korea Flag Background Overlay --- */
-        .korea-bg-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            pointer-events: none;
-            background: url('https://images.unsplash.com/photo-1541753866388-0b3c703f2191?q=80&w=2000') center/cover no-repeat;
-            opacity: 0.04;
+        /* --- 🎬 Full Screen Video Background --- */
+        .video-bg-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; overflow: hidden;
+        }
+        .video-bg-container video {
+            width: 100%; height: 100%; object-fit: cover;
+            opacity: 0.3; /* ปรับความชัดของวิดีโอพื้นหลังที่นี่ */
+        }
+        /* เพิ่ม Layer จางๆ ทับวิดีโอเพื่อให้อ่านตัวหนังสือลื่นขึ้น */
+        .video-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(244, 241, 234, 0.85); /* สี marble จางๆ */
+            z-index: -1;
+            background-image: url('https://www.transparenttextures.com/patterns/white-marble.png');
         }
 
-        /* --- 🎖️ Real Metallic Gold Shine Animation --- */
-        @keyframes shine {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        h1, h2, h3, h4 { font-family: var(--font-luxury); transition: 0.3s; }
+        .use-ibm-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; font-weight: 600 !important; }
 
+        /* --- 🎖️ Metallic Gold Navigation --- */
         .top-nav { 
-            /* ไล่สีทองแบบ 7 ระดับเพื่อให้เกิดมิติเลื่อมวาวเหมือนโลหะ */
-            background: linear-gradient(110deg, 
-                #a67c00 0%, 
-                #bf9b30 20%, 
-                #ffbf00 40%, 
-                #fbf5b7 50%, 
-                #ffbf00 60%, 
-                #bf9b30 80%, 
-                #a67c00 100%);
-            background-size: 200% 200%;
-            animation: shine 6s linear infinite; /* ทำให้แสงทองวิ่งตลอดเวลา */
-            padding: 12px 8%; 
-            display: flex; 
-            justify-content: space-between; align-items: center; 
+            background: var(--gold-metallic);
+            background-size: 200% auto;
+            padding: 12px 8%; display: flex; justify-content: space-between; align-items: center; 
             position: sticky; top: 0; z-index: 1000; 
-            border-bottom: 2px solid #8a6d3b;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255,255,255,0.5);
+            border-bottom: 3px solid #996515;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        
         .logo-box img { 
-            height: 48px; 
-            filter: brightness(0) saturate(100%) invert(13%) sepia(20%) saturate(1500%) hue-rotate(110deg) contrast(110%);
+            height: 50px; 
+            filter: brightness(0) saturate(100%) invert(16%) sepia(21%) saturate(1200%) hue-rotate(110deg); 
         }
-
         .nav-links { display: flex; align-items: center; }
-        
         .nav-links a { 
-            text-decoration: none; 
-            color: var(--deep-green); 
-            font-size: 0.85rem; 
-            font-weight: 800; 
-            letter-spacing: 1px; 
-            margin-left: 30px; 
-            text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+            text-decoration: none; color: var(--deep-green); font-size: 0.85rem; 
+            font-weight: 700; letter-spacing: 1.5px; margin-left: 30px; transition: 0.3s; 
         }
+        .nav-links a:hover { color: #000; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
 
         .lang-switch { 
-            background: var(--deep-green); 
-            border: 1px solid rgba(255,255,255,0.2); 
-            color: #fff;
-            padding: 8px 16px; cursor: pointer; 
-            font-weight: 700; font-size: 0.75rem; 
-            margin-left: 25px;
-            border-radius: 4px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            background: var(--deep-green); border: none; color: #fbf5b7; 
+            padding: 7px 15px; cursor: pointer; font-weight: 800; font-size: 0.75rem; 
+            margin-left: 25px; transition: 0.3s; letter-spacing: 1px; border-radius: 4px;
         }
 
-        /* --- ส่วนอื่นๆ คงไว้ตามดีไซน์เดิม --- */
-        .hero { height: 35vh; position: relative; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80') center/cover; opacity: 0.4; }
-        .hero-content { position: relative; z-index: 3; text-align: center; border: 2px solid #bf9b30; padding: 30px 60px; background: rgba(13, 43, 31, 0.45); backdrop-filter: blur(8px); }
-        .hero h1 { font-size: 3rem; margin: 0; color: #fbf5b7; text-shadow: 0 2px 10px rgba(0,0,0,0.5); font-family: var(--font-luxury); }
-
-        .contact-container { max-width: 1200px; margin: -60px auto 80px; padding: 0 20px; position: relative; z-index: 10; }
-        .contact-grid { 
-            display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; 
-            background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); padding: 40px; 
-            border-radius: 20px; border: 1px solid rgba(191, 155, 48, 0.3);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        /* --- Hero --- */
+        .hero-wrap { height: 45vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: transparent; }
+        .hero-content { 
+            position: relative; z-index: 2; text-align: center; color: white; 
+            border: 2px solid var(--gold-dark); padding: 40px 60px;
+            background: rgba(13, 43, 31, 0.6); backdrop-filter: blur(12px);
         }
-        
-        .info-card { 
-            background: var(--deep-green); color: white; padding: 50px; 
-            border: 1px solid #bf9b30;
-            background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+        .hero-content h1 { font-size: clamp(1.8rem, 5vw, 3.5rem); letter-spacing: 12px; margin: 0; color: var(--gold-light); }
+
+        /* --- 🏛️ Main Container --- */
+        .main-container { padding: 80px 5%; max-width: 1500px; margin: 0 auto; position: relative; }
+        .brand-block { 
+            margin-bottom: 120px; position: relative; padding: 60px 40px; 
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(10px);
+            border-radius: 40px; 
+            border: 1px solid rgba(197, 160, 89, 0.2);
         }
-        .info-card h2 { color: #fbf5b7; font-size: 2.2rem; margin-bottom: 30px; border-bottom: 2px solid #bf9b30; display: inline-block; }
+        .brand-title-box h2 { font-size: 3.5rem; color: var(--deep-green); border-bottom: 2px solid var(--gold-dark); display: inline-block; }
 
-        .form-card { background: white; padding: 50px; border-radius: 10px; }
-        .btn-submit { 
-            background: var(--deep-green); color: #fbf5b7; border: 1px solid #bf9b30; 
-            padding: 18px; width: 100%; font-weight: 700; cursor: pointer; font-size: 1rem;
+        /* --- 🛍️ Product Card --- */
+        .product-card { 
+            background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(197, 160, 89, 0.15); 
+            transition: 0.5s; display: flex; flex-direction: column; padding: 15px; 
+            position: relative; overflow: hidden; backdrop-filter: blur(5px);
         }
+        .product-card:hover { transform: translateY(-10px); border-color: var(--gold-dark); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
-        footer { background: var(--deep-green); color: white; padding: 60px 8%; border-top: 5px solid #bf9b30; margin-top: 50px; }
-        .f-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; }
-        .footer-bottom { text-align: center; margin-top: 40px; opacity: 0.5; font-size: 0.75rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        .buy-link { 
+            background: var(--deep-green); color: var(--gold-light); padding: 16px; 
+            text-align: center; text-decoration: none; font-size: 0.75rem; 
+            font-weight: 700; letter-spacing: 2px; transition: 0.4s; cursor: pointer;
+        }
+        .buy-link:hover { background: var(--gold-dark); color: white; }
 
-        @media (max-width: 900px) { .contact-grid, .f-container { grid-template-columns: 1fr; } }
+        /* --- Footer --- */
+        footer { background: var(--deep-green); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); position: relative; }
+        .f-brand h2 { font-size: 2.2rem; color: var(--gold-light); }
+        .f-info p i { color: var(--gold-dark); margin-right: 15px; width: 25px; text-align: center; }
+
+        @media (max-width: 1024px) { .f-container { grid-template-columns: 1fr; gap: 40px; } }
     </style>
 </head>
 <body>
 
-<div class="korea-bg-overlay"></div>
+<div class="video-bg-container">
+    <video autoplay muted loop playsinline>
+        <source src="วิดีโอทำเว็บไซต์.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+</div>
 
 <nav class="top-nav">
     <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
     <div class="nav-links">
-        <a href="index.html" id="nav-home">HOME</a>
-        <a href="about.html" id="nav-about">ABOUT</a>
-        <a href="contact.html" id="nav-contact" class="active">CONTACT</a>
+        <a href="index.html" id="n-home">HOME</a>
+        <a href="about.html" id="n-about">ABOUT</a>
+        <a href="contact.html" id="n-contact">CONTACT</a>
         <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">TH</button>
     </div>
 </nav>
 
-<header class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content"><h1 id="hero-title">Contact Us</h1></div>
+<header class="hero-wrap">
+    <div class="hero-content">
+        <h1 id="h-main">HJ COSMETICS</h1>
+        <p id="h-sub">Curating the Essence of Korean Perfection</p>
+    </div>
 </header>
 
-<div class="contact-container">
-    <div class="contact-grid">
-        <div class="info-card">
-            <h2 id="info-h">Get In Touch</h2>
-            <div class="info-item">
-                <h4 id="h-addr-label">ADDRESS</h4>
-                <p>323/11-12 Moo 3, Bowin,<br>Sriracha, Chon Buri 20230, Thailand</p>
-            </div>
-            <div class="info-item">
-                <h4 id="h-cont-label">CONCIERGE</h4>
-                <p><i class="fa-brands fa-line"></i> thaihj11</p> <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
-                <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
-            </div>
+<div class="main-container">
+    <div class="brand-block">
+        <div class="brand-title-box">
+            <h2 id="title-fraijour">Fraijour</h2>
+            <span id="sub-f">Botanical Therapy & Science</span>
         </div>
-        
-        <div class="form-card">
-            <form>
-                <div class="form-group"><label id="l-name">NAME</label><input type="text" id="ph-name"></div>
-                <div class="form-group"><label id="l-email">EMAIL</label><input type="email" id="ph-email"></div>
-                <div class="form-group"><label id="l-msg">MESSAGE</label><textarea id="ph-msg" rows="5"></textarea></div>
-                <button type="submit" class="btn-submit" id="btn-send">Send Message</button>
-            </form>
+        <div class="product-grid" id="grid-fraijour"></div>
+    </div>
+    <div class="brand-block">
+        <div class="brand-title-box">
+            <h2 id="title-bathpa">Bathpa</h2>
+            <span id="sub-b">Urban Spa Rituals</span>
         </div>
+        <div class="product-grid" id="grid-bathpa"></div>
     </div>
 </div>
 
 <footer>
     <div class="f-container">
         <div class="f-brand">
-            <h2 id="f-logo" style="color:#fbf5b7">HJ COSMETICS</h2>
-            <p id="foot-desc">Premium Korean Skincare Curator.</p>
+            <h2 id="f-logo">HJ COSMETICS</h2>
+            <p id="f-desc">Premium Korean beauty curator...</p>
         </div>
         <div class="f-info">
-            <h4 style="color:#fbf5b7">OUR OFFICE</h4>
-            <p><i class="fa-solid fa-location-dot"></i> 323/11-12 Moo 3, Bowin, Chon Buri</p>
+            <h4 id="f-h-addr">OUR OFFICE</h4>
+            <p><i class="fa-solid fa-location-dot"></i> 323/11-12 Moo 3, Bowin,<br>Sriracha, Chon Buri 20230, Thailand</p>
         </div>
         <div class="f-info">
-            <h4 style="color:#fbf5b7">CONCIERGE</h4>
-            <p><i class="fa-brands fa-line"></i> thaihj11</p> <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
+            <h4 id="f-h-cont">CONCIERGE</h4>
+            <p><i class="fa-brands fa-line"></i> thaihj11</p>
+            <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
+            <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
         </div>
     </div>
-    <div class="footer-bottom">&copy; 2026 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
+    <div class="footer-bottom">&copy; 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
-    const languages = ['th', 'en', 'kr'];
-    let currentLang = localStorage.getItem('selectedLang') || 'th';
+    // ข้อมูลสินค้า (ยกมาบางส่วนเพื่อทดสอบ)
+    const products = [
+        { id: 1, brand: "Fraijour", name: "Wormwood Calming Watery Cream", sale: 250, old: 369, badge: "BEST SELLER", img: "1.jpeg" },
+        { id: 2, brand: "Fraijour", name: "Wormwood Calming Toner", sale: 350, old: 459, badge: "POPULAR", img: "2.jpeg" },
+        { id: 14, brand: "Bathpa", name: "Body Tone Up Cream", sale: 150, old: 529, badge: "BODY", img: "13.jpeg" }
+    ];
 
     const trans = {
-        th: { 
-            home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", 
-            hAddr: "ที่อยู่", hCont: "ฝ่ายบริการ", lName: "ชื่อ-นามสกุล", lEmail: "อีเมล", lMsg: "ข้อความ", 
-            btnSend: "ส่งข้อความ", footDesc: "คัดสรรสกินแคร์ระดับพรีเมียมจากเกาหลี เพื่อผิวที่สมบูรณ์แบบ", label: "TH"
-        },
-        en: { 
-            home: "HOME", about: "ABOUT", contact: "CONTACT", heroTitle: "Contact Us", infoH: "Get In Touch", 
-            hAddr: "ADDRESS", hCont: "CONCIERGE", lName: "YOUR NAME", lEmail: "EMAIL", lMsg: "MESSAGE", 
-            btnSend: "SEND MESSAGE", footDesc: "Premium Korean Skincare Curator.", label: "EN"
-        },
-        kr: { 
-            home: "홈", about: "소개", contact: "문의하기", heroTitle: "문의하기", infoH: "연락처", 
-            hAddr: "주소", hCont: "고객 서비스", lName: "성함", lEmail: "이메일", lMsg: "메시지", 
-            btnSend: "보내기", footDesc: "한국 프리미엄 뷰티 큐레이터.", label: "KR"
-        }
+        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", shop: "เข้าชมสินค้า", sub: "คัดสรรแก่นแท้ความงามที่สมบูรณ์แบบจากเกาหลี", label: "TH" },
+        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", shop: "VIEW DETAILS", sub: "Curating the Essence of Korean Perfection", label: "EN" }
     };
 
-    function updateContent() {
-        const l = trans[currentLang];
-        document.getElementById('nav-home').textContent = l.home;
-        document.getElementById('nav-about').textContent = l.about;
-        document.getElementById('nav-contact').textContent = l.contact;
-        document.getElementById('hero-title').textContent = l.heroTitle;
-        document.getElementById('info-h').textContent = l.infoH;
-        document.getElementById('h-addr-label').textContent = l.hAddr;
-        document.getElementById('h-cont-label').textContent = l.hCont;
-        document.getElementById('l-name').textContent = l.lName;
-        document.getElementById('l-email').textContent = l.lEmail;
-        document.getElementById('l-msg').textContent = l.lMsg;
-        document.getElementById('btn-send').textContent = l.btnSend;
-        document.getElementById('foot-desc').textContent = l.footDesc;
-        document.getElementById('langBtn').textContent = l.label;
+    let currentLang = localStorage.getItem('selectedLang') || 'th';
 
-        localStorage.setItem('selectedLang', currentLang);
+    function render() {
+        const containers = { Fraijour: 'grid-fraijour', Bathpa: 'grid-bathpa' };
+        Object.values(containers).forEach(id => { if(document.getElementById(id)) document.getElementById(id).innerHTML = ''; });
+        
+        products.forEach(p => {
+            const html = `
+                <div class="product-card">
+                    <div class="card-tag">${p.badge}</div>
+                    <div class="image-wrap" style="text-align:center; padding:20px; background:#fff;"><img src="${p.img}" style="max-height:200px; max-width:100%;"></div>
+                    <div class="info-wrap" style="text-align:center; padding:20px;">
+                        <h3 class="${currentLang === 'th' ? 'use-ibm-thai' : ''}" style="font-size:1rem; min-height:3rem;">${p.name}</h3>
+                        <div style="font-size:1.4rem; color:var(--gold-dark); font-weight:700;">฿${p.sale}</div>
+                    </div>
+                    <a href="product-detail.html?id=${p.id}" class="buy-link">${trans[currentLang].shop}</a>
+                </div>`;
+            const target = containers[p.brand];
+            if(document.getElementById(target)) document.getElementById(target).innerHTML += html;
+        });
+
+        document.getElementById('n-home').textContent = trans[currentLang].home;
+        document.getElementById('langBtn').textContent = trans[currentLang].label;
     }
 
     function rotateLanguage() {
-        currentLang = languages[(languages.indexOf(currentLang) + 1) % languages.length];
-        updateContent();
+        currentLang = currentLang === 'th' ? 'en' : 'th';
+        localStorage.setItem('selectedLang', currentLang);
+        render();
     }
 
-    updateContent();
+    render();
 </script>
+
 </body>
 </html>
