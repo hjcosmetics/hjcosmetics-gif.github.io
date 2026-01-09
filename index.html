@@ -3,22 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HJ COSMETICS - The Luxury Boutique</title>
+    <title>HJ COSMETICS - Full Experience</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap');
 
         :root { 
+            --p-green: #1b4332; 
             --deep-green: #0d2b1f;
-            /* สีทองแบบ Metallic เลื่อมวาว */
-            --gold-gradient: linear-gradient(135deg, 
-                #8a6d3b 0%, 
-                #c5a059 20%, 
-                #ffecb3 45%, 
-                #f1d38e 50%, 
-                #ffecb3 55%, 
-                #c5a059 80%, 
-                #8a6d3b 100%);
+            --gold-metallic: linear-gradient(135deg, #8a6d3b 0%, #c5a059 20%, #ffecb3 45%, #f1d38e 50%, #ffecb3 55%, #c5a059 80%, #8a6d3b 100%);
+            --gold-dark: #c5a059; 
+            --gold-light: #f1d38e; 
             --font-thai: 'IBM Plex Sans Thai', sans-serif;
             --font-luxury: 'Nanum Myeongjo', serif;
         }
@@ -27,128 +22,106 @@
         
         body { 
             font-family: var(--font-thai); 
-            margin: 0; background-color: #000;
-            color: #fff;
+            margin: 0; background-color: #000; color: #fff;
             overflow-x: hidden;
         }
 
         /* --- 🎬 Fixed Video Background (วิดีโออยู่หลังสุดจริงๆ) --- */
         #bg-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2; /* อยู่หลังสุด */
-            opacity: 0.6; /* ปรับความเข้ม/อ่อนของวิดีโอที่นี่ */
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: -2; opacity: 0.5;
         }
-
-        /* Layer เพิ่มมิติความหรู (Grain/Marble เบาๆ บนวิดีโอ) */
         .video-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.2); /* ช่วยให้ตัวหนังสืออ่านง่ายขึ้น */
-            z-index: -1;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4); z-index: -1; pointer-events: none;
         }
 
-        /* --- 🎖️ Real Metallic Gold Navigation --- */
+        h1, h2, h3, h4 { font-family: var(--font-luxury); transition: 0.3s; }
+        .use-ibm-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; font-weight: 600 !important; }
+
+        /* --- 🎖️ Real Metallic Gold Navigation (ทองเลื่อมวาว) --- */
         .top-nav { 
-            background: var(--gold-gradient);
+            background: var(--gold-metallic);
             background-size: 300% 300%;
-            animation: shimmer 5s infinite linear; /* เพิ่มการเลื่อมไหวของสีทอง */
-            padding: 12px 8%; 
-            display: flex; justify-content: space-between; align-items: center; 
+            animation: shimmer 8s infinite linear;
+            padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; 
             position: sticky; top: 0; z-index: 1000; 
-            border-bottom: 2px solid #5d4a26;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            border-bottom: 3px solid #5d4a26;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.6);
         }
-
         @keyframes shimmer {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         .logo-box img { 
-            height: 50px; 
-            /* เปลี่ยนโลโก้เป็นสีเขียวเข้มเพื่อตัดกับทองเลื่อม */
-            filter: brightness(0) saturate(100%) invert(10%) sepia(50%) saturate(1000%) hue-rotate(120deg);
+            height: 48px; 
+            filter: brightness(0) saturate(100%) invert(10%) sepia(50%) saturate(1000%) hue-rotate(120deg); 
         }
-
+        .nav-links { display: flex; align-items: center; }
         .nav-links a { 
-            text-decoration: none; 
-            color: var(--deep-green); 
-            font-size: 0.85rem; 
-            font-weight: 800; 
-            letter-spacing: 1.5px; 
-            margin-left: 30px; 
-            transition: 0.3s;
-            text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+            text-decoration: none; color: var(--deep-green); font-size: 0.85rem; 
+            font-weight: 800; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; 
         }
+        .nav-links a:hover { color: #000; text-shadow: 0 0 10px rgba(255,255,255,0.4); }
 
         .lang-switch { 
-            background: var(--deep-green); border: none; color: #fff; 
+            background: var(--deep-green); border: none; color: #f1d38e; 
             padding: 7px 15px; cursor: pointer; font-weight: 800; font-size: 0.75rem; 
             margin-left: 25px; border-radius: 2px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        /* --- 🏛️ Content Glassmorphism --- */
-        .main-container { padding: 60px 5%; max-width: 1300px; margin: 0 auto; position: relative; }
-
+        /* --- 🏛️ Main Container --- */
+        .main-container { padding: 40px 5% 80px; max-width: 1500px; margin: 0 auto; position: relative; }
         .brand-block { 
-            margin-bottom: 80px; 
-            padding: 50px; 
-            background: rgba(13, 43, 31, 0.7); /* เขียวโปร่งแสง */
-            backdrop-filter: blur(15px); /* เอฟเฟกต์กระจกฝ้า */
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            border-radius: 10px;
+            margin-bottom: 80px; padding: 50px 40px; 
+            background: rgba(13, 43, 31, 0.75); backdrop-filter: blur(15px);
+            border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 20px; 
         }
+        .brand-title-box { text-align: center; margin-bottom: 50px; }
+        .brand-title-box h2 { font-size: 3.5rem; color: var(--gold-light); margin: 0; border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; }
+        .brand-title-box span { display: block; font-size: 0.8rem; color: var(--gold-dark); letter-spacing: 8px; text-transform: uppercase; margin-top: 15px; }
 
-        .brand-title-box h2 { 
-            font-size: 3rem; 
-            color: #f1d38e; 
-            margin: 0;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-        }
-
-        /* --- 🛍️ Product Card --- */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        
+        /* --- 🛍️ Product Grid & Card --- */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
         .product-card { 
-            background: rgba(255, 255, 255, 0.95); 
-            border-radius: 5px;
-            overflow: hidden;
-            transition: 0.4s;
-            display: flex; flex-direction: column;
+            background: #fff; border-radius: 10px; overflow: hidden; transition: 0.5s; 
+            display: flex; flex-direction: column; position: relative;
+        }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+        .card-tag { 
+            position: absolute; top: 15px; right: 15px; background: var(--p-green); color: var(--gold-light); 
+            font-size: 0.65rem; padding: 5px 12px; font-weight: 700; z-index: 5;
         }
 
-        .product-card:hover { transform: translateY(-10px); }
+        .image-wrap { height: 320px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 25px; }
+        .image-wrap img { max-width: 90%; max-height: 90%; transition: 0.8s; }
+        .product-card:hover .image-wrap img { transform: scale(1.08); }
 
-        .image-wrap { height: 300px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 20px; }
-        .image-wrap img { max-height: 100%; max-width: 100%; object-fit: contain; }
-
-        .info-wrap { padding: 20px; text-align: center; color: var(--deep-green); }
-        .info-wrap h3 { font-size: 1rem; height: 3rem; margin-bottom: 10px; }
-        .price { font-size: 1.5rem; font-weight: 800; color: #b8860b; }
+        .info-wrap { padding: 25px 15px; text-align: center; color: var(--deep-green); flex-grow: 1; }
+        .info-wrap h3 { font-size: 1rem; margin-bottom: 12px; height: 3rem; overflow: hidden; line-height: 1.4; font-weight: 600; }
+        .p-sale { font-size: 1.6rem; color: #b8860b; font-weight: 800; display: block; }
+        .p-old { color: #bbb; text-decoration: line-through; font-size: 0.85rem; }
 
         .buy-link { 
-            background: var(--deep-green); color: #f1d38e; padding: 15px; 
-            text-align: center; text-decoration: none; font-weight: 700; font-size: 0.8rem;
+            background: var(--deep-green); color: var(--gold-light); padding: 18px; 
+            text-align: center; text-decoration: none; font-size: 0.8rem; 
+            font-weight: 700; letter-spacing: 2px; transition: 0.4s;
         }
+        .buy-link:hover { background: #000; color: #fff; }
 
-        /* --- Footer --- */
-        footer { 
-            background: rgba(13, 43, 31, 0.9); 
-            backdrop-filter: blur(10px);
-            color: white; padding: 60px 8%; 
-            border-top: 4px solid #c5a059;
-        }
-        .f-info p i { color: #f1d38e; margin-right: 15px; }
+        /* --- 🏛️ Footer (เหมือนเดิม ข้อมูลครบ) --- */
+        footer { background: rgba(13, 43, 31, 0.95); backdrop-filter: blur(10px); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); margin-top: 50px; position: relative; }
+        .f-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+        .f-brand h2 { font-size: 2.2rem; color: var(--gold-light); margin-bottom: 20px; }
+        .f-brand p { opacity: 0.7; line-height: 1.8; font-size: 0.9rem; max-width: 400px; }
+        .f-info h4 { color: var(--gold-light); margin-bottom: 25px; letter-spacing: 2px; font-size: 0.95rem; text-transform: uppercase; }
+        .f-info p { opacity: 0.8; font-size: 0.85rem; margin: 15px 0; line-height: 1.6; display: flex; align-items: center; }
+        .f-info p i { color: var(--gold-dark); font-size: 1.1rem; margin-right: 15px; width: 25px; text-align: center; }
+        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.75rem; opacity: 0.5; }
 
-        .use-ibm-thai { font-family: var(--font-thai) !important; font-weight: 600; }
+        @media (max-width: 1024px) { .f-container { grid-template-columns: 1fr; gap: 40px; } }
     </style>
 </head>
 <body>
@@ -172,63 +145,107 @@
     <div class="brand-block">
         <div class="brand-title-box">
             <h2 id="title-fraijour">Fraijour</h2>
-            <p style="color: #c5a059; letter-spacing: 5px;">BOTANICAL THERAPY</p>
+            <span id="sub-f">Botanical Therapy & Science</span>
         </div>
-        <div class="product-grid" id="grid-fraijour">
-            </div>
+        <div class="product-grid" id="grid-fraijour"></div>
+    </div>
+
+    <div class="brand-block">
+        <div class="brand-title-box">
+            <h2 id="title-others">Bathpa & Char Char</h2>
+            <span id="sub-o">Urban Spa Rituals & Hair Solutions</span>
+        </div>
+        <div class="product-grid" id="grid-others"></div>
     </div>
 </div>
 
 <footer>
-    <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px;">
-        <div>
-            <h2 style="color: #f1d38e;">HJ COSMETICS</h2>
-            <p style="opacity: 0.7;">Premium Korean beauty curator.</p>
+    <div class="f-container">
+        <div class="f-brand">
+            <h2 id="f-logo">HJ COSMETICS</h2>
+            <p id="f-desc">Premium Korean beauty curator delivering excellence and sustainable results to your skin.</p>
         </div>
-        <div>
-            <h4 style="color: #f1d38e;">CONCIERGE</h4>
-            <p><i class="fa-brands fa-line"></i> thaihj11</p> <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
+        <div class="f-info">
+            <h4 id="f-h-addr">OUR OFFICE</h4>
+            <p><i class="fa-solid fa-location-dot"></i> 323/11-12 Moo 3, Bowin,<br>Sriracha, Chon Buri 20230, Thailand</p>
         </div>
-        <div>
-            <h4 style="color: #f1d38e;">LOCATION</h4>
-            <p>Bowin, Chon Buri, Thailand</p>
+        <div class="f-info">
+            <h4 id="f-h-cont">CONCIERGE</h4>
+            <p><i class="fa-brands fa-line"></i> thaihj11</p>
+            <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
+            <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
         </div>
     </div>
+    <div class="footer-bottom">&copy; 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
-    // ข้อมูลสินค้าเบื้องต้น
     const products = [
-        { id: 1, brand: "Fraijour", name: "Wormwood Calming Watery Cream", sale: 250, img: "1.jpeg" },
-        { id: 2, brand: "Fraijour", name: "Wormwood Calming Toner", sale: 350, img: "2.jpeg" }
+        { id: 1, brand: "Fraijour", name: "Wormwood Calming Watery Cream", sale: 250, old: 369, badge: "BEST SELLER", img: "1.jpeg" },
+        { id: 2, brand: "Fraijour", name: "Wormwood Calming Toner", sale: 350, old: 459, badge: "POPULAR", img: "2.jpeg" },
+        { id: 3, brand: "Fraijour", name: "Wormwood Cleansing Water", sale: 250, old: 400, badge: "NEW", img: "3.jpeg" },
+        { id: 4, brand: "Fraijour", name: "Wormwood Cleansing Foam", sale: 290, old: 399, badge: "GENTLE", img: "4.jpeg" },
+        { id: 5, brand: "Fraijour", name: "Heartleaf Blemish Moisture Cream", sale: 310, old: 590, badge: "ACNE CARE", img: "5.jpeg" },
+        { id: 6, brand: "Fraijour", name: "Heartleaf Blemish Toner", sale: 360, old: 529, badge: "SOOTHING", img: "6.jpeg" },
+        { id: 7, brand: "Fraijour", name: "Retin-Collagen 3D Core Cream", sale: 250, old: 459, badge: "LIFTING", img: "7.jpeg" },
+        { id: 8, brand: "Fraijour", name: "Retin-Collagen 3D Core Eye Cream", sale: 195, old: 370, badge: "CORE 3D", img: "8.jpeg" },
+        { id: 9, brand: "Fraijour", name: "Retin-Collagen 3D Core Toner", sale: 290, old: 500, badge: "FIRMING", img: "9.jpeg" },
+        { id: 10, brand: "Fraijour", name: "Retin-Collagen 3D Core Lip Oil", sale: 125, old: 259, badge: "NEW", img: "10.jpeg" },
+        { id: 11, brand: "Fraijour", name: "Heartleaf Airy Fit Sun Cream", sale: 280, old: 450, badge: "SUN CARE", img: "11.jpeg" },
+        { id: 12, brand: "Fraijour", name: "Heartleaf Water Fit Sun Screen", sale: 320, old: 590, badge: "SUN CARE", img: "12.jpeg" },
+        { id: 13, brand: "Fraijour", name: "Original Herb Sheet Mask", sale: 17, old: 29, badge: "MASK", img: "15.jpeg" },
+        { id: 14, brand: "Bathpa", name: "Body Tone Up Cream", sale: 150, old: 529, badge: "BODY", img: "13.jpeg" },
+        { id: 15, brand: "CharChar", name: "Mung Bean Cica Cleansing Foam", sale: 120, old: 199, badge: "CICA", img: "14.jpeg" }
     ];
 
-    function render() {
-        const grid = document.getElementById('grid-fraijour');
-        grid.innerHTML = '';
-        products.forEach(p => {
-            grid.innerHTML += `
-                <div class="product-card">
-                    <div class="image-wrap"><img src="${p.img}"></div>
-                    <div class="info-wrap">
-                        <h3>${p.name}</h3>
-                        <div class="price">฿${p.sale}</div>
-                    </div>
-                    <a href="#" class="buy-link">VIEW DETAILS</a>
-                </div>
-            `;
-        });
-    }
+    const trans = {
+        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", shop: "ดูรายละเอียด", label: "TH", fDesc: "เราคัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณอย่างยั่งยืน", hAddr: "สำนักงานของเรา", hCont: "ฝ่ายบริการ" },
+        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", shop: "VIEW DETAILS", label: "EN", fDesc: "Premium Korean beauty curator delivering excellence and sustainable results to your skin.", hAddr: "OUR OFFICE", hCont: "CONCIERGE" }
+    };
 
     let currentLang = 'th';
+
+    function render() {
+        const gridF = document.getElementById('grid-fraijour');
+        const gridO = document.getElementById('grid-others');
+        if(gridF) gridF.innerHTML = '';
+        if(gridO) gridO.innerHTML = '';
+
+        products.forEach(p => {
+            const html = `
+                <div class="product-card">
+                    <div class="card-tag">${p.badge}</div>
+                    <div class="image-wrap"><img src="${p.img}" alt="${p.name}"></div>
+                    <div class="info-wrap">
+                        <h3 class="${currentLang === 'th' ? 'use-ibm-thai' : ''}">${p.name}</h3>
+                        <div class="price-wrap">
+                            <span class="p-sale">฿${p.sale}</span>
+                            <span class="p-old">฿${p.old}</span>
+                        </div>
+                    </div>
+                    <a href="product-detail.html?id=${p.id}" class="buy-link ${currentLang === 'th' ? 'use-ibm-thai' : ''}">${trans[currentLang].shop}</a>
+                </div>`;
+            
+            if(p.brand === "Fraijour") gridF.innerHTML += html;
+            else gridO.innerHTML += html;
+        });
+
+        // Update Text
+        document.getElementById('n-home').textContent = trans[currentLang].home;
+        document.getElementById('n-about').textContent = trans[currentLang].about;
+        document.getElementById('n-contact').textContent = trans[currentLang].contact;
+        document.getElementById('langBtn').textContent = trans[currentLang].label;
+        document.getElementById('f-desc').textContent = trans[currentLang].fDesc;
+        document.getElementById('f-h-addr').textContent = trans[currentLang].hAddr;
+        document.getElementById('f-h-cont').textContent = trans[currentLang].hCont;
+    }
+
     function rotateLanguage() {
         currentLang = currentLang === 'th' ? 'en' : 'th';
-        document.getElementById('langBtn').textContent = currentLang.toUpperCase();
-        // เพิ่ม logic เปลี่ยนภาษาอื่นๆ ที่นี่
+        render();
     }
 
     render();
 </script>
-
 </body>
 </html>
