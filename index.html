@@ -27,13 +27,13 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: var(--font-luxury); transition: 0.3s; }
+        h1, h2, h3, h4 { font-family: var(--font-luxury); transition: 0.3s; }
         .use-ibm-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; font-weight: 600 !important; }
 
         /* --- ✨ Navigation --- */
         .top-nav { 
             background: var(--deep-green); 
-            padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; 
+            padding: 18px 8%; display: flex; justify-content: space-between; align-items: center; 
             position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid var(--gold-dark);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
@@ -42,83 +42,72 @@
         .nav-links a { text-decoration: none; color: var(--gold-light); font-size: 0.82rem; font-weight: 500; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; }
         .nav-links a:hover { color: white; }
 
-        /* ปุ่มภาษาตัวย่อ Minimal */
         .lang-switch { 
             background: none; border: 1px solid var(--gold-dark); color: var(--gold-light); 
-            padding: 6px 10px; cursor: pointer; font-weight: 700; font-size: 0.7rem; 
-            margin-left: 25px; transition: 0.3s; min-width: 50px; text-align: center;
+            padding: 6px 12px; cursor: pointer; font-weight: 700; font-size: 0.7rem; 
+            margin-left: 25px; transition: 0.3s; letter-spacing: 1px; min-width: 60px; text-align: center;
         }
         .lang-switch:hover { background: var(--gold-dark); color: white; }
 
         /* --- Hero --- */
-        .hero-wrap { height: 45vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #000; }
+        .hero-wrap { height: 50vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #000; }
         .hero-video { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
         .hero-content { 
             position: relative; z-index: 2; text-align: center; color: white; 
-            border: 2px solid var(--gold-dark); padding: 30px 50px;
+            border: 2px solid var(--gold-dark); padding: 40px 60px;
             background: rgba(13, 43, 31, 0.4); backdrop-filter: blur(8px);
         }
-        .hero-content h1 { font-size: clamp(1.8rem, 5vw, 3.2rem); letter-spacing: 10px; margin: 0; color: var(--gold-light); }
-        .hero-content p { font-size: 0.8rem; letter-spacing: 4px; margin-top: 10px; text-transform: uppercase; }
+        .hero-content h1 { font-size: clamp(1.8rem, 5vw, 3.5rem); letter-spacing: 12px; margin: 0; color: var(--gold-light); }
+        .hero-content p { font-size: 0.85rem; letter-spacing: 6px; margin-top: 15px; text-transform: uppercase; }
 
-        /* --- 🛍️ Product Container & Grid --- */
-        .main-container { padding: 60px 5%; max-width: 1500px; margin: 0 auto; }
-        .brand-block { margin-bottom: 80px; padding: 40px; background: rgba(255, 255, 255, 0.3); border-radius: 30px; }
-        .brand-title-box { text-align: center; margin-bottom: 50px; }
-        .brand-title-box h2 { font-size: 2.8rem; color: var(--deep-green); margin: 0; padding-bottom: 10px; border-bottom: 1px solid var(--gold-dark); display: inline-block; }
+        /* --- 🏛️ Main Container --- */
+        .main-container { padding: 80px 5%; max-width: 1500px; margin: 0 auto; }
+        .brand-block { margin-bottom: 120px; position: relative; padding: 60px 40px; background: rgba(255, 255, 255, 0.3); border-radius: 40px; }
+        .brand-title-box { text-align: center; margin-bottom: 70px; }
+        .brand-title-box h2 { font-size: 3.5rem; color: var(--deep-green); margin: 0; padding-bottom: 15px; border-bottom: 1px solid var(--gold-dark); display: inline-block; min-width: 250px; }
+        .brand-title-box span { display: block; font-size: 0.8rem; color: var(--gold-dark); letter-spacing: 8px; text-transform: uppercase; margin-top: 15px; }
+
+        /* --- 🛍️ Product Grid & Card --- */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
         
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
-
-        /* 📌 แก้ไขส่วนนี้: เพิ่ม position: relative เพื่อล็อคป้าย */
+        /* 📌 FIXED: Added position relative to lock the badge */
         .product-card { 
-            background: white; 
-            border: 1px solid rgba(197, 160, 89, 0.15); 
-            transition: 0.4s; 
-            display: flex; 
-            flex-direction: column; 
-            padding: 15px; 
-            position: relative; /* ล็อคป้ายให้อยู่ในการ์ดตัวเอง */
-            overflow: hidden; 
+            background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(197, 160, 89, 0.15); 
+            transition: 0.5s; display: flex; flex-direction: column; padding: 15px; 
+            position: relative; overflow: hidden; 
         }
-        .product-card:hover { border-color: var(--gold-dark); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+        .product-card:hover { border-color: var(--gold-dark); transform: translateY(-10px); box-shadow: 0 30px 60px rgba(13, 43, 31, 0.1); }
 
-        /* 📌 ปรับปรุงป้ายให้ชัดเจน */
         .card-tag { 
-            position: absolute; 
-            top: 15px; 
-            right: 15px; 
-            background: var(--p-green); 
-            color: var(--gold-light); 
-            font-size: 0.6rem; 
-            padding: 5px 10px; 
-            font-weight: 700; 
-            z-index: 5; 
-            letter-spacing: 1px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: absolute; top: 20px; right: 20px; background: var(--p-green); color: var(--gold-light); 
+            font-size: 0.65rem; padding: 5px 12px; letter-spacing: 1px; z-index: 10; font-weight: 700; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .image-wrap { height: 280px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-top: 10px; }
-        .image-wrap img { max-width: 90%; max-height: 90%; transition: 0.5s; }
-        .product-card:hover .image-wrap img { transform: scale(1.05); }
+        .image-wrap { background: #fff; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .image-wrap img { max-width: 85%; max-height: 85%; transition: 0.8s; }
+        .product-card:hover .image-wrap img { transform: scale(1.1); }
 
-        .info-wrap { padding: 15px 5px; text-align: center; flex-grow: 1; }
-        .info-wrap h3 { font-size: 0.95rem; margin-bottom: 10px; color: var(--deep-green); min-height: 2.8rem; line-height: 1.4; }
-        .p-sale { font-size: 1.3rem; color: var(--gold-dark); font-weight: 700; }
-        .p-old { color: #bbb; text-decoration: line-through; font-size: 0.8rem; margin-left: 5px; }
+        .info-wrap { padding: 25px 10px; text-align: center; flex-grow: 1; }
+        .info-wrap h3 { font-size: 1.1rem; margin: 0 0 12px; color: var(--deep-green); min-height: 3.2rem; line-height: 1.4; font-weight: 500; font-family: var(--font-thai); }
+        .price-wrap { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
+        .p-sale { font-size: 1.6rem; color: var(--gold-dark); font-weight: 700; }
+        .p-old { color: #bbb; text-decoration: line-through; font-size: 0.85rem; }
 
-        .buy-link { background: var(--deep-green); color: var(--gold-light); padding: 12px; text-align: center; text-decoration: none; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; transition: 0.3s; margin-top: 10px; }
+        .buy-link { background: var(--deep-green); color: var(--gold-light); padding: 16px; text-align: center; text-decoration: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; transition: 0.4s; font-family: var(--font-thai); }
         .product-card:hover .buy-link { background: var(--gold-dark); color: white; }
 
-        /* --- Footer --- */
-        footer { background: var(--deep-green); color: white; padding: 50px 8%; border-top: 4px solid var(--gold-dark); }
-        .f-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .f-brand h2 { color: var(--gold-light); margin-bottom: 10px; }
+        /* --- 🏛️ Footer (Restored to Original 3-Column) --- */
+        footer { background: var(--deep-green); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); margin-top: 50px; }
+        .f-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+        .f-brand h2 { font-size: 2.2rem; color: var(--gold-light); margin-bottom: 20px; }
+        .f-brand p { opacity: 0.7; line-height: 1.8; font-size: 0.9rem; max-width: 400px; }
+        .f-info h4 { color: var(--gold-light); margin-bottom: 25px; letter-spacing: 2px; font-size: 0.95rem; text-transform: uppercase; }
+        .f-info p { opacity: 0.8; font-size: 0.85rem; margin: 12px 0; line-height: 1.6; }
+        .f-info strong { color: var(--gold-dark); font-weight: 600; margin-right: 5px; }
+        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; opacity: 0.5; }
 
-        @media (max-width: 768px) {
-            .hero-content { padding: 20px; }
-            .top-nav { padding: 12px 5%; }
-            .lang-switch { margin-left: 10px; }
-        }
+        @media (max-width: 1024px) { .f-container { grid-template-columns: 1fr; gap: 40px; } }
     </style>
 </head>
 <body>
@@ -143,15 +132,24 @@
 
 <div class="main-container">
     <div class="brand-block">
-        <div class="brand-title-box"><h2 id="title-fraijour">Fraijour</h2></div>
+        <div class="brand-title-box">
+            <h2 id="title-fraijour">Fraijour</h2>
+            <span id="sub-f">Botanical Therapy & Science</span>
+        </div>
         <div class="product-grid" id="grid-fraijour"></div>
     </div>
     <div class="brand-block">
-        <div class="brand-title-box"><h2 id="title-bathpa">Bathpa</h2></div>
+        <div class="brand-title-box">
+            <h2 id="title-bathpa">Bathpa</h2>
+            <span id="sub-b">Urban Spa Rituals</span>
+        </div>
         <div class="product-grid" id="grid-bathpa"></div>
     </div>
     <div class="brand-block">
-        <div class="brand-title-box"><h2 id="title-charchar">Char Char</h2></div>
+        <div class="brand-title-box">
+            <h2 id="title-charchar">Char Char</h2>
+            <span id="sub-c">Premium Hair & Scalp Solutions</span>
+        </div>
         <div class="product-grid" id="grid-charchar"></div>
     </div>
 </div>
@@ -160,13 +158,20 @@
     <div class="f-container">
         <div class="f-brand">
             <h2 id="f-logo">HJ COSMETICS</h2>
-            <p id="f-desc">Premium Korean beauty curator.</p>
+            <p id="f-desc">Premium Korean beauty curator delivering excellence and sustainable results to your skin. We select only the best ingredients from nature.</p>
         </div>
         <div class="f-info">
             <h4 id="f-h-addr">OUR OFFICE</h4>
-            <p>Sriracha, Chon Buri, Thailand</p>
+            <p>323/11-12 Moo 3, Bowin,<br>Sriracha, Chon Buri 20230, Thailand</p>
+        </div>
+        <div class="f-info">
+            <h4 id="f-h-cont">CONCIERGE</h4>
+            <p><strong>LINE:</strong> @thaihj11</p>
+            <p><strong>TEL:</strong> 03-8182-577</p>
+            <p><strong>EMAIL:</strong> thaihjglobal@gmail.com</p>
         </div>
     </div>
+    <div class="footer-bottom">&copy; 2026 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
@@ -189,9 +194,9 @@
     ];
 
     const trans = {
-        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", shop: "ดูสินค้า", label: "TH" },
-        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", shop: "VIEW", label: "EN" },
-        kr: { home: "홈", about: "정보", contact: "문의", shop: "보기", label: "KR" }
+        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", shop: "เข้าชมสินค้า", sub: "คัดสรรแก่นแท้ความงามที่สมบูรณ์แบบจากเกาหลี", hAddr: "สำนักงานของเรา", hCont: "ฝ่ายบริการ", label: "TH", fDesc: "เราคัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณอย่างยั่งยืน" },
+        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", shop: "VIEW DETAILS", sub: "Curating the Essence of Korean Perfection", hAddr: "OUR OFFICE", hCont: "CONCIERGE", label: "EN", fDesc: "Premium Korean beauty curator delivering excellence and sustainable results to your skin." },
+        kr: { home: "홈", about: "정보", contact: "문의", shop: "제품 보기", sub: "완벽한 한국 미의 정수", hAddr: "오피스", hCont: "고객 서비스", label: "KR", fDesc: "탁월함과 지속 가능한 결과를 선사하는 프리미엄 한국 뷰티 큐레이터." }
     };
 
     let currentLang = localStorage.getItem('selectedLang') || 'th';
@@ -206,7 +211,7 @@
                     <div class="card-tag">${p.badge}</div>
                     <div class="image-wrap"><img src="${p.img}" alt="${p.name}"></div>
                     <div class="info-wrap">
-                        <h3>${p.name}</h3>
+                        <h3 class="${currentLang === 'th' ? 'use-ibm-thai' : ''}">${p.name}</h3>
                         <div class="price-wrap">
                             <span class="p-sale">฿${p.sale}</span>
                             <span class="p-old">฿${p.old}</span>
@@ -221,10 +226,13 @@
         document.getElementById('n-home').textContent = trans[currentLang].home;
         document.getElementById('n-about').textContent = trans[currentLang].about;
         document.getElementById('n-contact').textContent = trans[currentLang].contact;
+        document.getElementById('h-sub').textContent = trans[currentLang].sub;
         document.getElementById('langBtn').textContent = trans[currentLang].label;
+        document.getElementById('f-desc').textContent = trans[currentLang].fDesc;
+        document.getElementById('f-h-addr').textContent = trans[currentLang].hAddr;
+        document.getElementById('f-h-cont').textContent = trans[currentLang].hCont;
 
-        const thaiElements = document.querySelectorAll('h1, h2, h3, .nav-links a, .lang-switch, .buy-link');
-        thaiElements.forEach(el => {
+        document.querySelectorAll('h1, h2, h4, .nav-links a, .lang-switch, .buy-link').forEach(el => {
             if(currentLang === 'th') el.classList.add('use-ibm-thai');
             else el.classList.remove('use-ibm-thai');
         });
