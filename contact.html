@@ -6,7 +6,7 @@
     <title>Contact Us - HJ COSMETICS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Thasadith:wght@400;700&family=IBM+Plex+Sans+Thai:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Thasadith:wght@400;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&display=swap');
 
         :root { 
             --p-green: #1b4332; 
@@ -15,30 +15,20 @@
             --gold-light: #f1d38e; 
             --bg-marble: #f4f1ea;
             --font-th-modern: 'Thasadith', sans-serif;
-            --font-kr-luxury: 'Nanum Myeongjo', serif;
+            --font-main-thai: 'IBM Plex Sans Thai', sans-serif;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
         body { 
-            font-family: 'IBM Plex Sans Thai', sans-serif; 
+            font-family: var(--font-main-thai); 
             margin: 0; background-color: var(--bg-marble); color: var(--p-green);
             background-image: url('https://www.transparenttextures.com/patterns/white-marble.png');
         }
 
-        /* หัวข้อภาษาอังกฤษ/เกาหลี (Default) */
-        h1, h2, h3, h4 { 
-            font-family: var(--font-kr-luxury); 
-            font-weight: 700;
-        }
-        
-        /* หัวข้อภาษาไทย (ใช้ Class บังคับ) */
-        .thai-modern { 
-            font-family: var(--font-th-modern) !important; 
-            letter-spacing: 2px !important; 
-            font-weight: 700 !important;
-            text-transform: none !important;
-        }
+        /* --- 🏛️ หัวข้อ (Headings) --- */
+        h1, h2, h3, h4 { font-family: 'Nanum Myeongjo', serif; font-weight: 700; }
+        .thai-modern { font-family: var(--font-th-modern) !important; letter-spacing: 2px !important; font-weight: 700 !important; }
 
         /* --- ✨ Navigation --- */
         .top-nav { 
@@ -57,25 +47,65 @@
         .hero-content { position: relative; z-index: 3; text-align: center; border: 2px solid var(--gold-dark); padding: 40px 80px; background: rgba(13, 43, 31, 0.4); backdrop-filter: blur(8px); }
         .hero h1 { font-size: 3rem; margin: 0; letter-spacing: 10px; color: var(--gold-light); }
 
-        /* --- Contact Layout --- */
+        /* --- 📝 Form Styles (แก้ปัญหาฟอนต์เพี้ยน) --- */
         .contact-container { max-width: 1300px; margin: -80px auto 80px; padding: 0 20px; position: relative; z-index: 10; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; background: rgba(255,255,255,0.4); backdrop-filter: blur(15px); padding: 40px; border-radius: 40px; border: 1px solid rgba(197, 160, 89, 0.2); }
+        
         .info-card { background: var(--deep-green); color: white; padding: 60px; border: 2px solid var(--gold-dark); }
         .info-card h2 { color: var(--gold-light); font-size: 2.2rem; margin-bottom: 40px; }
-        .info-item { margin-bottom: 35px; border-left: 2px solid var(--gold-dark); padding-left: 20px; }
-        .info-item h4 { color: var(--gold-dark); margin-bottom: 10px; font-size: 0.9rem; }
-        .form-card { background: white; padding: 60px; }
-        .btn-submit { background: var(--deep-green); color: var(--gold-light); border: 1px solid var(--gold-dark); padding: 18px; width: 100%; font-weight: 700; cursor: pointer; letter-spacing: 2px; }
 
-        /* --- 🏺 Footer (Same as Index) --- */
+        .form-card { background: white; padding: 60px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        
+        .form-group { margin-bottom: 30px; position: relative; }
+        .form-group label { 
+            display: block; margin-bottom: 8px; font-size: 0.75rem; color: var(--p-green); 
+            font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+        }
+
+        /* ส่วนที่แก้ไขฟอนต์ในช่องกรอก */
+        .form-group input, 
+        .form-group textarea { 
+            width: 100%; 
+            padding: 15px 20px; 
+            font-family: var(--font-main-thai); /* บังคับใช้ฟอนต์ IBM Plex */
+            font-size: 1rem;
+            color: var(--deep-green);
+            background-color: #f9fbf9; 
+            border: 1px solid #e0e6e0;
+            border-radius: 8px;
+            outline: none; 
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder, 
+        .form-group textarea::placeholder {
+            color: #b0bbb0;
+            font-weight: 300;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus { 
+            border-color: var(--gold-dark); 
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit { 
+            background: var(--deep-green); color: var(--gold-light); border: 1px solid var(--gold-dark); 
+            padding: 20px; width: 100%; font-weight: 700; cursor: pointer; letter-spacing: 3px;
+            text-transform: uppercase; transition: 0.4s; font-family: var(--font-th-modern);
+        }
+        .btn-submit:hover { background: var(--gold-dark); color: white; transform: scale(1.02); }
+
+        /* --- 🏺 Footer --- */
         footer { background: var(--deep-green); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); position: relative; overflow: hidden; }
-        .footer-watermark { position: absolute; right: -20px; bottom: -20px; font-size: 15rem; color: rgba(197, 160, 89, 0.05); font-weight: 800; pointer-events: none; font-family: 'Nanum Myeongjo', serif; }
+        .footer-watermark { position: absolute; right: -20px; bottom: -20px; font-size: 15rem; color: rgba(197, 160, 89, 0.05); font-weight: 800; pointer-events: none; }
         .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 80px; position: relative; z-index: 2; }
         .f-brand h2 { font-size: 2rem; color: var(--gold-light); margin: 0 0 15px; letter-spacing: 3px; }
-        .f-info h4 { color: var(--gold-light); margin-bottom: 25px; border-bottom: 1px solid rgba(241, 211, 142, 0.3); display: inline-block; padding-bottom: 5px; }
         .footer-bottom { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; opacity: 0.4; }
 
-        @media (max-width: 1000px) { .contact-grid, .f-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1000px) { .contact-grid, .f-grid { grid-template-columns: 1fr; } .form-card { padding: 40px 20px; } }
     </style>
 </head>
 <body>
@@ -101,7 +131,7 @@
             <h2 id="info-h" class="head-el">Get In Touch</h2>
             <div class="info-item">
                 <h4 id="h-addr-label" class="head-el">ADDRESS</h4>
-                <p id="addr-text">323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
+                <p>323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
             </div>
             <div class="info-item">
                 <h4 id="h-cont-label" class="head-el">CONCIERGE</h4>
@@ -110,11 +140,21 @@
                 <p><strong>EMAIL:</strong> thaihjglobal@gmail.com</p>
             </div>
         </div>
+        
         <div class="form-card">
             <form>
-                <div class="form-group"><label id="l-name">NAME</label><input type="text" placeholder="..."></div>
-                <div class="form-group"><label id="l-email">EMAIL</label><input type="email" placeholder="..."></div>
-                <div class="form-group"><label id="l-msg">MESSAGE</label><textarea rows="5" placeholder="..."></textarea></div>
+                <div class="form-group">
+                    <label id="l-name">NAME</label>
+                    <input type="text" id="ph-name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label id="l-email">EMAIL</label>
+                    <input type="email" id="ph-email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label id="l-msg">MESSAGE</label>
+                    <textarea id="ph-msg" rows="5" placeholder="Write your message here..."></textarea>
+                </div>
                 <button type="submit" class="btn-submit head-el" id="btn-send">Send Message</button>
             </form>
         </div>
@@ -130,7 +170,7 @@
         </div>
         <div class="f-info">
             <h4 id="f-h-addr" class="head-el">OUR OFFICE</h4>
-            <p id="f-addr">323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
+            <p>323/11-12 Huayprab Muangthong 5, Bowin, Sriracha, Chon Buri 20230</p>
         </div>
         <div class="f-info">
             <h4 id="f-h-cont" class="head-el">CONTACT</h4>
@@ -146,9 +186,24 @@
     let currentLang = localStorage.getItem('selectedLang') || 'th';
 
     const trans = {
-        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", hAddr: "ที่อยู่", hCont: "ข้อมูลติดต่อ", lName: "ชื่อของคุณ", lEmail: "อีเมล", lMsg: "ข้อความ", btnSend: "ส่งข้อความ", footDesc: "คัดสรรสกินแคร์ระดับพรีเมียมจากเกาหลี เพื่อผลลัพธ์ที่สมบูรณ์แบบสำหรับผิวคุณ", next: "ENGLISH / 한국어" },
-        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", heroTitle: "Contact Us", infoH: "Get In Touch", hAddr: "ADDRESS", hCont: "CONTACT INFO", lName: "YOUR NAME", lEmail: "EMAIL", lMsg: "MESSAGE", btnSend: "SEND MESSAGE", footDesc: "Premium Korean Skincare Curator.", next: "ภาษาไทย / 한국어" },
-        kr: { home: "홈", about: "소개", contact: "문의하기", heroTitle: "문의하기", infoH: "연락처", hAddr: "주소", hCont: "연락처 정보", lName: "성함", lEmail: "이메일", lMsg: "메시지", btnSend: "보내기", footDesc: "한국 프리미엄 뷰티 큐레이터.", next: "ภาษาไทย / ENGLISH" }
+        th: { 
+            home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", 
+            hAddr: "ที่อยู่", hCont: "ข้อมูลติดต่อ", lName: "ชื่อของคุณ", lEmail: "อีเมล", lMsg: "ข้อความ", 
+            btnSend: "ส่งข้อความ", footDesc: "คัดสรรสกินแคร์ระดับพรีเมียมจากเกาหลี เพื่อผิวที่สมบูรณ์แบบ", next: "ENGLISH / 한국어",
+            phName: "กรุณากรอกชื่อของคุณ", phEmail: "กรุณากรอกอีเมล", phMsg: "พิมพ์ข้อความที่นี่..."
+        },
+        en: { 
+            home: "HOME", about: "ABOUT", contact: "CONTACT", heroTitle: "Contact Us", infoH: "Get In Touch", 
+            hAddr: "ADDRESS", hCont: "CONTACT INFO", lName: "YOUR NAME", lEmail: "EMAIL", lMsg: "MESSAGE", 
+            btnSend: "SEND MESSAGE", footDesc: "Premium Korean Skincare Curator.", next: "ภาษาไทย / 한국어",
+            phName: "Enter your name", phEmail: "Enter your email", phMsg: "Write your message here..."
+        },
+        kr: { 
+            home: "홈", about: "소개", contact: "문의하기", heroTitle: "문의하기", infoH: "연락처", 
+            hAddr: "주소", hCont: "연락처 정보", lName: "성함", lEmail: "이메일", lMsg: "메시지", 
+            btnSend: "보내기", footDesc: "한국 프리미엄 뷰티 큐레이터.", next: "ภาษาไทย / ENGLISH",
+            phName: "이름을 입력하세요", phEmail: "이메일을 입력하세요", phMsg: "메시지를 입력하세요..."
+        }
     };
 
     function updateContent() {
@@ -168,15 +223,16 @@
         document.getElementById('f-h-addr').textContent = l.hAddr;
         document.getElementById('f-h-cont').textContent = l.hCont;
         document.getElementById('langBtn').textContent = l.next;
+        
+        // อัปเดต Placeholder ในช่องกรอก
+        document.getElementById('ph-name').placeholder = l.phName;
+        document.getElementById('ph-email').placeholder = l.phEmail;
+        document.getElementById('ph-msg').placeholder = l.phMsg;
 
-        // เปลี่ยนสไตล์ฟอนต์หัวข้อเมื่อเป็นภาษาไทย
         const headElements = document.querySelectorAll('.head-el');
         headElements.forEach(el => {
-            if(currentLang === 'th') {
-                el.classList.add('thai-modern');
-            } else {
-                el.classList.remove('thai-modern');
-            }
+            if(currentLang === 'th') el.classList.add('thai-modern');
+            else el.classList.remove('thai-modern');
         });
 
         localStorage.setItem('selectedLang', currentLang);
