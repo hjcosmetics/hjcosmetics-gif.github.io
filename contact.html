@@ -6,7 +6,7 @@
     <title>Contact Us - HJ COSMETICS | The Concierge</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Niramit:wght@400;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;600&display=swap');
 
         :root { 
             --p-green: #1b4332; 
@@ -14,6 +14,9 @@
             --gold-dark: #c5a059; 
             --gold-light: #f1d38e; 
             --bg-marble: #f4f1ea;
+            /* ฟอนต์สำรองสำหรับไทยที่ดูหรูหรา */
+            --font-th-head: 'Niramit', serif;
+            --font-kr-head: 'Nanum Myeongjo', serif;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -25,7 +28,11 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 { font-family: 'Nanum Myeongjo', serif; }
+        /* ตั้งค่าหัวข้อหลัก */
+        h1, h2, h3, h4 { font-family: var(--font-kr-head); transition: font-family 0.3s ease; }
+        
+        /* Class พิเศษสำหรับเปลี่ยนฟอนต์ไทยให้สวยขึ้น */
+        .thai-title { font-family: var(--font-th-head) !important; letter-spacing: 1px !important; }
 
         /* --- ✨ Navigation --- */
         .top-nav { 
@@ -50,7 +57,7 @@
             border: 2px solid var(--gold-dark); padding: 40px 80px;
             background: rgba(13, 43, 31, 0.4); backdrop-filter: blur(8px);
         }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin: 0; letter-spacing: 12px; font-weight: 700; color: var(--gold-light); text-transform: uppercase; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 0; letter-spacing: 12px; font-weight: 700; color: var(--gold-light); text-transform: uppercase; }
 
         /* --- Contact Container --- */
         .contact-container { max-width: 1300px; margin: -80px auto 80px; padding: 0 20px; position: relative; z-index: 10; }
@@ -61,7 +68,7 @@
         }
 
         .info-card { background: var(--deep-green); color: white; padding: 60px; border: 2px solid var(--gold-dark); position: relative; }
-        .info-card h2 { color: var(--gold-light); font-size: 2.5rem; margin-bottom: 40px; }
+        .info-card h2 { color: var(--gold-light); font-size: 2.2rem; margin-bottom: 40px; }
         .info-item { margin-bottom: 35px; border-left: 2px solid var(--gold-dark); padding-left: 20px; }
         .info-item h4 { color: var(--gold-dark); margin: 0 0 10px; letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase; }
         .info-item p { margin: 0; font-size: 1rem; opacity: 0.9; line-height: 1.8; }
@@ -78,7 +85,7 @@
         .btn-submit { 
             background: var(--deep-green); color: var(--gold-light); border: 1px solid var(--gold-dark); 
             padding: 18px; font-weight: 700; cursor: pointer; transition: 0.4s; width: 100%; 
-            letter-spacing: 3px; text-transform: uppercase;
+            letter-spacing: 3px; text-transform: uppercase; font-family: var(--font-th-head);
         }
         .btn-submit:hover { background: var(--gold-dark); color: white; }
 
@@ -91,11 +98,11 @@
         }
         .map-wrapper iframe { width: 100%; height: 100%; border: none; }
 
-        /* --- 🏺 Footer (Matched Index & Product) --- */
+        /* --- 🏺 Footer --- */
         footer { background: var(--deep-green); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); position: relative; overflow: hidden; }
-        .footer-watermark { position: absolute; right: -20px; bottom: -20px; font-size: 15rem; color: rgba(197, 160, 89, 0.05); font-weight: 800; pointer-events: none; font-family: 'Nanum Myeongjo', serif; }
+        .footer-watermark { position: absolute; right: -20px; bottom: -20px; font-size: 15rem; color: rgba(197, 160, 89, 0.05); font-weight: 800; pointer-events: none; }
         .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 80px; position: relative; z-index: 2; }
-        .f-brand h2 { font-size: 2.2rem; color: var(--gold-light); margin: 0 0 15px; letter-spacing: 3px; }
+        .f-brand h2 { font-size: 2rem; color: var(--gold-light); margin: 0 0 15px; letter-spacing: 3px; }
         .f-brand p { opacity: 0.8; line-height: 1.8; max-width: 300px; font-size: 0.9rem; }
         .f-info h4 { color: var(--gold-light); margin-bottom: 25px; letter-spacing: 2px; border-bottom: 1px solid rgba(241, 211, 142, 0.3); display: inline-block; padding-bottom: 5px; font-size: 1.1rem; }
         .f-info p { opacity: 0.8; font-size: 0.9rem; margin: 8px 0; line-height: 1.8; }
@@ -118,25 +125,25 @@
         <a href="index.html" id="nav-home">HOME</a>
         <a href="about.html" id="nav-about">ABOUT</a>
         <a href="contact.html" id="nav-contact" class="active">CONTACT</a>
-        <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">EN / KR</button>
+        <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">EN / KR / TH</button>
     </div>
 </nav>
 
 <header class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-content"><h1 id="hero-title">Contact Us</h1></div>
+    <div class="hero-content"><h1 id="hero-title" class="head-el">Contact Us</h1></div>
 </header>
 
 <div class="contact-container">
     <div class="contact-grid">
         <div class="info-card">
-            <h2 id="info-h">Get In Touch</h2>
+            <h2 id="info-h" class="head-el">Get In Touch</h2>
             <div class="info-item">
-                <h4 id="h-addr-label">ADDRESS</h4>
+                <h4 id="h-addr-label" class="head-el">ADDRESS</h4>
                 <p id="addr-text">323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
             </div>
             <div class="info-item">
-                <h4 id="h-cont-label">CONCIERGE</h4>
+                <h4 id="h-cont-label" class="head-el">CONCIERGE</h4>
                 <p><strong>TEL:</strong> 03-8182-577</p>
                 <p><strong>LINE ID:</strong> @thaihj11</p>
                 <p><strong>EMAIL:</strong> thaihjglobal@gmail.com</p>
@@ -155,16 +162,16 @@
 
 <section class="map-section">
     <div class="map-wrapper">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3883.674488421831!2d101.0772543!3d13.0245455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3102c77d4c8f583f%3A0xc34a621183296c05!2sHJ%20COSMETICS!5e0!3m2!1sth!2sth!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882.2536830500174!2d101.0772591!3d13.0195048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3102c77095555555%3A0xe7f979730f555555!2sHJ%20COSMETICS!5e0!3m2!1sth!2sth!4v1700000000000" allowfullscreen="" loading="lazy"></iframe>
     </div>
-    <a href="https://maps.app.goo.gl/YourActualGoogleMapsLink" target="_blank" style="display: inline-block; background: var(--deep-green); color: var(--gold-light); padding: 15px 40px; text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; border: 1px solid var(--gold-dark); transition: 0.4s;">📍 OPEN IN GOOGLE MAPS</a>
+    <a href="https://maps.app.goo.gl/YourMapLink" target="_blank" style="display: inline-block; background: var(--deep-green); color: var(--gold-light); padding: 15px 40px; text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; border: 1px solid var(--gold-dark); transition: 0.4s;">📍 OPEN IN GOOGLE MAPS</a>
 </section>
 
 <footer>
     <div class="footer-watermark">HJ</div>
     <div class="f-grid">
         <div class="f-brand">
-            <h2>HJ COSMETICS</h2>
+            <h2 class="head-el">HJ COSMETICS</h2>
             <p id="f-desc">Premium Korean Skincare Curator.</p>
             <div class="social-icons">
                 <a href="#"><i class="fa-brands fa-facebook"></i></a>
@@ -173,11 +180,11 @@
             </div>
         </div>
         <div class="f-info">
-            <h4 id="f-h-addr">OUR OFFICE</h4>
+            <h4 id="f-h-addr" class="head-el">OUR OFFICE</h4>
             <p id="f-addr">323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, <br>Chon Buri 20230, Thailand</p>
         </div>
         <div class="f-info">
-            <h4 id="f-h-cont">CONTACT</h4>
+            <h4 id="f-h-cont" class="head-el">CONTACT</h4>
             <p><strong>TEL:</strong> 03-8182-577</p>
             <p><strong>LINE ID:</strong> @thaihj11</p>
             <p><strong>EMAIL:</strong> thaihjglobal@gmail.com</p>
@@ -213,6 +220,17 @@
         document.getElementById('f-h-addr').textContent = l.hAddr;
         document.getElementById('f-h-cont').textContent = l.hCont;
         document.getElementById('langBtn').textContent = l.next;
+
+        // จัดการฟอนต์หัวข้อ
+        const headElements = document.querySelectorAll('.head-el');
+        headElements.forEach(el => {
+            if(currentLang === 'th') {
+                el.classList.add('thai-title');
+            } else {
+                el.classList.remove('thai-title');
+            }
+        });
+
         localStorage.setItem('selectedLang', currentLang);
     }
 
