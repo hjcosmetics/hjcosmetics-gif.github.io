@@ -6,7 +6,6 @@
     <title>Contact Us - HJ COSMETICS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* นำเข้าฟอนต์ IBM Plex Sans Thai ทุกขนาดน้ำหนัก */
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap');
 
         :root { 
@@ -15,89 +14,116 @@
             --gold-dark: #c5a059; 
             --gold-light: #f1d38e; 
             --bg-marble: #f4f1ea;
-            /* กำหนดตัวแปรฟอนต์หลัก */
             --font-thai: 'IBM Plex Sans Thai', sans-serif;
-            --font-eng-luxury: 'Nanum Myeongjo', serif;
+            --font-luxury: 'Nanum Myeongjo', serif;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
         body { 
-            font-family: var(--font-thai); /* ใช้ IBM เป็นพื้นฐานทั้งหมด */
+            font-family: var(--font-thai); 
             margin: 0; background-color: var(--bg-marble); color: var(--p-green);
             background-image: url('https://www.transparenttextures.com/patterns/white-marble.png');
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* --- 🏛️ Headings Management --- */
-        h1, h2, h3, h4 { 
-            font-family: var(--font-eng-luxury); 
-            font-weight: 700;
-            transition: font-family 0.3s ease;
+        /* --- ✨ Korea Flag Background Overlay --- */
+        .korea-bg-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            pointer-events: none;
+            background: url('https://images.unsplash.com/photo-1541753866388-0b3c703f2191?q=80&w=2000') center/cover no-repeat;
+            opacity: 0.04;
         }
 
-        /* บังคับใช้ IBM Plex เมื่อเป็นภาษาไทยในหัวข้อ */
-        .use-ibm-thai { 
-            font-family: var(--font-thai) !important; 
-            letter-spacing: 0px !important; /* ภาษาไทยแบบ IBM ไม่ควรห่างเกินไป */
-            font-weight: 600 !important;
-        }
+        h1, h2, h3, h4 { font-family: var(--font-luxury); transition: 0.3s; }
+        .use-ibm-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; font-weight: 600 !important; }
 
         /* --- ✨ Navigation --- */
         .top-nav { 
             background: var(--deep-green); padding: 18px 8%; display: flex; 
             justify-content: space-between; align-items: center; 
             position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid var(--gold-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         .logo-box img { height: 50px; filter: brightness(0) invert(1); }
-        .nav-links a { text-decoration: none; color: var(--gold-light); font-size: 0.85rem; font-weight: 500; letter-spacing: 1px; margin-left: 30px; }
-        .lang-switch { background: none; border: 1px solid var(--gold-dark); color: var(--gold-light); padding: 8px 18px; cursor: pointer; font-weight: 600; margin-left: 20px; font-family: var(--font-thai); }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--gold-light); font-size: 0.85rem; font-weight: 500; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; }
+        .nav-links a.active { color: white; font-weight: 700; }
+        
+        .lang-switch { 
+            background: none; border: 1px solid var(--gold-dark); color: var(--gold-light); 
+            padding: 6px 12px; cursor: pointer; font-weight: 700; font-size: 0.7rem; 
+            margin-left: 25px; transition: 0.3s; letter-spacing: 1px; min-width: 60px; text-align: center;
+        }
+        .lang-switch:hover { background: var(--gold-dark); color: white; }
 
         /* --- Hero --- */
-        .hero { height: 35vh; position: relative; background: #000; display: flex; align-items: center; justify-content: center; }
+        .hero { height: 35vh; position: relative; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .hero-bg { position: absolute; width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80') center/cover; opacity: 0.4; filter: grayscale(0.5); }
-        .hero-content { position: relative; z-index: 3; text-align: center; border: 2px solid var(--gold-dark); padding: 30px 60px; background: rgba(13, 43, 31, 0.4); backdrop-filter: blur(8px); }
+        .hero-content { 
+            position: relative; z-index: 3; text-align: center; color: white; 
+            border: 2px solid var(--gold-dark); padding: 30px 60px;
+            background: rgba(13, 43, 31, 0.4); backdrop-filter: blur(8px);
+        }
         .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0; letter-spacing: 8px; color: var(--gold-light); }
 
         /* --- 📝 Form & Contact Section --- */
         .contact-container { max-width: 1200px; margin: -60px auto 80px; padding: 0 20px; position: relative; z-index: 10; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; background: rgba(255,255,255,0.6); backdrop-filter: blur(15px); padding: 40px; border-radius: 30px; border: 1px solid rgba(197, 160, 89, 0.2); }
+        .contact-grid { 
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; 
+            background: rgba(255,255,255,0.7); backdrop-filter: blur(15px); padding: 40px; 
+            border-radius: 30px; border: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+        }
         
-        .info-card { background: var(--deep-green); color: white; padding: 50px; border: 1px solid var(--gold-dark); }
-        .info-card h2 { color: var(--gold-light); font-size: 2rem; margin-bottom: 30px; }
+        .info-card { 
+            background: var(--deep-green); color: white; padding: 50px; 
+            background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            border: 1px solid var(--gold-dark); 
+        }
+        .info-card h2 { color: var(--gold-light); font-size: 2.2rem; margin-bottom: 35px; border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; }
         .info-item { margin-bottom: 30px; }
-        .info-item h4 { color: var(--gold-dark); margin-bottom: 5px; font-size: 0.8rem; letter-spacing: 1.5px; }
+        .info-item h4 { color: var(--gold-light); margin-bottom: 10px; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; }
+        .info-item p { opacity: 0.8; font-weight: 300; line-height: 1.6; font-size: 0.95rem; }
 
-        .form-card { background: white; padding: 50px; border-radius: 15px; }
+        .form-card { background: white; padding: 50px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; margin-bottom: 8px; font-size: 0.75rem; font-weight: 600; color: var(--p-green); letter-spacing: 1px; }
-
-        /* บังคับฟอนต์ IBM Plex ในช่อง Input */
-        input, textarea, button { font-family: var(--font-thai) !important; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.75rem; font-weight: 600; color: var(--p-green); letter-spacing: 1px; text-transform: uppercase; }
 
         input, textarea { 
             width: 100%; padding: 14px 18px; font-size: 0.95rem; 
             border: 1px solid #ddd; border-radius: 6px; outline: none; transition: 0.3s;
-            background: #fafafa;
+            background: #fafafa; font-family: var(--font-thai);
         }
         input:focus, textarea:focus { border-color: var(--gold-dark); background: #fff; box-shadow: 0 0 10px rgba(197,160,89,0.1); }
 
         .btn-submit { 
             background: var(--deep-green); color: var(--gold-light); border: 1px solid var(--gold-dark); 
             padding: 18px; width: 100%; font-weight: 700; cursor: pointer; letter-spacing: 2px;
-            text-transform: uppercase; transition: 0.4s; font-size: 1rem;
+            text-transform: uppercase; transition: 0.4s; font-size: 1rem; font-family: var(--font-thai);
         }
         .btn-submit:hover { background: var(--gold-dark); color: white; }
 
         /* --- 🏺 Footer --- */
-        footer { background: var(--deep-green); color: white; padding: 60px 8% 30px; border-top: 5px solid var(--gold-dark); position: relative; }
-        .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
-        .f-brand h2 { color: var(--gold-light); font-size: 1.8rem; margin: 0 0 15px; }
-        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; opacity: 0.5; }
+        footer { background: var(--deep-green); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); margin-top: 50px; position: relative; z-index: 10; }
+        .f-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+        .f-brand h2 { font-size: 2.2rem; color: var(--gold-light); margin-bottom: 20px; }
+        .f-brand p { opacity: 0.7; line-height: 1.8; font-size: 0.9rem; max-width: 400px; }
+        .f-info h4 { color: var(--gold-light); margin-bottom: 25px; letter-spacing: 2px; font-size: 0.95rem; text-transform: uppercase; }
+        .f-info p { opacity: 0.8; font-size: 0.85rem; margin: 15px 0; line-height: 1.6; display: flex; align-items: center; }
+        .f-info p i { color: var(--gold-dark); font-size: 1.1rem; margin-right: 15px; width: 25px; text-align: center; }
+        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; opacity: 0.5; }
 
-        @media (max-width: 900px) { .contact-grid, .f-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { 
+            .contact-grid { grid-template-columns: 1fr; }
+            .f-container { grid-template-columns: 1fr; gap: 40px; }
+        }
     </style>
 </head>
 <body>
+
+<div class="korea-bg-overlay"></div>
 
 <nav class="top-nav">
     <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
@@ -105,7 +131,7 @@
         <a href="index.html" id="nav-home">HOME</a>
         <a href="about.html" id="nav-about">ABOUT</a>
         <a href="contact.html" id="nav-contact" class="active">CONTACT</a>
-        <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">EN / KR / TH</button>
+        <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">TH</button>
     </div>
 </nav>
 
@@ -120,11 +146,13 @@
             <h2 id="info-h">Get In Touch</h2>
             <div class="info-item">
                 <h4 id="h-addr-label">ADDRESS</h4>
-                <p>323/11-12 Huayprab Muangthong 5, <br>Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
+                <p>323/11-12 Moo 3, Bowin,<br>Sriracha, Chon Buri 20230, Thailand</p>
             </div>
             <div class="info-item">
                 <h4 id="h-cont-label">CONCIERGE</h4>
-                <p><strong>TEL:</strong> 03-8182-577<br><strong>LINE ID:</strong> thaihj11<br><strong>EMAIL:</strong> thaihjglobal@gmail.com</p>
+                <p><i class="fa-brands fa-line"></i> @thaihj11</p>
+                <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
+                <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
             </div>
         </div>
         
@@ -149,21 +177,23 @@
 </div>
 
 <footer>
-    <div class="f-grid">
+    <div class="f-container">
         <div class="f-brand">
-            <h2 id="f-h-brand">HJ COSMETICS</h2>
-            <p id="f-desc">Premium Korean Skincare Curator.</p>
+            <h2 id="f-logo">HJ COSMETICS</h2>
+            <p id="foot-desc">Premium Korean Skincare Curator.</p>
         </div>
         <div class="f-info">
-            <h4 id="f-h-addr">OUR OFFICE</h4>
-            <p>323/11-12 Huayprab Muangthong 5, Moo 3 Bowin, Chon Buri 20230</p>
+            <h4 id="h-addr-foot">OUR OFFICE</h4>
+            <p><i class="fa-solid fa-location-dot"></i> 323/11-12 Moo 3, Bowin,<br>Sriracha, Chon Buri 20230, Thailand</p>
         </div>
         <div class="f-info">
-            <h4 id="f-h-cont">CONTACT</h4>
-            <p>Line ID: thaihj11<br>Tel: 03-8182-577<br>Email: thaihjglobal@gmail.com</p>
+            <h4 id="h-cont-foot">CONCIERGE</h4>
+            <p><i class="fa-brands fa-line"></i> @thaihj11</p>
+            <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
+            <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
         </div>
     </div>
-    <div class="footer-bottom">© 2024 HJ COSMETICS. ALL RIGHTS RESERVED.</div>
+    <div class="footer-bottom">&copy; 2026 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
@@ -173,20 +203,20 @@
     const trans = {
         th: { 
             home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", 
-            hAddr: "ที่อยู่", hCont: "ข้อมูลติดต่อ", lName: "ชื่อ-นามสกุล", lEmail: "อีเมล", lMsg: "ข้อความ", 
-            btnSend: "ส่งข้อความ", footDesc: "คัดสรรสกินแคร์ระดับพรีเมียมจากเกาหลี เพื่อผิวที่สมบูรณ์แบบ", next: "ENGLISH / 한국어",
+            hAddr: "ที่อยู่", hCont: "ฝ่ายบริการ", lName: "ชื่อ-นามสกุล", lEmail: "อีเมล", lMsg: "ข้อความ", 
+            btnSend: "ส่งข้อความ", footDesc: "คัดสรรสกินแคร์ระดับพรีเมียมจากเกาหลี เพื่อผิวที่สมบูรณ์แบบ", label: "TH",
             phName: "กรุณากรอกชื่อของคุณ", phEmail: "กรุณากรอกอีเมลติดต่อ", phMsg: "พิมพ์ข้อความที่นี่..."
         },
         en: { 
             home: "HOME", about: "ABOUT", contact: "CONTACT", heroTitle: "Contact Us", infoH: "Get In Touch", 
-            hAddr: "ADDRESS", hCont: "CONTACT INFO", lName: "YOUR NAME", lEmail: "EMAIL", lMsg: "MESSAGE", 
-            btnSend: "SEND MESSAGE", footDesc: "Premium Korean Skincare Curator.", next: "ภาษาไทย / 한국어",
+            hAddr: "ADDRESS", hCont: "CONCIERGE", lName: "YOUR NAME", lEmail: "EMAIL", lMsg: "MESSAGE", 
+            btnSend: "SEND MESSAGE", footDesc: "Premium Korean Skincare Curator.", label: "EN",
             phName: "Enter your name", phEmail: "Enter your email", phMsg: "Write your message here..."
         },
         kr: { 
             home: "홈", about: "소개", contact: "문의하기", heroTitle: "문의하기", infoH: "연락처", 
-            hAddr: "주소", hCont: "연락처 정보", lName: "성함", lEmail: "이เม일", lMsg: "메시지", 
-            btnSend: "보내기", footDesc: "한국 프리미엄 뷰티 큐레이터.", next: "ภาษาไทย / ENGLISH",
+            hAddr: "주소", hCont: "고객 서비스", lName: "성함", lEmail: "이메일", lMsg: "메시지", 
+            btnSend: "보내기", footDesc: "한국 프리미엄 뷰티 큐레이터.", label: "KR",
             phName: "이름을 입력하세요", phEmail: "이메일을 입력하세요", phMsg: "메시지를 입력하세요..."
         }
     };
@@ -204,17 +234,16 @@
         document.getElementById('l-email').textContent = l.lEmail;
         document.getElementById('l-msg').textContent = l.lMsg;
         document.getElementById('btn-send').textContent = l.btnSend;
-        document.getElementById('f-desc').textContent = l.footDesc;
-        document.getElementById('f-h-addr').textContent = l.hAddr;
-        document.getElementById('f-h-cont').textContent = l.hCont;
-        document.getElementById('langBtn').textContent = l.next;
+        document.getElementById('foot-desc').textContent = l.footDesc;
+        document.getElementById('h-addr-foot').textContent = l.hAddr;
+        document.getElementById('h-cont-foot').textContent = l.hCont;
+        document.getElementById('langBtn').textContent = l.label;
         
         document.getElementById('ph-name').placeholder = l.phName;
         document.getElementById('ph-email').placeholder = l.phEmail;
         document.getElementById('ph-msg').placeholder = l.phMsg;
 
-        // เปลี่ยนฟอนต์หัวข้อหลักให้เป็น IBM ทั้งหมดเมื่อเป็นภาษาไทย
-        const headings = document.querySelectorAll('h1, h2, h3, h4, .btn-submit');
+        const headings = document.querySelectorAll('h1, h2, h3, h4, .btn-submit, .nav-links a, .lang-switch');
         headings.forEach(el => {
             if(currentLang === 'th') el.classList.add('use-ibm-thai');
             else el.classList.remove('use-ibm-thai');
