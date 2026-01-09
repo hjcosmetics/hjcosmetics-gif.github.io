@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - HJ COSMETICS | The Heritage</title>
+    <title>Contact Us - HJ COSMETICS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap');
@@ -11,7 +11,6 @@
         :root { 
             --p-green: #1b4332; 
             --deep-green: #0d2b1f;
-            /* สีทองเลื่อมวาวแบบหน้า Index */
             --gold-metallic: linear-gradient(135deg, #8a6d3b 0%, #c5a059 20%, #ffecb3 45%, #f1d38e 50%, #ffecb3 55%, #c5a059 80%, #8a6d3b 100%);
             --gold-dark: #c5a059; 
             --gold-light: #f1d38e; 
@@ -27,7 +26,7 @@
             overflow-x: hidden;
         }
 
-        /* --- 🎬 Fixed Video Background (ธีมเดียวกับ Index) --- */
+        /* --- 🎬 Background Video --- */
         #bg-video {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; z-index: -2; opacity: 0.5;
@@ -40,7 +39,7 @@
         h1, h2, h3, h4 { font-family: var(--font-luxury); transition: 0.3s; }
         .use-ibm-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; font-weight: 600 !important; }
 
-        /* --- 🎖️ Real Metallic Gold Navigation --- */
+        /* --- 🎖️ Gold Navigation --- */
         .top-nav { 
             background: var(--gold-metallic);
             background-size: 300% 300%;
@@ -59,7 +58,7 @@
             height: 48px; 
             filter: brightness(0) saturate(100%) invert(10%) sepia(50%) saturate(1000%) hue-rotate(120deg); 
         }
-        .nav-links a { text-decoration: none; color: var(--deep-green); font-size: 0.85rem; font-weight: 800; letter-spacing: 2px; margin-left: 30px; }
+        .nav-links a { text-decoration: none; color: var(--deep-green); font-size: 0.85rem; font-weight: 800; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; }
         .nav-links a.active { border-bottom: 2px solid var(--deep-green); }
 
         .lang-switch { 
@@ -68,11 +67,8 @@
             margin-left: 25px; border-radius: 2px;
         }
 
-        /* --- ✨ Hero Section --- */
-        .hero-header {
-            text-align: center;
-            padding: 100px 5% 60px;
-        }
+        /* --- ✨ Hero Header --- */
+        .hero-header { text-align: center; padding: 100px 5% 40px; }
         .hero-header h1 {
             font-size: clamp(3rem, 8vw, 5rem);
             color: var(--gold-light);
@@ -81,58 +77,53 @@
             margin: 0;
         }
 
-        /* --- 🏛️ Main Container (Glassmorphism) --- */
-        .main-container { padding: 0 5% 80px; max-width: 1300px; margin: 0 auto; position: relative; }
-
-        .origin-section { 
-            background: rgba(13, 43, 31, 0.8); 
-            backdrop-filter: blur(15px);
-            padding: 60px; border-radius: 20px; 
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            margin-bottom: 60px;
+        /* --- 🏛️ Contact Card --- */
+        .contact-container { max-width: 1200px; margin: 0 auto 80px; padding: 0 5%; position: relative; z-index: 10; }
+        .contact-grid { 
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; 
+            background: rgba(13, 43, 31, 0.85); backdrop-filter: blur(20px); padding: 50px; 
+            border-radius: 25px; border: 1px solid rgba(197, 160, 89, 0.4);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
         }
-        .story-flex { display: flex; align-items: center; gap: 60px; }
-        .story-img { flex: 1; }
-        .story-img img { width: 100%; max-width: 300px; filter: drop-shadow(0 0 20px rgba(241, 211, 142, 0.2)); }
-        .story-text { flex: 1.5; }
-        .story-text h2 { font-size: 3rem; color: var(--gold-light); margin-bottom: 20px; border-bottom: 2px solid var(--gold-dark); display: inline-block; }
-        .story-text p { font-size: 1.1rem; line-height: 1.8; color: #fff; opacity: 0.9; font-weight: 300; }
-
-        /* --- 🏷️ Brand Grids --- */
-        .brand-grid { 
-            display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; 
-            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(197, 160, 89, 0.2); 
-            border-radius: 15px; overflow: hidden; backdrop-filter: blur(10px);
-        }
-        .brand-image { height: 450px; }
-        .brand-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
-        .brand-grid:hover .brand-image img { opacity: 1; transform: scale(1.03); }
         
-        .brand-content { padding: 50px; display: flex; flex-direction: column; justify-content: center; }
-        .brand-content span { color: var(--gold-light); letter-spacing: 4px; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .brand-content h3 { font-size: 3rem; margin: 0 0 20px; color: #fff; }
-        .brand-content p { line-height: 1.8; color: rgba(255,255,255,0.8); font-size: 0.95rem; margin-bottom: 30px; font-weight: 300; }
-        
-        .btn-visit { 
-            align-self: flex-start; text-decoration: none; color: var(--gold-light); 
-            border: 1px solid var(--gold-dark); padding: 12px 30px; font-size: 0.75rem; 
-            letter-spacing: 2px; font-weight: 700; transition: 0.4s;
-        }
-        .btn-visit:hover { background: var(--gold-metallic); color: var(--deep-green); border-color: transparent; }
+        .info-card h2 { color: var(--gold-light); font-size: 2.5rem; margin-bottom: 35px; border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; }
+        .info-item { margin-bottom: 30px; }
+        .info-item h4 { color: var(--gold-light); margin-bottom: 10px; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; }
+        .info-item p { opacity: 0.95; font-weight: 300; line-height: 1.8; font-size: 1.05rem; margin: 5px 0; color: #fff; }
+        .info-item i { color: var(--gold-light); margin-right: 15px; width: 25px; text-align: center; font-size: 1.2rem; }
 
-        /* --- 🏛️ Footer (คงข้อมูลครบเหมือน Index) --- */
-        footer { background: rgba(13, 43, 31, 0.95); backdrop-filter: blur(10px); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); }
+        /* Form Styling */
+        .form-card { background: rgba(255, 255, 255, 0.08); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.15); }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 12px; font-size: 0.8rem; font-weight: 600; color: var(--gold-light); letter-spacing: 1.5px; }
+
+        input, textarea { 
+            width: 100%; padding: 16px; font-size: 1rem; 
+            border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 8px; outline: none; transition: 0.4s;
+            background: #fff; font-family: var(--font-thai); color: #000;
+        }
+        input:focus, textarea:focus { border-color: var(--gold-light); box-shadow: 0 0 15px rgba(241, 211, 142, 0.4); }
+
+        .btn-submit { 
+            background: var(--gold-metallic); color: var(--deep-green); border: none; 
+            padding: 22px; width: 100%; font-weight: 800; cursor: pointer; letter-spacing: 3px;
+            text-transform: uppercase; transition: 0.4s; font-size: 1.1rem; margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .btn-submit:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+
+        /* --- 🏛️ Footer --- */
+        footer { background: rgba(13, 43, 31, 0.98); backdrop-filter: blur(10px); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); position: relative; }
         .f-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
         .f-brand h2 { font-size: 2.2rem; color: var(--gold-light); margin-bottom: 20px; }
         .f-info h4 { color: var(--gold-light); margin-bottom: 25px; letter-spacing: 2px; text-transform: uppercase; }
-        .f-info p { opacity: 0.8; font-size: 0.85rem; margin: 15px 0; display: flex; align-items: center; }
+        .f-info p { opacity: 0.8; font-size: 0.9rem; margin: 15px 0; display: flex; align-items: center; }
         .f-info p i { color: var(--gold-dark); margin-right: 15px; width: 25px; text-align: center; }
         .footer-bottom { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.75rem; opacity: 0.5; }
 
         @media (max-width: 1024px) { 
-            .f-container { grid-template-columns: 1fr; } 
-            .brand-grid { grid-template-columns: 1fr; }
-            .story-flex { flex-direction: column; text-align: center; }
+            .contact-grid { grid-template-columns: 1fr; padding: 30px; }
+            .f-container { grid-template-columns: 1fr; gap: 40px; }
         }
     </style>
 </head>
@@ -147,54 +138,48 @@
     <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
     <div class="nav-links">
         <a href="index.html" id="nav-home">HOME</a>
-        <a href="about.html" id="nav-about" class="active">ABOUT</a>
-        <a href="contact.html" id="nav-contact">CONTACT</a>
+        <a href="about.html" id="nav-about">ABOUT</a>
+        <a href="contact.html" id="nav-contact" class="active">CONTACT</a>
         <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">TH</button>
     </div>
 </nav>
 
 <header class="hero-header">
-    <h1 id="hero-title">Our Heritage</h1>
+    <h1 id="hero-title">Contact Us</h1>
 </header>
 
-<div class="main-container">
-    <section class="origin-section">
-        <div class="story-flex">
-            <div class="story-img"><img src="HJ (5).png" alt="HJ LOGO"></div>
-            <div class="story-text">
-                <h2 id="hj-title">The HJ Story</h2>
-                <p id="hj-desc">...</p>
+<div class="contact-container">
+    <div class="contact-grid">
+        <div class="info-card">
+            <h2 id="info-h">Get In Touch</h2>
+            <div class="info-item">
+                <h4 id="h-addr-label">ADDRESS</h4>
+                <p>323/11-12 Moo 3, Bowin,<br>Sriracha, Chon Buri 20230, Thailand</p>
+            </div>
+            <div class="info-item">
+                <h4 id="h-cont-label">CONCIERGE</h4>
+                <p><i class="fa-brands fa-line"></i> thaihj11</p>
+                <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
+                <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
             </div>
         </div>
-    </section>
-
-    <div class="brand-grid">
-        <div class="brand-image"><img src="IMG_5808.jpeg"></div>
-        <div class="brand-content">
-            <span id="f-tag-sub">Botanical Therapy</span>
-            <h3 id="brand-f">Fraijour</h3>
-            <p id="f-desc">...</p>
-            <a href="https://fraijour.co.kr/" target="_blank" class="btn-visit">OFFICIAL SITE</a>
-        </div>
-    </div>
-
-    <div class="brand-grid" style="direction: rtl;">
-        <div class="brand-image"><img src="IMG_5805.jpeg"></div>
-        <div class="brand-content" style="direction: ltr;">
-            <span id="b-tag-sub">Body Ritual</span>
-            <h3 id="brand-b">Bathpa</h3>
-            <p id="b-desc">...</p>
-            <a href="https://www.evascosmetic.com/bathpa" target="_blank" class="btn-visit">OFFICIAL SITE</a>
-        </div>
-    </div>
-
-    <div class="brand-grid">
-        <div class="brand-image"><img src="IMG_5807.jpeg"></div>
-        <div class="brand-content">
-            <span id="c-tag-sub">Intensive Hair & Skin Care</span>
-            <h3 id="brand-c">Char Char</h3>
-            <p id="c-desc">...</p>
-            <a href="https://www.evascosmetic.com/charchar" target="_blank" class="btn-visit">OFFICIAL SITE</a>
+        
+        <div class="form-card">
+            <form>
+                <div class="form-group">
+                    <label id="l-name">NAME</label>
+                    <input type="text" id="ph-name" placeholder="...">
+                </div>
+                <div class="form-group">
+                    <label id="l-email">EMAIL</label>
+                    <input type="email" id="ph-email" placeholder="...">
+                </div>
+                <div class="form-group">
+                    <label id="l-msg">MESSAGE</label>
+                    <textarea id="ph-msg" rows="5" placeholder="..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit" id="btn-send">Send Message</button>
+            </form>
         </div>
     </div>
 </div>
@@ -207,7 +192,7 @@
         </div>
         <div class="f-info">
             <h4 id="h-addr-foot">OUR OFFICE</h4>
-            <p><i class="fa-solid fa-location-dot"></i> 323/11-12 Moo 3, Bowin,<br>Sriracha, Chon Buri 20230, Thailand</p>
+            <p><i class="fa-solid fa-location-dot"></i> 323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230, Thailand</p>
         </div>
         <div class="f-info">
             <h4 id="h-cont-foot">CONCIERGE</h4>
@@ -225,37 +210,22 @@
 
     const trans = {
         th: { 
-            home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", 
-            heroTitle: "มรดกแห่งความงาม", 
-            hjTitle: "เส้นทางของ HJ", 
-            hjDesc: "เราเริ่มต้นด้วยเจตนารมณ์ที่เรียบง่าย คือการนำเข้าสกินแคร์คุณภาพสูงจากเกาหลีเพื่อตอบโจทย์ผิวชาวไทยโดยเฉพาะ HJ COSMETICS เชื่อมั่นในการผสานพลังของธรรมชาติและนวัตกรรมทางวิทยาศาสตร์ที่ทันสมัย เราคัดสรรสิ่งที่จะช่วยฟื้นฟูผิวของคุณได้อย่างลึกซึ้งและยั่งยืน เพื่อมอบประสบการณ์ความงามที่แท้จริงในระดับพรีเมียม", 
-            fDesc: "แบรนด์ที่เชี่ยวชาญด้าน Botanical Therapy โดยเน้นการใช้สารสกัดจากพืชพรรณธรรมชาติ โดยเฉพาะ 'Wormwood' ที่ได้รับการวิจัยมาอย่างยาวนานว่าช่วยปลอบประโลมผิวบอบบางและลดการระคายเคืองได้อย่างดีเยี่ยม", 
-            bDesc: "เปลี่ยนการดูแลผิวกายในทุกวันให้กลายเป็นพิธีกรรมแห่งความสุข Bathpa นำเสนอผลิตภัณฑ์ดูแลผิวกายระดับสปาพรีเมียมที่โดดเด่นด้วยกลิ่นหอมอันเป็นเอกลักษณ์และเนื้อสัมผัสที่หรูหรา", 
-            cDesc: "ผู้นำด้านผลิตภัณฑ์ดูแลเส้นผมและหนังศีรษะสูตรเข้มข้นที่ผสานคุณค่าจาก Argan Oil มอบผลลัพธ์ดุจทำทรีทเมนท์ที่ซาลอนชั้นนำ ให้เส้นผมของคุณนุ่มสลวย มีน้ำหนัก และสุขภาพดี", 
-            footDesc: "เราคัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณอย่างยั่งยืน", 
-            hAddr: "สำนักงานของเรา", hCont: "ฝ่ายบริการ", visit: "เข้าชมเว็บไซต์", label: "TH" 
+            home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", 
+            hAddr: "ที่อยู่", hCont: "ฝ่ายบริการ", lName: "ชื่อ-นามสกุล", lEmail: "อีเมล", lMsg: "ข้อความ", 
+            btnSend: "ส่งข้อความ", footDesc: "เราคัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ", label: "TH",
+            phName: "กรุณากรอกชื่อของคุณ", phEmail: "กรุณากรอกอีเมลติดต่อ", phMsg: "พิมพ์ข้อความที่นี่..."
         },
         en: { 
-            home: "HOME", about: "ABOUT", contact: "CONTACT", 
-            heroTitle: "Our Heritage", 
-            hjTitle: "The HJ Story", 
-            hjDesc: "Born from a simple vision to curate excellence, HJ COSMETICS delivers premium South Korean innovation directly to you. We believe in the profound synergy of natural purity and scientific advancement.", 
-            fDesc: "Specializing in Botanical Therapy, Fraijour harnesses the healing power of natural herbs, most notably Wormwood, to provide deep calming effects for sensitive skin.", 
-            bDesc: "Elevate your daily bath ritual into a premium spa escape. Bathpa offers sophisticated body care solutions that combine exquisite fragrances with high-performance ingredients.", 
-            cDesc: "A pioneer in professional-grade hair and scalp solutions. Char Char focuses on intensive treatment using concentrated extracts like premium Argan oil.", 
-            footDesc: "Premium Korean beauty curator delivering excellence and sustainable results to your skin.", 
-            hAddr: "OUR OFFICE", hCont: "CONCIERGE", visit: "OFFICIAL SITE", label: "EN" 
+            home: "HOME", about: "ABOUT", contact: "CONTACT", heroTitle: "Contact Us", infoH: "Get In Touch", 
+            hAddr: "ADDRESS", hCont: "CONCIERGE", lName: "YOUR NAME", lEmail: "EMAIL", lMsg: "MESSAGE", 
+            btnSend: "SEND MESSAGE", footDesc: "Premium Korean beauty curator delivering excellence.", label: "EN",
+            phName: "Enter your name", phEmail: "Enter your email", phMsg: "Write your message here..."
         },
         kr: { 
-            home: "홈", about: "회사소개", contact: "문의", 
-            heroTitle: "아름다운 유산", 
-            hjTitle: "HJ 코스메틱 이야기", 
-            hjDesc: "최고만을 선별하겠다는 단순한 비전จาก 시작되었습니다. HJ COSMETICS는 진심을 담아 당신의 피부를 돌보는 제품만을 선보입니다.", 
-            fDesc: "프라이주어는 당신의 피부 본연의 건강함을 되찾아줍니다. 쑥 추출물을 주성분으로 하여 민감한 피부를 진정시키는 보태니컬 테รา피 브랜드입니다.", 
-            bDesc: "일상의 루틴을 프리미엄 휴식으로 바꿔보세요. 배스파가 선사하는 고품격 리추얼 감각적인 향기와 고급스러운 텍스처를 경험해 보세요.", 
-            cDesc: "고농축 추출물을 통한 집중 케어. อาร์แกน ออยล์과 엄선된 성분으로 손상된 모발을 회복시키고 두피 건강을 책임지는 전문 헤어 케어 브랜드입니다.", 
-            footDesc: "탁월함과 지속 가능한 결과를 선사하는 프리미엄 한국 뷰티 큐레이터", 
-            hAddr: "오피스", hCont: "고객 서비스", visit: "공식 사이트", label: "KR" 
+            home: "홈", about: "회사소개", contact: "문의하기", heroTitle: "문의하기", infoH: "연락처", 
+            hAddr: "주소", hCont: "고객 서비스", lName: "성함", lEmail: "이메일", lMsg: "메시지", 
+            btnSend: "보내기", footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.", label: "KR",
+            phName: "이름을 입력하세요", phEmail: "이메일을 입력하세요", phMsg: "메시지를 입력하세요..."
         }
     };
 
@@ -265,19 +235,22 @@
         document.getElementById('nav-about').textContent = l.about;
         document.getElementById('nav-contact').textContent = l.contact;
         document.getElementById('hero-title').textContent = l.heroTitle;
-        document.getElementById('hj-title').textContent = l.hjTitle;
-        document.getElementById('hj-desc').textContent = l.hjDesc;
-        document.getElementById('f-desc').textContent = l.fDesc;
-        document.getElementById('b-desc').textContent = l.bDesc;
-        document.getElementById('c-desc').textContent = l.cDesc;
+        document.getElementById('info-h').textContent = l.infoH;
+        document.getElementById('h-addr-label').textContent = l.hAddr;
+        document.getElementById('h-cont-label').textContent = l.hCont;
+        document.getElementById('l-name').textContent = l.lName;
+        document.getElementById('l-email').textContent = l.lEmail;
+        document.getElementById('l-msg').textContent = l.lMsg;
+        document.getElementById('btn-send').textContent = l.btnSend;
         document.getElementById('foot-desc').textContent = l.footDesc;
         document.getElementById('h-addr-foot').textContent = l.hAddr;
         document.getElementById('h-cont-foot').textContent = l.hCont;
-        document.querySelectorAll('.btn-visit').forEach(b => b.textContent = l.visit);
         document.getElementById('langBtn').textContent = l.label;
+        document.getElementById('ph-name').placeholder = l.phName;
+        document.getElementById('ph-email').placeholder = l.phEmail;
+        document.getElementById('ph-msg').placeholder = l.phMsg;
 
-        // Apply Font Styles
-        const elements = document.querySelectorAll('h1, h2, h3, h4, .btn-visit, .nav-links a');
+        const elements = document.querySelectorAll('h1, h2, h4, .btn-submit, .nav-links a, .lang-switch');
         elements.forEach(el => {
             if(currentLang === 'th') el.classList.add('use-ibm-thai');
             else el.classList.remove('use-ibm-thai');
