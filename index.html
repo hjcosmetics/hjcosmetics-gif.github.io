@@ -68,27 +68,16 @@
             margin-left: 25px; border-radius: 2px; min-width: 55px;
         }
 
-        /* --- ✨ New Hero Header Area --- */
-        .hero-header {
-            text-align: center;
-            padding: 100px 5% 40px;
-            position: relative;
-        }
+        /* --- ✨ Hero Header --- */
+        .hero-header { text-align: center; padding: 100px 5% 40px; position: relative; }
         .hero-header h1 {
-            font-size: clamp(3rem, 10vw, 6rem);
-            margin: 0;
-            color: var(--gold-light);
-            letter-spacing: 15px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            font-weight: 800;
+            font-size: clamp(3rem, 10vw, 6rem); margin: 0;
+            color: var(--gold-light); letter-spacing: 15px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8); font-weight: 800;
         }
         .hero-header p {
-            font-size: 1rem;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            color: #fff;
-            margin-top: 10px;
-            opacity: 0.9;
+            font-size: 1rem; letter-spacing: 8px; text-transform: uppercase;
+            color: #fff; margin-top: 10px; opacity: 0.9;
         }
 
         /* --- 🏛️ Main Container --- */
@@ -100,25 +89,50 @@
         }
         .brand-title-box { text-align: center; margin-bottom: 50px; }
         .brand-title-box h2 { font-size: 3.5rem; color: var(--gold-light); border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; }
+        .brand-title-box span { display: block; margin-top: 15px; letter-spacing: 3px; font-weight: 300; color: #eee; }
 
         /* --- 🛍️ Product Grid & Card --- */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
         .product-card { 
-            background: #fff; border-radius: 10px; overflow: hidden; transition: 0.5s; 
+            background: #fff; border-radius: 12px; overflow: hidden; transition: 0.4s; 
             display: flex; flex-direction: column; position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-        .image-wrap { height: 320px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 25px; }
-        .image-wrap img { max-width: 90%; max-height: 90%; transition: 0.8s; }
-        .info-wrap { padding: 25px 15px; text-align: center; color: var(--deep-green); flex-grow: 1; }
-        .info-wrap h3 { font-size: 1rem; margin-bottom: 12px; height: 3rem; overflow: hidden; line-height: 1.4; font-weight: 600; }
-        .p-sale { font-size: 1.6rem; color: #b8860b; font-weight: 800; display: block; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.3); }
+        
+        /* ป้าย Badge สวยๆ */
+        .card-tag {
+            position: absolute; top: 15px; left: 15px; z-index: 2;
+            background: var(--gold-metallic); color: var(--deep-green);
+            padding: 5px 12px; font-size: 0.7rem; font-weight: 800;
+            border-radius: 50px; letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .image-wrap { height: 320px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 25px; overflow: hidden; }
+        .image-wrap img { max-width: 95%; max-height: 95%; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .product-card:hover .image-wrap img { transform: scale(1.1); }
+
+        .info-wrap { padding: 20px 15px; text-align: center; color: var(--deep-green); flex-grow: 1; }
+        .info-wrap h3 { font-size: 0.95rem; margin: 0 0 12px; height: 2.8rem; overflow: hidden; line-height: 1.4; font-weight: 700; }
+        .price-wrap { display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .p-sale { font-size: 1.5rem; color: #8a6d3b; font-weight: 800; }
         .p-old { color: #bbb; text-decoration: line-through; font-size: 0.85rem; }
-        .buy-link { background: var(--deep-green); color: var(--gold-light); padding: 18px; text-align: center; text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; }
+
+        /* ปุ่มดูรายละเอียด */
+        .buy-link { 
+            background: var(--deep-green); color: var(--gold-light); 
+            padding: 18px; text-align: center; text-decoration: none; 
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+            transition: 0.3s; border-top: 1px solid rgba(197, 160, 89, 0.2);
+        }
+        .buy-link:hover { background: #153a2b; color: #fff; filter: brightness(1.2); }
 
         /* --- 🏛️ Footer --- */
         footer { background: rgba(13, 43, 31, 0.95); backdrop-filter: blur(10px); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); position: relative; }
         .f-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
         .f-info p i { color: var(--gold-dark); font-size: 1.1rem; margin-right: 15px; width: 25px; text-align: center; }
+        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; opacity: 0.5; }
 
         @media (max-width: 1024px) { .f-container { grid-template-columns: 1fr; gap: 40px; } }
     </style>
@@ -148,7 +162,7 @@
 <div class="main-container">
     <div class="brand-block">
         <div class="brand-title-box">
-            <h2 id="title-fraijour">Fraijour</h2> <br>
+            <h2 id="title-fraijour">Fraijour</h2>
             <span id="sub-f">Botanical Therapy & Science</span>
         </div>
         <div class="product-grid" id="grid-fraijour"></div>
@@ -156,7 +170,7 @@
 
     <div class="brand-block">
         <div class="brand-title-box">
-            <h2 id="title-others">Bathpa & Char Char</h2> <br></br.>
+            <h2 id="title-others">Bathpa & Char Char</h2>
             <span id="sub-o">Urban Spa Rituals & Hair Solutions</span>
         </div>
         <div class="product-grid" id="grid-others"></div>
@@ -218,16 +232,21 @@
         if(gridO) gridO.innerHTML = '';
 
         products.forEach(p => {
+            // แก้ไขตรง href ให้ไปที่ product.html?id=...
             const html = `
                 <div class="product-card">
                     <div class="card-tag">${p.badge}</div>
                     <div class="image-wrap"><img src="${p.img}" alt="${p.name}"></div>
                     <div class="info-wrap">
                         <h3>${p.name}</h3>
-                        <div class="price-wrap"><span class="p-sale">฿${p.sale}</span><span class="p-old">฿${p.old}</span></div>
+                        <div class="price-wrap">
+                            <span class="p-sale">฿${p.sale}</span>
+                            <span class="p-old">฿${p.old}</span>
+                        </div>
                     </div>
-                    <a href="product-detail.html?id=${p.id}" class="buy-link">${trans[currentLang].shop}</a>
+                    <a href="product.html?id=${p.id}" class="buy-link">${trans[currentLang].shop}</a>
                 </div>`;
+            
             if(p.brand === "Fraijour") gridF.innerHTML += html;
             else gridO.innerHTML += html;
         });
