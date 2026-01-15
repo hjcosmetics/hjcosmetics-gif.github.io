@@ -26,22 +26,21 @@
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.5; }
         .video-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: -1; pointer-events: none; }
 
-        /* --- ⚡ TikTok Shop Floating Ad (ป้ายกระพริบกลับมาแล้ว) --- */
+        /* --- ⚡ TikTok Shop Floating Ad --- */
         .side-ad {
             position: fixed; right: 25px; top: 50%; transform: translateY(-50%);
-            width: 130px; background: rgba(0,0,0,0.85); border: 2px solid var(--gold-dark);
-            padding: 18px 10px; border-radius: 20px; z-index: 9999; text-align: center;
+            width: 125px; background: rgba(0,0,0,0.8); border: 1.5px solid var(--gold-dark);
+            padding: 15px 10px; border-radius: 15px; z-index: 9999; text-align: center;
             text-decoration: none; animation: ad-blink 1.5s infinite ease-in-out;
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
         }
         @keyframes ad-blink {
-            0%, 100% { transform: translateY(-50%) scale(1); box-shadow: 0 0 15px var(--gold-dark); }
-            50% { transform: translateY(-50%) scale(1.05); box-shadow: 0 0 35px var(--gold-light); }
+            0%, 100% { transform: translateY(-50%) scale(1); box-shadow: 0 0 10px var(--gold-dark); }
+            50% { transform: translateY(-50%) scale(1.03); box-shadow: 0 0 25px var(--gold-light); }
         }
-        .side-ad i { font-size: 2rem; color: #fff; }
-        .side-ad strong { font-size: 0.9rem; color: var(--gold-light); font-family: var(--font-logo); letter-spacing: 1px; }
-        .side-ad .btn-inner { background: var(--gold-metallic); color: #000; font-size: 0.75rem; font-weight: 800; padding: 6px 12px; border-radius: 50px; width: 100%; margin-top: 5px; }
+        .side-ad i { font-size: 1.8rem; color: #fff; }
+        .side-ad strong { font-size: 0.8rem; color: var(--gold-light); font-family: var(--font-logo); }
+        .side-ad .btn-inner { background: var(--gold-metallic); color: #000; font-size: 0.7rem; font-weight: 800; padding: 5px; border-radius: 50px; width: 100%; margin-top: 5px; }
 
         /* --- 🎖️ Navigation (Logo Green) --- */
         .top-nav { background: var(--gold-metallic); padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid #5d4a26; }
@@ -49,55 +48,51 @@
         .nav-links a { text-decoration: none; color: var(--deep-green); font-size: 0.85rem; font-weight: 800; letter-spacing: 2px; margin-left: 30px; }
         .lang-switch { background: var(--deep-green); border: none; color: #f1d38e; padding: 7px 15px; cursor: pointer; font-weight: 800; border-radius: 2px; }
 
-        /* --- ✨ Hero Section (Adjusted Spacing) --- */
+        /* --- ✨ Hero Section (Fixed Spacing) --- */
         .hero-header { 
             text-align: center; 
-            padding: 140px 5% 100px; /* เพิ่มระยะห่างบนล่าง */
+            padding: 110px 5% 50px; /* ลดระยะห่างรวม */
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .hero-logo-img {
-            width: 100%; max-width: 450px; height: auto;
-            filter: drop-shadow(0 15px 35px rgba(197, 160, 89, 0.5));
+            width: 100%; max-width: 420px; height: auto;
+            filter: drop-shadow(0 10px 25px rgba(197, 160, 89, 0.4));
             animation: float 6s ease-in-out infinite;
         }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
         
         #h-sub { 
-            font-size: clamp(0.85rem, 2vw, 1.1rem); 
-            letter-spacing: 8px; 
+            font-size: 1rem; 
+            letter-spacing: 5px; /* ลดความห่างตัวอักษรลงเล็กน้อยให้ดูสวยงาม */
             text-transform: uppercase;
-            color: #ffffff !important; /* สโลแกนสีขาวบริสุทธิ์ */
-            margin-top: 50px; /* เว้นระยะห่างจากโลโก้ให้พอดี */
+            color: #ffffff !important; 
+            margin-top: 15px; /* ขยับขึ้นมาชิดโลโก้ */
             font-weight: 400;
-            text-shadow: 0 2px 15px rgba(0,0,0,1);
-            max-width: 800px;
-            line-height: 1.6;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+            opacity: 0.95;
         }
 
         /* --- 🛍️ Products Grid --- */
         .main-container { padding: 0 5% 80px; max-width: 1500px; margin: 0 auto; }
-        .brand-block { margin-bottom: 80px; padding: 60px 40px; background: rgba(13, 43, 31, 0.75); backdrop-filter: blur(15px); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 25px; }
-        .brand-title-box { text-align: center; margin-bottom: 60px; }
-        .brand-title-box h2 { font-size: 3.5rem; color: var(--gold-light); border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; font-family: var(--font-luxury); margin: 0; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
-        .product-card { background: #fff; border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; position: relative; transition: 0.4s ease; border: 1px solid rgba(197, 160, 89, 0.2); }
-        .product-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(197, 160, 89, 0.3); }
-        .card-tag { position: absolute; top: 15px; left: 15px; z-index: 2; background: var(--gold-metallic); color: var(--deep-green); padding: 6px 14px; font-size: 0.7rem; font-weight: 800; border-radius: 50px; }
-        .image-wrap { height: 320px; display: flex; align-items: center; justify-content: center; padding: 30px; background: #fff; }
-        .image-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .info-wrap { padding: 25px 20px; text-align: center; color: var(--deep-green); flex-grow: 1; border-top: 1px solid #f0f0f0; }
-        .info-wrap h3 { font-size: 1rem; height: 3rem; overflow: hidden; margin: 0 0 15px; font-weight: 700; line-height: 1.4; }
-        .p-sale { font-size: 1.6rem; color: #8a6d3b; font-weight: 800; }
-        .p-old { color: #bbb; text-decoration: line-through; font-size: 0.9rem; margin-left: 8px; }
-        .buy-link { background: var(--deep-green); color: var(--gold-light); padding: 20px; text-align: center; text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s; }
-        .buy-link:hover { background: #153a2b; color: #fff; }
+        .brand-block { margin-bottom: 60px; padding: 50px 40px; background: rgba(13, 43, 31, 0.75); backdrop-filter: blur(15px); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 20px; }
+        .brand-title-box { text-align: center; margin-bottom: 50px; }
+        .brand-title-box h2 { font-size: 3rem; color: var(--gold-light); border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 5px; font-family: var(--font-luxury); margin: 0; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        .product-card { background: #fff; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; position: relative; transition: 0.4s ease; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.3); }
+        .card-tag { position: absolute; top: 15px; left: 15px; z-index: 2; background: var(--gold-metallic); color: var(--deep-green); padding: 5px 12px; font-size: 0.7rem; font-weight: 800; border-radius: 50px; }
+        .image-wrap { height: 300px; display: flex; align-items: center; justify-content: center; padding: 25px; background: #fff; }
+        .image-wrap img { max-width: 95%; max-height: 95%; object-fit: contain; }
+        .info-wrap { padding: 20px; text-align: center; color: var(--deep-green); flex-grow: 1; }
+        .p-sale { font-size: 1.5rem; color: #8a6d3b; font-weight: 800; }
+        .buy-link { background: var(--deep-green); color: var(--gold-light); padding: 18px; text-align: center; text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s; }
         .use-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; }
 
-        footer { background: rgba(13, 43, 31, 0.95); padding: 60px 8%; border-top: 5px solid var(--gold-dark); text-align: center; color: rgba(255,255,255,0.7); font-size: 0.8rem; }
+        footer { background: rgba(13, 43, 31, 0.95); padding: 50px 8%; border-top: 5px solid var(--gold-dark); text-align: center; color: rgba(255,255,255,0.6); }
         
-        @media (max-width: 1100px) { .side-ad { display: none; } }
+        @media (max-width: 1024px) { .side-ad { display: none; } }
     </style>
 </head>
 <body>
@@ -151,21 +146,21 @@
         { id: 4, brand: "Fraijour", nameTh: "วอร์มวูด คลีนซิ่ง โฟม", nameEn: "Wormwood Cleansing Foam", nameKr: "쑥 클렌징 폼", sale: 290, old: 399, badgeTh: "ขายดี", badgeEn: "BEST SELLER", badgeKr: "베스트", img: "4.jpeg" },
         { id: 5, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช มอยส์เจอร์ ครีม", nameEn: "Heartleaf Blemish Moisture Cream", nameKr: "어성초 블레미쉬 크림", sale: 310, old: 590, badgeTh: "ดูแลสิว", badgeEn: "ACNE CARE", badgeKr: "여드름 เค어", img: "5.jpeg" },
         { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "어성초 블레미쉬 토너", sale: 360, old: 529, badgeTh: "ปลอบประโลม", badgeEn: "SOOTHING", badgeKr: "진정", img: "6.jpeg" },
-        { id: 7, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin-Collagen 3D Core Cream", nameKr: "레틴 콜라겐 3D 코어 크림", sale: 250, old: 459, badgeTh: "ยกกระชับ", badgeEn: "LIFTING", badgeKr: "리พ팅", img: "7.jpeg" },
+        { id: 7, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin-Collagen 3D Core Cream", nameKr: "레틴 콜ลา겐 3D 코어 크림", sale: 250, old: 459, badgeTh: "ยกกระชับ", badgeEn: "LIFTING", badgeKr: "리พ팅", img: "7.jpeg" },
         { id: 8, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ อายครีม", nameEn: "Retin-Collagen 3D Core Eye Cream", nameKr: "레틴 콜라겐 3D 코어 아이크림", sale: 195, old: 370, badgeTh: "คอร์ 3ดี", badgeEn: "CORE 3D", badgeKr: "코어 3D", img: "8.jpeg" },
         { id: 9, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ โทนเนอร์", nameEn: "Retin-Collagen 3D Core Toner", nameKr: "레틴 콜라겐 3D 코어 토너", sale: 290, old: 500, badgeTh: "กระชับผิว", badgeEn: "FIRMING", badgeKr: "탄력", img: "9.jpeg" },
         { id: 10, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ลิป ออยล์", nameEn: "Retin-Collagen 3D Core Lip Oil", nameKr: "레틴 콜라겐 3D 코어 립 오일", sale: 125, old: 259, badgeTh: "ใหม่", badgeEn: "NEW", badgeKr: "신제품", img: "10.jpeg" },
         { id: 11, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต ซัน ครีม", nameEn: "Heartleaf Airy Fit Sun Cream", nameKr: "어성초 에어리 핏 선크림", sale: 280, old: 450, badgeTh: "กันแดด", badgeEn: "SUN CARE", badgeKr: "선케어", img: "11.jpeg" },
         { id: 12, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต ซัน สกรีน", nameEn: "Heartleaf Water Fit Sun Screen", nameKr: "어성초 워터 핏 선스크린", sale: 320, old: 590, badgeTh: "กันแดด", badgeEn: "SUN CARE", badgeKr: "선케어", img: "12.jpeg" },
         { id: 13, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ ชีท มาส์ก", nameEn: "Original Herb Sheet Mask", nameKr: "오리지널 허브 시트 마스크", sale: 17, old: 29, badgeTh: "มาส์ก", badgeEn: "MASK", badgeKr: "마스크", img: "15.jpeg" },
-        { id: 14, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바디 톤업 크림", sale: 150, old: 529, badgeTh: "ผิวตัว", badgeEn: "BODY", badgeKr: "바디", img: "13.jpeg" },
+        { id: 14, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바디 톤업 크림", sale: 150, old: 529, badgeTh: "ผิวตัว", badgeEn: "BODY", badgeKr: "바ดี", img: "13.jpeg" },
         { id: 15, brand: "CharChar", nameTh: "มุงบีน ซิก้า คลีนซิ่ง โฟม", nameEn: "Mung Bean Cica Cleansing Foam", nameKr: "녹두 시카 클렌징 폼", sale: 120, old: 199, badgeTh: "ซิก้า", badgeEn: "CICA", badgeKr: "시카", img: "14.jpeg" }
     ];
 
     const trans = {
         th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", shop: "ดูรายละเอียด", label: "TH", sub: "คัดสรรแก่นแท้ความงามที่สมบูรณ์แบบจากเกาหลี", adMain: "TIKTOK SHOP", adBtn: "ช้อปเลย" },
         en: { home: "HOME", about: "ABOUT", contact: "CONTACT", shop: "VIEW DETAILS", label: "EN", sub: "Curating the Essence of Korean Perfection", adMain: "TIKTOK SHOP", adBtn: "SHOP NOW" },
-        kr: { home: "홈", about: "회사소개", contact: "문의하기", shop: "상세보기", label: "KR", sub: "완벽한 한국 미의 정수", adMain: "틱톡 샵", adBtn: "지금 쇼핑" }
+        kr: { home: "홈", about: "회사소개", contact: "문의하기", shop: "상세보기", label: "KR", sub: "완벽한 한국 มิ의 정수", adMain: "틱톡 샵", adBtn: "지금 쇼핑" }
     };
 
     let currentLang = localStorage.getItem('selectedLang') || 'th';
