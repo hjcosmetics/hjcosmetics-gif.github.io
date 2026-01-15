@@ -22,56 +22,82 @@
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { font-family: var(--font-thai); margin: 0; background-color: #000; color: #fff; overflow-x: hidden; }
 
-        /* --- 🎬 Fixed Video Background --- */
+        /* --- 🎬 Background --- */
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.5; }
         .video-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: -1; pointer-events: none; }
 
+        /* --- ⚡ TikTok Shop Floating Ad (ป้ายกระพริบกลับมาแล้ว) --- */
+        .side-ad {
+            position: fixed; right: 25px; top: 50%; transform: translateY(-50%);
+            width: 130px; background: rgba(0,0,0,0.85); border: 2px solid var(--gold-dark);
+            padding: 18px 10px; border-radius: 20px; z-index: 9999; text-align: center;
+            text-decoration: none; animation: ad-blink 1.5s infinite ease-in-out;
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+        @keyframes ad-blink {
+            0%, 100% { transform: translateY(-50%) scale(1); box-shadow: 0 0 15px var(--gold-dark); }
+            50% { transform: translateY(-50%) scale(1.05); box-shadow: 0 0 35px var(--gold-light); }
+        }
+        .side-ad i { font-size: 2rem; color: #fff; }
+        .side-ad strong { font-size: 0.9rem; color: var(--gold-light); font-family: var(--font-logo); letter-spacing: 1px; }
+        .side-ad .btn-inner { background: var(--gold-metallic); color: #000; font-size: 0.75rem; font-weight: 800; padding: 6px 12px; border-radius: 50px; width: 100%; margin-top: 5px; }
+
         /* --- 🎖️ Navigation (Logo Green) --- */
-        .top-nav { background: var(--gold-metallic); padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid #5d4a26; box-shadow: 0 5px 25px rgba(0,0,0,0.6); }
+        .top-nav { background: var(--gold-metallic); padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid #5d4a26; }
         .logo-box img { height: 48px; filter: brightness(0) saturate(100%) invert(10%) sepia(50%) saturate(1000%) hue-rotate(120deg); }
         .nav-links a { text-decoration: none; color: var(--deep-green); font-size: 0.85rem; font-weight: 800; letter-spacing: 2px; margin-left: 30px; }
         .lang-switch { background: var(--deep-green); border: none; color: #f1d38e; padding: 7px 15px; cursor: pointer; font-weight: 800; border-radius: 2px; }
 
-        /* --- ✨ Hero Section (gold.png + White Slogan) --- */
-        .hero-header { text-align: center; padding: 120px 5% 80px; }
+        /* --- ✨ Hero Section (Adjusted Spacing) --- */
+        .hero-header { 
+            text-align: center; 
+            padding: 140px 5% 100px; /* เพิ่มระยะห่างบนล่าง */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
         .hero-logo-img {
-            width: 100%; max-width: 480px; height: auto;
-            filter: drop-shadow(0 10px 30px rgba(197, 160, 89, 0.4));
+            width: 100%; max-width: 450px; height: auto;
+            filter: drop-shadow(0 15px 35px rgba(197, 160, 89, 0.5));
             animation: float 6s ease-in-out infinite;
         }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
         
-        /* สโลแกนเปลี่ยนเป็นสีขาว */
         #h-sub { 
-            font-size: 0.9rem; 
-            letter-spacing: 6px; 
+            font-size: clamp(0.85rem, 2vw, 1.1rem); 
+            letter-spacing: 8px; 
             text-transform: uppercase;
-            color: #ffffff; /* เปลี่ยนจากสีทองเป็นสีขาวตามคำขอ */
-            margin-top: 35px; 
+            color: #ffffff !important; /* สโลแกนสีขาวบริสุทธิ์ */
+            margin-top: 50px; /* เว้นระยะห่างจากโลโก้ให้พอดี */
             font-weight: 400;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 2px 15px rgba(0,0,0,1);
+            max-width: 800px;
+            line-height: 1.6;
         }
 
         /* --- 🛍️ Products Grid --- */
         .main-container { padding: 0 5% 80px; max-width: 1500px; margin: 0 auto; }
-        .brand-block { margin-bottom: 80px; padding: 50px 40px; background: rgba(13, 43, 31, 0.75); backdrop-filter: blur(15px); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 20px; }
-        .brand-title-box { text-align: center; margin-bottom: 50px; }
-        .brand-title-box h2 { font-size: 3.5rem; color: var(--gold-light); border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; font-family: var(--font-luxury); }
+        .brand-block { margin-bottom: 80px; padding: 60px 40px; background: rgba(13, 43, 31, 0.75); backdrop-filter: blur(15px); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 25px; }
+        .brand-title-box { text-align: center; margin-bottom: 60px; }
+        .brand-title-box h2 { font-size: 3.5rem; color: var(--gold-light); border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; font-family: var(--font-luxury); margin: 0; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
-        .product-card { background: #fff; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; position: relative; transition: 0.4s; }
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.3); }
-        .card-tag { position: absolute; top: 15px; left: 15px; z-index: 2; background: var(--gold-metallic); color: var(--deep-green); padding: 5px 12px; font-size: 0.7rem; font-weight: 800; border-radius: 50px; }
-        .image-wrap { height: 320px; display: flex; align-items: center; justify-content: center; padding: 25px; background: #fff; }
-        .image-wrap img { max-width: 95%; max-height: 95%; }
-        .info-wrap { padding: 20px 15px; text-align: center; color: var(--deep-green); flex-grow: 1; }
-        .info-wrap h3 { font-size: 0.95rem; height: 3rem; overflow: hidden; margin-bottom: 12px; font-weight: 700; line-height: 1.4; }
-        .p-sale { font-size: 1.5rem; color: #8a6d3b; font-weight: 800; }
-        .p-old { color: #bbb; text-decoration: line-through; font-size: 0.85rem; margin-left: 8px; }
-        .buy-link { background: var(--deep-green); color: var(--gold-light); padding: 18px; text-align: center; text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s; }
-        .buy-link:hover { background: var(--p-green); color: #fff; }
+        .product-card { background: #fff; border-radius: 15px; overflow: hidden; display: flex; flex-direction: column; position: relative; transition: 0.4s ease; border: 1px solid rgba(197, 160, 89, 0.2); }
+        .product-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(197, 160, 89, 0.3); }
+        .card-tag { position: absolute; top: 15px; left: 15px; z-index: 2; background: var(--gold-metallic); color: var(--deep-green); padding: 6px 14px; font-size: 0.7rem; font-weight: 800; border-radius: 50px; }
+        .image-wrap { height: 320px; display: flex; align-items: center; justify-content: center; padding: 30px; background: #fff; }
+        .image-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .info-wrap { padding: 25px 20px; text-align: center; color: var(--deep-green); flex-grow: 1; border-top: 1px solid #f0f0f0; }
+        .info-wrap h3 { font-size: 1rem; height: 3rem; overflow: hidden; margin: 0 0 15px; font-weight: 700; line-height: 1.4; }
+        .p-sale { font-size: 1.6rem; color: #8a6d3b; font-weight: 800; }
+        .p-old { color: #bbb; text-decoration: line-through; font-size: 0.9rem; margin-left: 8px; }
+        .buy-link { background: var(--deep-green); color: var(--gold-light); padding: 20px; text-align: center; text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s; }
+        .buy-link:hover { background: #153a2b; color: #fff; }
         .use-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; }
 
-        footer { background: rgba(13, 43, 31, 0.95); backdrop-filter: blur(10px); color: white; padding: 60px 8%; border-top: 5px solid var(--gold-dark); text-align: center; }
+        footer { background: rgba(13, 43, 31, 0.95); padding: 60px 8%; border-top: 5px solid var(--gold-dark); text-align: center; color: rgba(255,255,255,0.7); font-size: 0.8rem; }
+        
+        @media (max-width: 1100px) { .side-ad { display: none; } }
     </style>
 </head>
 <body>
@@ -80,6 +106,12 @@
     <source src="วิดีโอทำเว็บไซต์.mp4" type="video/mp4">
 </video>
 <div class="video-overlay"></div>
+
+<a href="https://www.tiktok.com/@your_shop" target="_blank" class="side-ad">
+    <i class="fa-brands fa-tiktok"></i>
+    <strong id="ad-main">TIKTOK SHOP</strong>
+    <div class="btn-inner" id="ad-btn">SHOP NOW</div>
+</a>
 
 <nav class="top-nav">
     <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
@@ -108,7 +140,7 @@
 </div>
 
 <footer>
-    <div class="footer-bottom">&copy; 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
+    &copy; 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.
 </footer>
 
 <script>
@@ -131,9 +163,9 @@
     ];
 
     const trans = {
-        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", shop: "ดูรายละเอียด", label: "TH", sub: "คัดสรรแก่นแท้ความงามที่สมบูรณ์แบบจากเกาหลี" },
-        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", shop: "VIEW DETAILS", label: "EN", sub: "Curating the Essence of Korean Perfection" },
-        kr: { home: "홈", about: "회사소개", contact: "문의하기", shop: "상세보기", label: "KR", sub: "완벽한 한국 มิ의 정수" }
+        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", shop: "ดูรายละเอียด", label: "TH", sub: "คัดสรรแก่นแท้ความงามที่สมบูรณ์แบบจากเกาหลี", adMain: "TIKTOK SHOP", adBtn: "ช้อปเลย" },
+        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", shop: "VIEW DETAILS", label: "EN", sub: "Curating the Essence of Korean Perfection", adMain: "TIKTOK SHOP", adBtn: "SHOP NOW" },
+        kr: { home: "홈", about: "회사소개", contact: "문의하기", shop: "상세보기", label: "KR", sub: "완벽한 한국 미의 정수", adMain: "틱톡 샵", adBtn: "지금 쇼핑" }
     };
 
     let currentLang = localStorage.getItem('selectedLang') || 'th';
@@ -141,8 +173,7 @@
     function render() {
         const gridF = document.getElementById('grid-fraijour');
         const gridO = document.getElementById('grid-others');
-        gridF.innerHTML = '';
-        gridO.innerHTML = '';
+        gridF.innerHTML = ''; gridO.innerHTML = '';
 
         products.forEach(p => {
             let pName = (currentLang === 'th') ? p.nameTh : (currentLang === 'kr' ? p.nameKr : p.nameEn);
@@ -157,11 +188,12 @@
                 </div>
                 <a href="product.html?id=${p.id}" class="buy-link ${currentLang==='th'?'use-thai':''}">${trans[currentLang].shop}</a>
             </div>`;
-            
             if(p.brand === "Fraijour") gridF.innerHTML += html;
             else gridO.innerHTML += html;
         });
 
+        document.getElementById('ad-main').textContent = trans[currentLang].adMain;
+        document.getElementById('ad-btn').textContent = trans[currentLang].adBtn;
         document.getElementById('n-home').textContent = trans[currentLang].home;
         document.getElementById('n-about').textContent = trans[currentLang].about;
         document.getElementById('n-contact').textContent = trans[currentLang].contact;
