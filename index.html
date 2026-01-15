@@ -69,9 +69,14 @@
             margin-left: 25px; border-radius: 2px; min-width: 55px;
         }
 
-        /* --- ✨ Hero Header --- */
+        /* --- ✨ Hero Header (ปรับแต่งโลโก้ที่นี่) --- */
         .hero-header { text-align: center; padding: 120px 5% 60px; position: relative; }
-        .hero-logo { width: 120px; margin-bottom: 20px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+        .hero-logo { 
+            width: 220px; /* เพิ่มขนาดจาก 120px เป็น 220px */
+            margin-bottom: 25px; 
+            filter: brightness(0) invert(1) drop-shadow(0 5px 15px rgba(255,255,255,0.2)); /* เปลี่ยนโลโก้เป็นสีขาว */
+            transition: 0.3s;
+        }
         .hero-header h1 {
             font-size: clamp(3rem, 10vw, 6rem); margin: 0;
             color: var(--gold-light); letter-spacing: 15px;
@@ -208,7 +213,7 @@
         { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "어성초 블레미쉬 토너", sale: 360, old: 529, badgeTh: "ปลอบประโลม", badgeEn: "SOOTHING", badgeKr: "진정", img: "6.jpeg" },
         { id: 7, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin-Collagen 3D Core Cream", nameKr: "레틴 콜라겐 3D 코어 크림", sale: 250, old: 459, badgeTh: "ยกกระชับ", badgeEn: "LIFTING", badgeKr: "리프팅", img: "7.jpeg" },
         { id: 8, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ อายครีม", nameEn: "Retin-Collagen 3D Core Eye Cream", nameKr: "레틴 콜라겐 3D 코어 아이크림", sale: 195, old: 370, badgeTh: "คอร์ 3ดี", badgeEn: "CORE 3D", badgeKr: "코어 3D", img: "8.jpeg" },
-        { id: 9, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ โทนเนอร์", nameEn: "Retin-Collagen 3D Core Toner", nameKr: "레틴 콜라겐 3D 코어 토너", sale: 290, old: 500, badgeTh: "กระชับผิว", badgeEn: "FIRMING", badgeKr: "탄력", img: "9.jpeg" },
+        { id: 9, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ โทนเนอร์", nameEn: "Retin-Collagen 3D Core Toner", nameKr: "레틴 콜라겐 3D 코อร์ 토너", sale: 290, old: 500, badgeTh: "กระชับผิว", badgeEn: "FIRMING", badgeKr: "탄력", img: "9.jpeg" },
         { id: 10, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ลิป ออยล์", nameEn: "Retin-Collagen 3D Core Lip Oil", nameKr: "레틴 콜라겐 3D 코어 립 오일", sale: 125, old: 259, badgeTh: "ใหม่", badgeEn: "NEW", badgeKr: "신제품", img: "10.jpeg" },
         { id: 11, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต ซัน ครีม", nameEn: "Heartleaf Airy Fit Sun Cream", nameKr: "어성초 에어리 핏 선크림", sale: 280, old: 450, badgeTh: "กันแดด", badgeEn: "SUN CARE", badgeKr: "선케어", img: "11.jpeg" },
         { id: 12, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต ซัน สกรีน", nameEn: "Heartleaf Water Fit Sun Screen", nameKr: "어성초 워터 핏 선스크린", sale: 320, old: 590, badgeTh: "กันแดด", badgeEn: "SUN CARE", badgeKr: "선케어", img: "12.jpeg" },
@@ -233,7 +238,6 @@
         if(gridO) gridO.innerHTML = '';
 
         products.forEach(p => {
-            // เลือกชื่อสินค้าและป้ายตามภาษา
             let pName = p.nameEn;
             let pBadge = p.badgeEn;
             if(currentLang === 'th') { pName = p.nameTh; pBadge = p.badgeTh; }
@@ -257,7 +261,6 @@
             else gridO.innerHTML += html;
         });
 
-        // อัปเดตเมนูและส่วนหัว
         const t = trans[currentLang];
         document.getElementById('n-home').textContent = t.home;
         document.getElementById('n-about').textContent = t.about;
@@ -265,7 +268,6 @@
         document.getElementById('langBtn').textContent = t.label;
         document.getElementById('h-sub').textContent = t.sub;
 
-        // จัดการฟอนต์สำหรับภาษาไทย
         const heads = document.querySelectorAll('h1, h2, h3, .buy-link, .nav-links a');
         heads.forEach(el => {
             if(currentLang === 'th') el.classList.add('use-thai');
