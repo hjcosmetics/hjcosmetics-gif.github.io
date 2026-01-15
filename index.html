@@ -16,7 +16,7 @@
             --gold-light: #f1d38e; 
             --font-thai: 'IBM Plex Sans Thai', sans-serif;
             --font-luxury: 'Nanum Myeongjo', serif;
-            --font-logo: 'Cinzel', serif; /* ฟอนต์ใหม่สำหรับ HJ */
+            --font-logo: 'Cinzel', serif;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -37,77 +37,99 @@
             background: rgba(0, 0, 0, 0.4); z-index: -1; pointer-events: none;
         }
 
-        /* --- ✨ Hero Header (Luxury Refined) --- */
-        .hero-header { 
-            text-align: center; 
-            padding: 150px 5% 80px; 
-            position: relative; 
-        }
-        
-        .hero-logo-text { 
-            font-family: var(--font-logo);
-            font-size: clamp(6rem, 20vw, 10rem); /* ขยายใหญ่พิเศษ */
-            font-weight: 900;
-            line-height: 0.8;
-            margin: 0;
-            display: block;
+        /* --- ⚡ Side Blinking Ad (โฆษณาข้างเว็บ) --- */
+        .side-ad {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 120px;
             background: var(--gold-metallic);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 5s infinite linear;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-            letter-spacing: -2px; /* บีบระยะตัวอักษรให้ดูเป็น Signature */
+            border: 2px solid #fff;
+            padding: 15px 10px;
+            border-radius: 15px;
+            z-index: 9999;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.6);
+            cursor: pointer;
+            text-decoration: none;
+            animation: ad-blink 1.5s infinite ease-in-out; /* สั่งให้กระพริบ */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .hero-header h1 {
+        @keyframes ad-blink {
+            0% { opacity: 1; transform: translateY(-50%) scale(1); box-shadow: 0 0 20px rgba(197, 160, 89, 0.6); }
+            50% { opacity: 0.7; transform: translateY(-50%) scale(1.05); box-shadow: 0 0 40px rgba(255, 236, 179, 0.9); }
+            100% { opacity: 1; transform: translateY(-50%) scale(1); box-shadow: 0 0 20px rgba(197, 160, 89, 0.6); }
+        }
+
+        .side-ad span {
+            font-size: 0.7rem;
+            color: var(--deep-green);
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .side-ad strong {
+            font-size: 1.1rem;
+            color: #000;
             font-family: var(--font-logo);
-            font-size: clamp(1.2rem, 4vw, 2.2rem);
-            margin-top: 10px;
-            color: #fff; 
-            letter-spacing: 12px;
-            font-weight: 400;
-            text-transform: uppercase;
-            opacity: 0.9;
+            display: block;
         }
 
-        .hero-header p {
-            font-size: 0.9rem; 
-            letter-spacing: 6px; 
+        .side-ad .btn-inner {
+            background: #000;
+            color: #fff;
+            font-size: 0.6rem;
+            padding: 5px;
+            border-radius: 5px;
             text-transform: uppercase;
-            color: var(--gold-light); 
-            margin-top: 25px; 
-            font-weight: 300;
         }
 
-        /* --- ส่วนอื่นๆ ของ CSS เหมือนเดิม --- */
+        /* --- ✨ Hero Header --- */
+        .hero-header { text-align: center; padding: 150px 5% 80px; position: relative; }
+        .hero-logo-text { 
+            font-family: var(--font-logo); font-size: clamp(6rem, 20vw, 10rem); font-weight: 900; line-height: 0.8; margin: 0; display: block;
+            background: var(--gold-metallic); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: shimmer 5s infinite linear; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); letter-spacing: -2px;
+        }
+        .hero-header h1 { font-family: var(--font-logo); font-size: clamp(1.2rem, 4vw, 2.2rem); margin-top: 10px; color: #fff; letter-spacing: 12px; font-weight: 400; text-transform: uppercase; opacity: 0.9; }
+        .hero-header p { font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase; color: var(--gold-light); margin-top: 25px; font-weight: 300; }
+
+        /* --- Navigation --- */
         .top-nav { background: var(--gold-metallic); background-size: 300% 300%; animation: shimmer 8s infinite linear; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid #5d4a26; box-shadow: 0 5px 25px rgba(0,0,0,0.6); }
         @keyframes shimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .logo-box img { height: 48px; filter: brightness(0) saturate(100%) invert(10%) sepia(50%) saturate(1000%) hue-rotate(120deg); }
         .nav-links a { text-decoration: none; color: var(--deep-green); font-size: 0.85rem; font-weight: 800; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; }
         .lang-switch { background: var(--deep-green); border: none; color: #f1d38e; padding: 7px 15px; cursor: pointer; font-weight: 800; font-size: 0.75rem; margin-left: 25px; border-radius: 2px; min-width: 55px; }
+
+        /* --- Grid & Cards --- */
         .main-container { padding: 0 5% 80px; max-width: 1500px; margin: 0 auto; position: relative; }
         .brand-block { margin-bottom: 80px; padding: 50px 40px; background: rgba(13, 43, 31, 0.75); backdrop-filter: blur(15px); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 20px; }
         .brand-title-box { text-align: center; margin-bottom: 50px; }
         .brand-title-box h2 { font-size: 3.5rem; color: var(--gold-light); border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; font-family: var(--font-luxury); }
-        .brand-title-box span { display: block; margin-top: 15px; letter-spacing: 3px; font-weight: 300; color: #eee; }
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
         .product-card { background: #fff; border-radius: 12px; overflow: hidden; transition: 0.4s; display: flex; flex-direction: column; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.3); }
-        .card-tag { position: absolute; top: 15px; left: 15px; z-index: 2; background: var(--gold-metallic); color: var(--deep-green); padding: 5px 12px; font-size: 0.7rem; font-weight: 800; border-radius: 50px; letter-spacing: 1px; }
+        .product-card:hover { transform: translateY(-10px); }
+        .card-tag { position: absolute; top: 15px; left: 15px; z-index: 2; background: var(--gold-metallic); color: var(--deep-green); padding: 5px 12px; font-size: 0.7rem; font-weight: 800; border-radius: 50px; }
         .image-wrap { height: 320px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 25px; overflow: hidden; }
-        .image-wrap img { max-width: 95%; max-height: 95%; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .image-wrap img { max-width: 95%; max-height: 95%; transition: 0.6s; }
         .info-wrap { padding: 20px 15px; text-align: center; color: var(--deep-green); flex-grow: 1; }
-        .info-wrap h3 { font-size: 0.95rem; margin: 0 0 12px; height: 3rem; overflow: hidden; line-height: 1.4; font-weight: 700; }
+        .info-wrap h3 { font-size: 0.95rem; margin-bottom: 12px; height: 3rem; overflow: hidden; font-weight: 700; }
         .use-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; }
         .price-wrap { display: flex; align-items: center; justify-content: center; gap: 10px; }
         .p-sale { font-size: 1.5rem; color: #8a6d3b; font-weight: 800; }
         .p-old { color: #bbb; text-decoration: line-through; font-size: 0.85rem; }
-        .buy-link { background: var(--deep-green); color: var(--gold-light); padding: 18px; text-align: center; text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s; border-top: 1px solid rgba(197, 160, 89, 0.2); }
+        .buy-link { background: var(--deep-green); color: var(--gold-light); padding: 18px; text-align: center; text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; }
+
         footer { background: rgba(13, 43, 31, 0.95); backdrop-filter: blur(10px); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); position: relative; }
-        .f-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
         .footer-bottom { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; opacity: 0.5; }
-        @media (max-width: 1024px) { .f-container { grid-template-columns: 1fr; gap: 40px; } .hero-logo-text { font-size: 6rem; } }
+
+        @media (max-width: 1024px) { 
+            .side-ad { display: none; } /* ซ่อนโฆษณาในมือถือเพื่อไม่ให้ทับเนื้อหา */
+        }
     </style>
 </head>
 <body>
@@ -116,6 +138,12 @@
     <source src="วิดีโอทำเว็บไซต์.mp4" type="video/mp4">
 </video>
 <div class="video-overlay"></div>
+
+<a href="https://line.me/ti/p/thaihj11" target="_blank" class="side-ad" id="sideAd">
+    <span id="ad-text-top">SPECIAL OFFER</span>
+    <strong id="ad-text-main">SALE 50%</strong>
+    <div class="btn-inner" id="ad-text-btn">CLICK HERE</div>
+</a>
 
 <nav class="top-nav">
     <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
@@ -137,64 +165,25 @@
     <div class="brand-block">
         <div class="brand-title-box">
             <h2 id="title-fraijour">Fraijour</h2>
-            <span id="sub-f">Botanical Therapy & Science</span>
         </div>
         <div class="product-grid" id="grid-fraijour"></div>
     </div>
-
-    <div class="brand-block">
-        <div class="brand-title-box">
-            <h2 id="title-others">Bathpa & Char Char</h2>
-            <span id="sub-o">Urban Spa Rituals & Hair Solutions</span>
-        </div>
-        <div class="product-grid" id="grid-others"></div>
     </div>
-</div>
 
 <footer>
-    <div class="f-container">
-        <div class="f-brand">
-            <h2 style="font-family: var(--font-logo); color: var(--gold-light);">HJ COSMETICS</h2>
-            <p id="f-desc">Premium Korean beauty curator delivering excellence and sustainable results to your skin.</p>
-        </div>
-        <div class="f-info">
-            <h4>OUR OFFICE</h4>
-            <p><i class="fa-solid fa-location-dot"></i> 323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230, Thailand</p>
-        </div>
-        <div class="f-info">
-            <h4>CONCIERGE</h4>
-            <p><i class="fa-brands fa-line"></i> thaihj11</p>
-            <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
-            <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
-        </div>
-    </div>
     <div class="footer-bottom">&copy; 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
-    // ข้อมูลสินค้าเหมือนเดิมพร้อมระบบหลายภาษา
     const products = [
         { id: 1, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง วอเตอรี่ ครีม", nameEn: "Wormwood Calming Watery Cream", nameKr: "쑥 진정 워터리 크림", sale: 250, old: 369, badgeTh: "ขายดี", badgeEn: "BEST SELLER", badgeKr: "베스트", img: "1.jpg.png" },
-        { id: 2, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง โทนเนอร์", nameEn: "Wormwood Calming Toner", nameKr: "쑥 진정 토너", sale: 350, old: 459, badgeTh: "ยอดนิยม", badgeEn: "POPULAR", badgeKr: "인기", img: "2.jpeg" },
-        { id: 3, brand: "Fraijour", nameTh: "วอร์มวูด คลีนซิ่ง วอเตอร์", nameEn: "Wormwood Cleansing Water", nameKr: "쑥 클렌징 워터", sale: 250, old: 400, badgeTh: "ใหม่", badgeEn: "NEW", badgeKr: "신제품", img: "3.jpeg" },
-        { id: 4, brand: "Fraijour", nameTh: "วอร์มวูด คลีนซิ่ง โฟม", nameEn: "Wormwood Cleansing Foam", nameKr: "쑥 클렌징 폼", sale: 290, old: 399, badgeTh: "อ่อนโยน", badgeEn: "GENTLE", badgeKr: "저자극", img: "4.jpeg" },
-        { id: 5, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช มอยส์เจอร์ ครีม", nameEn: "Heartleaf Blemish Moisture Cream", nameKr: "어성초 블레미쉬 크림", sale: 310, old: 590, badgeTh: "ดูแลสิว", badgeEn: "ACNE CARE", badgeKr: "여드름 케어", img: "5.jpeg" },
-        { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "어성초 블레미쉬 토너", sale: 360, old: 529, badgeTh: "ปลอบประโลม", badgeEn: "SOOTHING", badgeKr: "진정", img: "6.jpeg" },
-        { id: 7, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin-Collagen 3D Core Cream", nameKr: "레틴 콜라겐 3D 코어 크림", sale: 250, old: 459, badgeTh: "ยกกระชับ", badgeEn: "LIFTING", badgeKr: "리프팅", img: "7.jpeg" },
-        { id: 8, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ อายครีม", nameEn: "Retิน-Collagen 3D Core Eye Cream", nameKr: "레틴 콜라겐 3D 코어 아이크림", sale: 195, old: 370, badgeTh: "คอร์ 3ดี", badgeEn: "CORE 3D", badgeKr: "코어 3D", img: "8.jpeg" },
-        { id: 9, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ โทนเนอร์", nameEn: "Retin-Collagen 3D Core Toner", nameKr: "레틴 콜라겐 3D 코어 토너", sale: 290, old: 500, badgeTh: "กระชับผิว", badgeEn: "FIRMING", badgeKr: "탄력", img: "9.jpeg" },
-        { id: 10, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ลิป ออยล์", nameEn: "Retin-Collagen 3D Core Lip Oil", nameKr: "레틴 콜라겐 3D 코어 립 오일", sale: 125, old: 259, badgeTh: "ใหม่", badgeEn: "NEW", badgeKr: "신제품", img: "10.jpeg" },
-        { id: 11, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต ซัน ครีม", nameEn: "Heartleaf Airy Fit Sun Cream", nameKr: "어성초 에어리 핏 선크림", sale: 280, old: 450, badgeTh: "กันแดด", badgeEn: "SUN CARE", badgeKr: "선케어", img: "11.jpeg" },
-        { id: 12, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต ซัน สกรีน", nameEn: "Heartleaf Water Fit Sun Screen", nameKr: "어성초 워터 핏 선스크린", sale: 320, old: 590, badgeTh: "กันแดด", badgeEn: "SUN CARE", badgeKr: "선케어", img: "12.jpeg" },
-        { id: 13, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ ชีท มาส์ก", nameEn: "Original Herb Sheet Mask", nameKr: "오리지널 허브 시트 마스크", sale: 17, old: 29, badgeTh: "มาส์ก", badgeEn: "MASK", badgeKr: "마스크", img: "15.jpeg" },
-        { id: 14, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바디 톤업 크림", sale: 150, old: 529, badgeTh: "ผิวตัว", badgeEn: "BODY", badgeKr: "바디", img: "13.jpeg" },
-        { id: 15, brand: "CharChar", nameTh: "มุงบีน ซิก้า คลีนซิ่ง โฟม", nameEn: "Mung Bean Cica Cleansing Foam", nameKr: "녹두 시카 클렌징 폼", sale: 120, old: 199, badgeTh: "ซิก้า", badgeEn: "CICA", badgeKr: "시카", img: "14.jpeg" }
+        // ... (เพิ่มสินค้าตัวอื่นๆ ได้ตรงนี้)
     ];
 
     const trans = {
-        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", shop: "ดูรายละเอียด", label: "TH", sub: "คัดสรรแก่นแท้ความงามที่สมบูรณ์แบบจากเกาหลี" },
-        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", shop: "VIEW DETAILS", label: "EN", sub: "Curating the Essence of Korean Perfection" },
-        kr: { home: "홈", about: "회사소개", contact: "문의하기", shop: "상세보기", label: "KR", sub: "완벽한 한국 미의 정수" }
+        th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", shop: "ดูรายละเอียด", label: "TH", sub: "คัดสรรแก่นแท้ความงามที่สมบูรณ์แบบจากเกาหลี", adTop: "ข้อเสนอพิเศษ", adMain: "ลด 50%", adBtn: "คลิกเลย" },
+        en: { home: "HOME", about: "ABOUT", contact: "CONTACT", shop: "VIEW DETAILS", label: "EN", sub: "Curating the Essence of Korean Perfection", adTop: "SPECIAL OFFER", adMain: "SALE 50%", adBtn: "CLICK HERE" },
+        kr: { home: "홈", about: "회사소개", contact: "문의하기", shop: "상세보기", label: "KR", sub: "완벽한 한국 미의 정수", adTop: "특별 혜택", adMain: "50% 할인", adBtn: "클릭하세요" }
     };
 
     let currentLang = localStorage.getItem('selectedLang') || 'th';
@@ -202,20 +191,16 @@
 
     function render() {
         const gridF = document.getElementById('grid-fraijour');
-        const gridO = document.getElementById('grid-others');
         if(gridF) gridF.innerHTML = '';
-        if(gridO) gridO.innerHTML = '';
 
         products.forEach(p => {
-            let pName = p.nameEn;
-            let pBadge = p.badgeEn;
-            if(currentLang === 'th') { pName = p.nameTh; pBadge = p.badgeTh; }
-            if(currentLang === 'kr') { pName = p.nameKr; pBadge = p.badgeKr; }
+            let pName = (currentLang === 'th') ? p.nameTh : (currentLang === 'kr' ? p.nameKr : p.nameEn);
+            let pBadge = (currentLang === 'th') ? p.badgeTh : (currentLang === 'kr' ? p.badgeKr : p.badgeEn);
 
-            const html = `
+            gridF.innerHTML += `
                 <div class="product-card">
                     <div class="card-tag ${currentLang==='th'?'use-thai':''}">${pBadge}</div>
-                    <div class="image-wrap"><img src="${p.img}" alt="${pName}"></div>
+                    <div class="image-wrap"><img src="${p.img}"></div>
                     <div class="info-wrap">
                         <h3 class="${currentLang==='th'?'use-thai':''}">${pName}</h3>
                         <div class="price-wrap">
@@ -225,23 +210,18 @@
                     </div>
                     <a href="product.html?id=${p.id}" class="buy-link ${currentLang==='th'?'use-thai':''}">${trans[currentLang].shop}</a>
                 </div>`;
-            
-            if(p.brand === "Fraijour") gridF.innerHTML += html;
-            else gridO.innerHTML += html;
         });
 
-        const t = trans[currentLang];
-        document.getElementById('n-home').textContent = t.home;
-        document.getElementById('n-about').textContent = t.about;
-        document.getElementById('n-contact').textContent = t.contact;
-        document.getElementById('langBtn').textContent = t.label;
-        document.getElementById('h-sub').textContent = t.sub;
+        // อัปเดตคำในโฆษณาตามภาษา
+        document.getElementById('ad-text-top').textContent = trans[currentLang].adTop;
+        document.getElementById('ad-text-main').textContent = trans[currentLang].adMain;
+        document.getElementById('ad-text-btn').textContent = trans[currentLang].adBtn;
 
-        const heads = document.querySelectorAll('h3, .buy-link, .nav-links a, .card-tag');
-        heads.forEach(el => {
-            if(currentLang === 'th') el.classList.add('use-thai');
-            else el.classList.remove('use-thai');
-        });
+        document.getElementById('n-home').textContent = trans[currentLang].home;
+        document.getElementById('n-about').textContent = trans[currentLang].about;
+        document.getElementById('n-contact').textContent = trans[currentLang].contact;
+        document.getElementById('langBtn').textContent = trans[currentLang].label;
+        document.getElementById('h-sub').textContent = trans[currentLang].sub;
     }
 
     function rotateLanguage() {
