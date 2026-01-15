@@ -165,19 +165,21 @@
         </div>
         
         <div class="form-card">
-            <form>
+            <form action="https://formspree.io/f/xzddzvby" method="POST">
                 <div class="form-group">
                     <label id="l-name">NAME</label>
-                    <input type="text" id="ph-name" placeholder="...">
+                    <input type="text" name="name" id="ph-name" placeholder="..." required>
                 </div>
                 <div class="form-group">
                     <label id="l-email">EMAIL</label>
-                    <input type="email" id="ph-email" placeholder="...">
+                    <input type="email" name="email" id="ph-email" placeholder="..." required>
                 </div>
                 <div class="form-group">
                     <label id="l-msg">MESSAGE</label>
-                    <textarea id="ph-msg" rows="5" placeholder="..."></textarea>
+                    <textarea name="message" id="ph-msg" rows="5" placeholder="..." required></textarea>
                 </div>
+                <input type="text" name="_gotcha" style="display:none">
+                
                 <button type="submit" class="btn-submit" id="btn-send">Send Message</button>
             </form>
         </div>
