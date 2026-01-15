@@ -11,7 +11,6 @@
         :root { 
             --p-green: #1b4332; 
             --deep-green: #0d2b1f;
-            /* สีทองเลื่อมวาวแบบหน้า Index */
             --gold-metallic: linear-gradient(135deg, #8a6d3b 0%, #c5a059 20%, #ffecb3 45%, #f1d38e 50%, #ffecb3 55%, #c5a059 80%, #8a6d3b 100%);
             --gold-dark: #c5a059; 
             --gold-light: #f1d38e; 
@@ -27,7 +26,6 @@
             overflow-x: hidden;
         }
 
-        /* --- 🎬 Fixed Video Background (ธีมเดียวกับ Index) --- */
         #bg-video {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover; z-index: -2; opacity: 0.5;
@@ -40,7 +38,6 @@
         h1, h2, h3, h4 { font-family: var(--font-luxury); transition: 0.3s; }
         .use-ibm-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; font-weight: 600 !important; }
 
-        /* --- 🎖️ Real Metallic Gold Navigation --- */
         .top-nav { 
             background: var(--gold-metallic);
             background-size: 300% 300%;
@@ -68,7 +65,6 @@
             margin-left: 25px; border-radius: 2px;
         }
 
-        /* --- ✨ Hero Section --- */
         .hero-header {
             text-align: center;
             padding: 100px 5% 60px;
@@ -81,7 +77,6 @@
             margin: 0;
         }
 
-        /* --- 🏛️ Main Container (Glassmorphism) --- */
         .main-container { padding: 0 5% 80px; max-width: 1300px; margin: 0 auto; position: relative; }
 
         .origin-section { 
@@ -98,7 +93,6 @@
         .story-text h2 { font-size: 3rem; color: var(--gold-light); margin-bottom: 20px; border-bottom: 2px solid var(--gold-dark); display: inline-block; }
         .story-text p { font-size: 1.1rem; line-height: 1.8; color: #fff; opacity: 0.9; font-weight: 300; }
 
-        /* --- 🏷️ Brand Grids --- */
         .brand-grid { 
             display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; 
             background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(197, 160, 89, 0.2); 
@@ -120,7 +114,6 @@
         }
         .btn-visit:hover { background: var(--gold-metallic); color: var(--deep-green); border-color: transparent; }
 
-        /* --- 🏛️ Footer (คงข้อมูลครบเหมือน Index) --- */
         footer { background: rgba(13, 43, 31, 0.95); backdrop-filter: blur(10px); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); }
         .f-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
         .f-brand h2 { font-size: 2.2rem; color: var(--gold-light); margin-bottom: 20px; }
@@ -239,23 +232,28 @@
             home: "HOME", about: "ABOUT", contact: "CONTACT", 
             heroTitle: "Our Heritage", 
             hjTitle: "The HJ Story", 
-            hjDesc: "Born from a simple vision to curate excellence, HJ COSMETICS delivers premium South Korean innovation directly to you. We believe in the profound synergy of natural purity and scientific advancement.", 
-            fDesc: "Specializing in Botanical Therapy, Fraijour harnesses the healing power of natural herbs, most notably Wormwood, to provide deep calming effects for sensitive skin.", 
-            bDesc: "Elevate your daily bath ritual into a premium spa escape. Bathpa offers sophisticated body care solutions that combine exquisite fragrances with high-performance ingredients.", 
-            cDesc: "A pioneer in professional-grade hair and scalp solutions. Char Char focuses on intensive treatment using concentrated extracts like premium Argan oil.", 
-            footDesc: "Premium Korean beauty curator delivering excellence and sustainable results to your skin.", 
+            hjDesc: "Born from a simple vision to curate excellence, HJ COSMETICS delivers premium South Korean innovation directly to you. We believe in the profound synergy of natural purity and scientific advancement", 
+            fDesc: "Specializing in Botanical Therapy, Fraijour harnesses the healing power of natural herbs, most notably Wormwood, to provide deep calming effects for sensitive skin", 
+            bDesc: "Elevate your daily bath ritual into a premium spa escape. Bathpa offers sophisticated body care solutions that combine exquisite fragrances with high-performance ingredients", 
+            cDesc: "A pioneer in professional-grade hair and scalp solutions. Char Char focuses on intensive treatment using concentrated extracts like premium Argan oil", 
+            footDesc: "Premium Korean beauty curator delivering excellence and sustainable results to your skin", 
             hAddr: "OUR OFFICE", hCont: "CONCIERGE", visit: "OFFICIAL SITE", label: "EN" 
         },
         kr: { 
-            home: "홈", about: "회사소개", contact: "문의", 
+            home: "홈", 
+            about: "회사소개", 
+            contact: "문의", 
             heroTitle: "아름다운 유산", 
             hjTitle: "HJ 코스메틱 이야기", 
-            hjDesc: "최고만을 선별하겠다는 단순한 비전จาก 시작되었습니다. HJ COSMETICS는 진심을 담아 당신의 피부를 돌보는 제품만을 선보입니다.", 
-            fDesc: "프라이주어는 당신의 피부 본연의 건강함을 되찾아줍니다. 쑥 추출물을 주성분으로 하여 민감한 피부를 진정시키는 보태니컬 테รา피 브랜드입니다.", 
-            bDesc: "일상의 루틴을 프리미엄 휴식으로 바꿔보세요. 배스파가 선사하는 고품격 리추얼 감각적인 향기와 고급스러운 텍스처를 경험해 보세요.", 
-            cDesc: "고농축 추출물을 통한 집중 케어. อาร์แกน ออยล์과 엄선된 성분으로 손상된 모발을 회복시키고 두피 건강을 책임지는 전문 헤어 케어 브랜드입니다.", 
+            hjDesc: "태국인의 피부 고민을 해결하기 위해 고품질의 한국 스킨케어 제품을 수입한다는 단순한 진심에서 시작되었습니다 우리는 자연의 생명력과 현대 과학의 혁신적인 기술이 결합된 힘을 믿습니다 고객님의 피부를 근본적으로 개선하고 지속 가능한 변화를 이끌어낼 수 있는 제품만을 엄격하게 선별하여 진정한 프리미엄 뷰티 경험을 선사하겠습니다", 
+            fDesc: "프라이주어는 당신의 피부 본연의 건강함을 되찾아줍니다 쑥 추출물을 주성분으로 하여 민감한 피부를 진정시키고 영양을 채워주는 보태니컬 테라피 브랜드입니다", 
+            bDesc: "일상의 루틴을 프리미엄 휴식으로 바꿔보세요 배스파가 선사하는 고품격 리추얼과 감각적인 향기 그리고 고급스러운 텍스처를 통해 완벽한 힐링을 경험해 보세요", 
+            cDesc: "고농축 추출물을 통한 집중 케어 솔루션 아르간 오일과 엄선된 성분으로 손상된 모발을 회복시키고 두피 건강을 책임지는 전문 헤어 케어 브랜드입니다", 
             footDesc: "탁월함과 지속 가능한 결과를 선사하는 프리미엄 한국 뷰티 큐레이터", 
-            hAddr: "오피스", hCont: "고객 서비스", visit: "공식 사이트", label: "KR" 
+            hAddr: "오피스", 
+            hCont: "고객 서비스", 
+            visit: "공식 사이트", 
+            label: "KR" 
         }
     };
 
@@ -276,7 +274,6 @@
         document.querySelectorAll('.btn-visit').forEach(b => b.textContent = l.visit);
         document.getElementById('langBtn').textContent = l.label;
 
-        // Apply Font Styles
         const elements = document.querySelectorAll('h1, h2, h3, h4, .btn-visit, .nav-links a');
         elements.forEach(el => {
             if(currentLang === 'th') el.classList.add('use-ibm-thai');
