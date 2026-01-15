@@ -6,16 +6,17 @@
     <title>HJ COSMETICS - Luxury Korean Boutique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap');
 
         :root { 
             --p-green: #1b4332; 
             --deep-green: #0d2b1f;
-            --gold-metallic: linear-gradient(135deg, #8a6d3b 0%, #c5a059 20%, #ffecb3 45%, #f1d38e 50%, #ffecb3 55%, #c5a059 80%, #8a6d3b 100%);
+            --gold-metallic: linear-gradient(135deg, #8a6d3b 0%, #c5a059 25%, #ffecb3 50%, #c5a059 75%, #8a6d3b 100%);
             --gold-dark: #c5a059; 
             --gold-light: #f1d38e; 
             --font-thai: 'IBM Plex Sans Thai', sans-serif;
             --font-luxury: 'Nanum Myeongjo', serif;
+            --font-logo: 'Cinzel', serif; /* ฟอนต์ใหม่สำหรับ HJ */
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
@@ -36,123 +37,77 @@
             background: rgba(0, 0, 0, 0.4); z-index: -1; pointer-events: none;
         }
 
-        h1, h2, h3, h4 { font-family: var(--font-luxury); transition: 0.3s; }
-        .use-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; }
-
-        /* --- 🎖️ Gold Navigation --- */
-        .top-nav { 
-            background: var(--gold-metallic);
-            background-size: 300% 300%;
-            animation: shimmer 8s infinite linear;
-            padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 1000; 
-            border-bottom: 3px solid #5d4a26;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.6);
+        /* --- ✨ Hero Header (Luxury Refined) --- */
+        .hero-header { 
+            text-align: center; 
+            padding: 150px 5% 80px; 
+            position: relative; 
         }
-        @keyframes shimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .logo-box img { 
-            height: 48px; 
-            filter: brightness(0) saturate(100%) invert(10%) sepia(50%) saturate(1000%) hue-rotate(120deg); 
-        }
-        .nav-links a { 
-            text-decoration: none; color: var(--deep-green); font-size: 0.85rem; 
-            font-weight: 800; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; 
-        }
-
-        .lang-switch { 
-            background: var(--deep-green); border: none; color: #f1d38e; 
-            padding: 7px 15px; cursor: pointer; font-weight: 800; font-size: 0.75rem; 
-            margin-left: 25px; border-radius: 2px; min-width: 55px;
-        }
-
-        /* --- ✨ Hero Header (ปรับเปลี่ยนเป็นตัวหนังสือสีทอง) --- */
-        .hero-header { text-align: center; padding: 120px 5% 60px; position: relative; }
         
         .hero-logo-text { 
-            font-family: var(--font-luxury);
-            font-size: 5rem; /* ขนาดตัวอักษรโลโก้ */
-            font-weight: 800;
-            margin-bottom: 0px;
-            display: inline-block;
+            font-family: var(--font-logo);
+            font-size: clamp(6rem, 20vw, 10rem); /* ขยายใหญ่พิเศษ */
+            font-weight: 900;
+            line-height: 0.8;
+            margin: 0;
+            display: block;
             background: var(--gold-metallic);
             background-size: 200% auto;
-            -webkit-background-clip: text; /* ทำให้พื้นหลังเข้าไปอยู่ในตัวอักษร */
-            -webkit-text-fill-color: transparent; /* ทำให้ตัวอักษรเดิมโปร่งใส */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             animation: shimmer 5s infinite linear;
-            filter: drop-shadow(0 5px 15px rgba(197, 160, 89, 0.4));
-            letter-spacing: 5px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+            letter-spacing: -2px; /* บีบระยะตัวอักษรให้ดูเป็น Signature */
         }
 
         .hero-header h1 {
-            font-size: clamp(2rem, 5vw, 3rem); margin: 0;
-            color: #fff; letter-spacing: 10px;
-            opacity: 0.8; font-weight: 400;
+            font-family: var(--font-logo);
+            font-size: clamp(1.2rem, 4vw, 2.2rem);
+            margin-top: 10px;
+            color: #fff; 
+            letter-spacing: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            opacity: 0.9;
         }
+
         .hero-header p {
-            font-size: 1rem; letter-spacing: 8px; text-transform: uppercase;
-            color: var(--gold-light); margin-top: 15px; opacity: 0.9;
+            font-size: 0.9rem; 
+            letter-spacing: 6px; 
+            text-transform: uppercase;
+            color: var(--gold-light); 
+            margin-top: 25px; 
+            font-weight: 300;
         }
 
-        /* --- 🏛️ Main Container --- */
+        /* --- ส่วนอื่นๆ ของ CSS เหมือนเดิม --- */
+        .top-nav { background: var(--gold-metallic); background-size: 300% 300%; animation: shimmer 8s infinite linear; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid #5d4a26; box-shadow: 0 5px 25px rgba(0,0,0,0.6); }
+        @keyframes shimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .logo-box img { height: 48px; filter: brightness(0) saturate(100%) invert(10%) sepia(50%) saturate(1000%) hue-rotate(120deg); }
+        .nav-links a { text-decoration: none; color: var(--deep-green); font-size: 0.85rem; font-weight: 800; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; }
+        .lang-switch { background: var(--deep-green); border: none; color: #f1d38e; padding: 7px 15px; cursor: pointer; font-weight: 800; font-size: 0.75rem; margin-left: 25px; border-radius: 2px; min-width: 55px; }
         .main-container { padding: 0 5% 80px; max-width: 1500px; margin: 0 auto; position: relative; }
-        .brand-block { 
-            margin-bottom: 80px; padding: 50px 40px; 
-            background: rgba(13, 43, 31, 0.75); backdrop-filter: blur(15px);
-            border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 20px; 
-        }
+        .brand-block { margin-bottom: 80px; padding: 50px 40px; background: rgba(13, 43, 31, 0.75); backdrop-filter: blur(15px); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 20px; }
         .brand-title-box { text-align: center; margin-bottom: 50px; }
-        .brand-title-box h2 { font-size: 3.5rem; color: var(--gold-light); border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; }
+        .brand-title-box h2 { font-size: 3.5rem; color: var(--gold-light); border-bottom: 2px solid var(--gold-dark); display: inline-block; padding-bottom: 10px; font-family: var(--font-luxury); }
         .brand-title-box span { display: block; margin-top: 15px; letter-spacing: 3px; font-weight: 300; color: #eee; }
-
-        /* --- 🛍️ Product Grid & Card --- */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
-        .product-card { 
-            background: #fff; border-radius: 12px; overflow: hidden; transition: 0.4s; 
-            display: flex; flex-direction: column; position: relative;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
+        .product-card { background: #fff; border-radius: 12px; overflow: hidden; transition: 0.4s; display: flex; flex-direction: column; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
         .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(197, 160, 89, 0.3); }
-        
-        .card-tag {
-            position: absolute; top: 15px; left: 15px; z-index: 2;
-            background: var(--gold-metallic); color: var(--deep-green);
-            padding: 5px 12px; font-size: 0.7rem; font-weight: 800;
-            border-radius: 50px; letter-spacing: 1px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
+        .card-tag { position: absolute; top: 15px; left: 15px; z-index: 2; background: var(--gold-metallic); color: var(--deep-green); padding: 5px 12px; font-size: 0.7rem; font-weight: 800; border-radius: 50px; letter-spacing: 1px; }
         .image-wrap { height: 320px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 25px; overflow: hidden; }
         .image-wrap img { max-width: 95%; max-height: 95%; transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .product-card:hover .image-wrap img { transform: scale(1.1); }
-
         .info-wrap { padding: 20px 15px; text-align: center; color: var(--deep-green); flex-grow: 1; }
         .info-wrap h3 { font-size: 0.95rem; margin: 0 0 12px; height: 3rem; overflow: hidden; line-height: 1.4; font-weight: 700; }
+        .use-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; }
         .price-wrap { display: flex; align-items: center; justify-content: center; gap: 10px; }
         .p-sale { font-size: 1.5rem; color: #8a6d3b; font-weight: 800; }
         .p-old { color: #bbb; text-decoration: line-through; font-size: 0.85rem; }
-
-        .buy-link { 
-            background: var(--deep-green); color: var(--gold-light); 
-            padding: 18px; text-align: center; text-decoration: none; 
-            font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
-            transition: 0.3s; border-top: 1px solid rgba(197, 160, 89, 0.2);
-        }
-        .buy-link:hover { background: #153a2b; color: #fff; filter: brightness(1.2); }
-
-        /* --- 🏛️ Footer --- */
+        .buy-link { background: var(--deep-green); color: var(--gold-light); padding: 18px; text-align: center; text-decoration: none; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s; border-top: 1px solid rgba(197, 160, 89, 0.2); }
         footer { background: rgba(13, 43, 31, 0.95); backdrop-filter: blur(10px); color: white; padding: 80px 8% 40px; border-top: 5px solid var(--gold-dark); position: relative; }
         .f-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
-        .f-info p i { color: var(--gold-dark); font-size: 1.1rem; margin-right: 15px; width: 25px; text-align: center; }
         .footer-bottom { text-align: center; margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.75rem; opacity: 0.5; }
-
-        @media (max-width: 1024px) { 
-            .f-container { grid-template-columns: 1fr; gap: 40px; } 
-            .hero-logo-text { font-size: 3.5rem; }
-        }
+        @media (max-width: 1024px) { .f-container { grid-template-columns: 1fr; gap: 40px; } .hero-logo-text { font-size: 6rem; } }
     </style>
 </head>
 <body>
@@ -174,7 +129,7 @@
 
 <header class="hero-header">
     <div class="hero-logo-text">HJ</div>
-    <h1 id="h-main">COSMETICS</h1>
+    <h1>COSMETICS</h1>
     <p id="h-sub">Curating the Essence of Korean Perfection</p>
 </header>
 
@@ -199,15 +154,15 @@
 <footer>
     <div class="f-container">
         <div class="f-brand">
-            <h2 id="f-logo">HJ COSMETICS</h2>
+            <h2 style="font-family: var(--font-logo); color: var(--gold-light);">HJ COSMETICS</h2>
             <p id="f-desc">Premium Korean beauty curator delivering excellence and sustainable results to your skin.</p>
         </div>
         <div class="f-info">
-            <h4 id="f-h-addr">OUR OFFICE</h4>
+            <h4>OUR OFFICE</h4>
             <p><i class="fa-solid fa-location-dot"></i> 323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230, Thailand</p>
         </div>
         <div class="f-info">
-            <h4 id="f-h-cont">CONCIERGE</h4>
+            <h4>CONCIERGE</h4>
             <p><i class="fa-brands fa-line"></i> thaihj11</p>
             <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
             <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
@@ -217,6 +172,7 @@
 </footer>
 
 <script>
+    // ข้อมูลสินค้าเหมือนเดิมพร้อมระบบหลายภาษา
     const products = [
         { id: 1, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง วอเตอรี่ ครีม", nameEn: "Wormwood Calming Watery Cream", nameKr: "쑥 진정 워터리 크림", sale: 250, old: 369, badgeTh: "ขายดี", badgeEn: "BEST SELLER", badgeKr: "베스트", img: "1.jpg.png" },
         { id: 2, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง โทนเนอร์", nameEn: "Wormwood Calming Toner", nameKr: "쑥 진정 토너", sale: 350, old: 459, badgeTh: "ยอดนิยม", badgeEn: "POPULAR", badgeKr: "인기", img: "2.jpeg" },
@@ -225,7 +181,7 @@
         { id: 5, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช มอยส์เจอร์ ครีม", nameEn: "Heartleaf Blemish Moisture Cream", nameKr: "어성초 블레미쉬 크림", sale: 310, old: 590, badgeTh: "ดูแลสิว", badgeEn: "ACNE CARE", badgeKr: "여드름 케어", img: "5.jpeg" },
         { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "어성초 블레미쉬 토너", sale: 360, old: 529, badgeTh: "ปลอบประโลม", badgeEn: "SOOTHING", badgeKr: "진정", img: "6.jpeg" },
         { id: 7, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin-Collagen 3D Core Cream", nameKr: "레틴 콜라겐 3D 코어 크림", sale: 250, old: 459, badgeTh: "ยกกระชับ", badgeEn: "LIFTING", badgeKr: "리프팅", img: "7.jpeg" },
-        { id: 8, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ อายครีม", nameEn: "Retin-Collagen 3D Core Eye Cream", nameKr: "레틴 콜라겐 3D 코어 아이크림", sale: 195, old: 370, badgeTh: "คอร์ 3ดี", badgeEn: "CORE 3D", badgeKr: "코어 3D", img: "8.jpeg" },
+        { id: 8, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ อายครีม", nameEn: "Retิน-Collagen 3D Core Eye Cream", nameKr: "레틴 콜라겐 3D 코어 아이크림", sale: 195, old: 370, badgeTh: "คอร์ 3ดี", badgeEn: "CORE 3D", badgeKr: "코어 3D", img: "8.jpeg" },
         { id: 9, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ โทนเนอร์", nameEn: "Retin-Collagen 3D Core Toner", nameKr: "레틴 콜라겐 3D 코어 토너", sale: 290, old: 500, badgeTh: "กระชับผิว", badgeEn: "FIRMING", badgeKr: "탄력", img: "9.jpeg" },
         { id: 10, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ลิป ออยล์", nameEn: "Retin-Collagen 3D Core Lip Oil", nameKr: "레틴 콜라겐 3D 코어 립 오일", sale: 125, old: 259, badgeTh: "ใหม่", badgeEn: "NEW", badgeKr: "신제품", img: "10.jpeg" },
         { id: 11, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต ซัน ครีม", nameEn: "Heartleaf Airy Fit Sun Cream", nameKr: "어성초 에어리 핏 선크림", sale: 280, old: 450, badgeTh: "กันแดด", badgeEn: "SUN CARE", badgeKr: "선케어", img: "11.jpeg" },
@@ -281,7 +237,7 @@
         document.getElementById('langBtn').textContent = t.label;
         document.getElementById('h-sub').textContent = t.sub;
 
-        const heads = document.querySelectorAll('h1, h2, h3, .buy-link, .nav-links a');
+        const heads = document.querySelectorAll('h3, .buy-link, .nav-links a, .card-tag');
         heads.forEach(el => {
             if(currentLang === 'th') el.classList.add('use-thai');
             else el.classList.remove('use-thai');
