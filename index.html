@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HJ COSMETICS - Luxury Skincare Boutique</title>
+    <title>HJ COSMETICS - Premium Korean Skincare Curator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Niramit:wght@300;400;500;600&family=Montserrat:wght@400;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Niramit:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&family=Nanum+Myeongjo:wght@400;700&display=swap');
 
         :root { 
             --p-green: #1b4332; 
+            --emerald: #0d2b1f;
             --warm-bg: #fdfaf5; 
             --gold-grad: linear-gradient(135deg, #a68a56 0%, #f1d38e 50%, #a68a56 100%);
             --gold-accent: #c5a059;
@@ -20,130 +21,134 @@
             --font-num: 'Montserrat', sans-serif;
         }
 
+        * { box-sizing: border-box; }
         body { margin: 0; padding: 0; background-color: var(--warm-bg); color: var(--text-dark); overflow-x: hidden; scroll-behavior: smooth; }
         
-        /* --- ✨ Background Glow Effects --- */
+        /* --- ✨ Background & Decorative Glow --- */
         .glow-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(27, 67, 50, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(197, 160, 89, 0.08) 0%, transparent 40%);
+                radial-gradient(circle at 5% 10%, rgba(27, 67, 50, 0.04) 0%, transparent 30%),
+                radial-gradient(circle at 95% 90%, rgba(197, 160, 89, 0.07) 0%, transparent 30%);
             pointer-events: none;
         }
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.12; filter: grayscale(30%); }
 
-        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.15; filter: saturate(0.5); }
-
-        /* --- 🎖️ Luxury Navigation --- */
+        /* --- 🎖️ Luxury Glass Navigation --- */
         .top-nav { 
-            background: rgba(255, 255, 255, 0.85); 
+            background: rgba(255, 255, 255, 0.8); 
             padding: 0 5%; display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 10px; z-index: 1000; height: 75px; 
-            margin: 0 20px; border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 8px 32px rgba(27, 67, 50, 0.08);
+            position: sticky; top: 15px; z-index: 1000; height: 75px; 
+            margin: 0 20px; border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(27, 67, 50, 0.08);
         }
-        .logo-box img { height: 40px; transition: 0.3s; }
-        .logo-box img:hover { transform: scale(1.05); }
+        .logo-box img { height: 42px; transition: 0.4s; }
+        .logo-box img:hover { transform: scale(1.08); }
 
-        .nav-links { display: flex; align-items: center; gap: 25px; }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
         .nav-links a { 
             text-decoration: none; color: var(--p-green); font-size: 0.8rem; font-weight: 700; 
-            font-family: var(--font-eng); letter-spacing: 2px; position: relative;
+            font-family: var(--font-eng); letter-spacing: 2px; position: relative; transition: 0.3s;
         }
-        .nav-links a::after {
-            content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background: var(--gold-accent); transition: 0.3s;
-        }
-        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--gold-accent); }
 
         .lang-switch { 
-            background: var(--p-green); color: white; border: none; padding: 8px 16px; 
+            background: var(--p-green); color: white; border: none; padding: 10px 20px; 
             border-radius: 50px; font-family: var(--font-num); cursor: pointer; 
-            box-shadow: 0 4px 15px rgba(27, 67, 50, 0.2); transition: 0.3s;
+            font-weight: 700; box-shadow: 0 5px 15px rgba(27, 67, 50, 0.2); transition: 0.3s;
         }
-        .lang-switch:hover { background: var(--text-dark); transform: translateY(-2px); }
+        .lang-switch:hover { background: var(--gold-accent); transform: translateY(-3px); }
 
-        /* --- ✨ Hero --- */
-        .hero-header { text-align: center; padding: 80px 5% 50px; }
-        .hero-logo-img { width: 80%; max-width: 380px; margin-bottom: 20px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); animation: fadeIn 1.5s ease-out; }
-        #h-sub { font-size: 1rem; letter-spacing: 5px; color: var(--gold-accent); font-weight: 700; text-transform: uppercase; }
+        /* --- ✨ Hero Section --- */
+        .hero-header { text-align: center; padding: 100px 5% 60px; }
+        .hero-logo-img { width: 85%; max-width: 420px; margin-bottom: 25px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1)); }
+        #h-sub { font-size: 1.1rem; letter-spacing: 6px; color: var(--gold-accent); font-weight: 700; text-transform: uppercase; font-family: var(--font-eng); }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- 🛍️ Products Container --- */
-        .main-container { padding: 0 4% 100px; max-width: 1400px; margin: 0 auto; }
-        
-        .section-title { text-align: center; margin-bottom: 60px; }
+        /* --- 🛍️ Products Grid --- */
+        .main-container { padding: 0 4% 120px; max-width: 1440px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 70px; }
         .section-title h2 { 
-            font-family: var(--font-eng); font-size: 3.5rem; color: var(--p-green); margin: 0; 
-            letter-spacing: 3px; text-shadow: 2px 2px 10px rgba(0,0,0,0.05);
+            font-family: var(--font-eng); font-size: clamp(2.5rem, 6vw, 4rem); 
+            color: var(--p-green); margin: 0; letter-spacing: 4px; 
         }
-        .brand-desc { color: var(--gold-accent); font-size: 1.1rem; font-style: italic; }
+        .brand-desc { color: var(--gold-accent); font-size: 1.2rem; font-style: italic; margin-top: 10px; }
 
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 45px; }
 
-        /* --- 📦 Product Card (Improved) --- */
+        /* --- 📦 Luxury Product Card --- */
         .product-card { 
-            background: #fff; border-radius: 20px; overflow: hidden; 
-            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1); 
-            border: 1px solid rgba(197, 160, 89, 0.1);
+            background: #fff; border-radius: 30px; overflow: hidden; 
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            border: 1px solid rgba(197, 160, 89, 0.15);
             display: flex; flex-direction: column; height: 100%; position: relative;
         }
-        .product-card::before {
-            content: ''; position: absolute; inset: 0; border-radius: 20px; padding: 1px;
-            background: transparent; transition: 0.5s; -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude;
-        }
-        .product-card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(27, 67, 50, 0.12); }
-        .product-card:hover::before { background: var(--gold-grad); }
+        .product-card:hover { transform: translateY(-18px); box-shadow: 0 40px 70px rgba(27, 67, 50, 0.15); border-color: var(--gold-accent); }
         
-        .image-wrap { height: 320px; padding: 30px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #fff; }
-        .image-wrap img { max-width: 90%; max-height: 90%; object-fit: contain; transition: 0.8s ease; }
-        .product-card:hover .image-wrap img { transform: scale(1.1); }
-        
+        /* --- 🎖️ Ribbon Badge with Shimmer --- */
         .badge { 
-            position: absolute; top: 20px; left: 20px; background: var(--p-green); color: white; 
-            padding: 6px 15px; font-size: 0.7rem; border-radius: 50px; font-weight: 600; z-index: 5;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            position: absolute; top: 25px; left: -10px; 
+            background: var(--gold-grad); color: var(--p-green); 
+            padding: 7px 20px; font-size: 0.75rem; 
+            border-radius: 0 50px 50px 0; font-weight: 800; z-index: 5;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.12);
+            border-left: 4px solid var(--p-green);
+            overflow: hidden; text-transform: uppercase; letter-spacing: 1px;
         }
+        .badge::after {
+            content: ''; position: absolute; top: -50%; left: -150%; width: 200%; height: 200%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.7), transparent);
+            transform: rotate(45deg); animation: shimmer 3.5s infinite;
+        }
+        @keyframes shimmer { 0% { left: -150%; } 100% { left: 150%; } }
 
-        .info-wrap { padding: 25px; text-align: center; flex-grow: 1; background: linear-gradient(to bottom, #fff, #fdfbf8); }
-        .info-wrap h3 { font-size: 1.05rem; margin-bottom: 15px; height: 3em; line-height: 1.5; color: var(--text-dark); font-weight: 500; }
+        .image-wrap { height: 320px; padding: 40px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #fff; transition: 0.5s; }
+        .image-wrap img { max-width: 95%; max-height: 95%; object-fit: contain; transition: 0.8s ease; }
+        .product-card:hover .image-wrap img { transform: scale(1.12); }
         
-        .sale-price { font-family: var(--font-num); font-size: 1.8rem; color: var(--p-green); font-weight: 700; }
-        .old-price { font-family: var(--font-num); font-size: 1rem; color: #ccc; text-decoration: line-through; margin-left: 10px; }
+        .info-wrap { padding: 30px; text-align: center; flex-grow: 1; background: linear-gradient(to bottom, #fff, #fefcf9); }
+        .info-wrap h3 { font-size: 1.1rem; margin-bottom: 18px; height: 3em; line-height: 1.5; color: var(--text-dark); font-weight: 600; }
+        
+        .price-box { margin-bottom: 20px; }
+        .sale-price { font-family: var(--font-num); font-size: 1.9rem; color: var(--p-green); font-weight: 800; }
+        .old-price { font-family: var(--font-num); font-size: 1.1rem; color: #d0d0d0; text-decoration: line-through; margin-left: 12px; }
 
         .btn-detail { 
-            background: #fff; color: var(--p-green); border: 1.5px solid var(--p-green);
-            padding: 15px; text-decoration: none; font-size: 0.9rem; font-weight: 700;
-            transition: 0.4s; display: block; margin: 0 25px 25px; border-radius: 12px; text-align: center;
+            background: #fff; color: var(--p-green); border: 2px solid var(--p-green);
+            padding: 16px; text-decoration: none; font-size: 0.95rem; font-weight: 800;
+            transition: 0.4s; display: block; margin: 0 30px 30px; border-radius: 15px; text-align: center;
         }
-        .btn-detail:hover { background: var(--p-green); color: white; box-shadow: 0 10px 20px rgba(27, 67, 50, 0.2); }
+        .btn-detail:hover { background: var(--p-green); color: white; box-shadow: 0 15px 25px rgba(27, 67, 50, 0.2); }
 
         /* --- 🏛️ Footer --- */
-        footer { 
-            background: #fff; padding: 100px 8% 50px; 
-            border-top: 1px solid rgba(197, 160, 89, 0.2);
-            position: relative;
-        }
-        footer::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: var(--gold-accent); border-radius: 0 0 10px 10px; }
+        footer { background: #fff; padding: 100px 8% 60px; border-top: 1px solid rgba(197, 160, 89, 0.2); position: relative; }
+        footer::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 5px; background: var(--gold-accent); border-radius: 0 0 15px 15px; }
 
-        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; max-width: 1200px; margin: 0 auto; }
-        .f-col h4 { font-family: var(--font-eng); color: var(--p-green); margin-bottom: 30px; letter-spacing: 2px; font-size: 1.2rem; }
-        .f-col p { font-size: 1rem; line-height: 2; color: #666; display: flex; align-items: center; margin: 15px 0; }
-        .f-col i { color: var(--gold-accent); margin-right: 15px; font-size: 1.2rem; }
+        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; max-width: 1300px; margin: 0 auto; }
+        .f-col h4 { font-family: var(--font-eng); color: var(--p-green); margin-bottom: 35px; letter-spacing: 2px; font-size: 1.3rem; font-weight: 700; }
+        .f-col p { font-size: 1.05rem; line-height: 2; color: #555; display: flex; align-items: flex-start; margin: 18px 0; }
+        .f-col i { color: var(--gold-accent); margin-right: 18px; font-size: 1.3rem; margin-top: 5px; }
         
-        .footer-bottom { text-align: center; margin-top: 80px; font-size: 0.8rem; color: #aaa; font-family: var(--font-num); letter-spacing: 1px; border-top: 1px solid #f0f0f0; padding-top: 30px; }
+        .footer-bottom { text-align: center; margin-top: 80px; font-size: 0.85rem; color: #bbb; font-family: var(--font-num); letter-spacing: 1px; border-top: 1px solid #f5f5f5; padding-top: 40px; }
+
+        .use-thai { font-family: var(--font-thai); }
+        .use-eng { font-family: var(--font-eng); }
+        .use-kr { font-family: var(--font-kr); }
 
         @media (max-width: 768px) {
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .section-title h2 { font-size: 2.2rem; }
-            .image-wrap { height: 200px; }
-            .info-wrap h3 { font-size: 0.85rem; }
-            .top-nav { margin: 0 10px; padding: 0 15px; height: 65px; }
+            .image-wrap { height: 220px; padding: 20px; }
+            .info-wrap { padding: 20px; }
+            .info-wrap h3 { font-size: 0.9rem; }
+            .sale-price { font-size: 1.5rem; }
+            .top-nav { margin: 10px; height: 65px; }
+            .btn-detail { margin: 0 15px 20px; padding: 12px; font-size: 0.85rem; }
         }
     </style>
 </head>
-<body>
+<body class="use-thai">
 
 <div class="glow-bg"></div>
 <video autoplay muted loop playsinline id="bg-video">
@@ -162,7 +167,7 @@
 
 <header class="hero-header">
     <img src="gold.png" alt="HJ Gold" class="hero-logo-img">
-    <div id="h-sub" class="use-eng">Curating Perfection</div>
+    <div id="h-sub">Premium Korean Curator</div>
 </header>
 
 <main class="main-container">
@@ -204,7 +209,6 @@
 </footer>
 
 <script>
-    // Data remains the same for consistency
     const products = [
         { id: 1, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง วอเตอรี่ ครีม", nameEn: "Wormwood Calming Watery Cream", nameKr: "쑥 진정 워터리 크림", sale: 250, old: 369, badgeTh: "ขายดี", badgeEn: "BEST SELLER", badgeKr: "베스트", img: "1.jpg.png" },
         { id: 2, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง โทนเนอร์", nameEn: "Wormwood Calming Toner", nameKr: "쑥 진정 토너", sale: 350, old: 459, badgeTh: "ยอดนิยม", badgeEn: "POPULAR", badgeKr: "인기", img: "2.jpeg" },
@@ -212,7 +216,7 @@
         { id: 4, brand: "Fraijour", nameTh: "วอร์มวูด คลีนซิ่ง โฟม", nameEn: "Wormwood Cleansing Foam", nameKr: "쑥 클렌징 폼", sale: 290, old: 399, badgeTh: "ขายดี", badgeEn: "BEST SELLER", badgeKr: "베스트", img: "4.jpeg" },
         { id: 5, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช มอยส์เจอร์ ครีม", nameEn: "Heartleaf Blemish Moisture Cream", nameKr: "어성초 블레미쉬 크림", sale: 310, old: 590, badgeTh: "ดูแลสิว", badgeEn: "ACNE CARE", badgeKr: "트러블 케어", img: "5.jpeg" },
         { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "어성초 블레미쉬 토너", sale: 360, old: 529, badgeTh: "ปลอบประโลม", badgeEn: "SOOTHING", badgeKr: "진정", img: "6.jpeg" },
-        { id: 7, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin-Collagen 3D Core Cream", nameKr: "레틴 콜라겐 3D 코어 크림", sale: 150, old: 459, badgeTh: "ยกกระชับ", badgeEn: "FIRMING", badgeKr: "탄력", img: "7.jpeg" },
+        { id: 7, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin-Collagen 3D Core Cream", nameKr: "레틴 콜ลา겐 3D 코어 크림", sale: 150, old: 459, badgeTh: "ยกกระชับ", badgeEn: "FIRMING", badgeKr: "탄력", img: "7.jpeg" },
         { id: 8, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ อายครีม", nameEn: "Retin-Collagen 3D Core Eye Cream", nameKr: "레틴 콜라겐 3D 코어 아이크림", sale: 195, old: 370, badgeTh: "บำรุงตา", badgeEn: "EYE CARE", badgeKr: "아이 케어", img: "8.jpeg" },
         { id: 9, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ โทนเนอร์", nameEn: "Retin-Collagen 3D Core Toner", nameKr: "레틴 콜라겐 3D 코어 토너", sale: 200, old: 500, badgeTh: "กระชับผิว", badgeEn: "TIGHTENING", badgeKr: "모공 수축", img: "9.jpeg" },
         { id: 10, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี คอร์ ลิป ออยล์", nameEn: "Retin-Collagen 3D Core Lip Oil", nameKr: "레틴 콜라겐 3D 코어 립 오일", sale: 125, old: 259, badgeTh: "ลิปโกลว์", badgeEn: "LIP GLOW", badgeKr: "립 글로우", img: "10.jpeg" },
@@ -224,9 +228,9 @@
     ];
 
     const trans = {
-        th: { label: "TH", sub: "คัดสรรความสมบูรณ์แบบเพื่อผิวคุณ", others: "Bathpa & Char Char", fDesc: "ฟื้นฟูผิวด้วยสมุนไพรธรรมชาติจากเกาหลี", oDesc: "คัดสรรแบรนด์บิวตี้ชั้นนำจากทั่วโลก", foot: "พรีเมียมคิวเรเตอร์ผู้ส่งมอบความงามจากเกาหลีสู่มือคุณ", shop: "ดูรายละเอียด", office: "ที่ตั้งสำนักงาน", concierge: "ติดต่อสอบถาม" },
-        en: { label: "EN", sub: "Curating Perfection", others: "Bathpa & Char Char", fDesc: "Natural Skin Healing from Korean Herbs", oDesc: "Premium Selection of Global Beauty Brands", foot: "Premium Korean beauty curator delivering excellence.", shop: "VIEW DETAILS", office: "OUR OFFICE", concierge: "CONCIERGE" },
-        kr: { label: "KR", sub: "당신을 위한 완벽한 큐레이션", others: "기타 브랜드", fDesc: "한국 허브로 얻는 자연스러운 피부 치유", oDesc: "엄선된 글로벌 뷰티 브랜드", foot: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.", shop: "상세보기", office: "오피스 주소", concierge: "고객 센터" }
+        th: { label: "TH", sub: "คัดสรรความสมบูรณ์แบบจากเกาหลี", others: "แบรนด์ชั้นนำอื่นๆ", fDesc: "ฟื้นฟูผิวด้วยสมุนไพรธรรมชาติจากเกาหลี", oDesc: "คัดสรรแบรนด์บิวตี้ระดับโลกเพื่อคุณ", foot: "พรีเมียมคิวเรเตอร์ผู้ส่งมอบความงามจากเกาหลีสู่มือคุณ", shop: "ดูรายละเอียด", office: "ที่ตั้งสำนักงาน", concierge: "ติดต่อสอบถาม" },
+        en: { label: "EN", sub: "Premium Korean Curator", others: "Bathpa & Char Char", fDesc: "Natural Skin Healing from Korean Herbs", oDesc: "Premium Selection of Global Beauty Brands", foot: "Premium Korean beauty curator delivering excellence.", shop: "VIEW DETAILS", office: "OUR OFFICE", concierge: "CONCIERGE" },
+        kr: { label: "KR", sub: "당신을 위한 완벽한 뷰티 큐레이션", others: "기타 프리미엄 브랜드", fDesc: "한국 허브로 얻는 자연스러운 피부 치유", oDesc: "엄선된 글로벌 뷰티 브랜드 셀렉션", foot: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이เตอร์.", shop: "상세보기", office: "오피스 주소", concierge: "고객 센터" }
     };
 
     let lang = 'th';
