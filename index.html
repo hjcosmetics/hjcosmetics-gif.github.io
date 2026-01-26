@@ -6,170 +6,123 @@
     <title>HJ COSMETICS | Luxury Skincare Boutique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* นำเข้าฟอนต์ที่ดูพรีเมียมและอ่านง่ายกว่าเดิม */
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Prompt:wght@200;300;400;500;600&family=Montserrat:wght@300;400;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Prompt:wght@200;300;400;500;600&family=Montserrat:wght@300;400;600;700;800&family=Nanum+Myeongjo:wght@400;700&display=swap');
 
         :root { 
             --p-green: #1b4332; 
             --gold: #c5a059;
             --gold-light: #f1d38e;
             --off-white: #fdfaf5;
-            --text-main: #2d3436;
-            --text-light: #636e72;
             --font-th: 'Prompt', sans-serif;
             --font-en: 'Cinzel', serif;
-            --font-kr: 'Nanum Myeongjo', serif;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        
-        body { 
-            margin: 0; padding: 0; 
-            background-color: var(--off-white); 
-            color: var(--text-main); 
-            line-height: 1.6;
-            font-family: var(--font-th);
-        }
+        body { margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; overflow-x: hidden; font-family: var(--font-th); }
 
-        /* --- 🎞️ Background --- */
-        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.1; }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, var(--off-white) 100%); z-index: -1; }
+        /* --- 🎞️ Background & Overlay --- */
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.12; }
+        .bg-gradient { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, transparent 0%, var(--off-white) 90%); z-index: -1; }
 
-        /* --- 🎖️ Navigation (Sleek Design) --- */
+        /* --- 🎖️ Navigation --- */
         nav { 
-            background: rgba(255, 255, 255, 0.9); 
-            backdrop-filter: blur(15px);
-            height: 90px; padding: 0 6%;
-            display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); height: 85px; padding: 0 6%;
+            display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000;
             border-bottom: 1px solid rgba(197, 160, 89, 0.1);
         }
-        .logo img { height: 45px; }
+        .logo img { height: 42px; transition: 0.3s; }
         .nav-links { display: flex; gap: 35px; align-items: center; }
-        .nav-links a { 
-            text-decoration: none; color: var(--p-green); 
-            font-family: var(--font-en); font-weight: 700; font-size: 0.8rem;
-            letter-spacing: 2px; transition: 0.3s;
-        }
-        .nav-links a:hover { color: var(--gold); }
-        .lang-btn { 
-            background: var(--p-green); color: white; border: none; 
-            padding: 8px 18px; border-radius: 4px; cursor: pointer;
-            font-family: 'Montserrat'; font-weight: 700; transition: 0.3s;
-        }
-        .lang-btn:hover { background: var(--gold); }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 700; font-size: 0.75rem; letter-spacing: 2px; }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 18px; border-radius: 4px; cursor: pointer; font-family: 'Montserrat'; font-weight: 700; }
 
-        /* --- ✨ Hero --- */
-        .hero { text-align: center; padding: 100px 5% 80px; }
-        .hero img { width: 320px; margin-bottom: 25px; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.05)); }
-        .hero h1 { 
-            font-family: var(--font-en); font-size: 0.9rem; letter-spacing: 6px; 
-            color: var(--gold); margin: 0; font-weight: 700;
+        /* --- ✨ Enhanced Hero Section --- */
+        .hero { 
+            height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            text-align: center; position: relative; padding: 0 5%; overflow: hidden;
         }
+        /* ของตกแต่งใน Hero */
+        .hero::before { 
+            content: ''; position: absolute; width: 400px; height: 400px; border: 1px solid rgba(197, 160, 89, 0.1); 
+            border-radius: 50%; top: -100px; right: -100px; z-index: -1; 
+        }
+        .hero::after { 
+            content: ''; position: absolute; width: 300px; height: 300px; border: 1px solid rgba(197, 160, 89, 0.1); 
+            border-radius: 50%; bottom: -50px; left: -100px; z-index: -1; 
+        }
+
+        .hero-main-img { 
+            width: 380px; max-width: 80%; margin-bottom: 30px; 
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        .hero h1 { 
+            font-family: var(--font-en); font-size: 1.2rem; letter-spacing: 10px; color: var(--gold); 
+            margin: 0 0 15px; text-transform: uppercase; font-weight: 400;
+        }
+        .hero .main-title {
+            font-family: var(--font-en); font-size: 4rem; font-weight: 900; line-height: 1;
+            background: linear-gradient(90deg, #1b4332, #c5a059, #1b4332);
+            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: shine 5s linear infinite; margin-bottom: 20px;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
+
+        .hero p { 
+            max-width: 600px; font-size: 1.1rem; color: #636e72; line-height: 1.8; 
+            margin: 0; font-weight: 300; letter-spacing: 0.5px;
+        }
+        .scroll-indicator { position: absolute; bottom: 30px; animation: bounce 2s infinite; color: var(--gold); font-size: 1.5rem; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
         /* --- 🛍️ Products Grid --- */
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 5%; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { 
-            font-family: var(--font-en); font-size: 3rem; color: var(--p-green); 
-            margin: 0; letter-spacing: 3px;
-        }
-        .section-header p { 
-            font-size: 1.1rem; color: var(--gold); font-weight: 300; 
-            margin-top: 10px; letter-spacing: 1px;
-        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 100px 5%; }
+        .section-header { text-align: center; margin-bottom: 80px; position: relative; }
+        .section-header::after { content: ''; display: block; width: 50px; height: 2px; background: var(--gold); margin: 25px auto 0; }
+        .section-header h2 { font-family: var(--font-en); font-size: 3.2rem; color: var(--p-green); margin: 0; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 50px; margin-bottom: 120px; }
 
-        .grid { 
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 40px; margin-bottom: 100px; 
-        }
-
-        /* --- 📦 Product Card (Refined) --- */
+        /* --- 📦 Card Design --- */
         .card { 
-            background: white; border-radius: 20px; overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.03); transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-            display: flex; flex-direction: column;
+            background: white; border-radius: 25px; overflow: hidden; border: 1px solid rgba(0,0,0,0.03); 
+            transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); display: flex; flex-direction: column;
         }
-        .card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
+        .card:hover { transform: translateY(-15px); box-shadow: 0 40px 80px rgba(0,0,0,0.1); border-color: var(--gold-light); }
 
-        .img-box { 
-            height: 300px; padding: 40px; display: flex; align-items: center; 
-            justify-content: center; position: relative; background: #fff;
-        }
-        .img-box img { max-width: 100%; max-height: 100%; transition: 0.6s; }
-        .card:hover .img-box img { transform: scale(1.08); }
-
-        /* ป้ายสินค้าแบบหรู */
+        .img-box { height: 320px; padding: 45px; display: flex; align-items: center; justify-content: center; position: relative; }
         .ribbon {
-            position: absolute; top: 20px; left: -8px;
-            background: linear-gradient(135deg, #a68a56, #f1d38e);
-            color: var(--p-green); font-weight: 800; font-size: 0.65rem;
-            padding: 6px 15px; border-radius: 0 4px 4px 0;
-            box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
-            z-index: 2; letter-spacing: 1px;
+            position: absolute; top: 25px; left: -10px; background: linear-gradient(135deg, #a68a56, #f1d38e);
+            color: var(--p-green); font-weight: 800; font-size: 0.7rem; padding: 6px 18px; 
+            border-radius: 0 50px 50px 0; box-shadow: 4px 4px 15px rgba(0,0,0,0.1); z-index: 2;
         }
 
-        .info { padding: 30px 25px; text-align: center; flex: 1; }
-        .info h3 { 
-            font-size: 1rem; font-weight: 500; margin-bottom: 15px; 
-            height: 3em; color: var(--text-main); line-height: 1.5;
-        }
-        .price { margin-bottom: 25px; }
-        .sale { font-size: 1.6rem; font-weight: 700; color: var(--p-green); font-family: 'Montserrat'; }
-        .old { font-size: 0.9rem; color: #b2bec3; text-decoration: line-through; margin-left: 10px; font-family: 'Montserrat'; }
+        .info { padding: 35px 30px; text-align: center; flex: 1; }
+        .info h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; height: 3em; color: #2d3436; line-height: 1.6; }
+        .sale { font-size: 1.8rem; font-weight: 800; color: var(--p-green); font-family: 'Montserrat'; }
+        .old { font-size: 1rem; color: #b2bec3; text-decoration: line-through; margin-left: 10px; font-family: 'Montserrat'; }
 
         .btn { 
-            display: block; margin: 0 25px 25px; padding: 14px;
-            border: 1.5px solid var(--p-green); color: var(--p-green);
-            text-decoration: none; font-weight: 600; font-size: 0.85rem;
-            border-radius: 8px; transition: 0.3s; text-align: center;
+            display: block; margin: 0 30px 30px; padding: 16px; border: 2px solid var(--p-green); 
+            color: var(--p-green); text-decoration: none; font-weight: 700; border-radius: 12px; transition: 0.4s; text-align: center;
         }
-        .btn:hover { background: var(--p-green); color: white; }
+        .btn:hover { background: var(--p-green); color: white; transform: scale(1.02); }
 
-        /* --- 🏛️ Footer (Complete) --- */
-        footer { 
-            background: white; padding: 80px 6% 40px; 
-            border-top: 1px solid rgba(0,0,0,0.05); color: var(--text-main);
-        }
-        .f-grid { 
-            max-width: 1300px; margin: 0 auto;
-            display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px;
-        }
-        .f-col h4 { 
-            font-family: var(--font-en); font-size: 1rem; color: var(--p-green); 
-            margin-bottom: 25px; letter-spacing: 2px;
-        }
-        .f-col p, .f-col a { 
-            font-size: 0.9rem; color: var(--text-light); text-decoration: none; 
-            margin-bottom: 15px; display: block; line-height: 1.8;
-        }
-        .f-col i { color: var(--gold); margin-right: 12px; width: 15px; }
-        
-        .social-links { display: flex; gap: 15px; margin-top: 20px; }
-        .social-links a { 
-            width: 35px; height: 35px; background: var(--p-green); color: white;
-            display: flex; align-items: center; justify-content: center; 
-            border-radius: 50%; transition: 0.3s; 
-        }
-        .social-links a:hover { background: var(--gold); transform: translateY(-3px); }
+        /* --- 🏛️ Footer --- */
+        footer { background: white; padding: 100px 6% 50px; border-top: 1px solid #f1f1f1; }
+        .f-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px; }
+        .f-col h4 { font-family: var(--font-en); font-size: 1.1rem; color: var(--p-green); margin-bottom: 35px; letter-spacing: 2px; }
+        .f-col p, .f-col a { font-size: 0.95rem; color: #636e72; text-decoration: none; margin-bottom: 18px; display: block; line-height: 1.8; }
+        .f-col i { color: var(--gold); margin-right: 15px; }
+        .social { display: flex; gap: 15px; margin-top: 25px; }
+        .social a { width: 40px; height: 40px; background: var(--p-green); color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: 0.3s; }
+        .social a:hover { background: var(--gold); transform: rotate(360deg); }
 
-        .copyright { 
-            text-align: center; margin-top: 60px; padding-top: 30px;
-            border-top: 1px solid #f1f1f1; font-size: 0.75rem; color: #b2bec3;
-            font-family: 'Montserrat'; letter-spacing: 1px;
-        }
+        .copyright { text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid #f5f5f5; font-size: 0.8rem; color: #aaa; font-family: 'Montserrat'; letter-spacing: 2px; }
 
-        /* --- Responsive --- */
-        @media (max-width: 992px) {
-            .f-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 768px) {
-            .grid { grid-template-columns: 1fr 1fr; gap: 15px; }
-            .section-header h2 { font-size: 2rem; }
-            .f-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-            .social-links { justify-content: center; }
-            .nav-links { display: none; } /* ซ่อนเมนูบนมือถือเพื่อความสะอาด */
-        }
+        @media (max-width: 1024px) { .f-grid { grid-template-columns: 1fr 1fr; } .hero .main-title { font-size: 3rem; } }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr 1fr; gap: 20px; } .f-grid { grid-template-columns: 1fr; text-align: center; } .social { justify-content: center; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -177,62 +130,65 @@
 <video autoplay muted loop playsinline id="bg-video">
     <source src="วิดีโอทำเว็บไซต์.mp4" type="video/mp4">
 </video>
-<div class="overlay"></div>
+<div class="bg-gradient"></div>
 
 <nav>
     <div class="logo"><img src="HJ (5).png" alt="HJ LOGO"></div>
     <div class="nav-links">
-        <a href="#">COLLECTION</a>
-        <a href="#">PHILOSOPHY</a>
-        <a href="#">CONTACT</a>
+        <a href="#grid-fraijour">COLLECTION</a>
+        <a href="#f-about">PHILOSOPHY</a>
+        <a href="#f-h-contact">CONTACT</a>
         <button onclick="changeLang()" id="langBtn" class="lang-btn">TH</button>
     </div>
 </nav>
 
 <header class="hero">
-    <img src="gold.png" alt="HJ Luxury">
-    <h1 id="hero-sub">PREMIUM KOREAN SKIN CURATOR</h1>
+    <img src="gold.png" alt="HJ Luxury" class="hero-main-img">
+    <h1 id="hero-tag">Curating Korean Excellence</h1>
+    <div class="main-title">HJ COSMETICS</div>
+    <p id="hero-p">Experience the alchemy of natural herbs and modern science. We bring the most prestigious skincare secrets from Seoul to your vanity.</p>
+    <div class="scroll-indicator"><i class="fa-solid fa-chevron-down"></i></div>
 </header>
 
 <main class="container">
     <section class="section-header">
         <h2>Fraijour</h2>
-        <p id="desc-fraijour">Healing Power from Natural Korean Herbs</p>
+        <p id="desc-fraijour">Natural Skin Healing from Korean Herbs</p>
     </section>
     <div class="grid" id="grid-fraijour"></div>
 
     <section class="section-header">
-        <h2 id="title-others">Global Selection</h2>
-        <p id="desc-others">Handpicked Beauty Excellence</p>
+        <h2 id="title-others">Bathpa & Char Char</h2>
+        <p id="desc-others">Premium Global Selection</p>
     </section>
     <div class="grid" id="grid-others"></div>
 </main>
 
 <footer>
     <div class="f-grid">
-        <div class="f-col">
+        <div class="f-col" id="f-about">
             <h4>HJ COSMETICS</h4>
-            <p id="f-about">เราเชื่อในการส่งต่อความงามที่แท้จริงจากเกาหลี สู่ผิวพรรณของคุณด้วยผลิตภัณฑ์ที่คัดสรรมาอย่างดีที่สุด</p>
-            <div class="social-links">
+            <p id="f-desc">เราเชื่อในการส่งต่อความงามที่แท้จริงจากเกาหลี สู่ผิวพรรณของคุณด้วยผลิตภัณฑ์ที่คัดสรรมาอย่างดีที่สุด เพื่อผลลัพธ์ที่ยั่งยืน</p>
+            <div class="social">
                 <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
                 <a href="#"><i class="fa-brands fa-line"></i></a>
             </div>
         </div>
         <div class="f-col">
-            <h4 id="f-h-links">QUICK LINKS</h4>
-            <a href="#">Home</a>
-            <a href="#">All Products</a>
-            <a href="#">About Us</a>
-            <a href="#">Privacy Policy</a>
+            <h4 id="f-h-links">QUICK NAVIGATION</h4>
+            <a href="#">Brand Story</a>
+            <a href="#">Shop Collection</a>
+            <a href="#">Privilege Club</a>
+            <a href="#">Customer Care</a>
         </div>
         <div class="f-col">
-            <h4 id="f-h-office">OFFICE</h4>
+            <h4 id="f-h-office">THE OFFICE</h4>
             <p><i class="fa-solid fa-location-dot"></i> 323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
             <p><i class="fa-solid fa-clock"></i> Mon - Sat: 09:00 - 18:00</p>
         </div>
-        <div class="f-col">
-            <h4 id="f-h-contact">CONTACT</h4>
+        <div class="f-col" id="f-h-contact">
+            <h4>CONCIERGE</h4>
             <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
             <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
             <p><i class="fa-brands fa-line"></i> @thaihj11</p>
@@ -261,9 +217,9 @@
     ];
 
     const trans = {
-        th: { label: "TH", sub: "คัดสรรความสมบูรณ์แบบจากเกาหลี", fDesc: "พลังการเยียวยาจากสมุนไพรธรรมชาติ", oDesc: "แบรนด์บิวตี้ชั้นนำที่คัดสรรมาเพื่อคุณ", shop: "ดูรายละเอียด", office: "ที่ตั้งสำนักงาน", contact: "ติดต่อเรา", about: "เราเชื่อในการส่งต่อความงามที่แท้จริงจากเกาหลี สู่ผิวพรรณของคุณด้วยผลิตภัณฑ์ที่คัดสรรมาอย่างดีที่สุด" },
-        en: { label: "EN", sub: "PREMIUM KOREAN SKIN CURATOR", fDesc: "Healing Power from Natural Korean Herbs", oDesc: "Handpicked Beauty Excellence", shop: "VIEW DETAILS", office: "OUR OFFICE", contact: "CONTACT US", about: "We believe in delivering authentic Korean beauty to your skin through the finest curated products." },
-        kr: { label: "KR", sub: "프리미엄 한국 뷰티 큐레이터", fDesc: "자연 유래 한국 허브의 치유력", oDesc: "엄선된 글로벌 뷰티 셀렉션", shop: "상세보기", office: "오피스 주소", contact: "고객 센터", about: "우리는 엄선된 최고의 제품을 통해 한국의 진정한 아름다움을 당신의 피부에 전달할 수 있다고 믿습니다." }
+        th: { label: "TH", tag: "คัดสรรความสมบูรณ์แบบจากเกาหลี", p: "สัมผัสการผสมผสานของสมุนไพรธรรมชาติและวิทยาการสมัยใหม่ เรานำความลับการดูแลผิวที่เหนือระดับจากกรุงโซลส่งตรงถึงมือคุณ", fDesc: "พลังแห่งการเยียวยาจากสมุนไพรธรรมชาติ", oDesc: "คัดสรรความงามระดับพรีเมียมจากทั่วโลก", shop: "ดูรายละเอียด", about: "เราเชื่อในการส่งต่อความงามที่แท้จริงจากเกาหลี สู่ผิวพรรณของคุณด้วยผลิตภัณฑ์ที่คัดสรรมาอย่างดีที่สุด เพื่อผลลัพธ์ที่ยั่งยืน" },
+        en: { label: "EN", tag: "Curating Korean Excellence", p: "Experience the alchemy of natural herbs and modern science. We bring the most prestigious skincare secrets from Seoul to your vanity.", fDesc: "Healing Power from Natural Korean Herbs", oDesc: "Premium Global Selection", shop: "VIEW DETAILS", about: "We believe in delivering authentic Korean beauty to your skin through the finest curated products for lasting results." },
+        kr: { label: "KR", tag: "한국의 탁월함을 큐레이팅하다", p: "천연 허브와 현대 과학의 연금술을 경험해 보세요. 서울의 가장 고급스러운 스킨케어 비결을 당신의 화장대로 가져옵니다.", fDesc: "자연 유래 한국 허브의 치유력", oDesc: "프리미엄 글로벌 셀렉션", shop: "상세보기", about: "우리는 지속적인 결과를 위해 엄선된 최고의 제품을 통해 한국의 진정한 아름다움을 당신의 피부에 전달할 수 있다고 믿습니다." }
     };
 
     let lang = 'th';
@@ -276,8 +232,6 @@
         products.forEach(p => {
             const name = lang === 'th' ? p.nameTh : (lang === 'kr' ? p.nameKr : p.nameEn);
             const badge = lang === 'th' ? p.badgeTh : (lang === 'kr' ? p.badgeKr : p.badgeEn);
-            const fontClass = lang === 'th' ? 'use-thai' : (lang === 'kr' ? 'use-kr' : 'use-eng');
-
             const html = `
                 <div class="card">
                     <div class="img-box">
@@ -286,10 +240,7 @@
                     </div>
                     <div class="info">
                         <h3>${name}</h3>
-                        <div class="price">
-                            <span class="sale">฿${p.sale}</span>
-                            <span class="old">฿${p.old}</span>
-                        </div>
+                        <div class="price"><span class="sale">฿${p.sale}</span><span class="old">฿${p.old}</span></div>
                     </div>
                     <a href="#" class="btn">${trans[lang].shop}</a>
                 </div>
@@ -298,20 +249,18 @@
             else gridO.innerHTML += html;
         });
 
-        document.getElementById('langBtn').textContent = trans[lang].label;
-        document.getElementById('hero-sub').textContent = trans[lang].sub;
-        document.getElementById('desc-fraijour').textContent = trans[lang].fDesc;
-        document.getElementById('desc-others').textContent = trans[lang].oDesc;
-        document.getElementById('f-about').textContent = trans[lang].about;
-        document.getElementById('f-h-office').textContent = trans[lang].office;
-        document.getElementById('f-h-contact').textContent = trans[lang].contact;
-        
+        const t = trans[lang];
+        document.getElementById('langBtn').textContent = t.label;
+        document.getElementById('hero-tag').textContent = t.tag;
+        document.getElementById('hero-p').textContent = t.p;
+        document.getElementById('desc-fraijour').textContent = t.fDesc;
+        document.getElementById('desc-others').textContent = t.oDesc;
+        document.getElementById('f-desc').textContent = t.about;
         document.body.style.fontFamily = lang === 'kr' ? 'var(--font-kr)' : (lang === 'th' ? 'var(--font-th)' : 'var(--font-en)');
     }
 
     function changeLang() {
-        const seq = ['th', 'en', 'kr'];
-        lang = seq[(seq.indexOf(lang) + 1) % 3];
+        lang = lang === 'th' ? 'en' : (lang === 'en' ? 'kr' : 'th');
         render();
     }
     render();
