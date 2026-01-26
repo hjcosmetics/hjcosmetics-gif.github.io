@@ -21,7 +21,7 @@
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
         body { margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; font-family: var(--font-th); overflow-x: hidden; }
 
-        /* --- 🎞️ Video Visibility (คงเดิม) --- */
+        /* --- 🎞️ Video Visibility (Clear View) --- */
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.6) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; }
 
@@ -33,9 +33,10 @@
         }
         .logo-nav img { height: 55px; }
         
-        /* --- 🎖️ แก้ไขแถบเมนูใหม่ --- */
+        /* --- 🎖️ แถบเมนูเชื่อมต่อไปยังไฟล์ภายนอก --- */
         .nav-links { display: flex; gap: 40px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
         
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 10px 20px; border-radius: 0; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; }
 
@@ -109,9 +110,9 @@
 <nav>
     <div class="logo-nav"><img src="HJ (5).png" alt="HJ LOGO"></div>
     <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#footer">About</a>
-        <a href="#footer">Contact</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </div>
     <button onclick="changeLang()" id="langBtn" class="lang-btn">TH / EN / KR</button>
 </nav>
@@ -183,7 +184,7 @@
     const trans = {
         th: { title: "The Masterpiece of Skincare", p: "ความหรูหราที่มาพร้อมกับผลลัพธ์ที่จับต้องได้ คัดสรรทุกส่วนผสมเพื่อความสมบูรณ์แบบของผิวคุณ", shop: "ช้อปเลย", others: "GLOBAL SELECTION", about: "ค้นพบความลับแห่งความงามที่ยั่งยืนผ่านคอลเลกชันระดับพรีเมียมของเรา" },
         en: { title: "The Masterpiece of Skincare", p: "Luxury meets tangible results. Meticulously selecting every ingredient for your skin's perfection.", shop: "SHOP NOW", others: "GLOBAL SELECTION", about: "Discover the secret of eternal beauty through our premium curated collection." },
-        kr: { title: "스킨케어의 걸작", p: "럭셔리함과 가시적인 결과가 만났습니다. 당신의 피부 완벽을 위해 모든 성분을 세심하게 선택했습니다.", shop: "지금 구매", others: "글로벌 셀렉션", about: "프리미엄 큐레이션 컬렉션을 통해 영원한 아름다움의 비밀을 발견하세요." }
+        kr: { title: "스킨케어의 걸작", p: "럭셔리함และ 가시적인 결과가 만났습니다. 당신의 피부 완벽을 위해 모든 성분을 세심하게 선택했습니다.", shop: "지금 구매", others: "글로벌 셀렉션", about: "프리미엄 큐레이션 컬렉션을 통해 영원한 아름바움의 비밀을 발견하세요." }
     };
 
     let currentLang = localStorage.getItem('hj_lang') || 'th';
