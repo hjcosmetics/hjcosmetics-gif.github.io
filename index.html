@@ -21,9 +21,9 @@
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
         body { margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; font-family: var(--font-th); overflow-x: hidden; }
 
-        /* --- 🎞️ ปรับแก้ความชัดของวิดีโอ --- */
-        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4; } /* เพิ่มจาก 0.15 เป็น 0.4 */
-        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.6) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; } /* ปรับให้ใสขึ้น */
+        /* --- 🎞️ Video Visibility (คงเดิม) --- */
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.6) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; }
 
         nav { 
             background: rgba(255, 255, 255, 0.9); height: 100px; padding: 0 8%;
@@ -32,8 +32,11 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.04); backdrop-filter: blur(5px);
         }
         .logo-nav img { height: 55px; }
+        
+        /* --- 🎖️ แก้ไขแถบเมนูใหม่ --- */
         .nav-links { display: flex; gap: 40px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 10px 20px; border-radius: 0; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; }
 
         .hero { padding: 80px 5% 60px; text-align: center; display: flex; flex-direction: column; align-items: center; }
@@ -52,6 +55,7 @@
         .card:hover { transform: translateY(-15px); box-shadow: 0 40px 70px rgba(0,0,0,0.1); }
         .img-box { height: 400px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #ffffff 0%, #f7f1e3 100%); padding: 40px; }
 
+        /* --- 🏷️ ป้ายสินค้า Gold Seal (คงเดิม) --- */
         .product-badge {
             position: absolute; top: 20px; right: 20px;
             width: 70px; height: 70px;
@@ -105,9 +109,9 @@
 <nav>
     <div class="logo-nav"><img src="HJ (5).png" alt="HJ LOGO"></div>
     <div class="nav-links">
-        <a href="#fraijour">FRAIJOUR</a>
-        <a href="#others">SELECTIONS</a>
-        <a href="#footer">CONTACT</a>
+        <a href="#">Home</a>
+        <a href="#footer">About</a>
+        <a href="#footer">Contact</a>
     </div>
     <button onclick="changeLang()" id="langBtn" class="lang-btn">TH / EN / KR</button>
 </nav>
@@ -173,7 +177,7 @@
         { id: 12, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ กันแดด", nameEn: "Heartleaf Water Fit Sun", nameKr: "어성초 워터 선스크린", sale: 320, old: 590, bTh: "บางเบา", bEn: "LIGHT", bKr: "산뜻", img: "12.jpeg" },
         { id: 13, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ มาส์ก", nameEn: "Original Herb Mask", nameKr: "오리지널 허브 마스크", sale: 13, old: 29, bTh: "มาส์ก", bEn: "MASK", bKr: "팩", img: "15.jpeg" },
         { id: 14, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바디 톤업 크림", sale: 150, old: 529, bTh: "ผิวกาย", bEn: "BODY", bKr: "미백", img: "13.jpeg" },
-        { id: 15, brand: "CharChar", nameTh: "มุงบีน ซิก้า โฟม", nameEn: "Mung Bean Cica Foam", nameKr: "녹ดู 시카 폼", sale: 120, old: 199, bTh: "สะอาด", bEn: "CLEAN", bKr: "녹두", img: "14.jpeg" }
+        { id: 15, brand: "CharChar", nameTh: "มุงบีน ซิก้า โฟม", nameEn: "Mung Bean Cica Foam", nameKr: "녹두 시카 폼", sale: 120, old: 199, bTh: "สะอาด", bEn: "CLEAN", bKr: "녹두", img: "14.jpeg" }
     ];
 
     const trans = {
