@@ -11,7 +11,6 @@
         :root { 
             --p-green: #1b4332; 
             --gold: #c5a059;
-            --gold-light: #f1d38e;
             --off-white: #fdfaf5;
             --font-th: 'Prompt', sans-serif;
             --font-en: 'Montserrat', sans-serif;
@@ -22,121 +21,77 @@
         body { margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; font-family: var(--font-th); overflow-x: hidden; }
 
         /* --- 🎞️ Fixed Background --- */
-        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.08; }
-        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.8) 0%, var(--off-white) 100%); z-index: -1; }
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.1; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 20%, var(--off-white) 100%); z-index: -1; }
 
-        /* --- 🎖️ Professional Navigation --- */
-        nav { 
-            background: white; height: 100px; padding: 0 8%;
-            display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.03);
-        }
-        .logo-box { flex: 1; }
-        .logo-box img { height: 50px; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.1)); }
-        
-        .nav-links { flex: 2; display: flex; justify-content: center; gap: 40px; }
-        .nav-links a { 
-            text-decoration: none; color: var(--p-green); font-family: var(--font-en); 
-            font-weight: 600; font-size: 0.75rem; letter-spacing: 2px;
-            position: relative; padding-bottom: 5px;
-        }
-        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--gold); transition: 0.4s; }
-        .nav-links a:hover::after { width: 100%; }
+        /* --- 🎖️ Navigation --- */
+        nav { background: white; height: 80px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.02); }
+        .logo-nav img { height: 40px; }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; }
 
-        .lang-box { flex: 1; text-align: right; }
-        .lang-btn { 
-            background: transparent; border: 1px solid var(--gold); color: var(--gold);
-            padding: 8px 16px; border-radius: 2px; cursor: pointer; font-family: var(--font-en);
-            font-weight: 700; font-size: 0.7rem; transition: 0.3s;
-        }
-        .lang-btn:hover { background: var(--p-green); color: white; border-color: var(--p-green); }
+        /* --- ✨ Hero Section --- */
+        .hero { padding: 80px 5% 40px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .gold-brand-logo { width: 280px; margin-bottom: 30px; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.08)); animation: softFloat 4s ease-in-out infinite; }
+        @keyframes softFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        .hero-title { font-family: var(--font-head); font-size: clamp(1.8rem, 4vw, 3rem); color: var(--p-green); margin: 0 0 15px; }
 
-        /* --- ✨ Structured Hero --- */
-        .hero { 
-            padding: 120px 5% 80px; text-align: center; max-width: 1000px; margin: 0 auto;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
-        }
-        .hero-label { font-family: var(--font-en); font-size: 0.8rem; letter-spacing: 5px; color: var(--gold); margin-bottom: 20px; font-weight: 600; }
-        .hero-title { font-family: var(--font-head); font-size: clamp(2rem, 6vw, 4rem); color: var(--p-green); margin: 0 0 30px; line-height: 1.1; }
-        .hero-p { font-size: 1.1rem; color: #7f8c8d; line-height: 1.8; max-width: 700px; margin: 0 auto; font-weight: 300; }
-
-        /* --- 🛍️ Product Grid System --- */
-        .container { max-width: 1400px; margin: 0 auto; padding: 100px 5%; }
-        .grid-title { margin-bottom: 60px; display: flex; align-items: center; gap: 20px; }
-        .grid-title h2 { font-family: var(--font-head); font-size: 2.5rem; color: var(--p-green); white-space: nowrap; }
+        /* --- 🛍️ Grid System --- */
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 5% 100px; }
+        .grid-title { display: flex; align-items: center; gap: 20px; margin-bottom: 50px; }
+        .grid-title h2 { font-family: var(--font-head); font-size: 2rem; color: var(--p-green); margin: 0; }
         .grid-title .line { flex: 1; height: 1px; background: rgba(197, 160, 89, 0.2); }
 
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; margin-bottom: 120px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
 
-        /* --- 📦 High-End Card --- */
+        /* --- 📦 Balanced Card Design --- */
         .card { 
-            background: white; border-radius: 0px; transition: 0.5s; position: relative;
-            display: flex; flex-direction: column; height: 100%; border: 1px solid transparent;
+            background: white; border-radius: 12px; overflow: hidden; position: relative;
+            display: flex; flex-direction: column; border: 1px solid rgba(0,0,0,0.05);
+            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        .card:hover { border-color: var(--gold-light); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); border-color: var(--gold); }
 
-        .img-box { height: 350px; background: #fff; display: flex; align-items: center; justify-content: center; padding: 40px; position: relative; }
-        .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: 0.7s; }
-        .card:hover .img-box img { transform: scale(1.05); }
-
-        /* ป้ายสินค้าแบบ Wax Seal Shimmer */
-        .badge {
-            position: absolute; top: 20px; right: 20px; width: 65px; height: 65px;
-            background: radial-gradient(circle, #f1d38e 0%, #a68a56 100%);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: var(--p-green); font-size: 0.6rem; font-weight: 800; text-align: center;
-            box-shadow: 0 4px 15px rgba(166,138,86,0.3); border: 2px solid white;
-            z-index: 5; text-transform: uppercase; line-height: 1.2;
-            overflow: hidden;
+        /* ป้ายแบบ Balanced Bar */
+        .badge-bar {
+            background: linear-gradient(90deg, #c5a059, #f1d38e, #c5a059);
+            color: var(--p-green); font-size: 0.65rem; font-weight: 800; text-align: center;
+            padding: 6px 0; letter-spacing: 2px; text-transform: uppercase;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .badge::after {
-            content: ''; position: absolute; width: 100%; height: 100%;
-            background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.6) 50%, transparent 55%);
-            animation: badgeShine 3s infinite; background-size: 200% 200%;
-        }
-        @keyframes badgeShine { 0% { transform: translateX(-100%) translateY(-100%); } 100% { transform: translateX(100%) translateY(100%); } }
 
-        .info { padding: 30px; text-align: left; flex: 1; }
-        .info h3 { font-size: 1rem; color: var(--p-green); margin-bottom: 15px; font-weight: 500; height: 3em; overflow: hidden; }
-        .price { display: flex; align-items: baseline; gap: 10px; margin-bottom: 25px; }
-        .sale { font-size: 1.6rem; font-weight: 700; color: #2d3436; font-family: var(--font-en); }
-        .old { font-size: 0.9rem; color: #b2bec3; text-decoration: line-through; font-family: var(--font-en); }
+        .img-box { height: 280px; padding: 30px; display: flex; align-items: center; justify-content: center; background: white; }
+        .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        .info { padding: 25px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
+        .info h3 { 
+            font-size: 0.95rem; color: #2d3436; margin: 0 0 15px; font-weight: 500; 
+            min-height: 3em; display: flex; align-items: center; justify-content: center;
+        }
+        .price { margin-top: auto; padding-bottom: 15px; }
+        .sale { font-size: 1.5rem; font-weight: 700; color: var(--p-green); font-family: var(--font-en); }
+        .old { font-size: 0.9rem; color: #b2bec3; text-decoration: line-through; margin-left: 8px; }
 
         .btn-buy { 
-            text-decoration: none; color: white; background: var(--p-green); 
-            padding: 15px; text-align: center; font-size: 0.8rem; font-weight: 700; 
-            letter-spacing: 2px; transition: 0.3s; font-family: var(--font-en);
+            background: #f8f9fa; border-top: 1px solid #eee; color: var(--p-green);
+            text-decoration: none; font-weight: 700; font-size: 0.75rem; padding: 18px;
+            text-align: center; transition: 0.3s; letter-spacing: 1px;
         }
-        .btn-buy:hover { background: var(--gold); }
+        .card:hover .btn-buy { background: var(--p-green); color: white; }
 
-        /* --- 🏛️ Complete Architectural Footer --- */
-        footer { background: #1a2620; color: #ecf0f1; padding: 100px 8% 40px; }
-        .f-grid { 
-            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 60px; 
-            max-width: 1400px; margin: 0 auto; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 60px;
-        }
-        .f-col h4 { font-family: var(--font-en); font-size: 0.9rem; color: var(--gold); margin-bottom: 30px; letter-spacing: 3px; }
-        .f-col p, .f-col a { color: #bdc3c7; font-size: 0.85rem; line-height: 2; text-decoration: none; margin-bottom: 15px; display: block; }
-        .f-col a:hover { color: white; transform: translateX(5px); transition: 0.3s; }
-        .f-col i { color: var(--gold); margin-right: 15px; width: 20px; text-align: center; }
-        
-        .f-logo { height: 40px; margin-bottom: 25px; filter: brightness(0) invert(1); }
-        
-        .social-box { display: flex; gap: 15px; margin-top: 25px; }
-        .social-box a { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; border-radius: 50%; }
-        .social-box a:hover { background: var(--gold); border-color: var(--gold); }
+        /* --- 🏛️ Footer --- */
+        footer { background: #1a2620; color: #ecf0f1; padding: 80px 8% 40px; }
+        .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 50px; max-width: 1400px; margin: 0 auto; }
+        .f-col h4 { font-family: var(--font-en); font-size: 0.85rem; color: var(--gold); margin-bottom: 25px; letter-spacing: 2px; }
+        .f-col p, .f-col a { color: #bdc3c7; font-size: 0.85rem; line-height: 1.8; text-decoration: none; margin-bottom: 12px; display: block; }
+        .f-logo { height: 35px; margin-bottom: 20px; filter: brightness(0) invert(1); }
+        .copy { text-align: center; padding-top: 50px; margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; color: #7f8c8d; }
 
-        .copy { text-align: center; padding-top: 40px; font-size: 0.7rem; color: #7f8c8d; font-family: var(--font-en); letter-spacing: 2px; }
-
-        @media (max-width: 1024px) { .f-grid { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 768px) {
-            nav { padding: 0 5%; height: 80px; }
-            .nav-links { display: none; }
             .product-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
-            .f-grid { grid-template-columns: 1fr; gap: 40px; }
-            .img-box { height: 220px; padding: 20px; }
-            .badge { width: 50px; height: 50px; font-size: 0.5rem; top: 10px; right: 10px; }
+            .f-grid { grid-template-columns: 1fr; text-align: center; }
+            .gold-brand-logo { width: 220px; }
+            .img-box { height: 180px; padding: 15px; }
+            .info h3 { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -146,31 +101,23 @@
 <div class="bg-overlay"></div>
 
 <nav>
-    <div class="logo-box"><img src="HJ (5).png" alt="HJ LOGO"></div>
-    <div class="nav-links">
-        <a href="#fraijour">FRAIJOUR</a>
-        <a href="#others">SELECTION</a>
-        <a href="#footer">CONTACT</a>
-    </div>
-    <div class="lang-box">
-        <button onclick="changeLang()" id="langBtn" class="lang-btn">TH / EN / KR</button>
-    </div>
+    <div class="logo-nav"><img src="HJ (5).png" alt="HJ LOGO"></div>
+    <button onclick="changeLang()" id="langBtn" class="lang-btn">TH / EN</button>
 </nav>
 
 <header class="hero">
-    <div class="hero-label">ESTABLISHED IN KOREA</div>
-    <h1 class="hero-title" id="h-title">The Art of Korean Skincare Curation</h1>
-    <p class="hero-p" id="h-p">คัดสรรผลิตภัณฑ์บำรุงผิวที่ผสานพลังแห่งสมุนไพรดั้งเดิม เข้ากับเทคโนโลยีสมัยใหม่ เพื่อส่งมอบสัมผัสระดับลักชูรีสู่ผิวคุณ</p>
+    <img src="gold.png" alt="HJ GOLDEN LOGO" class="gold-brand-logo">
+    <h1 class="hero-title" id="h-title">The Masterpiece of Skincare</h1>
 </header>
 
 <main class="container">
-    <div class="grid-title" id="fraijour">
+    <div class="grid-title">
         <h2>Fraijour</h2>
         <div class="line"></div>
     </div>
     <div class="product-grid" id="grid-f"></div>
 
-    <div class="grid-title" id="others">
+    <div class="grid-title" style="margin-top: 80px;">
         <h2 id="t-others">Selections</h2>
         <div class="line"></div>
     </div>
@@ -181,60 +128,44 @@
     <div class="f-grid">
         <div class="f-col">
             <img src="HJ (5).png" alt="HJ" class="f-logo">
-            <p id="f-about">เราเชื่อในคุณค่าของธรรมชาติและการคัดสรรสิ่งที่คู่ควร เพื่อปรนนิบัติผิวพรรณของคุณให้เปล่งประกายความมั่นใจ</p>
-            <div class="social-box">
-                <a href="#"><i class="fa-brands fa-line"></i></a>
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
+            <p id="f-about">ปรนนิบัติผิวด้วยความลับจากธรรมชาติและนวัตกรรมชั้นเลิศ</p>
         </div>
         <div class="f-col">
-            <h4>DISCOVER</h4>
-            <a href="#">Fraijour Herbs</a>
-            <a href="#">Bathpa Body</a>
-            <a href="#">Char Char Cica</a>
-            <a href="#">New Arrivals</a>
+            <h4>EXPLORE</h4>
+            <a href="#">Best Sellers</a>
+            <a href="#">New Arrival</a>
         </div>
         <div class="f-col">
-            <h4 id="f-office">OFFICE</h4>
-            <p><i class="fa-solid fa-location-dot"></i> 323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
-            <p><i class="fa-solid fa-clock"></i> Mon - Sat: 09:00 - 18:00</p>
+            <h4>CONTACT</h4>
             <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
+            <p><i class="fa-solid fa-location-dot"></i> Bowin, Chon Buri</p>
         </div>
         <div class="f-col">
-            <h4 id="f-support">CONCIERGE</h4>
-            <p>Line Official: @thaihj11</p>
-            <p>Email: thaihjglobal@gmail.com</p>
-            <p>Direct: 03-8182-577</p>
+            <h4>SOCIAL</h4>
+            <p><i class="fa-brands fa-line"></i> @thaihj11</p>
         </div>
     </div>
-    <div class="copy">© 2024 HJ COSMETICS GLOBAL. PURSUIT OF PERFECTION.</div>
+    <div class="copy">© 2024 HJ COSMETICS GLOBAL.</div>
 </footer>
 
 <script>
     const products = [
-        { id: 1, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง วอเตอรี่ ครีม", nameEn: "Wormwood Calming Watery Cream", nameKr: "쑥 진정 워터리 크림", sale: 250, old: 369, badgeTh: "แนะนำ", img: "1.jpg.png" },
-        { id: 2, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง โทนเนอร์", nameEn: "Wormwood Calming Toner", nameKr: "쑥 진정 토너", sale: 350, old: 459, badgeTh: "ขายดี", img: "2.jpeg" },
-        { id: 3, brand: "Fraijour", nameTh: "วอร์มวูด คลีนซิ่ง วอเตอร์", nameEn: "Wormwood Cleansing Water", nameKr: "쑥 클렌징 워터", sale: 250, old: 400, badgeTh: "ใหม่", img: "3.jpeg" },
-        { id: 4, brand: "Fraijour", nameTh: "วอร์มวูด คลีนซิ่ง โฟม", nameEn: "Wormwood Cleansing Foam", nameKr: "쑥 클렌징 폼", sale: 290, old: 399, badgeTh: "แนะนำ", img: "4.jpeg" },
-        { id: 5, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช ครีม", nameEn: "Heartleaf Blemish Cream", nameKr: "어성초 블레미쉬 크림", sale: 310, old: 590, badgeTh: "สิว", img: "5.jpeg" },
-        { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "어성초 블레미쉬 토너", sale: 360, old: 529, badgeTh: "ปลอบประโลม", img: "6.jpeg" },
-        { id: 7, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี ครีม", nameEn: "Retin-Collagen 3D Cream", nameKr: "레틴 콜라겐 3D 크림", sale: 150, old: 459, badgeTh: "ยกกระชับ", img: "7.jpeg" },
-        { id: 8, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน อายครีม", nameEn: "Retin-Collagen Eye Cream", nameKr: "레틴 콜라겐 아이크림", sale: 195, old: 370, badgeTh: "ลดริ้วรอย", img: "8.jpeg" },
-        { id: 9, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน โทนเนอร์", nameEn: "Retin-Collagen Toner", nameKr: "레틴 콜라겐 토너", sale: 200, old: 500, badgeTh: "เต่งตึง", img: "9.jpeg" },
-        { id: 10, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน ลิป ออยล์", nameEn: "Retin-Collagen Lip Oil", nameKr: "레틴 콜라겐 립 오일", sale: 125, old: 259, badgeTh: "ริมฝีปาก", img: "10.jpeg" },
-        { id: 11, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต กันแดด", nameEn: "Heartleaf Airy Fit Sun", nameKr: "어성초 에어리 선크림", sale: 280, old: 450, badgeTh: "UV ปกป้อง", img: "11.jpeg" },
-        { id: 12, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ กันแดด", nameEn: "Heartleaf Water Fit Sun", nameKr: "어성초 워터 선스크린", sale: 320, old: 590, badgeTh: "UV ปกป้อง", img: "12.jpeg" },
-        { id: 13, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ มาส์ก", nameEn: "Original Herb Mask", nameKr: "오리지널 허브 마스크", sale: 13, old: 29, badgeTh: "มาส์ก", img: "15.jpeg" },
-        { id: 14, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바디 톤업 크림", sale: 150, old: 529, badgeTh: "ผิวกาย", img: "13.jpeg" },
-        { id: 15, brand: "CharChar", nameTh: "มุงบีน ซิก้า โฟม", nameEn: "Mung Bean Cica Foam", nameKr: "녹두 시카 폼", sale: 120, old: 199, badgeTh: "สะอาดล้ำ", img: "14.jpeg" }
+        { id: 1, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง วอเตอรี่ ครีม", nameEn: "Wormwood Calming Watery Cream", sale: 250, old: 369, badgeTh: "Recommended", img: "1.jpg.png" },
+        { id: 2, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง โทนเนอร์", nameEn: "Wormwood Calming Toner", sale: 350, old: 459, badgeTh: "Best Seller", img: "2.jpeg" },
+        { id: 3, brand: "Fraijour", nameTh: "วอร์มวูด คลีนซิ่ง วอเตอร์", nameEn: "Wormwood Cleansing Water", sale: 250, old: 400, badgeTh: "New Arrival", img: "3.jpeg" },
+        { id: 4, brand: "Fraijour", nameTh: "วอร์มวูด คลีนซิ่ง โฟม", nameEn: "Wormwood Cleansing Foam", sale: 290, old: 399, badgeTh: "Popular", img: "4.jpeg" },
+        { id: 5, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช ครีม", nameEn: "Heartleaf Blemish Cream", sale: 310, old: 590, badgeTh: "Acne Care", img: "5.jpeg" },
+        { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", sale: 360, old: 529, badgeTh: "Soothing", img: "6.jpeg" },
+        { id: 7, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน 3ดี ครีม", nameEn: "Retin-Collagen 3D Cream", sale: 150, old: 459, badgeTh: "Firming", img: "7.jpeg" },
+        { id: 8, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน อายครีม", nameEn: "Retin-Collagen Eye Cream", sale: 195, old: 370, badgeTh: "Anti-Aging", img: "8.jpeg" },
+        { id: 9, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน โทนเนอร์", nameEn: "Retin-Collagen Toner", sale: 200, old: 500, badgeTh: "Skin Glow", img: "9.jpeg" },
+        { id: 10, brand: "Fraijour", nameTh: "เรติน-คอลลาเจน ลิป ออยล์", nameEn: "Retin-Collagen Lip Oil", sale: 125, old: 259, badgeTh: "Lip Care", img: "10.jpeg" },
+        { id: 11, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต กันแดด", nameEn: "Heartleaf Airy Fit Sun", sale: 280, old: 450, badgeTh: "Sun Protection", img: "11.jpeg" },
+        { id: 12, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ กันแดด", nameEn: "Heartleaf Water Fit Sun", sale: 320, old: 590, badgeTh: "Sun Protection", img: "12.jpeg" },
+        { id: 13, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ มาส์ก", nameEn: "Original Herb Mask", sale: 13, old: 29, badgeTh: "Special Mask", img: "15.jpeg" },
+        { id: 14, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", sale: 150, old: 529, badgeTh: "Body Care", img: "13.jpeg" },
+        { id: 15, brand: "CharChar", nameTh: "มุงบีน ซิก้า โฟม", nameEn: "Mung Bean Cica Foam", sale: 120, old: 199, badgeTh: "Deep Clean", img: "14.jpeg" }
     ];
-
-    const trans = {
-        th: { title: "The Art of Korean Skincare Curation", p: "คัดสรรผลิตภัณฑ์บำรุงผิวที่ผสานพลังแห่งสมุนไพรดั้งเดิม เข้ากับเทคโนโลยีสมัยใหม่ เพื่อส่งมอบสัมผัสระดับลักชูรีสู่ผิวคุณ", shop: "VIEW COLLECTION", others: "Global Selection", office: "ที่ตั้งสำนักงาน", support: "ติดต่อสอบถาม", about: "เราเชื่อในคุณค่าของธรรมชาติและการคัดสรรสิ่งที่คู่ควร เพื่อปรนนิบัติผิวพรรณของคุณให้เปล่งประกายความมั่นใจ" },
-        en: { title: "The Essence of Beauty Refinement", p: "Curating a prestigious collection of skincare that harmonizes traditional herbal wisdom with cutting-edge science.", shop: "SHOP NOW", others: "Global Selection", office: "OUR OFFICE", support: "CONCIERGE", about: "We believe in the power of nature and the meticulous curation of excellence to unveil your inner radiance." },
-        kr: { title: "한국의 프리미엄 뷰티 큐레이션", p: "전통 허브의 지혜와 최첨단 과학이 조화를 이루는 명성 높은 스킨케어 컬렉션을 엄선하여 선보입니다.", shop: "컬렉션 보기", others: "글로벌 셀렉션", office: "오피스 위치", support: "고객 센터", about: "우리는 자연의 힘과 탁월함을 통해 당신의 내면의 광채를 밝혀줄 최고의 큐레이션을 믿습니다." }
-    };
 
     let lang = 'th';
 
@@ -244,11 +175,11 @@
         gridF.innerHTML = ''; gridO.innerHTML = '';
 
         products.forEach(p => {
-            const name = lang === 'en' ? p.nameEn : (lang === 'kr' ? p.nameKr : p.nameTh);
+            const name = lang === 'en' ? p.nameEn : p.nameTh;
             const html = `
                 <div class="card">
+                    <div class="badge-bar">${p.badgeTh}</div>
                     <div class="img-box">
-                        <div class="badge">${p.badgeTh}</div>
                         <img src="${p.img}" alt="${name}">
                     </div>
                     <div class="info">
@@ -258,25 +189,16 @@
                             <span class="old">฿${p.old}</span>
                         </div>
                     </div>
-                    <a href="#" class="btn-buy">${trans[lang].shop}</a>
+                    <a href="#" class="btn-buy">SHOP NOW</a>
                 </div>
             `;
             if(p.brand === "Fraijour") gridF.innerHTML += html;
             else gridO.innerHTML += html;
         });
-
-        document.getElementById('h-title').textContent = trans[lang].title;
-        document.getElementById('h-p').textContent = trans[lang].p;
-        document.getElementById('t-others').textContent = trans[lang].others;
-        document.getElementById('f-about').textContent = trans[lang].about;
-        document.getElementById('f-office').textContent = trans[lang].office;
-        document.getElementById('f-support').textContent = trans[lang].support;
+        document.getElementById('h-title').textContent = lang === 'en' ? "The Masterpiece of Skincare" : "ผลงานแห่งความงามระดับมาสเตอร์พีซ";
     }
 
-    function changeLang() {
-        lang = lang === 'th' ? 'en' : (lang === 'en' ? 'kr' : 'th');
-        render();
-    }
+    function changeLang() { lang = lang === 'th' ? 'en' : 'th'; render(); }
     render();
 </script>
 </body>
