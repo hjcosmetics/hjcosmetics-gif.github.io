@@ -6,114 +6,135 @@
     <title>Contact Us - HJ COSMETICS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* นำเข้าฟอนต์: Nanum Myeongjo สำหรับเกาหลี/หรูหรา และ IBM Plex Sans Thai สำหรับไทย */
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@200;300;400;500&family=Montserrat:wght@300;600;800&display=swap');
 
         :root { 
             --p-green: #1b4332; 
-            --deep-green: #0d2b1f;
-            --gold-metallic: linear-gradient(135deg, #8a6d3b 0%, #c5a059 20%, #ffecb3 45%, #f1d38e 50%, #ffecb3 55%, #c5a059 80%, #8a6d3b 100%);
-            --gold-dark: #c5a059; 
-            --gold-light: #f1d38e; 
-            --font-thai: 'IBM Plex Sans Thai', sans-serif;
-            --font-kr: 'Nanum Myeongjo', serif;
+            --gold: #c5a059;
+            --off-white: #fdfaf5;
+            --font-th: 'Prompt', sans-serif;
+            --font-en: 'Montserrat', sans-serif;
+            --font-head: 'Cinzel', serif;
         }
 
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
         
         body { 
-            font-family: var(--font-thai); 
-            margin: 0; background-color: #000; color: #fff;
-            overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh;
+            margin: 0; padding: 0; 
+            background-color: var(--off-white); 
+            color: #2d3436; 
+            font-family: var(--font-th); 
+            overflow-x: hidden; 
+            display: flex; flex-direction: column; min-height: 100vh;
         }
 
-        /* Classes สำหรับสลับฟอนต์ตามภาษา */
-        .use-thai { font-family: var(--font-thai) !important; letter-spacing: 0px !important; }
-        .use-kr { font-family: var(--font-kr) !important; font-weight: 700 !important; letter-spacing: 0px !important; }
-
-        /* --- 🎬 Background --- */
+        /* --- 🎞️ Video Background (Match Index) --- */
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.5; }
-        .video-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: -1; pointer-events: none; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.4) 0%, rgba(253,250,245,0.6) 100%); z-index: -1; }
 
-        /* --- 🎖️ Gold Navigation (Fixed Mobile) --- */
-        .top-nav { 
-            background: var(--gold-metallic);
-            background-size: 300% 300%;
-            animation: shimmer 8s infinite linear;
-            padding: 0 5%; display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 1000; border-bottom: 3px solid #5d4a26;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.6); height: 70px;
+        /* --- 🎖️ Navigation (Match Index) --- */
+        nav { 
+            background: rgba(255, 255, 255, 0.85); height: 100px; padding: 0 8%;
+            display: flex; justify-content: space-between; align-items: center; 
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04); backdrop-filter: blur(10px);
         }
-        @keyframes shimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        
-        .logo-box img { height: 40px; filter: brightness(0) saturate(100%) invert(10%) sepia(50%) saturate(1000%) hue-rotate(120deg); }
-        .nav-links { display: flex; align-items: center; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--deep-green); font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; white-space: nowrap; transition: 0.3s; }
-        .nav-links a.active { border-bottom: 2px solid var(--deep-green); }
-
-        .lang-switch { background: var(--deep-green); border: none; color: #f1d38e; padding: 6px 12px; cursor: pointer; font-weight: 800; font-size: 0.75rem; border-radius: 2px; }
-
-        @media (max-width: 480px) {
-            .top-nav { padding: 0 3%; }
-            .logo-box img { height: 32px; }
-            .nav-links { gap: 10px; }
-            .nav-links a { font-size: 0.65rem; }
-            .lang-switch { padding: 4px 8px; font-size: 0.6rem; }
-        }
+        .logo-nav img { height: 55px; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a.active { color: var(--gold); border-bottom: 2px solid var(--gold); padding-bottom: 5px; }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 10px 20px; border-radius: 0; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; }
 
         /* --- ✨ Hero --- */
-        .hero-header { text-align: center; padding: 80px 5% 40px; }
-        .hero-header h1 { font-size: clamp(2.5rem, 8vw, 5rem); color: var(--gold-light); letter-spacing: 10px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); margin: 0; font-family: var(--font-kr); }
+        .hero-header { text-align: center; padding: 100px 5% 40px; }
+        .hero-header h1 { 
+            font-family: var(--font-head);
+            font-size: clamp(2.5rem, 6vw, 4rem); 
+            color: var(--p-green); 
+            letter-spacing: 8px; 
+            margin: 0; 
+        }
 
-        /* --- 🏛️ Contact Card --- */
-        .contact-container { max-width: 1200px; margin: 0 auto 80px; padding: 0 5%; flex: 1; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; background: rgba(13, 43, 31, 0.85); backdrop-filter: blur(20px); padding: 50px; border-radius: 25px; border: 1px solid rgba(197, 160, 89, 0.4); }
+        /* --- 🏛️ Contact Container (Opacity & Blur) --- */
+        .contact-container { max-width: 1200px; margin: 0 auto 100px; padding: 0 5%; flex: 1; }
+        .contact-grid { 
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; 
+            background: rgba(255, 255, 255, 0.65); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            padding: 60px; border-radius: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+        }
         
-        .info-card h2 { color: var(--gold-light); font-size: 2.5rem; margin-bottom: 30px; border-bottom: 2px solid var(--gold-dark); display: inline-block; font-family: var(--font-kr); }
-        .info-item { margin-bottom: 25px; }
-        .info-item h4 { color: var(--gold-light); margin-bottom: 8px; font-size: 0.85rem; letter-spacing: 2px; }
-        .info-item p { opacity: 0.95; font-weight: 300; line-height: 1.6; font-size: 1rem; color: #fff; margin: 5px 0; }
-        .info-item i { color: var(--gold-light); margin-right: 12px; width: 20px; text-align: center; }
+        .info-card h2 { 
+            font-family: var(--font-head);
+            color: var(--p-green); font-size: 2.2rem; margin-bottom: 30px; 
+            border-bottom: 2px solid var(--gold); display: inline-block; 
+        }
+        .info-item { margin-bottom: 30px; }
+        .info-item h4 { color: var(--gold); margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; }
+        .info-item p { color: #2d3436; font-weight: 400; line-height: 1.8; font-size: 1rem; margin: 5px 0; }
+        .info-item i { color: var(--p-green); margin-right: 12px; width: 20px; text-align: center; }
 
-        .form-card { background: rgba(255, 255, 255, 0.08); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.15); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 10px; font-size: 0.75rem; color: var(--gold-light); letter-spacing: 1px; }
+        /* --- ✉️ Form Style --- */
+        .form-card { 
+            background: rgba(255, 255, 255, 0.4); 
+            padding: 40px; border-radius: 15px; 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+        }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { 
+            display: block; margin-bottom: 10px; font-size: 0.7rem; 
+            color: var(--p-green); font-weight: 700; letter-spacing: 1px; 
+        }
 
-        input, textarea { width: 100%; padding: 14px; font-size: 0.95rem; border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 8px; background: #fff; color: #000; }
+        input, textarea { 
+            width: 100%; padding: 15px; font-size: 0.95rem; 
+            border: 1px solid rgba(27, 67, 50, 0.1); 
+            border-radius: 4px; background: rgba(255,255,255,0.9); 
+            color: #000; font-family: var(--font-th);
+            transition: 0.3s;
+        }
+        input:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 10px rgba(197, 160, 89, 0.1); }
 
-        .btn-submit { background: var(--gold-metallic); color: var(--deep-green); border: none; padding: 18px; width: 100%; font-weight: 800; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; transition: 0.4s; font-size: 1rem; margin-top: 10px; }
+        .btn-submit { 
+            background: var(--p-green); color: white; border: none; 
+            padding: 20px; width: 100%; font-weight: 700; cursor: pointer; 
+            letter-spacing: 3px; text-transform: uppercase; transition: 0.4s; 
+            font-size: 0.85rem; font-family: var(--font-en);
+        }
+        .btn-submit:hover { background: var(--gold); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        /* --- 🏛️ Footer --- */
-        footer { background: rgba(13, 43, 31, 0.98); color: white; padding: 60px 8% 40px; border-top: 5px solid var(--gold-dark); }
-        .f-container { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; }
-        .f-brand h2 { font-size: 2rem; color: var(--gold-light); margin-bottom: 15px; font-family: var(--font-kr); }
-        .f-info h4 { color: var(--gold-light); margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; }
-        .f-info p { opacity: 0.8; font-size: 0.85rem; margin: 12px 0; display: flex; align-items: center; line-height: 1.5; }
-        .f-info p i { color: var(--gold-dark); margin-right: 15px; width: 20px; text-align: center; }
-        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.75rem; opacity: 0.5; }
+        /* --- 🏛️ Footer (Match Index) --- */
+        footer { background: #1a1a1a; color: white; padding: 100px 8% 40px; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; max-width: 1400px; margin: 0 auto; }
+        .f-col h4 { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 30px; border-left: 2px solid var(--gold); padding-left: 15px; }
+        .f-col p { color: #999; font-size: 0.85rem; line-height: 2; margin-bottom: 12px; display: flex; align-items: center; }
+        .f-col i { margin-right: 10px; color: var(--gold); }
+        .f-logo { height: 45px; margin-bottom: 25px; filter: brightness(0) invert(1); }
+        .copy { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid #333; font-size: 0.7rem; color: #555; letter-spacing: 2px; }
 
         @media (max-width: 1024px) { 
             .contact-grid { grid-template-columns: 1fr; padding: 30px; }
-            .f-container { grid-template-columns: 1fr; text-align: center; }
-            .f-info p { justify-content: center; }
+            .f-grid { grid-template-columns: 1fr; text-align: center; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-<video autoplay muted loop playsinline id="bg-video">
-    <source src="วิดีโอทำเว็บไซต์.mp4" type="video/mp4">
-</video>
-<div class="video-overlay"></div>
+<video autoplay muted loop playsinline id="bg-video"><source src="วิดีโอทำเว็บไซต์.mp4" type="video/mp4"></video>
+<div class="bg-overlay"></div>
 
-<nav class="top-nav">
-    <div class="logo-box"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
+<nav>
+    <div class="logo-nav"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
     <div class="nav-links">
-        <a href="index.html" id="nav-home">HOME</a>
-        <a href="about.html" id="nav-about">ABOUT</a>
-        <a href="contact.html" id="nav-contact" class="active">CONTACT</a>
-        <button onclick="rotateLanguage()" id="langBtn" class="lang-switch">TH</button>
+        <a href="index.html" id="nav-home">Home</a>
+        <a href="about.html" id="nav-about">About</a>
+        <a href="contact.html" id="nav-contact" class="active">Contact</a>
     </div>
+    <button onclick="rotateLanguage()" id="langBtn" class="lang-btn">TH / EN / KR</button>
 </nav>
 
 <header class="hero-header">
@@ -130,7 +151,7 @@
             </div>
             <div class="info-item">
                 <h4 id="h-cont-label">CONCIERGE</h4>
-                <p><i class="fa-brands fa-line"></i> thaihj11</p>
+                <p><i class="fa-brands fa-line"></i> @thaihj11</p>
                 <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
                 <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
             </div>
@@ -157,46 +178,50 @@
 </div>
 
 <footer>
-    <div class="f-container">
-        <div class="f-brand">
-            <h2 id="f-logo">HJ COSMETICS</h2>
-            <p id="foot-desc">Premium Korean beauty curator.</p>
+    <div class="f-grid">
+        <div class="f-col">
+            <img src="HJ (5).png" alt="HJ" class="f-logo">
+            <p id="foot-desc">Premium Korean beauty curator delivering excellence.</p>
         </div>
-        <div class="f-info">
+        <div class="f-col">
+            <h4>COLLECTIONS</h4>
+            <p>Fraijour Herbs</p>
+            <p>Retin-Collagen 3D</p>
+        </div>
+        <div class="f-col">
             <h4 id="h-addr-foot">OUR OFFICE</h4>
-            <p><i class="fa-solid fa-location-dot"></i> 323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230, Thailand</p>
+            <p><i class="fa-solid fa-location-dot"></i> Chon Buri, Thailand</p>
         </div>
-        <div class="f-info">
+        <div class="f-col">
             <h4 id="h-cont-foot">CONCIERGE</h4>
-            <p><i class="fa-brands fa-line"></i> thaihj11</p>
+            <p><i class="fa-brands fa-line"></i> @thaihj11</p>
             <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
-            <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
         </div>
     </div>
-    <div class="footer-bottom">&copy; 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
+    <div class="copy">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
     const languages = ['th', 'en', 'kr'];
-    let currentLang = localStorage.getItem('selectedLang') || 'th';
+    let currentLang = localStorage.getItem('hj_lang') || 'th';
 
     const trans = {
         th: { 
-            home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", 
+            home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", heroTitle: "Contact Us", infoH: "Get In Touch", 
             hAddr: "ที่อยู่", hCont: "ฝ่ายบริการ", lName: "ชื่อ-นามสกุล", lEmail: "อีเมล", lMsg: "ข้อความ", 
-            btnSend: "ส่งข้อความ", footDesc: "เราคัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ", label: "TH",
+            btnSend: "ส่งข้อความ", footDesc: "เราคัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ",
             phName: "กรุณากรอกชื่อของคุณ", phEmail: "กรุณากรอกอีเมลติดต่อ", phMsg: "พิมพ์ข้อความที่นี่..."
         },
         en: { 
             home: "HOME", about: "ABOUT", contact: "CONTACT", heroTitle: "Contact Us", infoH: "Get In Touch", 
             hAddr: "ADDRESS", hCont: "CONCIERGE", lName: "YOUR NAME", lEmail: "EMAIL", lMsg: "MESSAGE", 
-            btnSend: "SEND MESSAGE", footDesc: "Premium Korean beauty curator delivering excellence.", label: "EN",
+            btnSend: "SEND MESSAGE", footDesc: "Premium Korean beauty curator delivering excellence.",
             phName: "Enter your name", phEmail: "Enter your email", phMsg: "Write your message here..."
         },
         kr: { 
             home: "홈", about: "회사소개", contact: "문의하기", heroTitle: "문의하기", infoH: "연락처", 
             hAddr: "주소", hCont: "고객 서비스", lName: "성함", lEmail: "이메일", lMsg: "메시지", 
-            btnSend: "보내기", footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.", label: "KR",
+            btnSend: "보내기", footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.",
             phName: "이름을 입력하세요", phEmail: "이메일을 입력하세요", phMsg: "메시지를 입력하세요..."
         }
     };
@@ -217,20 +242,12 @@
         document.getElementById('foot-desc').textContent = l.footDesc;
         document.getElementById('h-addr-foot').textContent = l.hAddr;
         document.getElementById('h-cont-foot').textContent = l.hCont;
-        document.getElementById('langBtn').textContent = l.label;
         document.getElementById('ph-name').placeholder = l.phName;
         document.getElementById('ph-email').placeholder = l.phEmail;
         document.getElementById('ph-msg').placeholder = l.phMsg;
-
-        // สลับฟอนต์ตามภาษาที่เลือก
-        const allTextElements = document.querySelectorAll('body, h1, h2, h4, .btn-submit, .nav-links a, input, textarea');
-        allTextElements.forEach(el => {
-            el.classList.remove('use-thai', 'use-kr');
-            if(currentLang === 'th') el.classList.add('use-thai');
-            else if(currentLang === 'kr') el.classList.add('use-kr');
-        });
-
-        localStorage.setItem('selectedLang', currentLang);
+        document.getElementById('langBtn').textContent = currentLang.toUpperCase();
+        
+        localStorage.setItem('hj_lang', currentLang);
     }
 
     function rotateLanguage() {
