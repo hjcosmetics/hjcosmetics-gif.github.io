@@ -27,16 +27,16 @@
             overflow-x: hidden; 
         }
 
-        /* --- 🎞️ Video Background (Same as Index) --- */
-        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4; }
-        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.6) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; }
+        /* --- 🎞️ Video Background --- */
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.5; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.4) 0%, rgba(253,250,245,0.6) 100%); z-index: -1; }
 
-        /* --- 🎖️ Navigation (Same as Index) --- */
+        /* --- 🎖️ Navigation --- */
         nav { 
-            background: rgba(255, 255, 255, 0.9); height: 100px; padding: 0 8%;
+            background: rgba(255, 255, 255, 0.85); height: 100px; padding: 0 8%;
             display: flex; justify-content: space-between; align-items: center; 
             position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04); backdrop-filter: blur(5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04); backdrop-filter: blur(10px);
         }
         .logo-nav img { height: 55px; }
         .nav-links { display: flex; gap: 40px; }
@@ -52,16 +52,18 @@
             color: var(--p-green);
             letter-spacing: 8px;
             margin: 0;
-            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255,255,255,0.8);
         }
 
         .main-container { max-width: 1400px; margin: 0 auto; padding: 0 5% 100px; }
 
-        /* --- 🏛️ Origin Section --- */
+        /* --- 🏛️ Origin Section (Opacity Applied) --- */
         .origin-section { 
-            background: white;
-            padding: 80px 60px; border-radius: 0; 
-            border: 1px solid rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.65); /* พื้นหลังโปร่งแสง */
+            backdrop-filter: blur(15px); /* เอฟเฟกต์กระจกฝ้า */
+            -webkit-backdrop-filter: blur(15px);
+            padding: 80px 60px; border-radius: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.4);
             margin-bottom: 80px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.05);
         }
@@ -71,41 +73,42 @@
         .story-img img { width: 100%; max-width: 320px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1)); animation: float 6s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
-        .story-text { flex: 1.5; }
-        .story-text h2 { 
-            font-family: var(--font-head); font-size: 2.5rem; color: var(--p-green); margin-bottom: 25px; 
-        }
-        .story-text p { font-size: 1.05rem; line-height: 1.8; color: #444; margin-bottom: 35px; text-align: justify; }
+        .story-text h2 { font-family: var(--font-head); font-size: 2.5rem; color: var(--p-green); margin-bottom: 25px; }
+        .story-text p { font-size: 1.05rem; line-height: 1.9; color: #2d3436; margin-bottom: 35px; text-align: justify; font-weight: 400; }
 
         /* --- 🌟 Milestones --- */
         .milestone-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .milestone-item { 
-            padding: 25px; background: var(--off-white); border-bottom: 3px solid var(--gold); text-align: center;
+            padding: 25px; background: rgba(255, 255, 255, 0.5); border-bottom: 3px solid var(--gold); text-align: center; border-radius: 10px;
         }
         .milestone-year { color: var(--p-green); font-family: var(--font-en); font-size: 2rem; font-weight: 800; display: block; margin-bottom: 5px; }
         .milestone-text { font-size: 0.7rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- 📦 Brand Grid --- */
+        /* --- 📦 Brand Grid (Opacity Applied) --- */
         .brand-grid { 
             display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; 
-            background: white; border: 1px solid rgba(0,0,0,0.05); overflow: hidden; 
+            background: rgba(255, 255, 255, 0.65); /* พื้นหลังโปร่งแสง */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 20px; overflow: hidden; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.03);
         }
         .brand-image { height: 450px; overflow: hidden; }
-        .brand-image img { width: 100%; height: 100%; object-fit: cover; transition: 1s; }
-        .brand-grid:hover .brand-image img { transform: scale(1.05); }
+        .brand-image img { width: 100%; height: 100%; object-fit: cover; transition: 1s; opacity: 0.9; }
+        .brand-grid:hover .brand-image img { transform: scale(1.05); opacity: 1; }
+        
         .brand-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
         .brand-content span { color: var(--gold); letter-spacing: 3px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; }
         .brand-content h3 { font-family: var(--font-head); font-size: 2.2rem; margin: 0 0 20px; color: var(--p-green); }
-        .brand-content p { line-height: 1.8; color: #666; font-size: 0.95rem; margin-bottom: 30px; }
-        .btn-visit { align-self: flex-start; text-decoration: none; color: white; background: var(--p-green); padding: 15px 35px; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700; transition: 0.3s; }
-        .btn-visit:hover { background: var(--gold); }
+        .brand-content p { line-height: 1.8; color: #333; font-size: 0.95rem; margin-bottom: 30px; }
+        .btn-visit { align-self: flex-start; text-decoration: none; color: white; background: var(--p-green); padding: 15px 35px; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700; transition: 0.3s; border-radius: 4px; }
+        .btn-visit:hover { background: var(--gold); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        /* --- 🏛️ Footer (Same as Index) --- */
+        /* --- 🏛️ Footer --- */
         footer { background: #1a1a1a; color: white; padding: 100px 8% 40px; }
         .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; max-width: 1400px; margin: 0 auto; }
         .f-col h4 { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 30px; border-left: 2px solid var(--gold); padding-left: 15px; }
-        .f-col p, .f-col a { color: #999; text-decoration: none; font-size: 0.85rem; line-height: 2; display: block; margin-bottom: 12px; }
+        .f-col p { color: #999; font-size: 0.85rem; line-height: 2; margin-bottom: 12px; }
         .f-logo { height: 45px; margin-bottom: 25px; filter: brightness(0) invert(1); }
         .copy { text-align: center; margin-top: 80px; padding-top: 30px; border-top: 1px solid #333; font-size: 0.7rem; color: #555; letter-spacing: 2px; }
 
@@ -115,6 +118,7 @@
             .brand-image { height: 300px; }
             .f-grid { grid-template-columns: 1fr; text-align: center; }
             .nav-links { display: none; }
+            .origin-section { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -224,34 +228,31 @@
 
     const trans = {
         th: { 
-            heroTitle: "Our Heritage", 
-            hjTitle: "The HJ Story", 
-            hjDesc: "HJ COSMETICS ก่อตั้งขึ้นจากความมุ่งมั่นที่จะนำความงามที่แท้จริงจากเกาหลีมาสู่ประเทศไทย เราไม่ได้เป็นเพียงผู้นำเข้า แต่เราคือ 'ภัณฑารักษ์' ผู้คัดสรรสกินแคร์ที่ผ่านการทดสอบทางวิทยาศาสตร์และใช้พลังจากสารสกัดธรรมชาติอันบริสุทธิ์ ด้วยความร่วมมือกับพันธมิตรระดับสากลอย่าง EVAS Cosmetics เราสัญญาที่จะส่งมอบเฉพาะผลิตภัณฑ์ที่จะเปลี่ยนสุขภาพผิวของคุณให้ดีขึ้นอย่างยั่งยืน", 
+            heroTitle: "Our Heritage", hjTitle: "The HJ Story", 
+            hjDesc: "HJ COSMETICS ก่อตั้งขึ้นจากความมุ่งมั่นที่จะนำความงามที่แท้จริงจากเกาหลีมาสู่ประเทศไทย เราไม่ได้เป็นเพียงผู้นำเข้า แต่เราคือ 'ภัณฑารักษ์' ผู้คัดสรรสกินแคร์ที่ผ่านการทดสอบทางวิทยาศาสตร์และใช้พลังจากสารสกัดธรรมชาติอันบริสุทธิ์...", 
             ms1: "ปีแห่งประสบการณ์", ms2: "นำเข้าจากเกาหลี 100%", ms3: "ลูกค้าที่ไว้วางใจ",
-            fDesc: "แบรนด์ที่เชี่ยวชาญด้าน Botanical Therapy โดยเน้นการใช้สารสกัดจากพืชพรรณธรรมชาติ โดยเฉพาะ 'Wormwood' ที่ช่วยปลอบประโลมผิวบอบบางได้อย่างดีเยี่ยม", 
-            bDesc: "เปลี่ยนการดูแลผิวกายในทุกวันให้กลายเป็นพิธีกรรมแห่งความสุข Bathpa นำเสนอผลิตภัณฑ์ดูแลผิวกายระดับสปาพรีเมียมที่โดดเด่นด้วยกลิ่นหอมอันเป็นเอกลักษณ์", 
-            cDesc: "ผู้นำด้านผลิตภัณฑ์ดูแลเส้นผมสูตรเข้มข้น มอบผลลัพธ์ดุจทำทรีทเมนท์ที่ซาลอนชั้นนำ ให้เส้นผมของคุณนุ่มสลวยและสุขภาพดี", 
+            fDesc: "แบรนด์ที่เชี่ยวชาญด้าน Botanical Therapy โดยเน้นการใช้สารสกัดจากพืชพรรณธรรมชาติ...", 
+            bDesc: "เปลี่ยนการดูแลผิวกายในทุกวันให้กลายเป็นพิธีกรรมแห่งความสุข...", 
+            cDesc: "ผู้นำด้านผลิตภัณฑ์ดูแลเส้นผมสูตรเข้มข้น มอบผลลัพธ์ดุจทำทรีทเมนท์ที่ซาลอนชั้นนำ...", 
             footDesc: "เราคัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณอย่างยั่งยืน", 
             hAddr: "OUR OFFICE", hCont: "CONCIERGE", visit: "เข้าชมเว็บไซต์"
         },
         en: { 
-            heroTitle: "Our Heritage", 
-            hjTitle: "The HJ Story", 
-            hjDesc: "Established with a visionary commitment to bridge Korean beauty excellence with the local market, HJ COSMETICS is more than an importer; we are curators of skin transformation. In partnership with global leaders like EVAS Cosmetics, we select products where nature meets advanced science. Our journey is defined by our dedication to delivering 100% authentic, high-performance skincare.", 
+            heroTitle: "Our Heritage", hjTitle: "The HJ Story", 
+            hjDesc: "Established with a visionary commitment to bridge Korean beauty excellence with the local market...", 
             ms1: "EXPERIENCE YEARS", ms2: "KOREAN AUTHENTIC", ms3: "HAPPY CUSTOMERS",
-            fDesc: "Specializing in Botanical Therapy, Fraijour harnesses the healing power of natural herbs to provide deep calming effects for sensitive skin.", 
-            bDesc: "Elevate your daily bath ritual into a premium spa escape with exquisite fragrances and high-performance ingredients.", 
-            cDesc: "A pioneer in professional-grade hair solutions focusing on intensive treatment using concentrated natural extracts.", 
+            fDesc: "Specializing in Botanical Therapy, Fraijour harnesses the healing power of natural herbs...", 
+            bDesc: "Elevate your daily bath ritual into a premium spa escape...", 
+            cDesc: "A pioneer in professional-grade hair solutions focusing on intensive treatment...", 
             footDesc: "Premium Korean beauty curator delivering excellence and sustainable results to your skin.", 
             hAddr: "OUR OFFICE", hCont: "CONCIERGE", visit: "OFFICIAL SITE"
         },
         kr: { 
-            heroTitle: "아름다운 유산", 
-            hjTitle: "HJ 코스메틱 이야기", 
-            hjDesc: "HJ COSMETICS는 한국의 진정한 아름다움을 태국에 전달하겠다는 비전으로 설립되었습니다. 우리는 단순히 제품을 수입하는 곳이 아니라, 순수한 자연의 힘을 담은 스킨케어를 엄선하는 '큐레이터'입니다. EVAS 코스메틱과의 협력을 통해 피부를 근본적으로 변화시킬 프리미엄 제품만을 제공합니다.", 
+            heroTitle: "아름다운 유산", hjTitle: "HJ 코스메틱 이야기", 
+            hjDesc: "HJ COSMETICS는 한국의 진정한 아름다움을 태국에 전달하겠다는 비전으로 설립되었습니다...", 
             ms1: "경력 년수", ms2: "100% 한국 정품", ms3: "신뢰하는 고객들",
-            fDesc: "프라이주어는 당신의 피부 본연의 건강함을 되찾아줍니다. 민감한 피부를 진정시키는 보태니컬 테라피 브랜드입니다.", 
-            bDesc: "일상의 루틴을 프리미엄 휴식으로 바꿔보세요. 배스파가 선사하는 고품격 리추얼을 경험해 보세요.", 
+            fDesc: "프라이주어는 당신의 피부 본연의 건강함을 되찾아줍니다...", 
+            bDesc: "일상의 루틴을 프리미엄 휴식으로 바꿔보세요...", 
             cDesc: "고농축 추출물을 통한 집중 케어 솔루션으로 손상된 모발을 회복시키는 전문 헤어 케어 브랜드입니다.", 
             footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.", 
             hAddr: "오피스", hCont: "고객 서비스", visit: "공식 사이트"
