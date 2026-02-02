@@ -6,7 +6,8 @@
     <title>HJ COSMETICS | Premium Luxury Curator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@200;300;400;500&family=Montserrat:wght@300;600;800&display=swap');
+        /* นำเข้าฟอนต์: Cinzel (หัวข้อ), Prompt (ไทย), Montserrat (อังกฤษ/ตัวเลข), Nanum Myeongjo (เกาหลี) */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@200;300;400;500&family=Montserrat:wght@300;600;800&family=Nanum+Myeongjo:wght@400;700&display=swap');
 
         :root { 
             --p-green: #1b4332; 
@@ -15,10 +16,15 @@
             --font-th: 'Prompt', sans-serif;
             --font-en: 'Montserrat', sans-serif;
             --font-head: 'Cinzel', serif;
+            --font-kr: 'Nanum Myeongjo', serif;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
         body { margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; font-family: var(--font-th); overflow-x: hidden; }
+
+        /* ฟอนต์พิเศษเฉพาะส่วน */
+        .kr-text { font-family: var(--font-kr), serif !important; }
+        .num-font, .price, .product-badge, .nav-links a, .lang-btn { font-family: var(--font-en) !important; }
 
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.6) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; }
@@ -30,9 +36,10 @@
         }
         .logo-nav img { height: 55px; }
         .nav-links { display: flex; gap: 40px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold); }
-        .lang-btn { background: var(--p-green); color: white; border: none; padding: 10px 20px; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 10px 20px; cursor: pointer; font-weight: 700; font-size: 0.7rem; transition: 0.3s; }
+        .lang-btn:hover { background: var(--gold); }
 
         .hero { padding: 80px 5% 60px; text-align: center; }
         .main-gold-logo { width: 380px; max-width: 90%; margin-bottom: 40px; }
@@ -45,23 +52,25 @@
         .grid-title .line { flex: 1; height: 1px; background: var(--gold); opacity: 0.3; }
         
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 45px; }
-        .card { background: white; position: relative; display: flex; flex-direction: column; border: 1px solid rgba(0,0,0,0.05); transition: 0.5s; }
+        .card { background: white; position: relative; display: flex; flex-direction: column; border: 1px solid rgba(0,0,0,0.05); transition: 0.5s; text-decoration: none; color: inherit; }
         .card:hover { transform: translateY(-15px); box-shadow: 0 40px 70px rgba(0,0,0,0.1); }
-        .img-box { height: 400px; display: flex; align-items: center; justify-content: center; padding: 40px; position: relative; background: #fff; }
-        .img-box img { max-width: 90%; max-height: 90%; object-fit: contain; }
         
-        .product-badge { position: absolute; top: 20px; right: 20px; background: var(--gold); color: white; padding: 10px; border-radius: 50%; font-size: 0.6rem; font-weight: 800; }
+        .img-box { height: 400px; display: flex; align-items: center; justify-content: center; padding: 40px; position: relative; background: #fff; overflow: hidden; }
+        .img-box img { max-width: 90%; max-height: 90%; object-fit: contain; transition: 0.8s; }
+        .card:hover .img-box img { transform: scale(1.08); }
+        
+        .product-badge { position: absolute; top: 20px; right: 20px; background: var(--gold); color: white; padding: 10px; border-radius: 50%; font-size: 0.6rem; font-weight: 800; min-width: 45px; text-align: center; z-index: 2; }
 
         .info { padding: 30px; text-align: center; flex-grow: 1; }
-        .info h3 { font-size: 1rem; color: var(--p-green); min-height: 3em; }
-        .price { margin-bottom: 20px; }
+        .info h3 { font-size: 1rem; color: var(--p-green); min-height: 3em; margin: 0 0 15px; font-weight: 500; line-height: 1.5; }
+        .price { margin-bottom: 5px; color: var(--p-green); }
         .sale { font-size: 1.7rem; font-weight: 700; }
-        .old { color: #b2bec3; text-decoration: line-through; margin-left: 10px; }
+        .old { color: #b2bec3; text-decoration: line-through; margin-left: 10px; font-size: 1rem; }
         
-        .btn-buy { text-decoration: none; color: white; background: var(--p-green); padding: 18px; text-align: center; font-weight: 700; letter-spacing: 2px; display: block; }
-        .btn-buy:hover { background: var(--gold); }
+        .btn-buy { text-decoration: none; color: white; background: var(--p-green); padding: 18px; text-align: center; font-weight: 700; letter-spacing: 2px; display: block; text-transform: uppercase; font-size: 0.8rem; transition: 0.3s; }
+        .card:hover .btn-buy { background: var(--gold); }
 
-        footer { background: #1a1a1a; color: white; padding: 80px 8% 40px; text-align: center; }
+        footer { background: #1a1a1a; color: white; padding: 60px 5%; text-align: center; font-size: 0.8rem; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -70,7 +79,7 @@
 <div class="bg-overlay"></div>
 
 <nav>
-    <div class="logo-nav"><img src="HJ (5).png" alt="HJ LOGO"></div>
+    <div class="logo-nav"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -82,7 +91,7 @@
 <header class="hero">
     <img src="gold.png" alt="HJ COSMETICS" class="main-gold-logo">
     <h1 class="hero-title" id="h-title">The Masterpiece of Skincare</h1>
-    <p class="hero-p" id="h-p">ความหรูหราที่มาพร้อมกับผลลัพธ์ที่จับต้องได้ คัดสรรทุกส่วนผสมเพื่อความสมบูรณ์แบบของผิวคุณ</p>
+    <p class="hero-p" id="h-p">ความหรูหราที่มาพร้อมกับผลลัพธ์ที่จับต้องได้</p>
 </header>
 
 <main class="container">
@@ -92,7 +101,12 @@
     <div class="product-grid" id="grid-o"></div>
 </main>
 
+<footer>
+    © 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.
+</footer>
+
 <script>
+    // ข้อมูลสินค้าครบ 15 ตัว
     const products = [
         { id: 1, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง วอเตอรี่ ครีม", nameEn: "Wormwood Calming Watery Cream", nameKr: "쑥 진정 워터리 크림", sale: 250, old: 369, bTh: "แนะนำ", bEn: "HOT", bKr: "추천", img: "1.jpg.png" },
         { id: 2, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง โทนเนอร์", nameEn: "Wormwood Calming Toner", nameKr: "쑥 진정 토너", sale: 350, old: 459, bTh: "ขายดี", bEn: "BEST", bKr: "베스트", img: "2.jpeg" },
@@ -124,24 +138,37 @@
         const gridO = document.getElementById('grid-o');
         gridF.innerHTML = ''; gridO.innerHTML = '';
 
+        // จัดการฟอนต์ที่หัวข้อ Hero
+        const hTitle = document.getElementById('h-title');
+        const hP = document.getElementById('h-p');
+        if(currentLang === 'kr') {
+            hTitle.classList.add('kr-text');
+            hP.classList.add('kr-text');
+        } else {
+            hTitle.classList.remove('kr-text');
+            hP.classList.remove('kr-text');
+        }
+
         products.forEach(p => {
             const name = currentLang === 'en' ? p.nameEn : (currentLang === 'kr' ? p.nameKr : p.nameTh);
             const badge = currentLang === 'en' ? p.bEn : (currentLang === 'kr' ? p.bKr : p.bTh);
+            
+            // สร้าง Card พร้อม Link ไปยังหน้า product.html และส่งค่า id ไปทาง URL
             const html = `
-                <div class="card">
+                <a href="product.html?id=${p.id}" class="card">
                     <div class="img-box">
                         <div class="product-badge">${badge}</div>
                         <img src="${p.img}" alt="${name}">
                     </div>
                     <div class="info">
-                        <h3>${name}</h3>
+                        <h3 class="${currentLang === 'kr' ? 'kr-text' : ''}">${name}</h3>
                         <div class="price">
                             <span class="sale">฿${p.sale}</span>
                             <span class="old">฿${p.old}</span>
                         </div>
                     </div>
-                    <a href="product.html?id=${p.id}" class="btn-buy">${trans[currentLang].shop}</a>
-                </div>
+                    <div class="btn-buy ${currentLang === 'kr' ? 'kr-text' : ''}">${trans[currentLang].shop}</div>
+                </a>
             `;
             if(p.brand === "Fraijour") gridF.innerHTML += html;
             else gridO.innerHTML += html;
@@ -158,6 +185,7 @@
         currentLang = currentLang === 'th' ? 'en' : (currentLang === 'en' ? 'kr' : 'th');
         render();
     }
+
     render();
 </script>
 </body>
