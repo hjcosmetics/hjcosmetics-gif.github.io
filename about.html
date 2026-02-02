@@ -6,8 +6,8 @@
     <title>About Us - HJ COSMETICS | The Heritage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* นำเข้าฟอนต์ Inter และฟอนต์หลักอื่นๆ */
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@200;300;400;500&family=Inter:wght@300;400;600;700&display=swap');
+        /* เพิ่มฟอนต์เกาหลี Nanum Myeongjo เข้ามาด้วย */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@200;300;400;500&family=Inter:wght@300;400;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
 
         :root { 
             --p-green: #1b4332; 
@@ -28,11 +28,11 @@
             overflow-x: hidden; 
         }
 
-        /* --- 🎞️ Background Setup --- */
+        /* --- Background --- */
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.4) 0%, rgba(253,250,245,0.7) 100%); z-index: -1; }
 
-        /* --- 🎖️ Navigation (Sync 100% with Index) --- */
+        /* --- 🎖️ Navigation --- */
         nav { 
             background: rgba(255, 255, 255, 0.95); height: 100px; padding: 0 8%;
             display: flex; justify-content: space-between; align-items: center; 
@@ -48,104 +48,56 @@
             text-transform: uppercase; transition: 0.3s; 
         }
         .nav-links a.active { color: var(--gold); }
-        .nav-links a:hover { color: var(--gold); }
         .lang-btn { 
             background: var(--p-green); color: white; border: none; 
             padding: 10px 20px; cursor: pointer; 
             font-family: var(--font-en); font-weight: 700; 
             font-size: 0.7rem; transition: 0.3s; 
         }
-        .lang-btn:hover { background: var(--gold); }
 
-        /* --- ✨ Hero Section --- */
+        /* --- Hero --- */
         .hero-header { text-align: center; padding: 120px 5% 60px; }
-        .hero-header h1 {
-            font-family: var(--font-head);
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            color: var(--p-green);
-            letter-spacing: 12px;
-            margin: 0;
-            font-weight: 400;
-        }
+        .hero-header h1 { font-family: var(--font-head); font-size: clamp(2.5rem, 6vw, 4rem); color: var(--p-green); letter-spacing: 12px; margin: 0; font-weight: 400; }
 
         .main-container { max-width: 1300px; margin: 0 auto; padding: 0 5% 100px; }
 
-        /* --- 🏛️ The HJ Story Section (ปรับปรุงรูปภาพและระยะห่างข้อความ) --- */
+        /* --- The HJ Story --- */
         .origin-section { 
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(15px);
-            padding: 80px; border-radius: 30px; 
-            margin-bottom: 80px;
+            background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(15px);
+            padding: 80px; border-radius: 30px; margin-bottom: 80px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.05);
         }
-
         .story-flex { display: flex; align-items: center; gap: 80px; }
         .story-img { flex: 1; text-align: center; }
-        
-        /* ขยายขนาดโลโก้ให้ใหญ่ขึ้น */
-        .story-img img { 
-            width: 100%; 
-            max-width: 450px; 
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1)); 
-            animation: float 6s ease-in-out infinite; 
-        }
-        
+        .story-img img { width: 100%; max-width: 450px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1)); animation: float 6s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
 
         .story-text { flex: 1.2; }
-        .story-text h2 { 
-            font-family: var(--font-head); font-size: 2.8rem; 
-            color: var(--p-green); margin-bottom: 25px; letter-spacing: 3px;
-        }
-        /* ปรับปรุงการเว้นวรรคและการตัดคำที่นี่ */
-        .story-text p { 
-            font-size: 1.05rem; 
-            line-height: 2; 
-            color: #444; 
-            margin-bottom: 35px; 
-            text-align: left; 
-            text-indent: 2em; 
-        }
+        .story-text h2 { font-family: var(--font-head); font-size: 2.8rem; color: var(--p-green); margin-bottom: 25px; letter-spacing: 3px; }
+        .story-text p { font-size: 1.05rem; line-height: 2; color: #444; margin-bottom: 35px; text-align: left; text-indent: 2em; }
 
-        /* --- 🌟 Milestones --- */
+        /* --- Milestones --- */
         .milestone-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .milestone-item { 
-            padding: 20px; background: white; border-bottom: 3px solid var(--gold); text-align: center; border-radius: 10px;
-        }
+        .milestone-item { padding: 20px; background: white; border-bottom: 3px solid var(--gold); text-align: center; border-radius: 10px; }
         .milestone-year { color: var(--p-green); font-family: var(--font-en); font-size: 1.8rem; font-weight: 700; display: block; }
         .milestone-text { font-size: 0.65rem; color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        /* --- 📦 Brand Grid --- */
-        .brand-grid { 
-            display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; 
-            background: white; border-radius: 20px; overflow: hidden; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-        }
+        /* --- Brand Grid --- */
+        .brand-grid { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.04); }
         .brand-image { height: 500px; overflow: hidden; }
         .brand-image img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s; }
         .brand-grid:hover .brand-image img { transform: scale(1.05); }
-        
         .brand-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
         .brand-content span { color: var(--gold); letter-spacing: 3px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; font-family: var(--font-en); }
         .brand-content h3 { font-family: var(--font-head); font-size: 2.5rem; margin: 0 0 20px; color: var(--p-green); }
         .brand-content p { line-height: 1.8; color: #555; font-size: 1rem; margin-bottom: 30px; text-align: left; }
-        
-        .btn-visit { 
-            align-self: flex-start; text-decoration: none; color: white; 
-            background: var(--p-green); padding: 15px 35px; font-size: 0.75rem; 
-            letter-spacing: 2px; font-weight: 700; transition: 0.3s; font-family: var(--font-en);
-        }
-        .btn-visit:hover { background: var(--gold); transform: translateY(-3px); }
+        .btn-visit { align-self: flex-start; text-decoration: none; color: white; background: var(--p-green); padding: 15px 35px; font-size: 0.75rem; letter-spacing: 2px; font-weight: 700; transition: 0.3s; font-family: var(--font-en); }
 
-        /* --- 🏛️ Footer --- */
+        /* --- Footer --- */
         footer { background: #111; color: white; padding: 80px 8% 40px; }
         .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: 50px; max-width: 1400px; margin: 0 auto; }
-        .f-col h4 { 
-            color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 25px; 
-            font-family: var(--font-en); text-transform: uppercase; border-left: 2px solid var(--gold); padding-left: 15px; 
-        }
+        .f-col h4 { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 25px; font-family: var(--font-en); text-transform: uppercase; border-left: 2px solid var(--gold); padding-left: 15px; }
         .f-col p, .f-col a { color: #888; font-size: 0.85rem; line-height: 1.8; text-decoration: none; margin-bottom: 10px; display: block; }
-        .f-col i { width: 25px; color: var(--gold); }
         .copy { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #222; font-size: 0.65rem; color: #444; letter-spacing: 2px; }
 
         @media (max-width: 1024px) { 
@@ -154,7 +106,6 @@
             .brand-image { height: 350px; }
             .f-grid { grid-template-columns: 1fr; text-align: center; }
             .nav-links { display: none; }
-            .origin-section { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -186,7 +137,7 @@
                 <p id="hj-desc">...</p>
                 <div class="milestone-container">
                     <div class="milestone-item">
-                        <span class="milestone-year">20+</span>
+                        <span class="milestone-year">2+</span>
                         <span class="milestone-text" id="ms-1">EXPERIENCE YEARS</span>
                     </div>
                     <div class="milestone-item">
@@ -206,9 +157,9 @@
         <div class="brand-image"><img src="IMG_5808.jpeg"></div>
         <div class="brand-content">
             <span id="f-tag-sub">Botanical Therapy</span>
-            <h3 id="brand-f">Fraijour</h3>
+            <h3>Fraijour</h3>
             <p id="f-desc">...</p>
-            <a href="https://fraijour.co.kr/" target="_blank" class="btn-visit">OFFICIAL SITE</a>
+            <a href="https://fraijour.co.kr/" target="_blank" class="btn-visit" id="btn-f">OFFICIAL SITE</a>
         </div>
     </div>
 
@@ -216,9 +167,19 @@
         <div class="brand-image"><img src="IMG_5805.jpeg"></div>
         <div class="brand-content" style="direction: ltr;">
             <span id="b-tag-sub">Body Ritual</span>
-            <h3 id="brand-b">Bathpa</h3>
+            <h3>Bathpa</h3>
             <p id="b-desc">...</p>
-            <a href="https://www.evascosmetic.com/bathpa" target="_blank" class="btn-visit">OFFICIAL SITE</a>
+            <a href="https://www.evascosmetic.com/bathpa" target="_blank" class="btn-visit" id="btn-b">OFFICIAL SITE</a>
+        </div>
+    </div>
+
+    <div class="brand-grid">
+        <div class="brand-image"><img src="IMG_5807.jpeg"></div>
+        <div class="brand-content">
+            <span id="c-tag-sub">Intensive Hair & Skin Care</span>
+            <h3>Char Char</h3>
+            <p id="c-desc">...</p>
+            <a href="https://www.evascosmetic.com/charchar" target="_blank" class="btn-visit" id="btn-c">OFFICIAL SITE</a>
         </div>
     </div>
 </div>
@@ -231,7 +192,7 @@
         </div>
         <div class="f-col">
             <h4 id="h-addr-foot">LOCATION</h4>
-            <p><i class="fas fa-map-marker-alt"></i> 323/11-12 Moo 3, Bowin,<br>Sriracha, Chon Buri 20230</p>
+            <p><i class="fas fa-map-marker-alt"></i> 323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
         </div>
         <div class="f-col">
             <h4 id="h-cont-foot">CONTACT</h4>
@@ -255,28 +216,31 @@
     const trans = {
         th: { 
             heroTitle: "Our Heritage", hjTitle: "The HJ Story", 
-            hjDesc: "HJ COSMETICS ก่อตั้งขึ้นจากความมุ่งมั่นที่จะนำความงามที่แท้จริงจากเกาหลีมาสู่ประเทศไทย เราไม่ได้เป็นเพียงผู้นำเข้าเท่านั้น แต่เราคือภัณฑารักษ์ผู้คัดสรรสกินแคร์ที่ผ่านการทดสอบทางวิทยาศาสตร์ และใช้พลังจากสารสกัดธรรมชาติอันบริสุทธิ์เพื่อมอบผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณอย่างยั่งยืน", 
+            hjDesc: "HJ COSMETICS ก่อตั้งขึ้นจากความมุ่งมั่นที่จะนำความงามที่แท้จริงจากเกาหลีมาสู่ประเทศไทย เราคัดสรรสกินแคร์ที่ผ่านการทดสอบทางวิทยาศาสตร์ เพื่อมอบผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ", 
             ms1: "ปีแห่งประสบการณ์", ms2: "นำเข้าจากเกาหลี 100%", ms3: "ลูกค้าที่ไว้วางใจ",
-            fDesc: "แบรนด์ที่เชี่ยวชาญด้าน Botanical Therapy โดยเน้นการใช้สารสกัดจากพืชพรรณธรรมชาติ เพื่อฟื้นฟูผิวที่บอบบางและแพ้ง่ายให้กลับมาแข็งแรง", 
-            bDesc: "เปลี่ยนการดูแลผิวกายในทุกวันให้กลายเป็นพิธีกรรมแห่งความสุข ด้วยกลิ่นหอมอันเป็นเอกลักษณ์และการบำรุงที่ล้ำลึกระดับสปา", 
+            fDesc: "แบรนด์ที่เชี่ยวชาญด้าน Botanical Therapy เน้นการใช้สารสกัดจากพืชพรรณธรรมชาติ", 
+            bDesc: "เปลี่ยนการดูแลผิวกายในทุกวันให้กลายเป็นพิธีกรรมแห่งความสุขระดับสปา", 
+            cDesc: "ผู้นำด้านผลิตภัณฑ์ดูแลเส้นผมสูตรเข้มข้น มอบผลลัพธ์ดุจทำทรีทเมนท์ที่ซาลอนชั้นนำ",
             footDesc: "คัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผิวที่ยั่งยืน", 
             visit: "เข้าชมเว็บไซต์"
         },
         en: { 
             heroTitle: "Our Heritage", hjTitle: "The HJ Story", 
-            hjDesc: "Established with a visionary commitment to bridge Korean beauty excellence with Thailand. We are curators of science-backed skincare using pure natural extracts to deliver excellence to your skin.", 
+            hjDesc: "Established with a visionary commitment to bridge Korean beauty excellence with Thailand. We curate science-backed skincare to deliver excellence to your skin.", 
             ms1: "EXPERIENCE YEARS", ms2: "KOREAN AUTHENTIC", ms3: "HAPPY CUSTOMERS",
-            fDesc: "Specializing in Botanical Therapy, Fraijour harnesses the healing power of natural herbs for sensitive skin restoration.", 
-            bDesc: "Elevate your daily bath ritual into a premium spa escape with rich, unique scents and deep nourishment.", 
+            fDesc: "Specializing in Botanical Therapy, Fraijour harnesses natural herbs for restoration.", 
+            bDesc: "Elevate your daily ritual into a spa escape with unique scents and nourishment.", 
+            cDesc: "A pioneer in intensive hair & skin care solutions with professional-grade treatments.",
             footDesc: "Premium Korean beauty curator delivering excellence to your skin.", 
             visit: "OFFICIAL SITE"
         },
         kr: { 
             heroTitle: "아름다운 유산", hjTitle: "HJ 코스메틱 이야기", 
-            hjDesc: "HJ COSMETICS는 한국의 진정한 아름다움을 태국에 전달하겠다는 비전으로 설립되었습니다. 우리는 과학적으로 검증된 스킨케어와 순수 자연 추출물을 큐레이팅합니다.", 
+            hjDesc: "HJ COSMETICS는 한국의 진정한 아름다움을 태국에 전달하기 위해 설립되었습니다. 우리는 과학적으로 검증된 스킨케어 제품만을 엄선합니다.", 
             ms1: "경력 년수", ms2: "100% 한국 정품", ms3: "신뢰하는 고객들",
-            fDesc: "프라이주어는 식물 테라피 전문 브랜드로, 민감한 피부를 위한 자연 허브의 치유력을 활용합니다.", 
-            bDesc: "일상의 목욕 시간을 프리미엄 스파와 같은 휴식으로 바꿔주는 고품격 바디 케어 브랜드입니다.", 
+            fDesc: "프라이주어는 식물 테라피 전문 브랜드로, 자연의 치유력을 활용합니다.", 
+            bDesc: "일상의 목욕 시간을 프리미엄 스파와 같은 휴식으로 바꿔주는 바디 케어입니다.", 
+            cDesc: "고농축 추출물을 통해 손상된 모발과 피부를 회복시키는 전문 케어 브랜드입니다.",
             footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.", 
             visit: "공식 사이트"
         }
@@ -292,17 +256,17 @@
         document.getElementById('ms-3').textContent = l.ms3;
         document.getElementById('f-desc').textContent = l.fDesc;
         document.getElementById('b-desc').textContent = l.bDesc;
+        document.getElementById('c-desc').textContent = l.cDesc;
         document.getElementById('foot-desc').textContent = l.footDesc;
         document.querySelectorAll('.btn-visit').forEach(b => b.textContent = l.visit);
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
         
-        // อัปเดตฟอนต์ตามภาษา
+        // ปรับเปลี่ยนฟอนต์ตามภาษาที่เลือก
         if(currentLang === 'kr') {
             document.body.style.fontFamily = "'Nanum Myeongjo', serif";
         } else {
             document.body.style.fontFamily = "var(--font-th)";
         }
-
         localStorage.setItem('hj_lang', currentLang);
     }
 
@@ -310,7 +274,6 @@
         currentLang = languages[(languages.indexOf(currentLang) + 1) % languages.length];
         updateContent();
     }
-
     updateContent();
 </script>
 </body>
