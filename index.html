@@ -6,6 +6,7 @@
     <title>HJ COSMETICS | Premium Luxury Curator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Import Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@200;300;400;500&family=Montserrat:wght@300;600;800&family=Nanum+Myeongjo:wght@400;700&display=swap');
 
         :root { 
@@ -18,55 +19,70 @@
             --font-kr: 'Nanum Myeongjo', serif;
         }
 
+        /* Base Setup */
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
         body { margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; font-family: var(--font-th); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
+        /* Font Logic */
         .kr-text { font-family: var(--font-kr), serif !important; }
-        .num-font, .price, .product-badge, .nav-links a, .lang-btn { font-family: var(--font-en) !important; }
+        .num-font, .price, .product-badge, .nav-links a, .lang-btn, .copy { font-family: var(--font-en) !important; }
 
+        /* Background */
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.6) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; }
 
-        nav { background: rgba(255, 255, 255, 0.9); height: 100px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 10px 40px rgba(0,0,0,0.04); backdrop-filter: blur(5px); }
+        /* Navigation */
+        nav { background: rgba(255, 255, 255, 0.95); height: 100px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 10px 40px rgba(0,0,0,0.04); backdrop-filter: blur(10px); }
         .logo-nav img { height: 55px; }
         .nav-links { display: flex; gap: 40px; }
         .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold); }
-        .lang-btn { background: var(--p-green); color: white; border: none; padding: 10px 20px; cursor: pointer; font-weight: 700; font-size: 0.7rem; }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 10px 20px; cursor: pointer; font-weight: 700; font-size: 0.7rem; transition: 0.3s; }
+        .lang-btn:hover { background: var(--gold); }
 
-        .hero { padding: 80px 5% 60px; text-align: center; }
-        .main-gold-logo { width: 380px; max-width: 90%; margin-bottom: 40px; }
-        .hero-title { font-family: var(--font-head); font-size: 2.8rem; color: var(--p-green); margin-bottom: 20px; }
-        .hero-p { font-size: 1.1rem; max-width: 750px; margin: 0 auto; line-height: 1.8; }
+        /* Hero */
+        .hero { padding: 60px 5% 40px; text-align: center; }
+        .main-gold-logo { width: 350px; max-width: 80%; margin-bottom: 30px; }
+        .hero-title { font-family: var(--font-head); font-size: 2.8rem; color: var(--p-green); margin-bottom: 15px; letter-spacing: 5px; }
+        .hero-p { font-size: 1.1rem; max-width: 700px; margin: 0 auto; line-height: 1.8; color: #444; }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 60px 5% 120px; flex: 1; }
-        .grid-title { margin-bottom: 50px; display: flex; align-items: center; gap: 25px; }
-        .grid-title h2 { font-family: var(--font-head); font-size: 2.2rem; color: var(--p-green); margin: 0; }
-        .grid-title .line { flex: 1; height: 1px; background: var(--gold); opacity: 0.3; }
+        /* Main Grid Layout */
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 5% 100px; flex: 1; }
+        .grid-title { margin-bottom: 40px; display: flex; align-items: center; gap: 20px; }
+        .grid-title h2 { font-family: var(--font-head); font-size: 1.8rem; color: var(--p-green); margin: 0; letter-spacing: 3px; }
+        .grid-title .line { flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
         
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 45px; margin-bottom: 80px; }
-        .card { background: white; position: relative; display: flex; flex-direction: column; border: 1px solid rgba(0,0,0,0.05); transition: 0.5s; text-decoration: none; color: inherit; }
-        .card:hover { transform: translateY(-15px); box-shadow: 0 40px 70px rgba(0,0,0,0.1); }
-        .img-box { height: 400px; display: flex; align-items: center; justify-content: center; padding: 40px; background: #fff; overflow: hidden; position: relative; }
-        .img-box img { max-width: 90%; max-height: 90%; object-fit: contain; transition: 0.8s; }
-        .product-badge { position: absolute; top: 20px; right: 20px; background: var(--gold); color: white; padding: 10px; border-radius: 50%; font-size: 0.6rem; font-weight: 800; min-width: 45px; text-align: center; z-index: 2; }
+        /* Product Card Styling (Beautiful Alignment) */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        
+        .card { background: white; position: relative; display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); height: 100%; border-radius: 4px; overflow: hidden; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
+        
+        .img-box { width: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; padding: 25px; background: #fff; position: relative; overflow: hidden; }
+        .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; transition: 0.6s ease; }
+        .card:hover .img-box img { transform: scale(1.08); }
 
-        .info { padding: 30px; text-align: center; flex-grow: 1; }
-        .info h3 { font-size: 1rem; color: var(--p-green); min-height: 3em; margin: 0 0 15px; font-weight: 500; }
-        .price { margin-bottom: 5px; color: var(--p-green); font-family: var(--font-en); }
-        .sale { font-size: 1.7rem; font-weight: 700; }
-        .old { color: #b2bec3; text-decoration: line-through; margin-left: 10px; font-size: 1rem; }
-        .btn-buy { text-decoration: none; color: white; background: var(--p-green); padding: 18px; text-align: center; font-weight: 700; letter-spacing: 2px; display: block; text-transform: uppercase; font-size: 0.8rem; }
+        .product-badge { position: absolute; top: 15px; right: 15px; background: var(--gold); color: white; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.55rem; font-weight: 800; z-index: 2; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
-        /* --- 🏛️ Footer Section (Added/Fixed) --- */
-        footer { background: #111; color: white; padding: 80px 8% 40px; margin-top: auto; position: relative; z-index: 10; }
-        .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: 50px; max-width: 1400px; margin: 0 auto; text-align: left; }
-        .f-col h4 { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 25px; font-family: var(--font-en); text-transform: uppercase; border-left: 2px solid var(--gold); padding-left: 15px; }
-        .f-col p, .f-col a { color: #888; font-size: 0.85rem; line-height: 1.8; text-decoration: none; margin-bottom: 10px; display: block; }
-        .f-col i { width: 25px; color: var(--gold); }
-        .copy { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #222; font-size: 0.65rem; color: #444; letter-spacing: 2px; }
+        .info { padding: 20px 15px 25px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
+        .info h3 { font-size: 0.95rem; color: var(--p-green); margin: 0 0 12px; font-weight: 400; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 3.2em; }
+        
+        .price { margin-top: auto; padding-bottom: 20px; }
+        .sale { font-size: 1.5rem; font-weight: 700; color: var(--p-green); }
+        .old { color: #adb5bd; text-decoration: line-through; margin-left: 8px; font-size: 0.9rem; }
+        
+        .btn-buy { background: var(--p-green); color: white; padding: 15px; text-align: center; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; transition: 0.3s; }
+        .card:hover .btn-buy { background: var(--gold); }
 
-        @media (max-width: 1024px) { .f-grid { grid-template-columns: 1fr; text-align: center; } .f-col h4 { border-left: none; padding-left: 0; } }
+        /* Footer */
+        footer { background: #111; color: white; padding: 70px 8% 30px; margin-top: auto; }
+        .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; text-align: left; }
+        .f-col h4 { color: var(--gold); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; border-left: 2px solid var(--gold); padding-left: 15px; }
+        .f-col p, .f-col a { color: #888; font-size: 0.8rem; line-height: 1.8; text-decoration: none; margin-bottom: 8px; display: block; }
+        .f-col i { width: 20px; color: var(--gold); margin-right: 5px; }
+        .copy { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #222; font-size: 0.65rem; color: #444; letter-spacing: 2px; text-transform: uppercase; }
+
+        @media (max-width: 900px) { .f-grid { grid-template-columns: 1fr; text-align: center; } .f-col h4 { border-left: none; padding-left: 0; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -86,13 +102,14 @@
 
 <header class="hero">
     <img src="gold.png" alt="HJ COSMETICS" class="main-gold-logo">
-    <h1 class="hero-title" id="h-title">The Masterpiece of Skincare</h1>
+    <h1 class="hero-title" id="h-title">The Masterpiece</h1>
     <p class="hero-p" id="h-p">ความหรูหราที่มาพร้อมกับผลลัพธ์ที่จับต้องได้</p>
 </header>
 
 <main class="container">
     <div class="grid-title"><h2>FRAIJOUR HERBS</h2><div class="line"></div></div>
     <div class="product-grid" id="grid-f"></div>
+    
     <div class="grid-title"><h2 id="t-others">GLOBAL SELECTION</h2><div class="line"></div></div>
     <div class="product-grid" id="grid-o"></div>
 </main>
@@ -123,6 +140,7 @@
 </footer>
 
 <script>
+    // Product Data (Complete 15 Items)
     const products = [
         { id: 1, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง วอเตอรี่ ครีม", nameEn: "Wormwood Calming Watery Cream", nameKr: "쑥 진정 워터리 크림", sale: 250, old: 369, bTh: "แนะนำ", bEn: "HOT", bKr: "추천", img: "1.jpg.png" },
         { id: 2, brand: "Fraijour", nameTh: "วอร์มวูด คาล์มมิ่ง โทนเนอร์", nameEn: "Wormwood Calming Toner", nameKr: "쑥 진정 토너", sale: 350, old: 459, bTh: "ขายดี", bEn: "BEST", bKr: "베스트", img: "2.jpeg" },
@@ -142,9 +160,9 @@
     ];
 
     const trans = {
-        th: { title: "The Masterpiece of Skincare", p: "ความหรูหราที่มาพร้อมกับผลลัพธ์ที่จับต้องได้ คัดสรรทุกส่วนผสมเพื่อความสมบูรณ์แบบของผิวคุณ", shop: "ช้อปเลย", others: "GLOBAL SELECTION", foot: "คัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผิวที่ยั่งยืน" },
-        en: { title: "The Masterpiece of Skincare", p: "Luxury meets tangible results. Meticulously selecting every ingredient for your skin's perfection.", shop: "SHOP NOW", others: "GLOBAL SELECTION", foot: "Premium Korean beauty curator delivering excellence to your skin." },
-        kr: { title: "스킨케어의 걸작", p: "럭셔리함과 가시적인 결과가 만났습니다. 당신의 피부 완벽을 위해 모든 성분을 세심하게 선택했습니다.", shop: "지금 구매", others: "글로벌 셀렉션", foot: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터." }
+        th: { title: "The Masterpiece", p: "ความหรูหราที่มาพร้อมกับผลลัพธ์ที่จับต้องได้ คัดสรรเพื่อผิวคุณ", shop: "ช้อปเลย", others: "GLOBAL SELECTION", foot: "คัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผิวที่ยั่งยืน" },
+        en: { title: "The Masterpiece", p: "Luxury meets tangible results. Curated for your skin's perfection.", shop: "SHOP NOW", others: "GLOBAL SELECTION", foot: "Premium Korean beauty curator delivering excellence to your skin." },
+        kr: { title: "스킨케어의 걸작", p: "럭셔리함과 가시적인 결과가 만났습니다. 당신의 피부를 위해 엄선했습니다.", shop: "지금 구매", others: "글로벌 셀렉션", foot: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터." }
     };
 
     let currentLang = localStorage.getItem('selectedLang') || 'th';
@@ -158,6 +176,7 @@
         const hP = document.getElementById('h-p');
         const fDesc = document.getElementById('foot-desc');
 
+        // Language Font Switch
         if(currentLang === 'kr') {
             hTitle.classList.add('kr-text'); hP.classList.add('kr-text'); fDesc.classList.add('kr-text');
         } else {
@@ -167,6 +186,7 @@
         products.forEach(p => {
             const name = currentLang === 'en' ? p.nameEn : (currentLang === 'kr' ? p.nameKr : p.nameTh);
             const badge = currentLang === 'en' ? p.bEn : (currentLang === 'kr' ? p.bKr : p.bTh);
+            
             const html = `
                 <a href="product.html?id=${p.id}" class="card">
                     <div class="img-box">
