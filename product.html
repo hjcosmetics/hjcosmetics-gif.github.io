@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">HJ COSMETICS - Product Details</title>
+    <title>HJ COSMETICS - Luxury Selection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@300;400;500;600&family=Inter:wght@400;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
@@ -25,18 +25,37 @@
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.35; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.4) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; }
 
-        /* Navigation */
+        /* Navigation (Fixed English) */
         nav { background: rgba(255, 255, 255, 0.9); height: 100px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(5px); box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
         .logo-nav img { height: 55px; }
         .nav-links { display: flex; gap: 40px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-en); }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-en); transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 10px 20px; cursor: pointer; font-weight: 700; font-size: 0.7rem; font-family: var(--font-en); border-radius: 2px; }
 
-        /* Content Layout */
-        .container { max-width: 1200px; margin: 40px auto 80px; padding: 0 5%; display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; flex: 1; }
+        /* Balanced Layout */
+        .container { max-width: 1200px; margin: 40px auto 80px; padding: 0 5%; display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
         
-        .img-display { background: #fff; padding: 40px; border-radius: 25px; box-shadow: 0 25px 50px rgba(0,0,0,0.04); text-align: center; position: sticky; top: 140px; }
-        .img-display img { max-width: 100%; height: auto; border-radius: 10px; }
+        /* Image Balance Control */
+        .img-display { 
+            background: #fff; 
+            padding: 20px; 
+            border-radius: 25px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.04); 
+            position: sticky; 
+            top: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1 / 1; /* บังคับให้เป็นจัตุรัสเพื่อให้บาลานซ์ */
+            overflow: hidden;
+        }
+        .img-display img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; /* รูปจะไม่ถูกตัดและจะอยู่กึ่งกลางเสมอ */
+            border-radius: 10px; 
+        }
         
         /* Product Info */
         .brand-label { color: var(--gold); letter-spacing: 4px; font-weight: 700; font-family: var(--font-head); margin: 0; font-size: 1rem; }
@@ -44,40 +63,35 @@
         .price-tag { font-size: 2.8rem; font-weight: 700; color: var(--p-green); margin-bottom: 30px; font-family: var(--font-en); }
         .price-tag .old { font-size: 1.4rem; color: #ccc; text-decoration: line-through; margin-left: 15px; font-weight: 300; }
 
-        /* 🎖️ License Box & Button */
+        /* 🎖️ License Box */
         .license-box { background: rgba(197, 160, 89, 0.08); border: 1px dashed var(--gold); padding: 20px; border-radius: 15px; margin-bottom: 35px; display: flex; align-items: center; gap: 18px; }
         .license-box i { color: var(--gold); font-size: 1.5rem; }
-        .license-content { display: flex; flex-direction: column; align-items: flex-start; }
         .license-content h4 { margin: 0; font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; font-family: var(--font-en); }
         .license-content p { margin: 5px 0 8px; font-weight: 700; color: var(--p-green); font-size: 1.1rem; font-family: var(--font-en); }
         
         .btn-cert { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: white; text-decoration: none; padding: 6px 14px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; transition: 0.3s; font-family: var(--font-en); }
-        .btn-cert:hover { background: var(--p-green); transform: translateY(-2px); }
+        .btn-cert:hover { background: var(--p-green); }
 
         /* Detail Sections */
         .desc-section { border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 30px 0; }
-        .desc-section h3 { font-family: var(--font-head); color: var(--gold); font-size: 1rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .desc-section h3 { font-family: var(--font-head); color: var(--gold); font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 2px; }
         .desc-section p { font-size: 1rem; color: #444; line-height: 1.8; margin: 0; white-space: pre-line; }
 
-        /* Purchase Buttons */
+        /* Buttons */
         .btn-main { display: flex; align-items: center; justify-content: center; gap: 12px; background: var(--p-green); color: white; padding: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 15px; transition: 0.3s; font-family: var(--font-en); }
         .btn-main:hover { background: var(--gold); }
         .market-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
         .btn-m { padding: 15px; text-align: center; text-decoration: none; color: white; font-size: 0.75rem; font-weight: 700; font-family: var(--font-en); }
         .shopee { background: #ee4d2d; } .lazada { background: #10156d; } .tiktok { background: #000; }
 
-        /* Footer */
         footer { background: #111; color: #fff; padding: 80px 8% 40px; margin-top: auto; }
         .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
         .f-col h4 { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 25px; border-left: 2px solid var(--gold); padding-left: 15px; font-family: var(--font-en); }
-        .f-col p { color: #888; font-size: 0.85rem; line-height: 1.8; margin: 0 0 10px; }
+        .f-col p { color: #888; font-size: 0.85rem; line-height: 1.8; }
 
         @media (max-width: 850px) {
-            .container { grid-template-columns: 1fr; gap: 30px; }
-            .img-display { position: static; padding: 20px; }
-            .nav-links { display: none; }
-            .f-grid { grid-template-columns: 1fr; text-align: center; }
-            .f-col h4 { border-left: none; padding-left: 0; }
+            .container { grid-template-columns: 1fr; }
+            .img-display { position: static; aspect-ratio: auto; padding: 40px; }
         }
     </style>
 </head>
@@ -89,9 +103,9 @@
 <nav>
     <div class="logo-nav"><a href="index.html"><img src="HJ (5).png" alt="Logo"></a></div>
     <div class="nav-links">
-        <a href="index.html" id="n-home">HOME</a>
-        <a href="about.html" id="n-about">ABOUT</a>
-        <a href="contact.html" id="n-contact">CONTACT</a>
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
     </div>
     <button onclick="changeLang()" id="langBtn" class="lang-btn">TH</button>
 </nav>
@@ -113,27 +127,27 @@
         <div class="license-box">
             <i class="fas fa-shield-check"></i>
             <div class="license-content">
-                <h4 id="lbl-fda">FDA REGISTERED NO.</h4>
+                <h4>FDA REGISTERED NO.</h4>
                 <p id="p-fda"></p>
                 <a href="#" id="p-cert-link" target="_blank" class="btn-cert">
-                    <i class="fas fa-file-invoice"></i> <span id="lbl-view-cert">View Certificate</span>
+                    <i class="fas fa-file-invoice"></i> <span id="lbl-view-cert">VIEW CERTIFICATE</span>
                 </a>
             </div>
         </div>
         
         <div class="desc-section">
-            <h3 id="lbl-desc">DETAILS</h3>
+            <h3>PRODUCT DETAILS</h3>
             <p id="p-desc"></p>
         </div>
         
         <div class="desc-section">
-            <h3 id="lbl-use">HOW TO USE</h3>
+            <h3>HOW TO USE</h3>
             <p id="p-use"></p>
         </div>
 
         <div class="purchase-group">
             <a href="https://line.me/ti/p/9wSfM2gkuA" target="_blank" class="btn-main">
-                <i class="fab fa-line"></i> <span id="btn-line-text">ORDER VIA LINE</span>
+                <i class="fab fa-line"></i> ORDER VIA LINE
             </a>
             <div class="market-grid">
                 <a href="https://shopee.co.th/hj_cosmetics" class="btn-m shopee">SHOPEE</a>
@@ -146,10 +160,10 @@
 
 <footer>
     <div class="f-grid">
-        <div class="f-col"><h2 style="color:var(--gold); font-family:var(--font-head); font-size:1.5rem;">HJ COSMETICS</h2><p id="f-desc"></p></div>
-        <div class="f-col"><h4 id="f-loc">LOCATION</h4><p>323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230</p></div>
-        <div class="f-col"><h4 id="f-con">CONTACT</h4><p>03-8182-577<br>thaihjglobal@gmail.com</p></div>
-        <div class="f-col"><h4 id="f-hou">HOURS</h4><p>Mon - Fri: 08:30 - 17:00<br>Sat: 08:30 - 14:00</p></div>
+        <div class="f-col"><h2 style="color:var(--gold); font-family:var(--font-head);">HJ COSMETICS</h2><p>Premium Korean beauty curator delivering excellence to your skin.</p></div>
+        <div class="f-col"><h4>LOCATION</h4><p>Sriracha, Chon Buri 20230</p></div>
+        <div class="f-col"><h4>CONTACT</h4><p>03-8182-577</p></div>
+        <div class="f-col"><h4>HOURS</h4><p>Mon - Sat</p></div>
     </div>
 </footer>
 
@@ -158,14 +172,13 @@
         1: { brand: "Fraijour", sale: "฿250", old: "฿369", img: "1.jpg.png", fda: "10-2-6300028245", cert: "cert1.jpg",
              th: { name: "วอร์มวูด คาล์มมิ่ง วอเตอรี่ ครีม", desc: "ปลอบประโลมผิวอย่างล้ำลึกด้วยสารสกัดจากมักเวิร์ตเข้มข้น ช่วยเติมความชุ่มชื้นและลดรอยแดง", use: "ใช้บำรุงผิวหน้าเป็นประจำเช้า-เย็น" },
              en: { name: "Wormwood Calming Watery Cream", desc: "Soothes skin with concentrated Mugwort extract. Hydrates and calms irritation.", use: "Apply morning and night after toner." },
-             kr: { name: "웜우드 카밍 워터리 크림", desc: "고농축 쑥 추출물로 피부 진정과 수분을 공급하는 크림.", use: "기초 마지막 단계에서 부드럽게 발라줍니다." }
+             kr: { name: "웜우드 카밍 워터리 크림", desc: "고농축 쑥 추출물로 피부 진정과 수분을 공급하는 크림.", use: "기초 마지막 단계에서 부드럽게 발รา줍니다." }
         },
         2: { brand: "Fraijour", sale: "฿350", old: "฿459", img: "2.jpeg", fda: "10-2-6300028246", cert: "cert2.jpg",
              th: { name: "วอร์มวูด คาล์มมิ่ง โทนเนอร์", desc: "โทนเนอร์ช่วยปรับสมดุลและผลัดเซลล์ผิวอย่างอ่อนโยน", use: "เช็ดทั่วใบหน้าด้วยสำลีหลังล้างหน้า" },
              en: { name: "Wormwood Calming Toner", desc: "Balances and gently exfoliates skin with herbal extracts.", use: "Wipe across face with cotton pad." },
              kr: { name: "웜우드 카밍 토너", desc: "각질을 부드럽게 정돈하고 피부 결을 진정시키는 토너.", use: "세안 후 화장솜에 적셔 닦아줍니다." }
-        },
-        // เพิ่มตัวที่ 3-15 ตามรูปแบบนี้...
+        }
     };
 
     let lang = localStorage.getItem('selectedLang') || 'th';
@@ -176,7 +189,7 @@
         const p = products[id] || products[1];
         const content = p[lang] || p['th'];
 
-        // Images & Core Info
+        // Content Update
         document.getElementById('p-img').src = p.img;
         document.getElementById('p-brand').innerText = p.brand;
         document.getElementById('p-name').innerText = content.name;
@@ -187,29 +200,10 @@
         document.getElementById('p-desc').innerText = content.desc;
         document.getElementById('p-use').innerText = content.use;
 
-        // UI Translation
-        const ui = {
-            th: { home: "หน้าแรก", about: "เกี่ยวกับเรา", contact: "ติดต่อเรา", fda: "เลขที่ใบรับจดแจ้ง (อย.)", cert: "ดูใบอนุญาต", desc: "รายละเอียดสินค้า", use: "วิธีใช้งาน", line: "สั่งซื้อผ่าน LINE", loc: "ที่อยู่สำนักงาน", con: "ช่องทางติดต่อ", hou: "เวลาทำการ", foot: "คัดสรรสกินแคร์เกาหลีระดับพรีเมียม เพื่อผิวที่ดีที่สุดของคุณ" },
-            en: { home: "HOME", about: "ABOUT", contact: "CONTACT", fda: "FDA REGISTERED NO.", cert: "View Certificate", desc: "PRODUCT DETAILS", use: "HOW TO USE", line: "ORDER VIA LINE", loc: "LOCATION", con: "CONTACT", hou: "HOURS", foot: "Premium Korean beauty curator delivering excellence to your skin." },
-            kr: { home: "홈", about: "소개", contact: "연락처", fda: "식약처 허가 번호", cert: "허가증 보기", desc: "상세 정보", use: "사용 방법", line: "라인으로 주문하기", loc: "위치", con: "고객센터", hou: "영업시간", foot: "최고의 한국 뷰티 제품을 큐레이팅하여 선사합니다." }
-        };
-
-        const u = ui[lang];
-        document.getElementById('n-home').innerText = u.home;
-        document.getElementById('n-about').innerText = u.about;
-        document.getElementById('n-contact').innerText = u.contact;
-        document.getElementById('lbl-fda').innerText = u.fda;
-        document.getElementById('lbl-view-cert').innerText = u.cert;
-        document.getElementById('lbl-desc').innerText = u.desc;
-        document.getElementById('lbl-use').innerText = u.use;
-        document.getElementById('btn-line-text').innerText = u.line;
-        document.getElementById('f-loc').innerText = u.loc;
-        document.getElementById('f-con').innerText = u.con;
-        document.getElementById('f-hou').innerText = u.hou;
-        document.getElementById('f-desc').innerText = u.foot;
+        // Button Language Toggle
         document.getElementById('langBtn').innerText = lang.toUpperCase();
 
-        // Font Switching
+        // Font Adjustment
         const bodyFont = lang === 'th' ? 'var(--font-th)' : (lang === 'kr' ? 'var(--font-kr)' : 'var(--font-en)');
         document.body.style.fontFamily = bodyFont;
         document.getElementById('p-name').style.fontFamily = lang === 'kr' ? 'var(--font-kr)' : 'var(--font-head)';
