@@ -110,94 +110,87 @@
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.onkeydown = e => { if(e.keyCode == 123 || (e.ctrlKey && [85,83,67].includes(e.keyCode))) return false; };
 
-    const products = {
+      const products = {
+        // กลุ่ม Original Herb Wormwood
         1: { brand: "FRAIJOUR", sale: "฿250", old: "฿369", img: "1.jpg.png", fda: "10-2-6300028245", cert: "WATERY CREAM.jpg",
-            th: { name: "Wormwood Calming Watery Cream", desc: "ครีมบำรุงเนื้อวอเตอรี่เบส ผสาน Mugwort 12,000ppm กู้ผิวพังจากมลภาวะ ลดรอยแดง ปลอบประโลมผิวแพ้ง่าย", use: "ทาบำรุงผิวหน้าเป็นขั้นตอนสุดท้ายเช้า-เย็น", reviews: ["เนื้อครีมซึมไว รอยแดงจางลงจริง - User_8821", "ใช้แล้วหน้าไม่เหนียว เหมาะกับอากาศไทย - A***m", "ผิวแพ้ง่ายใช้ได้ไม่เห่อเลย - Anonymous", "ใช้มา 3 กระปุกแล้ว ดีจริง - K***y"] },
-            en: { name: "Wormwood Watery Cream", desc: "Soothing cream with 12,000ppm Mugwort for sensitive skin.", use: "Apply as final skincare step." },
-            kr: { name: "웜우드 카밍 워터리 크림", desc: "쑥 추출물 12,000ppm 함유로 민감한 피부를 진정시키는 워터리 크림.", use: "기초 마지막 단계에서 사용하세요." } },
+            th: { name: "Original Herb Wormwood Watery Cream", desc: "ครีมบำรุงเนื้อวอเตอรี่ ปลอบประโลมผิวแพ้ง่าย เติมความชุ่มชื้นล้ำลึก", use: "ทาบำรุงผิวหน้าเป็นขั้นตอนสุดท้ายเช้า-เย็น", reviews: ["เนื้อเบาซึมไวมาก - Anonymous", "หน้าชุ่มชื้น รอยแดงจางลง - User_8821"] },
+            en: { name: "Original Herb Wormwood Watery Cream", desc: "Soothing watery cream with Mugwort for sensitive skin.", use: "Apply as the final skincare step." },
+            kr: { name: "오리지널 허브 웜우드 워터리 크림", desc: "민감한 피부를 진정시키고 수분을 채워주는 워터리 크림.", use: "기초 마지막 단계에서 발라주세요." } },
+        
         2: { brand: "FRAIJOUR", sale: "฿350", old: "฿459", img: "2.jpeg", fda: "10-2-6300028246", cert: "WORMWOOD TONER.jpg",
-            th: { name: "Wormwood Calming Toner", desc: "โทนเนอร์ปรับสมดุลผิว ช่วยผลัดเซลล์ผิวและกระชับรูขุมขนอย่างอ่อนโยน", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["สิวผดลดลงอย่างเห็นได้ชัด - P***y", "กลิ่นหอมสมุนไพร ผ่อนคลายมาก - User_0012", "หน้าสะอาดขึ้นเยอะ เตรียมผิวได้ดี - Anonymous"] },
-            en: { name: "Wormwood Calming Toner", desc: "pH-balanced toner for smooth and calm skin.", use: "Wipe gently after cleansing." },
-            kr: { name: "웜우드 카밍 토너", desc: "피부 결을 정돈하고 진정시켜주는 저자극 토너.", use: "세안 후 화장솜에 적셔 닦아내세요." } },
-                3: { 
-            brand: "FRAIJOUR", 
-            sale: "฿290", 
-            old: "฿390", 
-            img: "3.jpeg", 
-            fda: "10-2-6400011111", 
-            cert: "WORMWOOD CLEANSING WATER.jpg",
-            th: { 
-                name: "Original Herb Wormwood Cleansing Water", 
-                desc: "คลีนซิ่งวอเตอร์สูตรสมุนไพร เช็ดเมคอัพและสิ่งสกปรกออกอย่างหมดจด อ่อนโยนต่อผิวและดวงตา ไม่ต้องล้างน้ำซ้ำ ช่วยปลอบประโลมผิวขณะทำความสะอาด", 
-                use: "ใช้สำลีชุบคลีนซิ่งเช็ดทั่วใบหน้าจนสะอาดโดยไม่ต้องล้างออก", 
-                reviews: [
-                    "เช็ดเครื่องสำอางออกง่ายมาก ไม่แสบตาเลย - User_9901", 
-                    "หน้าสดชื่นหลังเช็ด ไม่เหนียวเหนอะหนะ - Anonymous", 
-                    "ขวดใหญ่ใช้ได้นาน คุ้มค่ามาก - L***k", 
-                    "เช็ดแล้วหน้านุ่มดีค่ะ ไม่แห้งตึง - User_7752"
-                ] 
-            },
-            en: { 
-                name: "Original Herb Wormwood Cleansing Water", 
-                desc: "Herbal cleansing water that removes makeup and impurities gently without the need for rinsing. Soothes skin while cleansing.", 
-                use: "Saturate a cotton pad and wipe gently across the face." 
-            },
-            kr: { 
-                name: "오리지널 허브 웜우드 클็น징 워터", 
-                desc: "허브 추출물이 함유되어 자극 없이 노폐물과 메이크업을 말끔하게 닦아주는 저자극 클렌징 워터.", 
-                use: "화장솜에 적셔 얼굴 안쪽에서 바깥쪽으로 부드럽게 닦아내세요." 
-            } 
-        },
+            th: { name: "Original Herb Wormwood Toner", desc: "โทนเนอร์สมุนไพรปรับสมดุลผิว ลดการอักเสบและทำความสะอาดรูขุมขน", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["เช็ดแล้วหน้าสะอาดสดชื่น - Anonymous", "สิวผดลดลงเยอะมาก - P***y"] },
+            en: { name: "Original Herb Wormwood Toner", desc: "Herbal toner to balance skin and clear pores.", use: "Wipe gently after cleansing." },
+            kr: { name: "오리지널 허브 웜우드 토너", desc: "피부 밸런스를 맞춰주고 모공을 정돈해주는 허브 토너.", use: "세안 후 화장솜에 적셔 닦아내세요." } },
+        
+        3: { brand: "FRAIJOUR", sale: "฿290", old: "฿390", img: "3.jpeg", fda: "10-2-6400011111", cert: "WORMWOOD CLEANSING WATER.jpg",
+            th: { name: "Original Herb Wormwood Cleansing Water", desc: "คลีนซิ่งวอเตอร์สูตรสมุนไพร เช็ดเมคอัพออกหมดจด อ่อนโยน ไม่เหนียวหน้า", use: "ใช้สำลีชุบคลีนซิ่งเช็ดทั่วใบหน้าจนสะอาด", reviews: ["เช็ดสะอาดมาก ไม่แสบตา - Anonymous", "หน้าสดชื่น ไม่ต้องล้างน้ำซ้ำ - User_9901"] },
+            en: { name: "Original Herb Wormwood Cleansing Water", desc: "Herbal cleansing water that removes makeup gently.", use: "Saturate a cotton pad and wipe face." },
+            kr: { name: "오리지널 허브 웜우드 클렌징 워터", desc: "자극 없이 노폐물을 닦아주는 저자극 클렌징 워터.", use: "화장솜에 적셔 얼굴을 부드럽게 닦아내세요." } },
+        
+        4: { brand: "FRAIJOUR", sale: "฿220", old: "฿290", img: "4.jpg", fda: "10-2-6400022222", cert: "WORMWOOD CLEANSING FOAM.jpg",
+            th: { name: "Original Herb Wormwood Cleansing Foam", desc: "โฟมล้างหน้าสมุนไพร ทำความสะอาดสิ่งสกปรกล้ำลึกถึงรูขุมขน", use: "ใช้ล้างหน้าเป็นประจำเช้า-เย็น", reviews: ["ฟองนุ่ม ล้างแล้วหน้าไม่แห้ง - Anonymous", "กลิ่นหอมสมุนไพรผ่อนคลาย - User_3321"] },
+            en: { name: "Original Herb Wormwood Cleansing Foam", desc: "Deep cleansing foam with herbal extracts.", use: "Lather with water and wash face." },
+            kr: { name: "오리지널 허브 웜우드 클렌징 폼", desc: "모공 속 노폐물까지 깨끗하게 세정해주는 허브 폼.", use: "거품을 내어 세안 후 헹구세요." } },
+        
+        5: { brand: "FRAIJOUR", sale: "฿59", old: "฿89", img: "5.jpg", fda: "10-2-6400033333", cert: "WORMWOOD SHEET MASK.jpg",
+            th: { name: "Original Herb Wormwood Sheet Mask", desc: "มาส์กแผ่นบำรุงผิวเข้มข้น ปลอบประโลมผิวแบบเร่งด่วน", use: "มาส์กทิ้งไว้ 15-20 นาทีแล้วดึงออก", reviews: ["มาส์กแล้วหน้าสดใสมาก - Anonymous", "แผ่นมาส์กนุ่ม ชุ่มชื้นดี - R***i"] },
+            en: { name: "Original Herb Wormwood Sheet Mask", desc: "Soothing sheet mask for instant skin recovery.", use: "Apply for 15-20 minutes." },
+            kr: { name: "오리지널 허브 웜우드 시트 마스크", desc: "민감한 피부를 즉각적으로 진정시키는 시트 마스크.", use: "15-20분 동안 부착 후 떼어내세요." } },
 
-        4: { brand: "FRAIJOUR", sale: "฿190", old: "฿250", img: "4.jpg", fda: "10-2-6400022222", cert: "cert4.jpg",
-            th: { name: "Pro Moisture Enzyme Powder Wash", desc: "ผงล้างหน้าเอนไซม์ปาปาย่า ผลัดเซลล์ผิวอย่างอ่อนโยนที่สุด ให้ผิวนุ่ม", use: "ผสมน้ำตีฟองแล้วล้างหน้า", reviews: ["หน้าไม่ลอกอีกเลยตั้งแต่ใช้ตัวนี้ - User_3321", "ฟองนุ่มมาก หน้านิ่มจริงๆ - Anonymous", "พกพาสะดวกเวลาเดินทาง - S***a"] },
-            en: { name: "Enzyme Powder Wash", desc: "Gentle papaya enzyme exfoliant for soft skin.", use: "Mix with water and wash." },
-            kr: { name: "프로 모이스처 엔자임 파우더 워시", desc: "파파인 효소가 각질을 부드럽게 관리해주는 파우더.", use: "물과 섞어 거품을 내어 세안하세요." } },
-        5: { brand: "FRAIJOUR", sale: "฿420", old: "฿550", img: "5.jpg", fda: "10-2-6400033333", cert: "cert5.jpg",
-            th: { name: "Retin-Collagen 3D Core Cream", desc: "ครีมยกกระชับด้วยเรตินอล 7 ชนิดและคอลลาเจน เพื่อผิวอ่อนเยาว์และยืดหยุ่น", use: "ทาบำรุงใบหน้าและลำคอเช้า-เย็น", reviews: ["หน้าตึงกระชับขึ้น ริ้วรอยดูตื้นลง - User_1150", "ไม่ระคายเคืองเหมือนแบรนด์อื่น - Anonymous", "หน้าดูอิ่มฟูขึ้นมากค่ะ - R***i"] },
-            en: { name: "Retin-Collagen Cream", desc: "Firming cream with 7 types of Retinol.", use: "Apply to face and neck." },
-            kr: { name: "레틴콜라겐 3D 코어 크림", desc: "7가지 레티놀과 콜라겐으로 탄력을 주는 크림.", use: "얼굴과 목에 골고루 발라주세요." } },
-        6: { brand: "FRAIJOUR", sale: "฿380", old: "฿490", img: "6.jpg", fda: "10-2-6400044444", cert: "cert6.jpg",
-            th: { name: "Biome Collagen Gel Cleanser", desc: "เจลล้างหน้าสูตร Probiotic ปรับสมดุลผิวและเติมคอลลาเจนให้ผิวเด้ง", use: "ใช้ล้างหน้าเป็นประจำเช้า-เย็น", reviews: ["หน้านุ่มชุ่มชื้นหลังล้าง สิวไม่ขึ้น - Anonymous", "ผิวแข็งแรงขึ้น ไม่แพ้ง่าย - User_7721", "กลิ่นหอมสะอาดสดชื่น - M***o"] },
-            en: { name: "Biome Collagen Gel Cleanser", desc: "Microbiome balancing cleanser for elastic skin.", use: "Daily morning and night." },
-            kr: { name: "바이옴 콜라겐 젤 클렌저", desc: "유산균 성분이 피부 밸런스를 맞춰주는 세안제.", use: "아침저녁 세안 시 사용하세요." } },
-        7: { brand: "FRAIJOUR", sale: "฿320", old: "฿420", img: "7.jpg", fda: "10-2-6400055555", cert: "cert7.jpg",
-            th: { name: "Heartleaf Blemish Toner", desc: "โทนเนอร์สารสกัดฮาร์ทลีฟ ลดการอักเสบของสิวและรอยแดง คุมมัน", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["สิวอักเสบยุบไวมาก - Anonymous", "ลดรอยแดงได้ดีจริงๆ ค่ะ - P***r", "สิวผดที่หน้าผากหายเกลี้ยง - User_2240"] },
+        // กลุ่ม Heartleaf
+        6: { brand: "FRAIJOUR", sale: "฿320", old: "฿420", img: "6.jpg", fda: "10-2-6400044444", cert: "HEARTLEAF TONER.jpg",
+            th: { name: "Heartleaf Blemish Toner", desc: "โทนเนอร์สารสกัดฮาร์ทลีฟ ลดสิวและรอยแดง คุมความมันส่วนเกิน", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["สิวอักเสบยุบไวมาก - Anonymous", "เหมาะกับคนผิวมันเป็นสิว - User_7721"] },
             en: { name: "Heartleaf Blemish Toner", desc: "Soothing toner for acne-prone skin.", use: "Wipe after cleansing." },
-            kr: { name: "하트리프 블레미쉬 토너", desc: "어성초 추출물이 트러블을 진정시켜주는 토너.", use: "세안 후 피부를 닦아내세요." } },
-        8: { brand: "FRAIJOUR", sale: "฿270", old: "฿350", img: "8.jpg", fda: "10-2-6400066666", cert: "cert8.jpg",
-            th: { name: "Yuzu Honey All-In-One Cream", desc: "ครีมบำรุงส้มยูซุและน้ำผึ้ง เพื่อผิวกระจ่างใสและชุ่มชื้นแบบสุขภาพดี", use: "ทาบำรุงผิวหน้าเป็นประจำเช้า-เย็น", reviews: ["หน้าดูไบร์ทขึ้น กลิ่นหอมสดชื่น - User_4401", "จุดด่างดำจางลงเยอะมาก - Anonymous", "เนื้อครีมซึมไวสุดๆ - J***e"] },
-            en: { name: "Yuzu Honey Cream", desc: "Brightening cream with Yuzu and Honey.", use: "Apply daily." },
-            kr: { name: "유자 허니 올인원 크림", desc: "유자와 꿀이 비타민과 영양을 공급하는 크림.", use: "얼굴에 부드럽게 발라주세요." } },
-        9: { brand: "FRAIJOUR", sale: "฿450", old: "฿590", img: "9.jpg", fda: "10-2-6400077777", cert: "cert9.jpg",
-            th: { name: "Retin-Collagen Ampoule", desc: "แอมพูลเข้มข้นสูงสุดเพื่อการฟื้นฟูริ้วรอยลึกระดับเซลล์ ให้หน้าแน่น", use: "ทาบำรุงก่อนลงครีม", reviews: ["หน้าแน่นขึ้น รูขุมขนกระชับ - Anonymous", "เห็นผลไวเรื่องร่องแก้ม - User_5590", "หน้าดูอิ่มน้ำ สุขภาพดี - T***y"] },
-            en: { name: "Retin-Collagen Ampoule", desc: "Deep wrinkle repair ampoule.", use: "Apply before cream." },
-            kr: { name: "레틴콜라겐 3D 코어 앰플", desc: "주름과 탄력을 입체적으로 케어하는 앰플.", use: "크림 사용 전 단계에서 사용하세요." } },
-        10: { brand: "FRAIJOUR", sale: "฿280", old: "฿380", img: "10.jpg", fda: "10-2-6400088888", cert: "cert10.jpg",
-            th: { name: "Wormwood Calming Sun Cream", desc: "กันแดด SPF50+ ปลอบประโลมผิวจากความร้อน ไม่เหนอะหนะ", use: "ทาหน้าก่อนออกแดด 15-30 นาที", reviews: ["เบาสบายผิว ไม่เยิ้มเลย - Anonymous", "หน้าไม่วอก แต่งหน้าต่อง่าย - User_6610", "อ่อนโยน ไม่แสบตา - G***f"] },
-            en: { name: "Wormwood Sun Cream", desc: "SPF50+ sunscreen that protects and soothes.", use: "Apply 15 mins before sun." },
-            kr: { name: "웜우드 카밍 선크림", desc: "자외선 차단과 피부 진정을 돕는 선크림.", use: "외출 15분 전 발라주세요." } },
-        11: { brand: "FRAIJOUR", sale: "฿310", old: "฿410", img: "11.jpg", fda: "10-2-6400099999", cert: "cert11.jpg",
-            th: { name: "Wormwood Peeling Gel", desc: "เจลผลัดเซลล์ผิวสมุนไพร ขจัดสิ่งสกปรกให้หน้าเนียนนุ่มทันที", use: "นวดบนหน้าแห้งแล้วล้างออก", reviews: ["ขี้ไคลหลุดเยอะ หน้าลื่นมาก - User_0088", "หน้าใสขึ้นหลังใช้ทันที - Anonymous", "ไม่แสบหน้าเลย อ่อนโยน - B***n"] },
-            en: { name: "Wormwood Peeling Gel", desc: "Gentle gommage gel for smooth skin.", use: "Massage on dry face." },
-            kr: { name: "허브 웜우드 필링 젤", desc: "자극 없이 각질을 정돈해주는 필링 젤.", use: "마른 얼굴에 마사지 후 헹구세요." } },
-        12: { brand: "FRAIJOUR", sale: "฿240", old: "฿320", img: "12.jpg", fda: "10-2-6400000001", cert: "cert12.jpg",
-            th: { name: "Pro Moisture Creamy Toner", desc: "โทนเนอร์เนื้อน้ำนมเข้มข้น เติมความชุ่มชื้นสำหรับผิวแห้งขาดน้ำ", use: "ตบเบาๆ ทั่วใบหน้าหลังล้างหน้า", reviews: ["เนื้อเข้มข้น ผิวอิ่มน้ำมาก - User_1234", "หน้าฉ่ำวาวทั้งวัน ชอบมาก - Anonymous", "ผิวแห้งลอกหายไปเลย - C***i"] },
-            en: { name: "Pro Moisture Creamy Toner", desc: "Milky moisturizing toner with Ceramide.", use: "Pat gently onto face." },
-            kr: { name: "프로 모이스처 크리미 토너", desc: "세라마이드 성분이 보습을 채워주는 토너.", use: "세안 후 두드려 흡수시키세요." } },
-        13: { brand: "FRAIJOUR", sale: "฿390", old: "฿490", img: "13.jpg", fda: "10-2-6400000002", cert: "cert13.jpg",
-            th: { name: "Biome Collagen Eye Cream", desc: "ครีมรอบดวงตา ลดรอยคล้ำและริ้วรอยด้วยคอลลาเจนเข้มข้น", use: "ทาบางๆ รอบดวงตาเช้า-เย็น", reviews: ["ใต้ตาดูสว่างขึ้น รอยจางลง - Anonymous", "ไม่เกิดเม็ดข้าวสาร อ่อนโยน - User_8877", "ตื่นมาแล้วตาไม่บวม - S***m"] },
-            en: { name: "Biome Eye Cream", desc: "Lifting eye cream for dark circles.", use: "Gently tap around eyes." },
-            kr: { name: "바이옴 콜า겐 아이크림", desc: "눈가 탄력을 케어하는 고보습 아이크림.", use: "눈가에 톡톡 두드려 발라주세요." } },
-        14: { brand: "FRAIJOUR", sale: "฿260", old: "฿340", img: "14.jpg", fda: "10-2-6400000003", cert: "cert14.jpg",
-            th: { name: "Yuzu Honey Lip Balm", desc: "ลิปบาล์มบำรุงปากนุ่ม แก้ปากคล้ำและแห้งแตกให้ดูสุขภาพดี", use: "ทาริมฝีปากได้บ่อยตามต้องการ", reviews: ["ปากนุ่มขึ้น กลิ่นหอมสดชื่น - User_4432", "ปากไม่เคยลอกอีกเลย - Anonymous", "ตื่นมาปากอมชมพูมาก - L***y"] },
-            en: { name: "Yuzu Honey Lip Balm", desc: "Repairing lip balm with Yuzu and Honey.", use: "Apply to lips as needed." },
-            kr: { name: "유자 허니 립밤", desc: "건조한 입술을 촉촉하게 가꿔주는 립밤.", use: "건조할 때마다 수시로 바르세요." } },
-        15: { brand: "FRAIJOUR", sale: "฿330", old: "฿430", img: "15.jpg", fda: "10-2-6400000004", cert: "cert15.jpg",
-            th: { name: "Heartleaf Blemish Gel Cream", desc: "เจลบำรุงคุมมัน ลดสิวอักเสบ เนื้อเย็นสบายผิว ไม่เหนอะหนะ", use: "ทาบำรุงหน้าเป็นประจำเช้า-เย็น", reviews: ["เนื้อเจลเย็นสบาย สิวแห้งไว - Anonymous", "คุมมันระหว่างวันได้ดีมาก - User_9912", "สิวอุดตันลดลงเยอะ - R***n"] },
-            en: { name: "Heartleaf Gel Cream", desc: "Cooling gel cream for acne-prone skin.", use: "Apply morning and night." },
-            kr: { name: "하트리프 블레미쉬 젤 크림", desc: "피지를 조절하고 진정을 돕는 산뜻한 젤 크림.", use: "기초 마지막 단계에서 사용하세요." } }
+            kr: { name: "하트리프 블레미쉬 토너", desc: "어성초 성분이 트러블을 진정시켜주는 토너.", use: "세안 후 피부를 닦아내세요." } },
+        
+        7: { brand: "FRAIJOUR", sale: "฿350", old: "฿450", img: "7.jpg", fda: "10-2-6400055555", cert: "HEARTLEAF MOISTUR CREAM.jpg",
+            th: { name: "Heartleaf Moisturizing Cream", desc: "ครีมบำรุงสำหรับผิวเป็นสิว ช่วยเติมความชุ่มชื้นและลดความระคายเคือง", use: "ทาบำรุงผิวหน้าเช้า-เย็น", reviews: ["เนื้อครีมไม่อุดตัน - Anonymous", "ใช้คู่กับโทนเนอร์คือดีมาก - P***r"] },
+            en: { name: "Heartleaf Moisturizing Cream", desc: "Calming moisturizer for troubled skin.", use: "Apply to face morning and night." },
+            kr: { name: "하트리프 모이스처 크림", desc: "트러블 피부에 수분을 공급하고 진정시키는 크림.", use: "얼굴에 부드럽게 발라주세요." } },
+        
+        8: { brand: "FRAIJOUR", sale: "฿390", old: "฿490", img: "8.jpg", fda: "10-2-6400066666", cert: "HEARTLEAF WATER FIT.jpg",
+            th: { name: "Heartleaf Water Fit Sunscreen", desc: "กันแดดเนื้อน้ำ บางเบาสบายผิว ปกป้องสูงสุดพร้อมบำรุง", use: "ทาทั่วใบหน้าก่อนออกแดด", reviews: ["ไม่วอก ไม่ลอย ซึมไว - Anonymous", "กันแดดได้ดี หน้าไม่มัน - User_4401"] },
+            en: { name: "Heartleaf Water Fit Sunscreen", desc: "Water-based sunscreen with SPF50+ protection.", use: "Apply before sun exposure." },
+            kr: { name: "하트리프 워터 핏 선크림", desc: "수분 가득한 제형으로 가볍게 밀착되는 선크림.", use: "외출 전 피부에 펴 발라주세요." } },
+        
+        9: { brand: "FRAIJOUR", sale: "฿390", old: "฿490", img: "9.jpg", fda: "10-2-6400077777", cert: "HEARTLEAF AIRY FIT.jpg",
+            th: { name: "Heartleaf Airy Fit Sunscreen", desc: "กันแดดเนื้อแอร์รี่ เบาเหมือนอากาศ ให้ลุคแมตต์คุมมัน", use: "ทาทั่วใบหน้าก่อนออกแดด", reviews: ["เบาเหมือนไม่ได้ทา - Anonymous", "คุมมันระหว่างวันได้ดี - User_5590"] },
+            en: { name: "Heartleaf Airy Fit Sunscreen", desc: "Airy-light sunscreen for a matte finish.", use: "Apply before sun exposure." },
+            kr: { name: "하트리프 에어리 핏 선크림", desc: "공기처럼 가볍고 보송하게 마무리되는 선크림.", use: "외출 전 골고루 발라주세요." } },
+
+        // กลุ่ม RETIN COLLAGEN
+        10: { brand: "FRAIJOUR", sale: "฿380", old: "฿480", img: "10.jpg", fda: "10-2-6400088888", cert: "RETIN TONER.jpg",
+            th: { name: "Retin Collagen 3D Core Toner", desc: "โทนเนอร์ยกกระชับผิว เติมคอลลาเจนให้ผิวดูอิ่มฟู", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["หน้าดูเนียนกระชับขึ้น - Anonymous", "เตรียมผิวได้ดีมาก - User_6610"] },
+            en: { name: "Retin Collagen 3D Core Toner", desc: "Firming toner with Collagen to plum skin.", use: "Wipe after cleansing." },
+            kr: { name: "레틴콜라겐 3D 코어 토너", desc: "피부 탄력을 높이고 영양을 채워주는 토너.", use: "세안 후 화장솜으로 닦아내세요." } },
+        
+        11: { brand: "FRAIJOUR", sale: "฿420", old: "฿550", img: "11.jpg", fda: "10-2-6400099999", cert: "RETIN CREAM.jpg",
+            th: { name: "Retin Collagen 3D Core Cream", desc: "ครีมลดเลือนริ้วรอยเข้มข้น ช่วยให้ผิวยืดหยุ่นและอ่อนเยาว์", use: "ทาบำรุงผิวหน้าและลำคอ", reviews: ["ร่องแก้มดูจางลง - Anonymous", "เนื้อครีมเข้มข้นแต่ไม่หนัก - User_0088"] },
+            en: { name: "Retin Collagen 3D Core Cream", desc: "Intensive anti-wrinkle cream for elastic skin.", use: "Apply to face and neck." },
+            kr: { name: "레틴콜라겐 3D 코어 크림", desc: "주름 개선과 탄력 강화에 도움을 주는 크림.", use: "얼굴과 목에 고루 펴 발라주세요." } },
+        
+        12: { brand: "FRAIJOUR", sale: "฿390", old: "฿490", img: "12.jpg", fda: "10-2-6400000001", cert: "RETIN EYE CREAM.jpg",
+            th: { name: "Retin Collagen 3D Core Eye Cream", desc: "ครีมบำรุงรอบดวงตา ลดรอยคล้ำและถุงใต้ตา", use: "ทาบางๆ รอบดวงตาเช้า-เย็น", reviews: ["ใต้ตาดูสว่างขึ้น - Anonymous", "ชุ่มชื้นดีมาก ไม่แสบตา - User_1234"] },
+            en: { name: "Retin Collagen 3D Core Eye Cream", desc: "Targeted eye cream for dark circles and wrinkles.", use: "Tap gently around the eyes." },
+            kr: { name: "레틴콜라겐 3D 코어 아이크림", desc: "눈가 주름과 다크서클을 관리해주는 아이크림.", use: "눈가에 톡톡 두드려 흡수시키세요." } },
+        
+        13: { brand: "FRAIJOUR", sale: "฿260", old: "฿350", img: "13.jpg", fda: "10-2-6400000002", cert: "RETIN LIP OIL.jpg",
+            th: { name: "Retin Collagen 3D Core Lip Oil", desc: "ลิปออยล์บำรุงริมฝีปาก แก้ปากคล้ำและเติมความอวบอิ่ม", use: "ทาริมฝีปากได้บ่อยตามต้องการ", reviews: ["ปากดูสุขภาพดีมาก - Anonymous", "ไม่เหนียวเกินไป - User_8877"] },
+            en: { name: "Retin Collagen 3D Core Lip Oil", desc: "Nourishing lip oil for plump and healthy lips.", use: "Apply to lips as needed." },
+            kr: { name: "레틴콜라겐 3D 코어 립 오일", desc: "입술에 생기와 보습을 주는 립 오일.", use: "건조할 때마다 발라주세요." } },
+
+        // อื่น ๆ
+        14: { brand: "CHAR CHAR", sale: "฿290", old: "฿390", img: "14.jpg", fda: "10-2-6400000003", cert: "MUNGBEAN FOAM.jpg",
+            th: { name: "Char Char Mungbean Foam", desc: "โฟมล้างหน้าถั่วเขียว ทำความสะอาดล้ำลึกและช่วยให้ผิวสว่างใส", use: "ใช้ล้างหน้าเป็นประจำเช้า-เย็น", reviews: ["หน้าใสขึ้นหลังล้าง - Anonymous", "ล้างสะอาดเกลี้ยงมาก - User_4432"] },
+            en: { name: "Char Char Mungbean Foam", desc: "Deep cleansing foam with Mungbean extract.", use: "Wash face daily." },
+            kr: { name: "챠챠 녹두 폼클렌징", desc: "녹두 성분이 노폐물을 깨끗이 지워주는 폼.", use: "세안 시 거품을 내어 사용하세요." } },
+        
+        15: { brand: "BATHPA", sale: "฿350", old: "฿450", img: "15.jpg", fda: "10-2-6400000004", cert: "BODY TONE UP.jpg",
+            th: { name: "Bathpa Body Tone Up", desc: "โลชั่นปรับสีผิวผิวกายให้สว่างใสขึ้นทันทีอย่างเป็นธรรมชาติ", use: "ทาบำรุงผิวกาย", reviews: ["ขาวขึ้นแบบไม่โป๊ะ - Anonymous", "เกลี่ยง่ายไม่ติดขน - User_9912"] },
+            en: { name: "Bathpa Body Tone Up", desc: "Instant brightening body lotion.", use: "Apply to the body." },
+            kr: { name: "바스파 바디 톤업", desc: "피부 톤을 즉각적으로 밝혀주는 바디 로션.", use: "몸 전체에 골고루 펴 발라주세요." } }
     };
+
 
     let lang = localStorage.getItem('selectedLang') || 'th';
     const id = new URLSearchParams(window.location.search).get('id') || 1;
