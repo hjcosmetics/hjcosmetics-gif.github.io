@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HJ COSMETICS - Luxury Selection</title>
+    <title>Product Details - HJ COSMETICS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@300;400;500;600&family=Inter:wght@400;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
@@ -12,6 +12,7 @@
             --p-green: #1b4332; 
             --gold: #c5a059;
             --off-white: #fdfaf5;
+            --border-color: #e0e0e0;
             --font-th: 'Prompt', sans-serif;
             --font-en: 'Inter', sans-serif;
             --font-head: 'Cinzel', serif;
@@ -26,73 +27,66 @@
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.4) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; }
 
         /* Navigation (Fixed English) */
-        nav { background: rgba(255, 255, 255, 0.9); height: 100px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(5px); box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
-        .logo-nav img { height: 55px; }
+        nav { background: rgba(255, 255, 255, 0.95); height: 90px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .logo-nav img { height: 50px; }
         .nav-links { display: flex; gap: 40px; }
         .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-en); transition: 0.3s; }
         .nav-links a:hover { color: var(--gold); }
-        .lang-btn { background: var(--p-green); color: white; border: none; padding: 10px 20px; cursor: pointer; font-weight: 700; font-size: 0.7rem; font-family: var(--font-en); border-radius: 2px; }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 18px; cursor: pointer; font-weight: 700; font-size: 0.7rem; font-family: var(--font-en); border-radius: 2px; }
 
         /* Balanced Layout */
-        .container { max-width: 1200px; margin: 40px auto 80px; padding: 0 5%; display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+        .container { max-width: 1300px; margin: 50px auto 100px; padding: 0 5%; display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: start; }
         
-        /* Image Balance Control */
+        /* Enlarged Product Image */
         .img-display { 
             background: #fff; 
-            padding: 20px; 
-            border-radius: 25px; 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.04); 
+            padding: 15px; 
+            border-radius: 20px; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.06); 
             position: sticky; 
-            top: 140px;
+            top: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
-            aspect-ratio: 1 / 1; /* บังคับให้เป็นจัตุรัสเพื่อให้บาลานซ์ */
+            aspect-ratio: 4 / 5;
             overflow: hidden;
         }
-        .img-display img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            object-fit: contain; /* รูปจะไม่ถูกตัดและจะอยู่กึ่งกลางเสมอ */
-            border-radius: 10px; 
-        }
-        
-        /* Product Info */
-        .brand-label { color: var(--gold); letter-spacing: 4px; font-weight: 700; font-family: var(--font-head); margin: 0; font-size: 1rem; }
-        h1 { font-family: var(--font-head); font-size: 2.2rem; color: var(--p-green); margin: 15px 0 25px; line-height: 1.2; }
-        .price-tag { font-size: 2.8rem; font-weight: 700; color: var(--p-green); margin-bottom: 30px; font-family: var(--font-en); }
-        .price-tag .old { font-size: 1.4rem; color: #ccc; text-decoration: line-through; margin-left: 15px; font-weight: 300; }
+        .img-display img { width: 100%; height: 100%; object-fit: contain; }
 
-        /* 🎖️ License Box */
-        .license-box { background: rgba(197, 160, 89, 0.08); border: 1px dashed var(--gold); padding: 20px; border-radius: 15px; margin-bottom: 35px; display: flex; align-items: center; gap: 18px; }
-        .license-box i { color: var(--gold); font-size: 1.5rem; }
-        .license-content h4 { margin: 0; font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; font-family: var(--font-en); }
-        .license-content p { margin: 5px 0 8px; font-weight: 700; color: var(--p-green); font-size: 1.1rem; font-family: var(--font-en); }
-        
-        .btn-cert { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: white; text-decoration: none; padding: 6px 14px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; transition: 0.3s; font-family: var(--font-en); }
-        .btn-cert:hover { background: var(--p-green); }
+        /* Product Info */
+        .brand-label { color: var(--gold); letter-spacing: 5px; font-weight: 700; font-family: var(--font-head); margin: 0; font-size: 0.9rem; }
+        h1 { font-family: var(--font-head); font-size: 2.5rem; color: var(--p-green); margin: 15px 0 20px; line-height: 1.1; }
+        .price-tag { font-size: 2.8rem; font-weight: 700; color: var(--p-green); margin-bottom: 30px; font-family: var(--font-en); display: flex; align-items: baseline; gap: 15px; }
+        .price-tag .old { font-size: 1.3rem; color: #b2bec3; text-decoration: line-through; font-weight: 300; }
+
+        /* Subtle License Section */
+        .license-box { border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 15px 0; margin-bottom: 35px; display: flex; align-items: center; gap: 15px; }
+        .license-box i { color: #b2bec3; font-size: 1.1rem; }
+        .license-content { display: flex; align-items: center; gap: 20px; width: 100%; justify-content: space-between; }
+        .license-text-group h4 { margin: 0; font-size: 0.6rem; color: #95a5a6; text-transform: uppercase; letter-spacing: 1px; font-family: var(--font-en); }
+        .license-text-group p { margin: 2px 0 0; font-weight: 600; color: #636e72; font-size: 0.9rem; font-family: var(--font-en); }
+        .btn-cert { color: var(--gold); text-decoration: underline; font-size: 0.65rem; font-weight: 700; font-family: var(--font-en); text-transform: uppercase; }
 
         /* Detail Sections */
-        .desc-section { border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 30px 0; }
-        .desc-section h3 { font-family: var(--font-head); color: var(--gold); font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 2px; }
-        .desc-section p { font-size: 1rem; color: #444; line-height: 1.8; margin: 0; white-space: pre-line; }
+        .desc-section { padding-bottom: 30px; }
+        .desc-section h3 { font-family: var(--font-head); color: var(--p-green); font-size: 0.85rem; margin-bottom: 12px; letter-spacing: 2px; opacity: 0.8; }
+        .desc-section p { font-size: 0.95rem; color: #555; line-height: 1.7; margin: 0; white-space: pre-line; }
 
-        /* Buttons */
-        .btn-main { display: flex; align-items: center; justify-content: center; gap: 12px; background: var(--p-green); color: white; padding: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 15px; transition: 0.3s; font-family: var(--font-en); }
+        /* Purchase Buttons */
+        .btn-main { display: flex; align-items: center; justify-content: center; gap: 12px; background: var(--p-green); color: white; padding: 18px; text-decoration: none; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 12px; font-family: var(--font-en); transition: 0.3s; }
         .btn-main:hover { background: var(--gold); }
         .market-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-        .btn-m { padding: 15px; text-align: center; text-decoration: none; color: white; font-size: 0.75rem; font-weight: 700; font-family: var(--font-en); }
+        .btn-m { padding: 14px; text-align: center; text-decoration: none; color: white; font-size: 0.7rem; font-weight: 700; font-family: var(--font-en); }
         .shopee { background: #ee4d2d; } .lazada { background: #10156d; } .tiktok { background: #000; }
 
-        footer { background: #111; color: #fff; padding: 80px 8% 40px; margin-top: auto; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .f-col h4 { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 25px; border-left: 2px solid var(--gold); padding-left: 15px; font-family: var(--font-en); }
-        .f-col p { color: #888; font-size: 0.85rem; line-height: 1.8; }
+        /* Footer (Match Index) */
+        footer { background: #1a1a1a; color: #ffffff; padding: 70px 8% 30px; font-family: var(--font-th); }
+        .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .f-col h4 { color: var(--gold); font-family: var(--font-head); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 25px; }
+        .f-col p, .f-col a { color: #bdc3c7; font-size: 0.85rem; line-height: 1.8; text-decoration: none; margin-bottom: 10px; display: block; }
+        .f-bottom { border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; padding-top: 25px; text-align: center; font-size: 0.7rem; color: #7f8c8d; }
 
-        @media (max-width: 850px) {
-            .container { grid-template-columns: 1fr; }
-            .img-display { position: static; aspect-ratio: auto; padding: 40px; }
-        }
+        @media (max-width: 900px) { .container { grid-template-columns: 1fr; } .img-display { position: static; aspect-ratio: 1/1; } }
     </style>
 </head>
 <body>
@@ -101,7 +95,7 @@
 <div class="bg-overlay"></div>
 
 <nav>
-    <div class="logo-nav"><a href="index.html"><img src="HJ (5).png" alt="Logo"></a></div>
+    <div class="logo-nav"><a href="index.html"><img src="HJ (5).png"></a></div>
     <div class="nav-links">
         <a href="index.html">HOME</a>
         <a href="about.html">ABOUT</a>
@@ -111,44 +105,25 @@
 </nav>
 
 <div class="container">
-    <div class="img-display">
-        <img id="p-img" src="" alt="Product">
-    </div>
-
+    <div class="img-display"><img id="p-img" src="" alt="Product"></div>
     <div class="info-box">
         <p class="brand-label" id="p-brand"></p>
         <h1 id="p-name"></h1>
-        
-        <div class="price-tag">
-            <span id="p-sale"></span>
-            <span class="old" id="p-old"></span>
-        </div>
+        <div class="price-tag"><span id="p-sale"></span> <span class="old" id="p-old"></span></div>
 
         <div class="license-box">
-            <i class="fas fa-shield-check"></i>
+            <i class="fas fa-certificate"></i>
             <div class="license-content">
-                <h4>FDA REGISTERED NO.</h4>
-                <p id="p-fda"></p>
-                <a href="#" id="p-cert-link" target="_blank" class="btn-cert">
-                    <i class="fas fa-file-invoice"></i> <span id="lbl-view-cert">VIEW CERTIFICATE</span>
-                </a>
+                <div class="license-text-group"><h4>AUTHENTICITY & SAFETY</h4><p id="p-fda"></p></div>
+                <a href="#" id="p-cert-link" target="_blank" class="btn-cert">CERTIFICATE <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
         
-        <div class="desc-section">
-            <h3>PRODUCT DETAILS</h3>
-            <p id="p-desc"></p>
-        </div>
-        
-        <div class="desc-section">
-            <h3>HOW TO USE</h3>
-            <p id="p-use"></p>
-        </div>
+        <div class="desc-section"><h3>PRODUCT DETAILS</h3><p id="p-desc"></p></div>
+        <div class="desc-section"><h3>HOW TO USE</h3><p id="p-use"></p></div>
 
         <div class="purchase-group">
-            <a href="https://line.me/ti/p/9wSfM2gkuA" target="_blank" class="btn-main">
-                <i class="fab fa-line"></i> ORDER VIA LINE
-            </a>
+            <a href="https://line.me/ti/p/9wSfM2gkuA" target="_blank" class="btn-main"><i class="fab fa-line"></i> ORDER VIA LINE</a>
             <div class="market-grid">
                 <a href="https://shopee.co.th/hj_cosmetics" class="btn-m shopee">SHOPEE</a>
                 <a href="https://www.lazada.co.th/shop/hj-cosmetics/" class="btn-m lazada">LAZADA</a>
@@ -160,36 +135,84 @@
 
 <footer>
     <div class="f-grid">
-        <div class="f-col"><h2 style="color:var(--gold); font-family:var(--font-head);">HJ COSMETICS</h2><p>Premium Korean beauty curator delivering excellence to your skin.</p></div>
-        <div class="f-col"><h4>LOCATION</h4><p>Sriracha, Chon Buri 20230</p></div>
-        <div class="f-col"><h4>CONTACT</h4><p>03-8182-577</p></div>
-        <div class="f-col"><h4>HOURS</h4><p>Mon - Sat</p></div>
+        <div class="f-col"><h4>HJ COSMETICS</h4><p>Premium Korean beauty curator delivering excellence to your skin.</p></div>
+        <div class="f-col"><h4>QUICK LINKS</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></div>
+        <div class="f-col"><h4>CONTACT</h4><p>03-8182-577</p><p>thaihjglobal@gmail.com</p></div>
+        <div class="f-col"><h4>LOCATION</h4><p>323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230</p></div>
     </div>
+    <div class="f-bottom">&copy; 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
     const products = {
-        1: { brand: "Fraijour", sale: "฿250", old: "฿369", img: "1.jpg.png", fda: "10-2-6300028245", cert: "cert1.jpg",
-             th: { name: "วอร์มวูด คาล์มมิ่ง วอเตอรี่ ครีม", desc: "ปลอบประโลมผิวอย่างล้ำลึกด้วยสารสกัดจากมักเวิร์ตเข้มข้น ช่วยเติมความชุ่มชื้นและลดรอยแดง", use: "ใช้บำรุงผิวหน้าเป็นประจำเช้า-เย็น" },
-             en: { name: "Wormwood Calming Watery Cream", desc: "Soothes skin with concentrated Mugwort extract. Hydrates and calms irritation.", use: "Apply morning and night after toner." },
-             kr: { name: "웜우드 카밍 워터리 크림", desc: "고농축 쑥 추출물로 피부 진정과 수분을 공급하는 크림.", use: "기초 마지막 단계에서 부드럽게 발รา줍니다." }
-        },
-        2: { brand: "Fraijour", sale: "฿350", old: "฿459", img: "2.jpeg", fda: "10-2-6300028246", cert: "cert2.jpg",
-             th: { name: "วอร์มวูด คาล์มมิ่ง โทนเนอร์", desc: "โทนเนอร์ช่วยปรับสมดุลและผลัดเซลล์ผิวอย่างอ่อนโยน", use: "เช็ดทั่วใบหน้าด้วยสำลีหลังล้างหน้า" },
-             en: { name: "Wormwood Calming Toner", desc: "Balances and gently exfoliates skin with herbal extracts.", use: "Wipe across face with cotton pad." },
-             kr: { name: "웜우드 카밍 토너", desc: "각질을 부드럽게 정돈하고 피부 결을 진정시키는 토너.", use: "세안 후 화장솜에 적셔 닦아줍니다." }
-        }
+        1: { brand: "FRAIJOUR", sale: "฿250", old: "฿369", img: "1.jpg.png", fda: "FDA: 10-2-6300028245", cert: "cert1.pdf",
+             th: { name: "Wormwood Calming Watery Cream", desc: "ปลอบประโลมผิวอย่างล้ำลึกด้วยสารสกัดจากมักเวิร์ตเข้มข้น", use: "ทาบำรุงเช้า-เย็น" },
+             en: { name: "Wormwood Calming Watery Cream", desc: "Soothing cream with Mugwort extract.", use: "Apply morning and night." },
+             kr: { name: "웜우드 카밍 워터리 크림", desc: "쑥 추출물 진정 크림.", use: "아침저녁으로 발라줍니다." } },
+        2: { brand: "FRAIJOUR", sale: "฿350", old: "฿459", img: "2.jpeg", fda: "FDA: 10-2-6300028246", cert: "cert2.pdf",
+             th: { name: "Wormwood Calming Toner", desc: "โทนเนอร์สมุนไพรปรับสมดุลผิว", use: "เช็ดผิวหลังล้างหน้า" },
+             en: { name: "Wormwood Calming Toner", desc: "Herbal toner for balance.", use: "Wipe after cleansing." },
+             kr: { name: "웜우드 카밍 토너", desc: "허브 토너.", use: "세안 후 닦아냅니다." } },
+        3: { brand: "FRAIJOUR", sale: "฿290", old: "฿390", img: "3.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert3.pdf",
+             th: { name: "Cleansing Oil", desc: "ล้างเมคอัพสะอาดหมดจด", use: "นวดบนผิวแห้งแล้วล้างออก" },
+             en: { name: "Cleansing Oil", desc: "Deep makeup removal.", use: "Massage and rinse." },
+             kr: { name: "클렌징 오일", desc: "딥 클렌징.", use: "마사지 후 헹굽니다." } },
+        4: { brand: "FRAIJOUR", sale: "฿190", old: "฿250", img: "4.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert4.pdf",
+             th: { name: "Powder Wash", desc: "ผงล้างหน้าผลัดเซลล์ผิว", use: "ผสมน้ำให้เกิดฟองแล้วล้างหน้า" },
+             en: { name: "Powder Wash", desc: "Enzyme exfoliation.", use: "Mix with water and wash." },
+             kr: { name: "파우더 워시", desc: "엔자임 각질 케어.", use: "거품 내어 세안합니다." } },
+        5: { brand: "FRAIJOUR", sale: "฿420", old: "฿550", img: "5.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert5.pdf",
+             th: { name: "Core Cream", desc: "ครีมยกกระชับเรตินอล", use: "ทาบำรุงเน้นจุดที่ต้องการ" },
+             en: { name: "Core Cream", desc: "Retinol lifting cream.", use: "Apply for firmness." },
+             kr: { name: "코어 크림", desc: "레티놀 탄력 크림.", use: "필요 부위에 발라줍니다." } },
+        6: { brand: "FRAIJOUR", sale: "฿380", old: "฿490", img: "6.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert6.pdf",
+             th: { name: "Gel Cleanser", desc: "เจลล้างหน้าสูตรอ่อนโยน", use: "ใช้ล้างหน้าเช้า-เย็น" },
+             en: { name: "Gel Cleanser", desc: "Gentle daily cleanser.", use: "Use daily wash." },
+             kr: { name: "젤 클렌저", desc: "저자극 클렌저.", use: "세안 시 사용합니다." } },
+        7: { brand: "FRAIJOUR", sale: "฿320", old: "฿420", img: "7.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert7.pdf",
+             th: { name: "Heartleaf Toner", desc: "ลดปัญหาสิวและรอยแดง", use: "เช็ดผิวหลังล้างหน้า" },
+             en: { name: "Heartleaf Toner", desc: "Acne and redness care.", use: "Wipe after wash." },
+             kr: { name: "하트리프 토너", desc: "트러블 진정 토너.", use: "세안 후 사용." } },
+        8: { brand: "FRAIJOUR", sale: "฿270", old: "฿350", img: "8.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert8.pdf",
+             th: { name: "Yuzu Honey Cream", desc: "ครีมบำรุงผิวหน้ากระจ่างใส", use: "ทาบำรุงเป็นประจำ" },
+             en: { name: "Yuzu Honey Cream", desc: "Brightening cream.", use: "Apply daily." },
+             kr: { name: "유자 허니 크림", desc: "미백 크림.", use: "골고루 발라줍니다." } },
+        9: { brand: "FRAIJOUR", sale: "฿450", old: "฿590", img: "9.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert9.pdf",
+             th: { name: "3D Core Ampoule", desc: "แอมพูลเข้มข้นลดริ้วรอย", use: "ทาก่อนลงครีม" },
+             en: { name: "3D Core Ampoule", desc: "Anti-wrinkle ampoule.", use: "Use before cream." },
+             kr: { name: "3D 코어 앰플", desc: "주름 개선 앰플.", use: "크림 전 사용." } },
+        10: { brand: "FRAIJOUR", sale: "฿280", old: "฿380", img: "10.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert10.pdf",
+              th: { name: "Sun Cream", desc: "กันแดดสูตรอ่อนโยน", use: "ทาก่อนออกแดด" },
+              en: { name: "Sun Cream", desc: "Gentle sun protection.", use: "Apply before sun." },
+              kr: { name: "선크림", desc: "순한 선크림.", use: "외출 전 사용." } },
+        11: { brand: "FRAIJOUR", sale: "฿310", old: "฿410", img: "11.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert11.pdf",
+              th: { name: "Peeling Gel", desc: "เจลผลัดเซลล์ผิวสมุนไพร", use: "นวดแล้วล้างออก" },
+              en: { name: "Peeling Gel", desc: "Herbal exfoliation.", use: "Massage and rinse." },
+              kr: { name: "필링 젤", desc: "허브 각질 제거.", use: "마사지 후 헹굼." } },
+        12: { brand: "FRAIJOUR", sale: "฿240", old: "฿320", img: "12.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert12.pdf",
+              th: { name: "Creamy Toner", desc: "โทนเนอร์เติมความชุ่มชื้น", use: "ตบเบาๆ บนผิวหน้า" },
+              en: { name: "Creamy Toner", desc: "Intense hydration.", use: "Pat on skin." },
+              kr: { name: "크리미 토너", desc: "고보습 토너.", use: "두드려 흡수." } },
+        13: { brand: "FRAIJOUR", sale: "฿390", old: "฿490", img: "13.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert13.pdf",
+              th: { name: "Eye Cream", desc: "บำรุงรอบดวงตาลดรอยคล้ำ", use: "ทาเบาๆ รอบดวงตา" },
+              en: { name: "Eye Cream", desc: "For dark circles.", use: "Apply around eyes." },
+              kr: { name: "아이크림", desc: "눈가 케어.", use: "눈가에 도포." } },
+        14: { brand: "FRAIJOUR", sale: "฿260", old: "฿340", img: "14.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert14.pdf",
+              th: { name: "Lip Balm", desc: "ลิปบาล์มริมฝีปากนุ่ม", use: "ทาบ่อยตามต้องการ" },
+              en: { name: "Lip Balm", desc: "Soft lips care.", use: "Apply as needed." },
+              kr: { name: "립밤", desc: "촉촉한 입술.", use: "수시로 사용." } },
+        15: { brand: "FRAIJOUR", sale: "฿330", old: "฿430", img: "15.jpg", fda: "FDA: 10-2-64000XXXXX", cert: "cert15.pdf",
+              th: { name: "Gel Cream", desc: "ลดการอักเสบของสิว", use: "ทาบำรุงทั่วใบหน้า" },
+              en: { name: "Gel Cream", desc: "Acne calming gel.", use: "Apply to face." },
+              kr: { name: "젤 크림", desc: "트러블 진정 젤.", use: "얼굴에 발라줍니다." } }
     };
 
     let lang = localStorage.getItem('selectedLang') || 'th';
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id') || 1;
+    const id = new URLSearchParams(window.location.search).get('id') || 1;
 
     function render() {
         const p = products[id] || products[1];
         const content = p[lang] || p['th'];
-
-        // Content Update
         document.getElementById('p-img').src = p.img;
         document.getElementById('p-brand').innerText = p.brand;
         document.getElementById('p-name').innerText = content.name;
@@ -199,14 +222,8 @@
         document.getElementById('p-cert-link').href = p.cert;
         document.getElementById('p-desc').innerText = content.desc;
         document.getElementById('p-use').innerText = content.use;
-
-        // Button Language Toggle
         document.getElementById('langBtn').innerText = lang.toUpperCase();
-
-        // Font Adjustment
-        const bodyFont = lang === 'th' ? 'var(--font-th)' : (lang === 'kr' ? 'var(--font-kr)' : 'var(--font-en)');
-        document.body.style.fontFamily = bodyFont;
-        document.getElementById('p-name').style.fontFamily = lang === 'kr' ? 'var(--font-kr)' : 'var(--font-head)';
+        document.body.style.fontFamily = lang === 'th' ? 'var(--font-th)' : (lang === 'kr' ? 'var(--font-kr)' : 'var(--font-en)');
     }
 
     function changeLang() {
@@ -215,7 +232,6 @@
         localStorage.setItem('selectedLang', lang);
         render();
     }
-
     render();
 </script>
 </body>
