@@ -13,58 +13,51 @@
             --font-th: 'Prompt', sans-serif; --font-en: 'Inter', sans-serif; --font-head: 'Cinzel', serif; --font-kr: 'Nanum Myeongjo', serif;
         }
 
-        /* 🛡️ Security & Prevention */
+        /* 🛡️ Security & Global UI */
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; -webkit-user-select: none; user-select: none; }
         img { -webkit-touch-callout: none; pointer-events: none; }
+        body { margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; min-height: 100vh; }
 
-        body { margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; display: flex; flex-direction: column; min-height: 100vh; }
-
-        /* Background Video */
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.3; }
-        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.4) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.5) 0%, rgba(253,250,245,0.9) 100%); z-index: -1; }
 
-        /* Nav */
-        nav { background: rgba(255, 255, 255, 0.95); height: 90px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .logo-nav img { height: 50px; pointer-events: auto; }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-en); pointer-events: auto; }
-        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 18px; cursor: pointer; font-weight: 700; font-size: 0.7rem; border-radius: 2px; pointer-events: auto; }
+        nav { background: rgba(255, 255, 255, 0.95); height: 80px; padding: 0 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .logo-nav img { height: 45px; pointer-events: auto; }
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-en); pointer-events: auto; }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-weight: 700; font-size: 0.7rem; border-radius: 2px; pointer-events: auto; }
 
-        /* Layout */
-        .container { max-width: 1200px; margin: 40px auto 100px; padding: 0 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-        .img-display { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); position: sticky; top: 130px; }
+        .container { max-width: 1200px; margin: 40px auto 80px; padding: 0 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .img-display { background: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); position: sticky; top: 110px; }
         .img-display img { width: 100%; height: auto; display: block; }
 
-        /* Info Style */
-        .brand-label { color: var(--gold); letter-spacing: 4px; font-weight: 700; font-family: var(--font-head); font-size: 0.8rem; margin: 0; }
-        h1 { font-family: var(--font-head); font-size: 2rem; color: var(--p-green); margin: 10px 0; line-height: 1.2; }
-        .price-tag { font-size: 2.5rem; font-weight: 700; color: var(--p-green); margin-bottom: 25px; font-family: var(--font-en); }
-        .price-tag .old { font-size: 1.2rem; color: #b2bec3; text-decoration: line-through; margin-left: 10px; font-weight: 300; }
+        .brand-label { color: var(--gold); letter-spacing: 4px; font-weight: 700; font-family: var(--font-head); font-size: 0.75rem; margin: 0; }
+        h1 { font-family: var(--font-head); font-size: 1.8rem; color: var(--p-green); margin: 10px 0; line-height: 1.2; }
+        .price-tag { font-size: 2.2rem; font-weight: 700; color: var(--p-green); margin-bottom: 20px; font-family: var(--font-en); }
+        .price-tag .old { font-size: 1.1rem; color: #b2bec3; text-decoration: line-through; margin-left: 10px; font-weight: 300; }
 
-        .license-box { border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 15px 0; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
-        .fda-text h4 { margin: 0; font-size: 0.6rem; color: #95a5a6; letter-spacing: 1px; }
-        .fda-text p { margin: 2px 0 0; font-weight: 600; font-size: 0.85rem; color: #636e72; }
-        .btn-cert { color: var(--gold); text-decoration: underline; font-size: 0.7rem; font-weight: 700; pointer-events: auto; }
+        .license-box { border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 15px 0; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
+        .fda-text h4 { margin: 0; font-size: 0.55rem; color: #95a5a6; letter-spacing: 1px; }
+        .fda-text p { margin: 2px 0 0; font-weight: 600; font-size: 0.8rem; color: #636e72; }
+        .btn-cert { color: var(--gold); text-decoration: underline; font-size: 0.65rem; font-weight: 700; pointer-events: auto; }
 
-        .desc-section { margin-bottom: 25px; }
-        .desc-section h3 { font-family: var(--font-head); font-size: 0.85rem; color: var(--p-green); margin-bottom: 8px; letter-spacing: 1px; border-left: 3px solid var(--gold); padding-left: 10px; }
-        .desc-section p { font-size: 0.9rem; line-height: 1.7; color: #555; margin: 0; user-select: text; }
+        .desc-section { margin-bottom: 20px; }
+        .desc-section h3 { font-family: var(--font-head); font-size: 0.8rem; color: var(--p-green); margin-bottom: 8px; letter-spacing: 1px; border-left: 3px solid var(--gold); padding-left: 10px; }
+        .desc-section p { font-size: 0.85rem; line-height: 1.6; color: #555; margin: 0; white-space: pre-line; user-select: text; }
 
-        /* Review Design */
-        .review-container { background: #fff; padding: 20px; border-radius: 10px; border: 1px solid var(--border-color); margin-top: 20px; }
-        .review-item { border-bottom: 1px solid #f0f0f0; padding: 10px 0; font-size: 0.85rem; }
+        .review-box { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; margin-top: 15px; }
+        .review-item { border-bottom: 1px solid #f8f8f8; padding: 10px 0; }
         .review-item:last-child { border: none; }
-        .review-item i { color: #f1c40f; margin-right: 5px; }
-        .reviewer { display: block; font-weight: 600; color: var(--gold); margin-top: 5px; font-size: 0.75rem; }
+        .stars { color: #f1c40f; font-size: 0.7rem; margin-bottom: 4px; }
+        .review-text { font-size: 0.8rem; color: #444; font-style: italic; }
+        .reviewer { display: block; font-size: 0.65rem; color: #95a5a6; margin-top: 4px; font-style: normal; text-transform: uppercase; }
 
-        /* Purchase Buttons */
-        .btn-line { background: #06C755; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 18px; text-decoration: none; font-weight: 700; margin-top: 20px; pointer-events: auto; }
-        .market-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .market-btn { padding: 12px; text-align: center; color: white; font-weight: 700; font-size: 0.7rem; text-decoration: none; pointer-events: auto; }
+        .btn-action { display: flex; align-items: center; justify-content: center; gap: 8px; background: #06C755; color: white; padding: 16px; text-decoration: none; font-weight: 700; font-size: 0.8rem; margin-top: 25px; pointer-events: auto; }
+        .market-links { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 10px; }
+        .m-btn { padding: 12px; text-align: center; color: white; font-weight: 700; font-size: 0.65rem; text-decoration: none; pointer-events: auto; }
 
-        footer { background: #1a1a1a; color: white; padding: 50px 8%; margin-top: 80px; text-align: center; font-size: 0.8rem; }
-
-        @media (max-width: 800px) { .container { grid-template-columns: 1fr; } .img-display { position: static; } }
+        footer { background: #1a1a1a; color: #7f8c8d; padding: 40px 5%; text-align: center; font-size: 0.7rem; }
+        @media (max-width: 850px) { .container { grid-template-columns: 1fr; } .img-display { position: static; } }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -83,95 +76,101 @@
 </nav>
 
 <div class="container">
-    <div class="img-display">
-        <img id="p-img" src="" alt="Product Image">
-    </div>
-    <div class="info-content">
+    <div class="img-display"><img id="p-img" src=""></div>
+    <div class="p-info">
         <p class="brand-label" id="p-brand"></p>
         <h1 id="p-name"></h1>
-        <div class="price-tag"><span id="p-sale"></span><span class="old" id="p-old"></span></div>
+        <div class="price-tag"><span id="p-sale"></span> <span class="old" id="p-old"></span></div>
 
         <div class="license-box">
-            <div class="fda-text"><h4>REGISTRATION NUMBER</h4><p id="p-fda"></p></div>
-            <a href="#" id="p-cert-link" target="_blank" class="btn-cert">VIEW CERTIFICATE</a>
+            <div class="fda-text"><h4>REGISTRATION NO.</h4><p id="p-fda"></p></div>
+            <a href="#" id="p-cert" target="_blank" class="btn-cert">CERTIFICATE</a>
         </div>
 
         <div class="desc-section"><h3>PRODUCT DETAILS</h3><p id="p-desc"></p></div>
         <div class="desc-section"><h3>HOW TO USE</h3><p id="p-use"></p></div>
-
+        
         <div class="desc-section">
-            <h3>CUSTOMER REVIEWS</h3>
-            <div id="p-reviews" class="review-container"></div>
+            <h3>REVIEWS</h3>
+            <div id="p-reviews" class="review-box"></div>
         </div>
 
-        <a href="https://line.me/ti/p/9wSfM2gkuA" class="btn-line"><i class="fab fa-line"></i> ORDER VIA LINE</a>
-        <div class="market-grid">
-            <a href="https://shopee.co.th/hj_cosmetics" class="market-btn" style="background:#ee4d2d">SHOPEE</a>
-            <a href="https://www.lazada.co.th/shop/hj-cosmetics/" class="market-btn" style="background:#10156d">LAZADA</a>
-            <a href="https://vt.tiktok.com/ZMkJ5PWfF/" class="market-btn" style="background:#000">TIKTOK</a>
+        <a href="https://line.me/ti/p/9wSfM2gkuA" target="_blank" class="btn-action"><i class="fab fa-line"></i> ORDER VIA LINE OFFICIAL</a>
+        <div class="market-links">
+            <a href="https://shopee.co.th/hj_cosmetics" target="_blank" class="m-btn" style="background:#ee4d2d">SHOPEE</a>
+            <a href="https://www.lazada.co.th/shop/hj-cosmetics/" target="_blank" class="m-btn" style="background:#10156d">LAZADA</a>
+            <a href="https://vt.tiktok.com/ZMkJ5PWfF/" target="_blank" class="m-btn" style="background:#000">TIKTOK</a>
         </div>
     </div>
 </div>
 
-<footer>
-    &copy; 2026 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.
-</footer>
+<footer>&copy; 2026 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</footer>
 
 <script>
-    // 🛡️ Disable Shortcuts & Right Click
     document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('dragstart', e => e.preventDefault());
-    document.onkeydown = function(e) {
-        if (e.keyCode == 123 || (e.ctrlKey && (e.keyCode == 85 || e.keyCode == 83 || e.keyCode == 67))) return false;
-    };
+    document.onkeydown = e => { if(e.keyCode == 123 || (e.ctrlKey && [85,83,67].includes(e.keyCode))) return false; };
 
-    // 📦 Comprehensive Product Database
     const products = {
         1: { brand: "FRAIJOUR", sale: "฿250", old: "฿369", img: "1.jpg.png", fda: "10-2-6300028245", cert: "cert1.jpg",
-            th: { name: "Wormwood Calming Watery Cream", desc: "ครีมบำรุงเนื้อวอเตอรี่เบส ผสานสารสกัดจาก Mugwort เข้มข้น ช่วยกู้ผิวพังจากมลภาวะ ลดรอยแดง และปลอบประโลมผิวจากการแพ้ได้อย่างรวดเร็ว", use: "ลูบไล้ครีมลงบนผิวหน้าเป็นขั้นตอนสุดท้ายเช้า-เย็น", reviews: ["เนื้อครีมซึมไวมาก รอยแดงจางลงจริง - คุณนพวรรณ", "ใช้แล้วหน้าไม่เหนียว เหมาะกับอากาศไทยมาก - คุณก้อย", "ผิวแพ้ง่ายใช้ได้ไม่เห่อเลยค่ะ - คุณเมทินี"] },
-            en: { name: "Calming Watery Cream", desc: "Soothing cream with Mugwort extract for sensitive skin.", use: "Apply morning and night." } },
+            th: { name: "Wormwood Calming Watery Cream", desc: "ครีมบำรุงเนื้อวอเตอรี่เบส ผสาน Mugwort 12,000ppm กู้ผิวพังจากมลภาวะ ลดรอยแดง ปลอบประโลมผิวแพ้ง่าย", use: "ทาบำรุงผิวหน้าเป็นขั้นตอนสุดท้ายเช้า-เย็น", reviews: ["เนื้อครีมซึมไว รอยแดงจางลงจริง - User_8821", "ใช้แล้วหน้าไม่เหนียว เหมาะกับอากาศไทย - A***m", "ผิวแพ้ง่ายใช้ได้ไม่เห่อเลย - Anonymous", "ใช้มา 3 กระปุกแล้ว ดีจริง - K***y"] },
+            en: { name: "Wormwood Watery Cream", desc: "Soothing cream with 12,000ppm Mugwort for sensitive skin.", use: "Apply as final skincare step." },
+            kr: { name: "웜우드 카밍 워터리 크림", desc: "쑥 추출물 12,000ppm 함유로 민감한 피부를 진정시키는 워터리 크림.", use: "기초 마지막 단계에서 사용하세요." } },
         2: { brand: "FRAIJOUR", sale: "฿350", old: "฿459", img: "2.jpeg", fda: "10-2-6300028246", cert: "cert2.jpg",
-            th: { name: "Wormwood Calming Toner", desc: "โทนเนอร์ปรับสมดุลผิว ช่วยกำจัดเซลล์ผิวที่ตายแล้วอย่างอ่อนโยน พร้อมสารสกัดจากสมุนไพรสีเขียว", use: "เช็ดทั่วใบหน้าด้วยสำลีหลังล้างหน้า", reviews: ["สิวผดลดลงอย่างเห็นได้ชัด - คุณรสริน", "กลิ่นหอมสมุนไพร ผ่อนคลายมากค่ะ - คุณฟ้า", "หน้าสะอาดขึ้นเยอะเลย - คุณวิภา"] },
-            en: { name: "Calming Toner", desc: "Balances and exfoliates skin gently.", use: "Wipe with cotton pad." } },
+            th: { name: "Wormwood Calming Toner", desc: "โทนเนอร์ปรับสมดุลผิว ช่วยผลัดเซลล์ผิวและกระชับรูขุมขนอย่างอ่อนโยน", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["สิวผดลดลงอย่างเห็นได้ชัด - P***y", "กลิ่นหอมสมุนไพร ผ่อนคลายมาก - User_0012", "หน้าสะอาดขึ้นเยอะ เตรียมผิวได้ดี - Anonymous"] },
+            en: { name: "Wormwood Calming Toner", desc: "pH-balanced toner for smooth and calm skin.", use: "Wipe gently after cleansing." },
+            kr: { name: "웜우드 카밍 토너", desc: "피부 결을 정돈하고 진정시켜주는 저자극 토너.", use: "세안 후 화장솜에 적셔 닦아내세요." } },
         3: { brand: "FRAIJOUR", sale: "฿290", old: "฿390", img: "3.jpg", fda: "10-2-6400011111", cert: "cert3.jpg",
-            th: { name: "Wormwood Cleansing Oil", desc: "น้ำมันล้างหน้าละลายเมคอัพกันน้ำและสิ่งสกปรกในรูขุมขนได้อย่างหมดจด ไม่ทำให้ผิวแห้ง", use: "นวดลงบนผิวที่แห้งแล้วล้างออกด้วยน้ำ", reviews: ["ล้างมาสคาร่าออกง่ายมาก ไม่แสบตา - คุณมินตรา", "สิวเสี้ยนหลุดออกมาเลยค่ะ - คุณแพร", "ล้างแล้วหน้านุ่ม ไม่แห้งเอี๊ยด - คุณนัท"] },
-            en: { name: "Cleansing Oil", desc: "Deeply removes makeup and impurities.", use: "Massage on dry face and rinse." } },
+            th: { name: "Herb Wormwood Cleansing Oil", desc: "ออยล์ล้างหน้าละลายเมคอัพและสิวเสี้ยน ไม่ทำให้ผิวแห้งตึง", use: "นวดบนหน้าแห้งแล้วล้างออกด้วยน้ำ", reviews: ["ล้างมาสคาร่าออกง่ายมาก ไม่แสบตา - User_9901", "สิวเสี้ยนหลุดออกมาเลยค่ะ - Anonymous", "ผิวหลังล้างนุ่มมาก ไม่แห้งเอี๊ยด - L***k"] },
+            en: { name: "Wormwood Cleansing Oil", desc: "Deeply removes waterproof makeup and blackheads.", use: "Massage on dry face and rinse." },
+            kr: { name: "허브 웜우드 클렌징 오일", desc: "메이크업과 블랙헤드를 말끔하게 제거하는 오일.", use: "마른 얼굴에 마사지 후 헹구세요." } },
         4: { brand: "FRAIJOUR", sale: "฿190", old: "฿250", img: "4.jpg", fda: "10-2-6400022222", cert: "cert4.jpg",
-            th: { name: "Enzyme Powder Wash", desc: "ผงล้างหน้าเอนไซม์ปาปาย่า ช่วยผลัดเซลล์ผิวอย่างอ่อนโยน ให้ผิวเนียนนุ่มดุจผิวเด็ก", use: "ผสมน้ำเล็กน้อยตีฟองแล้วล้างหน้า", reviews: ["หน้าไม่ลอกอีกเลยตั้งแต่ใช้ตัวนี้ - คุณจันทิมา", "ฟองนุ่มมาก ล้างแล้วหน้านิ่มจริงๆ - คุณตาล", "พกพาสะดวกเวลาไปเที่ยว - คุณอุ้ม"] },
-            en: { name: "Enzyme Powder Wash", desc: "Gentle exfoliation with papaya enzyme.", use: "Mix with water to foam." } },
+            th: { name: "Pro Moisture Enzyme Powder Wash", desc: "ผงล้างหน้าเอนไซม์ปาปาย่า ผลัดเซลล์ผิวอย่างอ่อนโยนที่สุด ให้ผิวนุ่ม", use: "ผสมน้ำตีฟองแล้วล้างหน้า", reviews: ["หน้าไม่ลอกอีกเลยตั้งแต่ใช้ตัวนี้ - User_3321", "ฟองนุ่มมาก หน้านิ่มจริงๆ - Anonymous", "พกพาสะดวกเวลาเดินทาง - S***a"] },
+            en: { name: "Enzyme Powder Wash", desc: "Gentle papaya enzyme exfoliant for soft skin.", use: "Mix with water and wash." },
+            kr: { name: "프로 모이스처 엔자임 파우더 워시", desc: "파파인 효소가 각질을 부드럽게 관리해주는 파우더.", use: "물과 섞어 거품을 내어 세안하세요." } },
         5: { brand: "FRAIJOUR", sale: "฿420", old: "฿550", img: "5.jpg", fda: "10-2-6400033333", cert: "cert5.jpg",
-            th: { name: "Retin-Collagen 3D Core Cream", desc: "ครีมยกกระชับด้วยเรตินอลและคอลลาเจน ฟื้นฟูโครงสร้างผิวให้ยืดหยุ่น ลดเลือนริ้วรอย", use: "ทาบำรุงทั่วใบหน้าและลำคอ เน้นร่องลึก", reviews: ["หน้าตึงกระชับขึ้น ริ้วรอยดูตื้นลง - คุณพิมพิศา", "ไม่ระคายเคืองเหมือนเรตินอลตัวอื่น - คุณหมวย", "หน้าดูอิ่มฟูขึ้นมากค่ะ - คุณวุ้น"] },
-            en: { name: "Retin-Collagen Cream", desc: "Anti-aging cream for skin elasticity.", use: "Apply to face and neck." } },
+            th: { name: "Retin-Collagen 3D Core Cream", desc: "ครีมยกกระชับด้วยเรตินอล 7 ชนิดและคอลลาเจน เพื่อผิวอ่อนเยาว์และยืดหยุ่น", use: "ทาบำรุงใบหน้าและลำคอเช้า-เย็น", reviews: ["หน้าตึงกระชับขึ้น ริ้วรอยดูตื้นลง - User_1150", "ไม่ระคายเคืองเหมือนแบรนด์อื่น - Anonymous", "หน้าดูอิ่มฟูขึ้นมากค่ะ - R***i"] },
+            en: { name: "Retin-Collagen Cream", desc: "Firming cream with 7 types of Retinol.", use: "Apply to face and neck." },
+            kr: { name: "레틴콜라겐 3D 코어 크림", desc: "7가지 레티놀과 콜라겐으로 탄력을 주는 크림.", use: "얼굴과 목에 골고루 발라주세요." } },
         6: { brand: "FRAIJOUR", sale: "฿380", old: "฿490", img: "6.jpg", fda: "10-2-6400044444", cert: "cert6.jpg",
-            th: { name: "Biome Collagen Gel Cleanser", desc: "เจลล้างหน้าสูตร Probiotic ช่วยปรับสมดุลผิวและเติมคอลลาเจนให้ผิวเด้งอิ่มน้ำ", use: "ใช้ล้างหน้าเป็นประจำเช้า-เย็น", reviews: ["หน้านุ่มชุ่มชื้นหลังล้าง สิวไม่ขึ้น - คุณสิรินทร์", "ผิวแข็งแรงขึ้น ไม่แพ้ง่ายเหมือนก่อน - คุณมาย", "กลิ่นหอมสะอาดสดชื่น - คุณปลา"] },
-            en: { name: "Biome Gel Cleanser", desc: "Probiotic cleanser for healthy skin.", use: "Use daily morning and night." } },
+            th: { name: "Biome Collagen Gel Cleanser", desc: "เจลล้างหน้าสูตร Probiotic ปรับสมดุลผิวและเติมคอลลาเจนให้ผิวเด้ง", use: "ใช้ล้างหน้าเป็นประจำเช้า-เย็น", reviews: ["หน้านุ่มชุ่มชื้นหลังล้าง สิวไม่ขึ้น - Anonymous", "ผิวแข็งแรงขึ้น ไม่แพ้ง่าย - User_7721", "กลิ่นหอมสะอาดสดชื่น - M***o"] },
+            en: { name: "Biome Collagen Gel Cleanser", desc: "Microbiome balancing cleanser for elastic skin.", use: "Daily morning and night." },
+            kr: { name: "바이옴 콜라겐 젤 클렌저", desc: "유산균 성분이 피부 밸런스를 맞춰주는 세안제.", use: "아침저녁 세안 시 사용하세요." } },
         7: { brand: "FRAIJOUR", sale: "฿320", old: "฿420", img: "7.jpg", fda: "10-2-6400055555", cert: "cert7.jpg",
-            th: { name: "Heartleaf Blemish Toner", desc: "โทนเนอร์สารสกัดฮาร์ทลีฟ ลดการอักเสบของสิวและรอยแดง คุมมันได้ดีเยี่ยม", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["สิวอักเสบยุบไวมาก ประทับใจ - คุณวรัญญา", "ลดรอยแดงได้ดีจริงๆ ค่ะ - คุณนก", "สิวผดหายเกลี้ยงเลย - คุณเตย"] },
-            en: { name: "Heartleaf Toner", desc: "Soothes acne and reduces redness.", use: "Wipe after cleansing." } },
+            th: { name: "Heartleaf Blemish Toner", desc: "โทนเนอร์สารสกัดฮาร์ทลีฟ ลดการอักเสบของสิวและรอยแดง คุมมัน", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["สิวอักเสบยุบไวมาก - Anonymous", "ลดรอยแดงได้ดีจริงๆ ค่ะ - P***r", "สิวผดที่หน้าผากหายเกลี้ยง - User_2240"] },
+            en: { name: "Heartleaf Blemish Toner", desc: "Soothing toner for acne-prone skin.", use: "Wipe after cleansing." },
+            kr: { name: "하트리프 블레미쉬 토너", desc: "어성초 추출물이 트러블을 진정시켜주는 토너.", use: "세안 후 피부를 닦아내세요." } },
         8: { brand: "FRAIJOUR", sale: "฿270", old: "฿350", img: "8.jpg", fda: "10-2-6400066666", cert: "cert8.jpg",
-            th: { name: "Yuzu Honey All-In-One Cream", desc: "บำรุงผิวให้กระจ่างใสด้วยวิตามินซีจากส้มยูซุและน้ำผึ้ง ปรับผิวที่หมองคล้ำให้ดูโกลว์", use: "ทาบำรุงผิวหน้าเป็นประจำเช้า-เย็น", reviews: ["หน้าดูไบร์ทขึ้น กลิ่นหอมสดชื่น - คุณธัญญ่า", "จุดด่างดำจางลงเยอะมาก - คุณส้ม", "ชอบเนื้อครีมซึมไวสุดๆ - คุณโม"] },
-            en: { name: "Yuzu Honey Cream", desc: "Brightening cream with Vitamin C.", use: "Apply morning and night." } },
+            th: { name: "Yuzu Honey All-In-One Cream", desc: "ครีมบำรุงส้มยูซุและน้ำผึ้ง เพื่อผิวกระจ่างใสและชุ่มชื้นแบบสุขภาพดี", use: "ทาบำรุงผิวหน้าเป็นประจำเช้า-เย็น", reviews: ["หน้าดูไบร์ทขึ้น กลิ่นหอมสดชื่น - User_4401", "จุดด่างดำจางลงเยอะมาก - Anonymous", "เนื้อครีมซึมไวสุดๆ - J***e"] },
+            en: { name: "Yuzu Honey Cream", desc: "Brightening cream with Yuzu and Honey.", use: "Apply daily." },
+            kr: { name: "유자 허니 올인원 크림", desc: "유자와 꿀이 비타민과 영양을 공급하는 크림.", use: "얼굴에 부드럽게 발라주세요." } },
         9: { brand: "FRAIJOUR", sale: "฿450", old: "฿590", img: "9.jpg", fda: "10-2-6400077777", cert: "cert9.jpg",
-            th: { name: "Retin-Collagen Ampoule", desc: "แอมพูลเข้มข้นสูงสุดเพื่อการฟื้นฟูริ้วรอยลึกระดับเซลล์ ช่วยให้หน้าแน่นและกระชับ", use: "หยด 2-3 หยดแล้วนวดทั่วใบหน้าก่อนลงครีม", reviews: ["หน้าแน่นขึ้น รูขุมขนกระชับ - คุณพิมมาดา", "เห็นผลไวเรื่องร่องแก้มค่ะ - คุณปอนด์", "หน้าดูอิ่มน้ำ สุขภาพดี - คุณพิม"] },
-            en: { name: "Retin-Collagen Ampoule", desc: "Deep anti-wrinkle treatment.", use: "Apply before moisturizer." } },
+            th: { name: "Retin-Collagen Ampoule", desc: "แอมพูลเข้มข้นสูงสุดเพื่อการฟื้นฟูริ้วรอยลึกระดับเซลล์ ให้หน้าแน่น", use: "ทาบำรุงก่อนลงครีม", reviews: ["หน้าแน่นขึ้น รูขุมขนกระชับ - Anonymous", "เห็นผลไวเรื่องร่องแก้ม - User_5590", "หน้าดูอิ่มน้ำ สุขภาพดี - T***y"] },
+            en: { name: "Retin-Collagen Ampoule", desc: "Deep wrinkle repair ampoule.", use: "Apply before cream." },
+            kr: { name: "레틴콜라겐 3D 코어 앰플", desc: "주름과 탄력을 입체적으로 케어하는 앰플.", use: "크림 사용 전 단계에서 사용하세요." } },
         10: { brand: "FRAIJOUR", sale: "฿280", old: "฿380", img: "10.jpg", fda: "10-2-6400088888", cert: "cert10.jpg",
-            th: { name: "Wormwood Calming Sun Cream", desc: "กันแดด SPF50+ PA++++ ปลอบประโลมผิวจากความร้อน ไม่วอก ไม่มัน", use: "ทาใบหน้าก่อนออกแดด 15 นาที", reviews: ["เบาสบายผิว ไม่เยิ้มระหว่างวัน - คุณปวีณา", "แต่งหน้าต่อได้ง่ายมาก ไม่ลอย - คุณเกรซ", "อ่อนโยน ไม่แสบตาเลย - คุณหญิง"] },
-            en: { name: "Calming Sun Cream", desc: "High protection sunscreen for sensitive skin.", use: "Apply before sun exposure." } },
+            th: { name: "Wormwood Calming Sun Cream", desc: "กันแดด SPF50+ ปลอบประโลมผิวจากความร้อน ไม่เหนอะหนะ", use: "ทาหน้าก่อนออกแดด 15-30 นาที", reviews: ["เบาสบายผิว ไม่เยิ้มเลย - Anonymous", "หน้าไม่วอก แต่งหน้าต่อง่าย - User_6610", "อ่อนโยน ไม่แสบตา - G***f"] },
+            en: { name: "Wormwood Sun Cream", desc: "SPF50+ sunscreen that protects and soothes.", use: "Apply 15 mins before sun." },
+            kr: { name: "웜우드 카밍 선크림", desc: "자외선 차단과 피부 진정을 돕는 선크림.", use: "외출 15분 전 발라주세요." } },
         11: { brand: "FRAIJOUR", sale: "฿310", old: "฿410", img: "11.jpg", fda: "10-2-6400099999", cert: "cert11.jpg",
-            th: { name: "Wormwood Peeling Gel", desc: "เจลผลัดเซลล์ผิวสูตรสมุนไพร ช่วยขจัดขี้ไคลให้หน้าเนียนนุ่มทันที", use: "นวดลงบนผิวที่แห้งแล้วล้างออก", reviews: ["ขี้ไคลหลุดเยอะมาก หน้าลื่นสุดๆ - คุณนภาพร", "หน้าใสขึ้นเยอะหลังใช้ - คุณพลอย", "อ่อนโยน ไม่แสบหน้าเลย - คุณเนย"] },
-            en: { name: "Peeling Gel", desc: "Gentle exfoliator for smooth skin.", use: "Massage and rinse." } },
+            th: { name: "Wormwood Peeling Gel", desc: "เจลผลัดเซลล์ผิวสมุนไพร ขจัดสิ่งสกปรกให้หน้าเนียนนุ่มทันที", use: "นวดบนหน้าแห้งแล้วล้างออก", reviews: ["ขี้ไคลหลุดเยอะ หน้าลื่นมาก - User_0088", "หน้าใสขึ้นหลังใช้ทันที - Anonymous", "ไม่แสบหน้าเลย อ่อนโยน - B***n"] },
+            en: { name: "Wormwood Peeling Gel", desc: "Gentle gommage gel for smooth skin.", use: "Massage on dry face." },
+            kr: { name: "허브 웜우드 필링 젤", desc: "자극 없이 각질을 정돈해주는 필링 젤.", use: "마른 얼굴에 마사지 후 헹구세요." } },
         12: { brand: "FRAIJOUR", sale: "฿240", old: "฿320", img: "12.jpg", fda: "10-2-6400000001", cert: "cert12.jpg",
-            th: { name: "Pro Moisture Creamy Toner", desc: "โทนเนอร์เนื้อน้ำนมเข้มข้น เติมความชุ่มชื้นล้ำลึกสำหรับคนผิวแห้งมาก", use: "ตบเบาๆ ทั่วใบหน้าหลังล้างหน้า", reviews: ["เนื้อเข้มข้นเหมือนเซรั่ม ผิวอิ่มน้ำมาก - คุณกมลวรรณ", "หน้าฉ่ำวาวทั้งวัน ชอบมาก - คุณโบว์", "ผิวแห้งลอกหายไปเลย - คุณตุ๊กตา"] },
-            en: { name: "Creamy Toner", desc: "Extra moisturizing milky toner.", use: "Pat onto face after wash." } },
+            th: { name: "Pro Moisture Creamy Toner", desc: "โทนเนอร์เนื้อน้ำนมเข้มข้น เติมความชุ่มชื้นสำหรับผิวแห้งขาดน้ำ", use: "ตบเบาๆ ทั่วใบหน้าหลังล้างหน้า", reviews: ["เนื้อเข้มข้น ผิวอิ่มน้ำมาก - User_1234", "หน้าฉ่ำวาวทั้งวัน ชอบมาก - Anonymous", "ผิวแห้งลอกหายไปเลย - C***i"] },
+            en: { name: "Pro Moisture Creamy Toner", desc: "Milky moisturizing toner with Ceramide.", use: "Pat gently onto face." },
+            kr: { name: "프로 모이스처 크리미 토너", desc: "세라마이드 성분이 보습을 채워주는 토너.", use: "세안 후 두드려 흡수시키세요." } },
         13: { brand: "FRAIJOUR", sale: "฿390", old: "฿490", img: "13.jpg", fda: "10-2-6400000002", cert: "cert13.jpg",
-            th: { name: "Biome Collagen Eye Cream", desc: "ครีมทารอบดวงตา ลดรอยคล้ำและถุงใต้ตาด้วยคอลลาเจนเข้มข้น", use: "ทาบางๆ รอบดวงตาเช้า-เย็น", reviews: ["ใต้ตาดูสว่างขึ้น รอยคล้ำจางลง - คุณสุพรรษา", "ไม่ทำให้เกิดเม็ดข้าวสาร อ่อนโยนมาก - คุณแพรว", "ตื่นมาแล้วตาไม่บวม - คุณเจี๊ยบ"] },
-            en: { name: "Eye Cream", desc: "Reduces dark circles and wrinkles.", use: "Apply around eyes." } },
+            th: { name: "Biome Collagen Eye Cream", desc: "ครีมรอบดวงตา ลดรอยคล้ำและริ้วรอยด้วยคอลลาเจนเข้มข้น", use: "ทาบางๆ รอบดวงตาเช้า-เย็น", reviews: ["ใต้ตาดูสว่างขึ้น รอยจางลง - Anonymous", "ไม่เกิดเม็ดข้าวสาร อ่อนโยน - User_8877", "ตื่นมาแล้วตาไม่บวม - S***m"] },
+            en: { name: "Biome Eye Cream", desc: "Lifting eye cream for dark circles.", use: "Gently tap around eyes." },
+            kr: { name: "바이옴 콜า겐 아이크림", desc: "눈가 탄력을 케어하는 고보습 아이크림.", use: "눈가에 톡톡 두드려 발라주세요." } },
         14: { brand: "FRAIJOUR", sale: "฿260", old: "฿340", img: "14.jpg", fda: "10-2-6400000003", cert: "cert14.jpg",
-            th: { name: "Yuzu Honey Lip Balm", desc: "ลิปบาล์มบำรุงริมฝีปากนุ่มชุ่มชื้น แก้ปากคล้ำแห้งแตกให้กลับมาดูสุขภาพดี", use: "ทาริมฝีปากได้บ่อยตามต้องการ", reviews: ["ปากนุ่มขึ้น กลิ่นหอมสดชื่น - คุณนดา", "ปากไม่เคยลอกอีกเลยตั้งแต่ใช้ - คุณโมนา", "ทาก่อนนอน ตื่นมาปากอมชมพู - คุณบีบี"] },
-            en: { name: "Yuzu Lip Balm", desc: "Hydrating lip balm with Yuzu extract.", use: "Apply as needed." } },
+            th: { name: "Yuzu Honey Lip Balm", desc: "ลิปบาล์มบำรุงปากนุ่ม แก้ปากคล้ำและแห้งแตกให้ดูสุขภาพดี", use: "ทาริมฝีปากได้บ่อยตามต้องการ", reviews: ["ปากนุ่มขึ้น กลิ่นหอมสดชื่น - User_4432", "ปากไม่เคยลอกอีกเลย - Anonymous", "ตื่นมาปากอมชมพูมาก - L***y"] },
+            en: { name: "Yuzu Honey Lip Balm", desc: "Repairing lip balm with Yuzu and Honey.", use: "Apply to lips as needed." },
+            kr: { name: "유자 허니 립밤", desc: "건조한 입술을 촉촉하게 가꿔주는 립밤.", use: "건조할 때마다 수시로 바르세요." } },
         15: { brand: "FRAIJOUR", sale: "฿330", old: "฿430", img: "15.jpg", fda: "10-2-6400000004", cert: "cert15.jpg",
-            th: { name: "Heartleaf Blemish Gel Cream", desc: "เจลบำรุงผิวคุมมัน ลดสิวอักเสบ เนื้อเย็นสบายไม่หนักหน้า", use: "ทาบำรุงผิวหน้าเป็นประจำเช้า-เย็น", reviews: ["เนื้อเจลเย็นสบาย สิวแห้งไว - คุณอลิสา", "คุมมันระหว่างวันได้ดีมาก - คุณฝ้าย", "สิวอุดตันลดลงเยอะเลย - คุณมิ้นท์"] },
-            en: { name: "Heartleaf Gel Cream", desc: "Calming gel for oily and acne skin.", use: "Apply to face daily." } }
+            th: { name: "Heartleaf Blemish Gel Cream", desc: "เจลบำรุงคุมมัน ลดสิวอักเสบ เนื้อเย็นสบายผิว ไม่เหนอะหนะ", use: "ทาบำรุงหน้าเป็นประจำเช้า-เย็น", reviews: ["เนื้อเจลเย็นสบาย สิวแห้งไว - Anonymous", "คุมมันระหว่างวันได้ดีมาก - User_9912", "สิวอุดตันลดลงเยอะ - R***n"] },
+            en: { name: "Heartleaf Gel Cream", desc: "Cooling gel cream for acne-prone skin.", use: "Apply morning and night." },
+            kr: { name: "하트리프 블레미쉬 젤 크림", desc: "피지를 조절하고 진정을 돕는 산뜻한 젤 크림.", use: "기초 마지막 단계에서 사용하세요." } }
     };
 
     let lang = localStorage.getItem('selectedLang') || 'th';
@@ -187,27 +186,26 @@
         document.getElementById('p-sale').innerText = p.sale;
         document.getElementById('p-old').innerText = p.old;
         document.getElementById('p-fda').innerText = p.fda;
-        document.getElementById('p-cert-link').href = p.cert;
+        document.getElementById('p-cert').href = p.cert;
         document.getElementById('p-desc').innerText = content.desc;
         document.getElementById('p-use').innerText = content.use;
 
-        // Render Reviews
         const reviewBox = document.getElementById('p-reviews');
-        const revList = p['th'].reviews; // รีวิวใช้ภาษาไทยเป็นหลัก
-        reviewBox.innerHTML = revList.map(r => `
+        reviewBox.innerHTML = p.th.reviews.map(r => `
             <div class="review-item">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <p style="margin:5px 0">${r.split(' - ')[0]}</p>
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="review-text">"${r.split(' - ')[0]}"</div>
                 <span class="reviewer">${r.split(' - ')[1]}</span>
             </div>
         `).join('');
 
         document.getElementById('langBtn').innerText = lang.toUpperCase();
-        document.body.style.fontFamily = lang === 'th' ? 'var(--font-th)' : 'var(--font-en)';
+        document.body.style.fontFamily = lang === 'th' ? 'var(--font-th)' : (lang === 'kr' ? 'var(--font-kr)' : 'var(--font-en)');
     }
 
     function changeLang() {
-        lang = lang === 'th' ? 'en' : 'th';
+        const flow = { th: 'en', en: 'kr', kr: 'th' };
+        lang = flow[lang];
         localStorage.setItem('selectedLang', lang);
         render();
     }
