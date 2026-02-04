@@ -111,17 +111,17 @@
     document.onkeydown = e => { if(e.keyCode == 123 || (e.ctrlKey && [85,83,67].includes(e.keyCode))) return false; };
 
     const products = {
-        1: { brand: "FRAIJOUR", sale: "฿250", old: "฿369", img: "1.jpg.png", fda: "10-2-6300028245", cert: "cert1.jpg",
+        1: { brand: "FRAIJOUR", sale: "฿250", old: "฿369", img: "1.jpg.png", fda: "10-2-6300028245", cert: "WATERY CREAM.jpg",
             th: { name: "Wormwood Calming Watery Cream", desc: "ครีมบำรุงเนื้อวอเตอรี่เบส ผสาน Mugwort 12,000ppm กู้ผิวพังจากมลภาวะ ลดรอยแดง ปลอบประโลมผิวแพ้ง่าย", use: "ทาบำรุงผิวหน้าเป็นขั้นตอนสุดท้ายเช้า-เย็น", reviews: ["เนื้อครีมซึมไว รอยแดงจางลงจริง - User_8821", "ใช้แล้วหน้าไม่เหนียว เหมาะกับอากาศไทย - A***m", "ผิวแพ้ง่ายใช้ได้ไม่เห่อเลย - Anonymous", "ใช้มา 3 กระปุกแล้ว ดีจริง - K***y"] },
             en: { name: "Wormwood Watery Cream", desc: "Soothing cream with 12,000ppm Mugwort for sensitive skin.", use: "Apply as final skincare step." },
             kr: { name: "웜우드 카밍 워터리 크림", desc: "쑥 추출물 12,000ppm 함유로 민감한 피부를 진정시키는 워터리 크림.", use: "기초 마지막 단계에서 사용하세요." } },
-        2: { brand: "FRAIJOUR", sale: "฿350", old: "฿459", img: "2.jpeg", fda: "10-2-6300028246", cert: "cert2.jpg",
+        2: { brand: "FRAIJOUR", sale: "฿350", old: "฿459", img: "2.jpeg", fda: "10-2-6300028246", cert: "WORMWOOD TONER.jpg",
             th: { name: "Wormwood Calming Toner", desc: "โทนเนอร์ปรับสมดุลผิว ช่วยผลัดเซลล์ผิวและกระชับรูขุมขนอย่างอ่อนโยน", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["สิวผดลดลงอย่างเห็นได้ชัด - P***y", "กลิ่นหอมสมุนไพร ผ่อนคลายมาก - User_0012", "หน้าสะอาดขึ้นเยอะ เตรียมผิวได้ดี - Anonymous"] },
             en: { name: "Wormwood Calming Toner", desc: "pH-balanced toner for smooth and calm skin.", use: "Wipe gently after cleansing." },
             kr: { name: "웜우드 카밍 토너", desc: "피부 결을 정돈하고 진정시켜주는 저자극 토너.", use: "세안 후 화장솜에 적셔 닦아내세요." } },
-        3: { brand: "FRAIJOUR", sale: "฿290", old: "฿390", img: "3.jpg", fda: "10-2-6400011111", cert: "cert3.jpg",
-            th: { name: "Herb Wormwood Cleansing Oil", desc: "ออยล์ล้างหน้าละลายเมคอัพและสิวเสี้ยน ไม่ทำให้ผิวแห้งตึง", use: "นวดบนหน้าแห้งแล้วล้างออกด้วยน้ำ", reviews: ["ล้างมาสคาร่าออกง่ายมาก ไม่แสบตา - User_9901", "สิวเสี้ยนหลุดออกมาเลยค่ะ - Anonymous", "ผิวหลังล้างนุ่มมาก ไม่แห้งเอี๊ยด - L***k"] },
-            en: { name: "Wormwood Cleansing Oil", desc: "Deeply removes waterproof makeup and blackheads.", use: "Massage on dry face and rinse." },
+        3: { brand: "FRAIJOUR", sale: "฿290", old: "฿390", img: "3.jpg", fda: "10-2-6400011111", cert: "WORMWOOD CLEANSING FOAM.jpg",
+            th: { name: "Herb Wormwood Cleansing Foam", desc: "ออยล์ล้างหน้าละลายเมคอัพและสิวเสี้ยน ไม่ทำให้ผิวแห้งตึง", use: "นวดบนหน้าแห้งแล้วล้างออกด้วยน้ำ", reviews: ["ล้างมาสคาร่าออกง่ายมาก ไม่แสบตา - User_9901", "สิวเสี้ยนหลุดออกมาเลยค่ะ - Anonymous", "ผิวหลังล้างนุ่มมาก ไม่แห้งเอี๊ยด - L***k"] },
+            en: { name: "Wormwood Cleansing Foam", desc: "Deeply removes waterproof makeup and blackheads.", use: "Massage on dry face and rinse." },
             kr: { name: "허브 웜우드 클렌징 오일", desc: "메이크업과 블랙헤드를 말끔하게 제거하는 오일.", use: "마른 얼굴에 마사지 후 헹구세요." } },
         4: { brand: "FRAIJOUR", sale: "฿190", old: "฿250", img: "4.jpg", fda: "10-2-6400022222", cert: "cert4.jpg",
             th: { name: "Pro Moisture Enzyme Powder Wash", desc: "ผงล้างหน้าเอนไซม์ปาปาย่า ผลัดเซลล์ผิวอย่างอ่อนโยนที่สุด ให้ผิวนุ่ม", use: "ผสมน้ำตีฟองแล้วล้างหน้า", reviews: ["หน้าไม่ลอกอีกเลยตั้งแต่ใช้ตัวนี้ - User_3321", "ฟองนุ่มมาก หน้านิ่มจริงๆ - Anonymous", "พกพาสะดวกเวลาเดินทาง - S***a"] },
