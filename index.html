@@ -68,9 +68,31 @@
         .btn-buy { background: var(--p-green); color: white; padding: 15px; text-align: center; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; transition: 0.3s; }
 
         /* --- 📺 ปรับวิดีโอให้ใหญ่ขึ้นและคมชัด --- */
-        .video-section { max-width: 1400px; margin: 40px auto 100px; padding: 0 5%; }
-        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); background: #000; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        /* --- 📺 ปรับวิดีโอให้กว้างเต็มหน้าจอ (Full Width) --- */
+.video-section { 
+    width: 100%;           /* ขยายกว้างเต็ม 100% ของหน้าจอ */
+    max-width: 100%;       /* ยกเลิกการจำกัดที่ 1400px */
+    margin: 60px 0 100px;  /* เอา margin auto ออก เพื่อให้ชิดขอบ */
+    padding: 0;            /* เอา padding ด้านข้างออกเพื่อให้ชนขอบจอ */
+}
+
+.video-section .grid-title {
+    max-width: 1400px;     /* ให้หัวข้อ OUR STORY ยังอยู่ตรงกลางเท่ากับสินค้า */
+    margin: 0 auto 40px;
+    padding: 0 5%;
+}
+
+.video-container { 
+    position: relative; 
+    width: 100%; 
+    padding-bottom: 50%;   /* ปรับความสูงวิดีโอให้ดูสมดุล (ยิ่งตัวเลขน้อย ยิ่งเตี้ยลง) */
+    height: 0; 
+    overflow: hidden; 
+    border-radius: 0;      /* เอาความโค้งมนออกเพื่อให้ดูเรียบเนียนไปกับหน้าเว็บ */
+    box-shadow: none;      /* เอาเงาออกเพื่อให้ดูทันสมัยแบบ Cinema */
+    background: #000; 
+}
+
 
         footer { background: #111; color: white; padding: 70px 8% 30px; margin-top: auto; }
         .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; text-align: left; }
