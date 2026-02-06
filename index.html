@@ -15,7 +15,7 @@
             --font-th: 'Prompt', sans-serif;
             --font-en: 'Montserrat', sans-serif;
             --font-head: 'Cinzel', serif;
-            --font-kr: 'Nanum Myeongjo', serif;
+            --font-kr: 'Nanum+Myeongjo', serif;
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
@@ -37,9 +37,9 @@
         .main-gold-logo { width: 320px; max-width: 80%; margin-bottom: 20px; }
         .hero-title { font-family: var(--font-head); font-size: clamp(1.8rem, 5vw, 2.8rem); color: var(--p-green); margin-bottom: 15px; letter-spacing: 5px; }
 
-        .slider-container { width: 100%; max-width: 1000px; margin: 20px auto 60px; height: 400px; overflow: hidden; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.1); background: #fff; }
+        .slider-container { width: 100%; max-width: 1400px; margin: 20px auto 60px; aspect-ratio: 1000/400; overflow: hidden; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
         .slider-wrapper { display: flex; width: 100%; height: 100%; will-change: transform; }
-        .slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
+        .slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; image-rendering: -webkit-optimize-contrast; image-rendering: high-quality; }
         .slide1 { background-image: url('in1.jpg'); } 
         .slide2 { background-image: url('in2.jpg'); }
         .slide3 { background-image: url('in3.jpg'); }
@@ -67,16 +67,16 @@
         .old { color: #adb5bd; text-decoration: line-through; margin-left: 8px; font-size: 0.9rem; }
         .btn-buy { background: var(--p-green); color: white; padding: 15px; text-align: center; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; transition: 0.3s; }
 
-        /* --- 📺 New YouTube Section --- */
-        .video-section { max-width: 100%; margin: 0 auto 100px; padding: 0 5%; }
-        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        /* --- 📺 ปรับวิดีโอให้ใหญ่ขึ้นและคมชัด --- */
+        .video-section { max-width: 1400px; margin: 40px auto 100px; padding: 0 5%; }
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); background: #000; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
         footer { background: #111; color: white; padding: 70px 8% 30px; margin-top: auto; }
         .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; text-align: left; }
         .copy { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #222; font-size: 0.65rem; color: #444; letter-spacing: 2px; }
 
-        @media (max-width: 768px) { .slider-container { height: auto; aspect-ratio: 1000/400; } .f-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+        @media (max-width: 768px) { .f-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -122,7 +122,7 @@
 <section class="video-section">
     <div class="grid-title"><h2>OUR STORY</h2><div class="line"></div></div>
     <div class="video-container">
-        <iframe src="https://youtu.be/hqyVA3VQoyo?si=uDrbyWjwtGrOa8Ro" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/hqyVA3VQoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3VQoyo&controls=0&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 </section>
 
@@ -140,6 +140,7 @@
 </footer>
 
 <script>
+    // ส่วน JavaScript เดิมทั้งหมด
     const wrapper = document.getElementById('sliderWrapper');
     const slides = document.querySelectorAll('.slide');
     const firstClone = slides[0].cloneNode(true);
@@ -165,7 +166,7 @@
         { id: 3, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง วอเตอร์", nameEn: "Original Herb Wormwood Cleansing Water", nameKr: "오리지널 허브 웜우드 클렌징 워터", sale: 290, old: 390, bTh: "ใหม่", bEn: "NEW", bKr: "신상", img: "3.jpeg" },
         { id: 4, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง โฟม", nameEn: "Original Herb Wormwood Cleansing Foam", nameKr: "오리지널 허브 웜우드 클렌징 폼", sale: 220, old: 290, bTh: "สะอาด", bEn: "TOP", bKr: "세정", img: "4.jpeg" },
         { id: 5, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด ชีท มาส์ก", nameEn: "Original Herb Wormwood Sheet Mask", nameKr: "오리지널 허브 웜우드 시트 마스크", sale: 59, old: 89, bTh: "มาส์ก", bEn: "MASK", bKr: "팩", img: "15.jpeg" },
-        { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "하트리프 블레미쉬 토너", sale: 320, old: 420, bTh: "ลดสิว", bEn: "ACNE", bKr: "트러블", img: "6.jpeg" },
+        { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "하트리프 블레미쉬 토너", sale: 320, old: 420, bTh: "ลดสิว", bEn: "ACNE", bKr: "트러บล", img: "6.jpeg" },
         { id: 7, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ มอยส์เจอร์ ครีม", nameEn: "Heartleaf Moistur Cream", nameKr: "하트리프 모이스처 크림", sale: 350, old: 450, bTh: "ชุ่มชื้น", bEn: "MOIST", bKr: "보습", img: "5.jpeg" },
         { id: 8, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต กันแดด", nameEn: "Heartleaf Water Fit Sun", nameKr: "하트리프 워터 핏 선크림", sale: 390, old: 490, bTh: "บางเบา", bEn: "LIGHT", bKr: "산뜻", img: "12.jpeg" },
         { id: 9, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต กันแดด", nameEn: "Heartleaf Airy Fit Sun", nameKr: "하트리프 에어리 핏 선크림", sale: 390, old: 490, bTh: "คุมมัน", bEn: "MATTE", bKr: "뽀송", img: "11.jpeg" },
@@ -174,7 +175,7 @@
         { id: 12, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี อายครีม", nameEn: "Retin Collagen Eye Cream", nameKr: "레틴 콜라겐 아이크림", sale: 390, old: 490, bTh: "รอบดวงตา", bEn: "EYE", bKr: "눈가", img: "8.jpeg" },
         { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน ลิป ออยล์", nameEn: "Retin Collagen Lip Oil", nameKr: "레틴 콜라겐 립 오일", sale: 260, old: 350, bTh: "ปากนุ่ม", bEn: "LIPS", bKr: "입술", img: "10.jpeg" },
         { id: 14, brand: "CharChar", nameTh: "มุงบีน ซิก้า โฟม", nameEn: "Mungbean Cica Foam", nameKr: "녹두 시카 폼", sale: 290, old: 390, bTh: "ล้ำลึก", bEn: "DEEP", bKr: "녹두", img: "14.jpeg" },
-        { id: 15, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바디 톤업 크림", sale: 350, old: 450, bTh: "ผิวใส", bEn: "BODY", bKr: "미백", img: "13.jpeg" }
+        { id: 15, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바ดี 톤업 크림", sale: 350, old: 450, bTh: "ผิวใส", bEn: "BODY", bKr: "미백", img: "13.jpeg" }
     ];
 
     const trans = {
