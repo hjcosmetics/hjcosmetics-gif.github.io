@@ -37,10 +37,26 @@
         .main-gold-logo { width: 320px; max-width: 80%; margin-bottom: 20px; }
         .hero-title { font-family: var(--font-head); font-size: clamp(1.8rem, 5vw, 2.8rem); color: var(--p-green); margin-bottom: 15px; letter-spacing: 5px; }
 
-        /* Slider Section - Supports 8 Slides */
-        .slider-container { width: 100%; max-width: 1400px; margin: 20px auto 60px; height: 450px; overflow: hidden; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
-        .slider-wrapper { display: flex; width: 100%; height: 100%; }
-        .slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; }
+        /* --- 🎞️ Optimized Slider (For 1000x400px Images) --- */
+        .slider-container { 
+            width: 100%; 
+            max-width: 1000px; /* จำกัดความกว้างเท่าขนาดภาพจริงเพื่อให้ภาพชัดที่สุด */
+            margin: 20px auto 60px; 
+            height: 400px; 
+            overflow: hidden; 
+            position: relative; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            background: #fff; /* พื้นหลังขาวกันขอบดำ */
+        }
+        .slider-wrapper { display: flex; width: 100%; height: 100%; will-change: transform; }
+        .slide { 
+            min-width: 100%; height: 100%; 
+            background-size: cover; /* ปรับให้เต็มพื้นที่ */
+            background-position: center; 
+            background-repeat: no-repeat;
+            image-rendering: -webkit-optimize-contrast; /* รีดความคมชัด */
+            image-rendering: crisp-edges;
+        }
         .slide1 { background-image: url('in1.jpg'); } 
         .slide2 { background-image: url('in2.jpg'); }
         .slide3 { background-image: url('in3.jpg'); }
@@ -58,7 +74,7 @@
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; margin-bottom: 80px; }
         .card { background: white; position: relative; display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: 0.4s; height: 100%; border-radius: 4px; overflow: hidden; }
         .card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
-        .img-box { width: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; padding: 25px; background: #fff; position: relative; overflow: hidden; }
+        .img-box { width: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; padding: 25px; background: #fff; position: relative; }
         .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .product-badge { position: absolute; top: 15px; right: 15px; background: var(--gold); color: white; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.55rem; font-weight: 800; z-index: 2; }
         .info { padding: 20px 15px 25px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
@@ -72,7 +88,11 @@
         .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; text-align: left; }
         .copy { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #222; font-size: 0.65rem; color: #444; letter-spacing: 2px; }
 
-        @media (max-width: 768px) { .slider-container { height: 250px; } .f-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { 
+            .slider-container { height: auto; aspect-ratio: 1000/400; } 
+            .f-grid { grid-template-columns: 1fr; } 
+            .nav-links { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -134,13 +154,11 @@
     const slides = document.querySelectorAll('.slide');
     const firstClone = slides[0].cloneNode(true);
     wrapper.appendChild(firstClone);
-
     let index = 0;
     function nextSlide() {
         index++;
         wrapper.style.transition = "transform 1.2s cubic-bezier(0.65, 0, 0.35, 1)";
         wrapper.style.transform = `translateX(-${index * 100}%)`;
-
         if (index >= slides.length) {
             setTimeout(() => {
                 wrapper.style.transition = "none";
@@ -149,7 +167,7 @@
             }, 1200);
         }
     }
-    setInterval(nextSlide, 5000); // เปลี่ยนรูปทุกๆ 5 วินาที
+    setInterval(nextSlide, 5000);
 
     // --- Product Data ---
     const products = [
@@ -162,18 +180,18 @@
         { id: 7, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ มอยส์เจอร์ ครีม", nameEn: "Heartleaf Moistur Cream", nameKr: "하트리프 모이스처 크림", sale: 350, old: 450, bTh: "ชุ่มชื้น", bEn: "MOIST", bKr: "보습", img: "5.jpeg" },
         { id: 8, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต กันแดด", nameEn: "Heartleaf Water Fit Sun", nameKr: "하트리프 워터 핏 선크림", sale: 390, old: 490, bTh: "บางเบา", bEn: "LIGHT", bKr: "산뜻", img: "12.jpeg" },
         { id: 9, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต กันแดด", nameEn: "Heartleaf Airy Fit Sun", nameKr: "하트리프 에어리 핏 선크림", sale: 390, old: 490, bTh: "คุมมัน", bEn: "MATTE", bKr: "뽀송", img: "11.jpeg" },
-        { id: 10, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ โทนเนอร์", nameEn: "Retin Collagen 3D Toner", nameKr: "레틴 콜라겐 3D 토너", sale: 380, old: 480, bTh: "กระชับ", bEn: "FIRM", bKr: "탄력", img: "9.jpeg" },
-        { id: 11, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin Collagen 3D Cream", nameKr: "레틴 콜า겐 3D 크림", sale: 420, old: 550, bTh: "ริ้วรอย", bEn: "LIFT", bKr: "주름", img: "7.jpeg" },
-        { id: 12, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ อายครีม", nameEn: "Retin Collagen Eye Cream", nameKr: "레틴 콜라겐 아이크림", sale: 390, old: 490, bTh: "รอบดวงตา", bEn: "EYE", bKr: "눈가", img: "8.jpeg" },
-        { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี ลิป ออยล์", nameEn: "Retin Collagen Lip Oil", nameKr: "레틴 콜라겐 립 오일", sale: 260, old: 350, bTh: "ปากนุ่ม", bEn: "LIPS", bKr: "입술", img: "10.jpeg" },
+        { id: 10, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี โทนเนอร์", nameEn: "Retin Collagen 3D Toner", nameKr: "레틴 콜라겐 3D 토너", sale: 380, old: 480, bTh: "กระชับ", bEn: "FIRM", bKr: "탄력", img: "9.jpeg" },
+        { id: 11, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี ครีม", nameEn: "Retin Collagen 3D Cream", nameKr: "레틴 콜า겐 3D 크림", sale: 420, old: 550, bTh: "ริ้วรอย", bEn: "LIFT", bKr: "주름", img: "7.jpeg" },
+        { id: 12, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี อายครีม", nameEn: "Retin Collagen Eye Cream", nameKr: "레틴 콜라겐 아이크림", sale: 390, old: 490, bTh: "รอบดวงตา", bEn: "EYE", bKr: "눈가", img: "8.jpeg" },
+        { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน ลิป ออยล์", nameEn: "Retin Collagen Lip Oil", nameKr: "레틴 콜라겐 립 오일", sale: 260, old: 350, bTh: "ปากนุ่ม", bEn: "LIPS", bKr: "입술", img: "10.jpeg" },
         { id: 14, brand: "CharChar", nameTh: "มุงบีน ซิก้า โฟม", nameEn: "Mungbean Cica Foam", nameKr: "녹두 시카 폼", sale: 290, old: 390, bTh: "ล้ำลึก", bEn: "DEEP", bKr: "녹두", img: "14.jpeg" },
         { id: 15, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바디 톤업 크림", sale: 350, old: 450, bTh: "ผิวใส", bEn: "BODY", bKr: "미백", img: "13.jpeg" }
     ];
 
     const trans = {
-        th: { shop: "ช้อปเลย", others: "GLOBAL SELECTION", foot: "คัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผิวที่ดีที่สุดของคุณ" },
-        en: { shop: "SHOP NOW", others: "GLOBAL SELECTION", foot: "Premium Korean beauty curator delivering excellence to your skin." },
-        kr: { shop: "지금 구매", others: "글로벌 셀렉션", foot: "당신의 피부를 위한 프리미엄 한국 뷰티 큐레이터." }
+        th: { shop: "ช้อปเลย", others: "GLOBAL SELECTION", foot: "คัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี" },
+        en: { shop: "SHOP NOW", others: "GLOBAL SELECTION", foot: "Premium Korean beauty curator." },
+        kr: { shop: "지금 구매", others: "글로벌 셀렉션", foot: "프리미엄 한국 뷰티 큐레이터." }
     };
 
     let currentLang = localStorage.getItem('selectedLang') || 'th';
@@ -182,26 +200,17 @@
         const gridF = document.getElementById('grid-f');
         const gridO = document.getElementById('grid-o');
         gridF.innerHTML = ''; gridO.innerHTML = '';
-        
         products.forEach(p => {
             const name = currentLang === 'en' ? p.nameEn : (currentLang === 'kr' ? p.nameKr : p.nameTh);
             const badge = currentLang === 'en' ? p.bEn : (currentLang === 'kr' ? p.bKr : p.bTh);
-            const html = `
-                <a href="product.html?id=${p.id}" class="card">
-                    <div class="img-box">
-                        <div class="product-badge">${badge}</div>
-                        <img src="${p.img}">
-                    </div>
-                    <div class="info">
-                        <h3 class="${currentLang === 'kr' ? 'kr-text' : ''}">${name}</h3>
-                        <div class="price"><span class="sale">฿${p.sale}</span><span class="old">฿${p.old}</span></div>
-                    </div>
-                    <div class="btn-buy ${currentLang === 'kr' ? 'kr-text' : ''}">${trans[currentLang].shop}</div>
-                </a>`;
+            const html = `<a href="product.html?id=${p.id}" class="card">
+                <div class="img-box"><div class="product-badge">${badge}</div><img src="${p.img}"></div>
+                <div class="info"><h3 class="${currentLang === 'kr' ? 'kr-text' : ''}">${name}</h3>
+                <div class="price"><span class="sale">฿${p.sale}</span><span class="old">฿${p.old}</span></div></div>
+                <div class="btn-buy ${currentLang === 'kr' ? 'kr-text' : ''}">${trans[currentLang].shop}</div></a>`;
             if(p.brand === "Fraijour") gridF.innerHTML += html;
             else gridO.innerHTML += html;
         });
-
         document.getElementById('foot-desc').textContent = trans[currentLang].foot;
         document.getElementById('t-others').textContent = trans[currentLang].others;
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
