@@ -37,26 +37,9 @@
         .main-gold-logo { width: 320px; max-width: 80%; margin-bottom: 20px; }
         .hero-title { font-family: var(--font-head); font-size: clamp(1.8rem, 5vw, 2.8rem); color: var(--p-green); margin-bottom: 15px; letter-spacing: 5px; }
 
-        /* --- 🎞️ Optimized Slider (For 1000x400px Images) --- */
-        .slider-container { 
-            width: 100%; 
-            max-width: 1000px; /* จำกัดความกว้างเท่าขนาดภาพจริงเพื่อให้ภาพชัดที่สุด */
-            margin: 20px auto 60px; 
-            height: 400px; 
-            overflow: hidden; 
-            position: relative; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            background: #fff; /* พื้นหลังขาวกันขอบดำ */
-        }
+        .slider-container { width: 100%; max-width: 1000px; margin: 20px auto 60px; height: 400px; overflow: hidden; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.1); background: #fff; }
         .slider-wrapper { display: flex; width: 100%; height: 100%; will-change: transform; }
-        .slide { 
-            min-width: 100%; height: 100%; 
-            background-size: cover; /* ปรับให้เต็มพื้นที่ */
-            background-position: center; 
-            background-repeat: no-repeat;
-            image-rendering: -webkit-optimize-contrast; /* รีดความคมชัด */
-            image-rendering: crisp-edges;
-        }
+        .slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
         .slide1 { background-image: url('in1.jpg'); } 
         .slide2 { background-image: url('in2.jpg'); }
         .slide3 { background-image: url('in3.jpg'); }
@@ -66,7 +49,7 @@
         .slide7 { background-image: url('in7.jpg'); }
         .slide8 { background-image: url('in8.jpg'); }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 5% 100px; flex: 1; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 5% 60px; flex: 1; }
         .grid-title { margin-bottom: 40px; display: flex; align-items: center; gap: 20px; }
         .grid-title h2 { font-family: var(--font-head); font-size: 1.8rem; color: var(--p-green); margin: 0; letter-spacing: 3px; }
         .grid-title .line { flex: 1; height: 1px; background: var(--gold); opacity: 0.2; }
@@ -84,15 +67,16 @@
         .old { color: #adb5bd; text-decoration: line-through; margin-left: 8px; font-size: 0.9rem; }
         .btn-buy { background: var(--p-green); color: white; padding: 15px; text-align: center; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; transition: 0.3s; }
 
+        /* --- 📺 New YouTube Section --- */
+        .video-section { max-width: 1400px; margin: 0 auto 100px; padding: 0 5%; }
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
         footer { background: #111; color: white; padding: 70px 8% 30px; margin-top: auto; }
         .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; text-align: left; }
         .copy { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #222; font-size: 0.65rem; color: #444; letter-spacing: 2px; }
 
-        @media (max-width: 768px) { 
-            .slider-container { height: auto; aspect-ratio: 1000/400; } 
-            .f-grid { grid-template-columns: 1fr; } 
-            .nav-links { display: none; }
-        }
+        @media (max-width: 768px) { .slider-container { height: auto; aspect-ratio: 1000/400; } .f-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -135,6 +119,13 @@
     <div class="product-grid" id="grid-o"></div>
 </main>
 
+<section class="video-section">
+    <div class="grid-title"><h2>OUR STORY</h2><div class="line"></div></div>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/rS6Ifm_YecQ?autoplay=1&mute=1&loop=1&playlist=rS6Ifm_YecQ" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+</section>
+
 <footer>
     <div class="f-grid">
         <div class="f-col">
@@ -149,7 +140,6 @@
 </footer>
 
 <script>
-    // --- Infinite Slider Logic ---
     const wrapper = document.getElementById('sliderWrapper');
     const slides = document.querySelectorAll('.slide');
     const firstClone = slides[0].cloneNode(true);
@@ -169,7 +159,6 @@
     }
     setInterval(nextSlide, 5000);
 
-    // --- Product Data ---
     const products = [
         { id: 1, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด วอเตอรี่ ครีม", nameEn: "Original Herb Wormwood Watery Cream", nameKr: "오리지널 허브 웜우드 워터리 크림", sale: 250, old: 369, bTh: "แนะนำ", bEn: "HOT", bKr: "추천", img: "1.jpg.png" },
         { id: 2, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด โทนเนอร์", nameEn: "Original Herb Wormwood Toner", nameKr: "오리지널 허브 웜우드 토너", sale: 350, old: 459, bTh: "ขายดี", bEn: "BEST", bKr: "인기", img: "2.jpeg" },
@@ -216,7 +205,6 @@
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
         localStorage.setItem('selectedLang', currentLang);
     }
-
     function changeLang() {
         currentLang = currentLang === 'th' ? 'en' : (currentLang === 'en' ? 'kr' : 'th');
         render();
