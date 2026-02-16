@@ -96,7 +96,7 @@
             border: 0;
         }
 
-        /* --- 🏷️ Brand Logos Section --- */
+        /* --- 🏷️ ปรับขนาดโลโก้ให้บาล้านกัน --- */
         .brand-partner-section {
             background: #fff;
             padding: 60px 5%;
@@ -106,14 +106,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 60px;
+            gap: 50px;
             flex-wrap: wrap;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
         .brand-flex img {
-            height: 45px; /* ปรับขนาดความสูงโลโก้ตามเหมาะสม */
-            width: auto;
+            width: 160px;      /* จำกัดความกว้างให้เท่ากันเป็นหลัก */
+            height: 60px;      /* จำกัดความสูงสูงสุด */
+            object-fit: contain; /* บังคับให้โลโก้จัดวางอยู่กึ่งกลางพื้นที่โดยไม่เบี้ยว */
             filter: grayscale(100%);
             opacity: 0.6;
             transition: 0.4s;
@@ -121,7 +122,7 @@
         .brand-flex img:hover {
             filter: grayscale(0%);
             opacity: 1;
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         footer { background: #111; color: white; padding: 70px 8% 30px; margin-top: 0; }
@@ -132,7 +133,7 @@
             .f-grid { grid-template-columns: 1fr; } 
             .nav-links { display: none; } 
             .brand-flex { gap: 30px; }
-            .brand-flex img { height: 30px; }
+            .brand-flex img { width: 120px; height: 45px; }
         }
     </style>
 </head>
@@ -179,7 +180,8 @@
 
 <section class="brand-partner-section">
     <div class="brand-flex">
-        <img src="Evas.png" alt="EVAS Cosmetics"> <img src="Fraijour.png" alt="Fraijour">
+        <img src="Evas.png" alt="EVAS Cosmetics"> 
+        <img src="Fraijour.png" alt="Fraijour">
         <img src="Bathpa.png" alt="Bathpa">
         <img src="Charchar.png" alt="CHAR CHAR">
     </div>
@@ -199,8 +201,6 @@
 </footer>
 
 <script>
-    // JavaScript 
-
     const wrapper = document.getElementById('sliderWrapper');
     const slides = document.querySelectorAll('.slide');
     const firstClone = slides[0].cloneNode(true);
@@ -233,7 +233,7 @@
         { id: 10, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี โทนเนอร์", nameEn: "Retin Collagen 3D Toner", nameKr: "레틴 콜라겐 3D 토너", sale: 200, old: 480, bTh: "กระชับ", bEn: "FIRM", bKr: "탄력", img: "9.jpeg" },
         { id: 11, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี ครีม", nameEn: "Retin Collagen 3D Cream", nameKr: "레틴 콜า겐 3D 크림", sale: 150, old: 550, bTh: "ริ้วรอย", bEn: "LIFT", bKr: "주름", img: "7.jpeg" },
         { id: 12, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี อายครีม", nameEn: "Retin Collagen Eye Cream", nameKr: "레틴 콜ลา겐 아이크림", sale: 159, old: 490, bTh: "รอบดวงตา", bEn: "EYE", bKr: "눈가", img: "8.jpeg" },
-        { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน ลิป ออยล์", nameEn: "Retin Collagen Lip Oil", nameKr: "레틴 콜ลา겐 립 오일", sale: 107, old: 350, bTh: "ปากนุ่ม", bEn: "LIPS", bKr: "입술", img: "10.jpeg" },
+        { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน ลิป ออยล์", nameEn: "Retin Collagen Lip Oil", nameKr: "레틴 콜라겐 립 오일", sale: 107, old: 350, bTh: "ปากนุ่ม", bEn: "LIPS", bKr: "입술", img: "10.jpeg" },
         { id: 14, brand: "CharChar", nameTh: "มุงบีน ซิก้า โฟม", nameEn: "Mungbean Cica Foam", nameKr: "녹두 시카 폼", sale: 120, old: 390, bTh: "ล้ำลึก", bEn: "DEEP", bKr: "녹두", img: "14.jpeg" },
         { id: 15, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바ดี 톤업 크림", sale: 150, old: 450, bTh: "ผิวใส", bEn: "BODY", bKr: "미백", img: "13.jpeg" }
     ];
