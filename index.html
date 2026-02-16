@@ -71,25 +71,22 @@
         .video-section { 
             width: 100%;           
             max-width: 100%;       
-            margin: 80px 0 0;  /* ให้ชิดกับ Footer ด้านล่าง */
+            margin: 80px 0 0; 
             padding: 0;            
         }
-
         .video-section .grid-title {
             max-width: 1400px;     
             margin: 0 auto 40px;
             padding: 0 5%;
         }
-
         .video-container { 
             position: relative; 
             width: 100%; 
-            padding-bottom: 56.25%; /* อัตราส่วน 16:9 มาตรฐาน Cinema */
+            padding-bottom: 56.25%; 
             height: 0; 
             overflow: hidden; 
             background: #000; 
         }
-
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -99,11 +96,44 @@
             border: 0;
         }
 
-        footer { background: #111; color: white; padding: 70px 8% 30px; margin-top: 0; } /* ชิดกับวิดีโอพอดี */
+        /* --- 🏷️ Brand Logos Section --- */
+        .brand-partner-section {
+            background: #fff;
+            padding: 60px 5%;
+            text-align: center;
+        }
+        .brand-flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .brand-flex img {
+            height: 45px; /* ปรับขนาดความสูงโลโก้ตามเหมาะสม */
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: 0.4s;
+        }
+        .brand-flex img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        footer { background: #111; color: white; padding: 70px 8% 30px; margin-top: 0; }
         .f-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.2fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; text-align: left; }
         .copy { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #222; font-size: 0.65rem; color: #444; letter-spacing: 2px; }
 
-        @media (max-width: 768px) { .f-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+        @media (max-width: 768px) { 
+            .f-grid { grid-template-columns: 1fr; } 
+            .nav-links { display: none; } 
+            .brand-flex { gap: 30px; }
+            .brand-flex img { height: 30px; }
+        }
     </style>
 </head>
 <body>
@@ -128,14 +158,8 @@
 
 <div class="slider-container">
     <div class="slider-wrapper" id="sliderWrapper">
-        <div class="slide slide1"></div>
-        <div class="slide slide2"></div>
-        <div class="slide slide3"></div>
-        <div class="slide slide4"></div>
-        <div class="slide slide5"></div>
-        <div class="slide slide6"></div>
-        <div class="slide slide7"></div>
-        <div class="slide slide8"></div>
+        <div class="slide slide1"></div><div class="slide slide2"></div><div class="slide slide3"></div><div class="slide slide4"></div>
+        <div class="slide slide5"></div><div class="slide slide6"></div><div class="slide slide7"></div><div class="slide slide8"></div>
     </div>
 </div>
 
@@ -153,6 +177,14 @@
     </div>
 </section>
 
+<section class="brand-partner-section">
+    <div class="brand-flex">
+        <img src="evas-logo.png" alt="EVAS Cosmetics"> <img src="fraijour-logo.png" alt="Fraijour">
+        <img src="bathpa-logo.png" alt="Bathpa">
+        <img src="charchar-logo.png" alt="CHAR CHAR">
+    </div>
+</section>
+
 <footer>
     <div class="f-grid">
         <div class="f-col">
@@ -167,6 +199,7 @@
 </footer>
 
 <script>
+    // JavaScript ส่วนเดิมคงไว้ทั้งหมด
     const wrapper = document.getElementById('sliderWrapper');
     const slides = document.querySelectorAll('.slide');
     const firstClone = slides[0].cloneNode(true);
@@ -199,7 +232,7 @@
         { id: 10, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี โทนเนอร์", nameEn: "Retin Collagen 3D Toner", nameKr: "레틴 콜라겐 3D 토너", sale: 380, old: 480, bTh: "กระชับ", bEn: "FIRM", bKr: "탄력", img: "9.jpeg" },
         { id: 11, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี ครีม", nameEn: "Retin Collagen 3D Cream", nameKr: "레틴 콜า겐 3D 크림", sale: 420, old: 550, bTh: "ริ้วรอย", bEn: "LIFT", bKr: "주름", img: "7.jpeg" },
         { id: 12, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี อายครีม", nameEn: "Retin Collagen Eye Cream", nameKr: "레틴 콜ลา겐 아이크림", sale: 390, old: 490, bTh: "รอบดวงตา", bEn: "EYE", bKr: "눈가", img: "8.jpeg" },
-        { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน ลิป ออยล์", nameEn: "Retin Collagen Lip Oil", nameKr: "레틴 콜라겐 립 오일", sale: 260, old: 350, bTh: "ปากนุ่ม", bEn: "LIPS", bKr: "입술", img: "10.jpeg" },
+        { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน ลิป ออยล์", nameEn: "Retin Collagen Lip Oil", nameKr: "레틴 콜ลา겐 립 오일", sale: 260, old: 350, bTh: "ปากนุ่ม", bEn: "LIPS", bKr: "입술", img: "10.jpeg" },
         { id: 14, brand: "CharChar", nameTh: "มุงบีน ซิก้า โฟม", nameEn: "Mungbean Cica Foam", nameKr: "녹두 시카 폼", sale: 290, old: 390, bTh: "ล้ำลึก", bEn: "DEEP", bKr: "녹두", img: "14.jpeg" },
         { id: 15, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바ดี 톤업 크림", sale: 350, old: 450, bTh: "ผิวใส", bEn: "BODY", bKr: "미백", img: "13.jpeg" }
     ];
