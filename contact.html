@@ -3,134 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>About Us - HJ COSMETICS | The Heritage</title>
+    <title>Contact Us - HJ COSMETICS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@300;400;500;600&family=Nanum+Myeongjo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+Thai:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root { 
             --p-green: #1b4332; 
             --gold: #c5a059;
             --off-white: #fdfaf5;
-            --font-th: 'Prompt', sans-serif;
+            --font-th: 'Noto Serif Thai', serif;
             --font-en: 'Inter', sans-serif;
             --font-head: 'Cinzel', serif;
             --font-kr: 'Nanum Myeongjo', serif;
         }
 
-        /* --- Global Setup --- */
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
         body { 
-            margin: 0; padding: 0; 
-            background-color: var(--off-white); 
-            color: #2d3436; 
-            min-height: 100vh;
-            display: flex; flex-direction: column;
+            margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; 
+            min-height: 100vh; display: flex; flex-direction: column;
             overflow-x: hidden;
         }
 
-        /* --- 🎞️ Video Background --- */
+        /* --- Background --- */
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(253,250,245,0.2) 0%, rgba(253,250,245,0.7) 100%); z-index: -1; }
 
-        /* --- 🎖️ Navigation --- */
+        /* --- Navigation --- */
         nav { 
             background: rgba(255, 255, 255, 0.9); height: 80px; padding: 0 5%;
             display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 1000;
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
         }
         .logo-nav img { height: 40px; }
         .nav-links { display: flex; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; }
         .nav-links a.active { color: var(--gold); }
-        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; border-radius: 2px; }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 12px; cursor: pointer; font-weight: 700; font-size: 0.65rem; border-radius: 2px; }
 
-        /* --- ✨ Hero Section --- */
-        .hero-header { text-align: center; padding: 60px 5% 40px; }
+        /* --- Hero Header --- */
+        .hero-header { text-align: center; padding: 50px 5% 30px; }
         .hero-header h1 { 
-            font-family: var(--font-head);
             font-size: clamp(1.8rem, 5vw, 3.5rem); 
             color: var(--p-green); 
-            letter-spacing: 5px; 
+            letter-spacing: 3px; 
             margin: 0; 
+            font-weight: 700;
         }
 
-        .main-container { max-width: 1200px; margin: 0 auto; padding: 0 5% 80px; }
-
-        /* --- 🏛️ Story Section --- */
-        .origin-section { 
+        /* --- Contact Container --- */
+        .contact-container { max-width: 1200px; margin: 0 auto 60px; padding: 0 5%; flex: 1; width: 100%; }
+        .contact-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 30px; 
             background: rgba(255, 255, 255, 0.5); 
             backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: 60px 40px; border-radius: 20px; margin-bottom: 60px;
+            padding: 50px 40px; border-radius: 20px; 
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 15px 35px rgba(0,0,0,0.05);
         }
-        .story-flex { display: flex; align-items: center; gap: 50px; }
-        .story-img { flex: 1; text-align: center; }
-        .story-img img { width: 100%; max-width: 320px; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1)); }
         
-        .story-text { flex: 1.5; }
-        .story-text h2 { font-size: 2.2rem; color: var(--p-green); margin-bottom: 20px; }
-        .story-text p { font-size: 1rem; line-height: 1.8; color: #333; margin-bottom: 30px; }
+        .info-card h2 { font-size: 2rem; color: var(--p-green); margin-bottom: 30px; font-weight: 700; }
+        .info-item { margin-bottom: 25px; }
+        .info-item h4 { color: var(--gold); margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 2px; font-family: var(--font-head); }
+        .info-item p { color: #333; line-height: 1.6; font-size: 0.95rem; margin: 5px 0; }
+        .info-item i { color: var(--p-green); width: 20px; margin-right: 10px; text-align: center; }
 
-        /* --- 📊 Milestones --- */
-        .milestone-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .milestone-item { padding: 20px 10px; background: rgba(255,255,255,0.6); border-bottom: 3px solid var(--gold); text-align: center; border-radius: 8px; }
-        .milestone-year { color: var(--p-green); font-size: 1.8rem; font-weight: 700; display: block; margin-bottom: 5px; font-family: var(--font-en); }
-        .milestone-text { font-size: 0.6rem; color: #1b4332; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- 🏷️ Brand Cards --- */
-        .brand-grid { 
-            display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; 
-            background: rgba(255, 255, 255, 0.5); 
-            backdrop-filter: blur(20px); 
-            border-radius: 20px; overflow: hidden; 
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        /* --- Form --- */
+        .form-card { background: rgba(255, 255, 255, 0.5); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.4); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.7rem; color: var(--p-green); font-weight: 700; text-transform: uppercase; }
+        input, textarea { 
+            width: 100%; padding: 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); 
+            background: rgba(255,255,255,0.9); font-family: inherit; font-size: 0.9rem;
+            outline: none; transition: 0.3s;
         }
-        .brand-image { height: 400px; overflow: hidden; }
-        .brand-image img { width: 100%; height: 100%; object-fit: cover; transition: 1s ease; }
-        .brand-grid:hover .brand-image img { transform: scale(1.05); }
-        
-        .brand-content { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
-        .brand-content span { color: var(--gold); letter-spacing: 2px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
-        .brand-content h3 { font-family: var(--font-head); font-size: 2.2rem; margin: 0 0 15px; color: var(--p-green); }
-        .brand-content p { line-height: 1.6; color: #444; font-size: 0.95rem; margin-bottom: 25px; }
-        
-        .btn-visit { 
-            align-self: flex-start; text-decoration: none; color: white; background: var(--p-green); 
-            padding: 14px 30px; font-size: 0.75rem; letter-spacing: 1px; font-weight: 700; 
-            transition: 0.3s; border-radius: 4px; text-transform: uppercase;
-        }
-        .btn-visit:hover { background: #143326; transform: translateY(-2px); }
+        input:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.1); }
 
-        /* --- 🏛️ Footer --- */
+        .btn-submit { 
+            background: var(--p-green); color: white; border: none; padding: 18px; width: 100%; 
+            font-weight: 700; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; 
+            border-radius: 8px; font-size: 0.85rem; transition: 0.3s;
+        }
+        .btn-submit:hover { background: #143326; transform: translateY(-2px); }
+
+        /* --- Footer --- */
         footer { background: #111; color: white; padding: 50px 8% 30px; margin-top: auto; }
         .f-grid { display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 1400px; margin: 0 auto; text-align: center; }
-        .f-col h4 { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
-        .f-col p { font-size: 0.8rem; color: #bbb; line-height: 1.6; margin: 5px 0; }
         .f-logo { height: 35px; margin-bottom: 20px; filter: brightness(0) invert(1); }
-        .copy { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #222; font-size: 0.65rem; color: #444; letter-spacing: 1px; }
+        .f-col h4 { color: var(--gold); font-size: 0.8rem; margin-bottom: 15px; letter-spacing: 1px; }
+        .f-col p { font-size: 0.8rem; color: #bbb; line-height: 1.6; margin: 5px 0; }
+        .copy { margin-top: 40px; font-size: 0.65rem; border-top: 1px solid #222; padding-top: 20px; color: #444; text-align: center; }
 
-        /* --- Mobile Responsive --- */
-        @media (max-width: 850px) { 
-            .story-flex { flex-direction: column; text-align: center; }
-            .brand-grid { grid-template-columns: 1fr; }
-            .brand-image { height: 280px; }
-            .brand-content { padding: 30px 20px; text-align: center; align-items: center; }
-            .nav-links { display: none; }
-            .f-grid { grid-template-columns: 1fr; }
+        /* --- Responsive Styles --- */
+        @media (max-width: 900px) { 
+            .contact-grid { grid-template-columns: 1fr; padding: 30px 20px; } 
+            .nav-links { display: none; } 
+            .info-card { text-align: center; }
+            .info-card h2 { font-size: 1.8rem; }
         }
-
+        
         @media (min-width: 992px) {
-            .f-grid { grid-template-columns: 2fr 1fr 1fr 1fr; text-align: left; }
+            .f-grid { grid-template-columns: 2fr 1fr 1fr; text-align: left; }
         }
     </style>
 </head>
-<body>
-
+<body> 
 <video autoplay muted loop playsinline id="bg-video"><source src="วิดีโอทำเว็บไซต์.mp4" type="video/mp4"></video>
 <div class="bg-overlay"></div>
 
@@ -138,68 +116,48 @@
     <div class="logo-nav"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
     <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
     </div>
     <button onclick="rotateLanguage()" id="langBtn" class="lang-btn">TH</button>
 </nav>
 
 <header class="hero-header">
-    <h1 id="hero-title">Our Heritage</h1>
+    <h1 id="hero-title">Contact Us</h1>
 </header>
 
-<div class="main-container">
-    <section class="origin-section">
-        <div class="story-flex">
-            <div class="story-img"><img src="1(1).png" alt="HJ LOGO"></div>
-            <div class="story-text">
-                <h2 id="hj-title">The HJ Story</h2>
-                <p id="hj-desc"></p>
-                <div class="milestone-container">
-                    <div class="milestone-item">
-                        <span class="milestone-year">2+</span>
-                        <span class="milestone-text" id="ms-1">EXPERIENCE YEARS</span>
-                    </div>
-                    <div class="milestone-item">
-                        <span class="milestone-year">100%</span>
-                        <span class="milestone-text" id="ms-2">KOREAN AUTHENTIC</span>
-                    </div>
-                    <div class="milestone-item">
-                        <span class="milestone-year">15,000+</span>
-                        <span class="milestone-text" id="ms-3">HAPPY CUSTOMERS</span>
-                    </div>
-                </div>
+<div class="contact-container">
+    <div class="contact-grid">
+        <div class="info-card">
+            <h2 id="info-h">Get In Touch</h2>
+            <div class="info-item">
+                <h4 id="h-addr-label">ADDRESS</h4>
+                <p id="p-addr">323/11-12 Moo 3, Bowin,<br>Sriracha, Chon Buri 20230, Thailand</p>
+            </div>
+            <div class="info-item">
+                <h4 id="h-cont-label">CONCIERGE</h4>
+                <p><i class="fa-brands fa-line"></i> thaihj11</p>
+                <p><i class="fa-solid fa-phone"></i> 03-8182-577</p>
+                <p><i class="fa-solid fa-envelope"></i> thaihjglobal@gmail.com</p>
             </div>
         </div>
-    </section>
-
-    <div class="brand-grid">
-        <div class="brand-image"><img src="IMG_5808.jpeg"></div>
-        <div class="brand-content">
-            <span id="f-tag-sub">Botanical Therapy</span>
-            <h3 id="brand-h1">Fraijour</h3>
-            <p id="f-desc"></p>
-            <a href="https://fraijour.co.kr/" target="_blank" class="btn-visit" id="btn-f">OFFICIAL SITE</a>
-        </div>
-    </div>
-
-    <div class="brand-grid" id="bathpa-row">
-        <div class="brand-image" id="bathpa-img-box"><img src="IMG_5805.jpeg"></div>
-        <div class="brand-content">
-            <span id="b-tag-sub">Body Ritual</span>
-            <h3 id="brand-h2">Bathpa</h3>
-            <p id="b-desc"></p>
-            <a href="https://www.evascosmetic.com/bathpa" target="_blank" class="btn-visit" id="btn-b">OFFICIAL SITE</a>
-        </div>
-    </div>
-
-    <div class="brand-grid">
-        <div class="brand-image"><img src="IMG_5807.jpeg"></div>
-        <div class="brand-content">
-            <span id="c-tag-sub">Intensive Hair & Skin Care</span>
-            <h3 id="brand-h3">Char Char</h3>
-            <p id="c-desc"></p>
-            <a href="https://www.evascosmetic.com/charchar" target="_blank" class="btn-visit" id="btn-c">OFFICIAL SITE</a>
+        
+        <div class="form-card">
+            <form action="https://formspree.io/f/xzddzvby" method="POST">
+                <div class="form-group">
+                    <label id="l-name">NAME</label>
+                    <input type="text" name="name" id="ph-name" required>
+                </div>
+                <div class="form-group">
+                    <label id="l-email">EMAIL</label>
+                    <input type="email" name="email" id="ph-email" required>
+                </div>
+                <div class="form-group">
+                    <label id="l-msg">MESSAGE</label>
+                    <textarea name="message" id="ph-msg" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit" id="btn-send">Send Message</button>
+            </form>
         </div>
     </div>
 </div>
@@ -212,19 +170,15 @@
         </div>
         <div class="f-col">
             <h4 id="h-addr-foot">LOCATION</h4>
-            <p>323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
+            <p>323/11-12 Moo 3, Bowin, Sriracha, Chon Buri</p>
         </div>
         <div class="f-col">
-            <h4 id="h-cont-foot">CONTACT</h4>
+            <h4 id="h-cont-foot">CONCIERGE</h4>
+            <p>Line: thaihj11</p>
             <p>Tel: 03-8182-577</p>
-            <p>Email: thaihjglobal@gmail.com</p>
-        </div>
-        <div class="f-col">
-            <h4 id="h-coll-foot">COLLECTIONS</h4>
-            <p>Fraijour / Bathpa / Char Char</p>
         </div>
     </div>
-    <div class="copy">© 2024 HJ COSMETICS GLOBAL. PURSUIT OF PERFECTION.</div>
+    <div class="copy">© 2026 HJ COSMETICS GLOBAL. PURSUIT OF PERFECTION.</div>
 </footer>
 
 <script>
@@ -233,62 +187,56 @@
 
     const trans = {
         th: { 
-            heroTitle: "มรดกแห่งความงาม", hjTitle: "เรื่องราวของ HJ", 
-            hjDesc: "HJ COSMETICS ก่อตั้งขึ้นจากความมุ่งมั่นที่จะนำความงามที่แท้จริงจากเกาหลีมาสู่ประเทศไทย เราคัดสรรสกินแคร์ที่ผ่านการทดสอบทางวิทยาศาสตร์ เพื่อมอบผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ", 
-            ms1: "ปีแห่งประสบการณ์", ms2: "นำเข้าจากเกาหลี 100%", ms3: "ลูกค้าที่ไว้วางใจ",
-            fDesc: "แบรนด์ที่เชี่ยวชาญด้าน Botanical Therapy เน้นการใช้สารสกัดจากพืชพรรณธรรมชาติในการฟื้นฟูผิวอย่างอ่อนโยน", 
-            bDesc: "เปลี่ยนการดูแลผิวกายในทุกวันให้กลายเป็นพิธีกรรมแห่งความสุขระดับสปาด้วยกลิ่นหอมและสารบำรุงที่เป็นเอกลักษณ์", 
-            cDesc: "ผู้นำด้านผลิตภัณฑ์ดูแลเส้นผมและผิวสูตรเข้มข้น มอบผลลัพธ์ดุจทำทรีทเมนท์ระดับมืออาชีพ",
-            footDesc: "คัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผิวที่ยั่งยืน", 
-            visit: "เข้าชมเว็บไซต์", hAddr: "ที่อยู่", hCont: "ติดต่อเรา", hColl: "คอลเลกชัน"
+            heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", 
+            hAddr: "ที่อยู่", hCont: "ฝ่ายบริการ", lName: "ชื่อ-นามสกุล", lEmail: "อีเมล", lMsg: "ข้อความ", 
+            btnSend: "ส่งข้อความ", footDesc: "เราคัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ",
+            phName: "ชื่อของคุณ", phEmail: "อีเมลติดต่อ", phMsg: "พิมพ์ข้อความที่นี่..."
         },
         en: { 
-            heroTitle: "Our Heritage", hjTitle: "The HJ Story", 
-            hjDesc: "Established with a visionary commitment to bridge Korean beauty excellence with Thailand. We curate science-backed skincare to deliver excellence to your skin.", 
-            ms1: "EXPERIENCE YEARS", ms2: "KOREAN AUTHENTIC", ms3: "HAPPY CUSTOMERS",
-            fDesc: "Specializing in Botanical Therapy, Fraijour harnesses natural herbs for deep restoration and balance.", 
-            bDesc: "Elevate your daily ritual into a spa escape with unique scents and intensive nourishment.", 
-            cDesc: "A pioneer in intensive hair & skin care solutions with professional-grade treatments.",
-            footDesc: "Premium Korean beauty curator delivering excellence to your skin.", 
-            visit: "OFFICIAL SITE", hAddr: "LOCATION", hCont: "CONTACT", hColl: "COLLECTIONS"
+            heroTitle: "Contact Us", infoH: "Get In Touch", 
+            hAddr: "ADDRESS", hCont: "CONCIERGE", lName: "YOUR NAME", lEmail: "EMAIL", lMsg: "MESSAGE", 
+            btnSend: "SEND MESSAGE", footDesc: "Premium Korean beauty curator delivering excellence.",
+            phName: "Your name", phEmail: "Your email", phMsg: "Write message..."
         },
         kr: { 
-            heroTitle: "아름다운 유산", hjTitle: "HJ 코스메틱 이야기", 
-            hjDesc: "HJ COSMETICS는 한국의 진정한 아름다움을 태국에 전달하기 위해 설립되었습니다. 우리는 과학적으로 검증된 스킨케어 제품만을 엄선하여 최상의 결과를 제공합니다.", 
-            ms1: "경력 년수", ms2: "100% 한국 정품", ms3: "신뢰하는 고객들",
-            fDesc: "프라이주어는 식물 테라피 전문 브랜드로, 자연의 치유력을 활용하여 피부 본연의 힘을 기릅니다.", 
-            bDesc: "일상의 목욕 시간을 프리미엄 스파와 같은 휴식으로 바꿔주는 감각적인 바디 케어 브랜드입니다.", 
-            cDesc: "고농축 추출물을 통해 손상된 모발과 피부를 회복시키는 전문 케어 솔루션입니다.",
-            footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.", 
-            visit: "공식 사이트", hAddr: "주소", hCont: "연락처", hColl: "컬렉션"
+            heroTitle: "문의하기", infoH: "연락처", 
+            hAddr: "주소", hCont: "고객 서비스", lName: "성함", lEmail: "이메일", lMsg: "메시지", 
+            btnSend: "보내기", footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.",
+            phName: "이름", phEmail: "이메일", phMsg: "메시지..."
         }
     };
 
     function updateContent() {
         const l = trans[currentLang];
+        
         document.getElementById('hero-title').textContent = l.heroTitle;
-        document.getElementById('hj-title').textContent = l.hjTitle;
-        document.getElementById('hj-desc').textContent = l.hjDesc;
-        document.getElementById('ms-1').textContent = l.ms1;
-        document.getElementById('ms-2').textContent = l.ms2;
-        document.getElementById('ms-3').textContent = l.ms3;
-        document.getElementById('f-desc').textContent = l.fDesc;
-        document.getElementById('b-desc').textContent = l.bDesc;
-        document.getElementById('c-desc').textContent = l.cDesc;
+        document.getElementById('info-h').textContent = l.infoH;
+        document.getElementById('h-addr-label').textContent = l.hAddr;
+        document.getElementById('h-cont-label').textContent = l.hCont;
+        document.getElementById('l-name').textContent = l.lName;
+        document.getElementById('l-email').textContent = l.lEmail;
+        document.getElementById('l-msg').textContent = l.lMsg;
+        document.getElementById('btn-send').textContent = l.btnSend;
         document.getElementById('foot-desc').textContent = l.footDesc;
         document.getElementById('h-addr-foot').textContent = l.hAddr;
         document.getElementById('h-cont-foot').textContent = l.hCont;
-        document.getElementById('h-coll-foot').textContent = l.hColl;
-        document.querySelectorAll('.btn-visit').forEach(b => b.textContent = l.visit);
+        document.getElementById('ph-name').placeholder = l.phName;
+        document.getElementById('ph-email').placeholder = l.phEmail;
+        document.getElementById('ph-msg').placeholder = l.phMsg;
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
         
-        // Font Switching
+        const heroTitle = document.getElementById('hero-title');
+        const infoH = document.getElementById('info-h');
+        
         if (currentLang === 'th') {
             document.body.style.fontFamily = 'var(--font-th)';
+            heroTitle.style.fontFamily = 'var(--font-th)';
         } else if (currentLang === 'kr') {
             document.body.style.fontFamily = 'var(--font-kr)';
+            heroTitle.style.fontFamily = 'var(--font-kr)';
         } else {
             document.body.style.fontFamily = 'var(--font-en)';
+            heroTitle.style.fontFamily = 'var(--font-head)';
         }
         
         localStorage.setItem('hj_lang', currentLang);
@@ -299,20 +247,6 @@
         updateContent();
     }
 
-    // Desktop Mirror Effect for Bathpa Row
-    function handleResize() {
-        const bathpaRow = document.getElementById('bathpa-row');
-        const bathpaImg = document.getElementById('bathpa-img-box');
-        if (window.innerWidth > 850) {
-            bathpaRow.style.direction = 'rtl';
-            bathpaImg.parentElement.querySelector('.brand-content').style.direction = 'ltr';
-        } else {
-            bathpaRow.style.direction = 'ltr';
-        }
-    }
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
     updateContent();
 </script>
 </body>
