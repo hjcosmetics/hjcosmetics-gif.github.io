@@ -2,113 +2,119 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - HJ COSMETICS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+Thai:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@300;400;500;600&family=Inter:wght@400;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
+
         :root { 
             --p-green: #1b4332; 
             --gold: #c5a059;
             --off-white: #fdfaf5;
-            --font-th: 'Noto Serif Thai', serif;
+            --border-color: rgba(255, 255, 255, 0.4);
+            --font-th: 'Prompt', sans-serif;
             --font-en: 'Inter', sans-serif;
             --font-head: 'Cinzel', serif;
             --font-kr: 'Nanum Myeongjo', serif;
         }
 
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        /* Security & Core UI */
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; -webkit-user-select: none; user-select: none; }
         
         body { 
-            margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; 
-            min-height: 100vh; display: flex; flex-direction: column;
-            overflow-x: hidden;
+            margin: 0; padding: 0; 
+            background-color: var(--off-white); 
+            color: #2d3436; 
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            transition: font-family 0.3s ease;
         }
 
-        /* --- Background --- */
-        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4; }
-        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(253,250,245,0.2) 0%, rgba(253,250,245,0.7) 100%); z-index: -1; }
+        /* --- 🎞️ Video Background --- */
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.5; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(253,250,245,0.1) 0%, rgba(253,250,245,0.6) 100%); z-index: -1; }
 
-        /* --- Navigation --- */
+        /* --- 🎖️ Navigation --- */
         nav { 
-            background: rgba(255, 255, 255, 0.9); height: 80px; padding: 0 5%;
+            background: rgba(255, 255, 255, 0.8); height: 80px; padding: 0 8%;
             display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(15px);
+            position: sticky; top: 0; z-index: 1000;
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.3);
         }
-        .logo-nav img { height: 40px; }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; }
+        .logo-nav img { height: 45px; }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         .nav-links a.active { color: var(--gold); }
-        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 12px; cursor: pointer; font-weight: 700; font-size: 0.65rem; border-radius: 2px; }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; border-radius: 2px; }
 
-        /* --- Hero Header --- */
-        .hero-header { text-align: center; padding: 50px 5% 30px; }
+        /* --- ✨ Hero --- */
+        .hero-header { text-align: center; padding: 60px 5% 30px; }
         .hero-header h1 { 
-            font-size: clamp(1.8rem, 5vw, 3.5rem); 
+            font-family: var(--font-head);
+            font-size: clamp(2rem, 5vw, 3.5rem); 
             color: var(--p-green); 
-            letter-spacing: 3px; 
+            letter-spacing: 6px; 
             margin: 0; 
             font-weight: 700;
         }
 
-        /* --- Contact Container --- */
-        .contact-container { max-width: 1200px; margin: 0 auto 60px; padding: 0 5%; flex: 1; width: 100%; }
+        /* --- 🏛️ Contact Card (Glassmorphism) --- */
+        .contact-container { max-width: 1300px; margin: 0 auto 80px; padding: 0 5%; flex: 1; }
         .contact-grid { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 30px; 
-            background: rgba(255, 255, 255, 0.5); 
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: 50px 40px; border-radius: 20px; 
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; 
+            background: rgba(255, 255, 255, 0.3); 
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            padding: 60px; border-radius: 30px; 
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
         }
         
-        .info-card h2 { font-size: 2rem; color: var(--p-green); margin-bottom: 30px; font-weight: 700; }
-        .info-item { margin-bottom: 25px; }
-        .info-item h4 { color: var(--gold); margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 2px; font-family: var(--font-head); }
-        .info-item p { color: #333; line-height: 1.6; font-size: 0.95rem; margin: 5px 0; }
-        .info-item i { color: var(--p-green); width: 20px; margin-right: 10px; text-align: center; }
+        .info-card h2 { font-family: var(--font-head); color: var(--p-green); font-size: 2.2rem; margin: 0 0 40px; font-weight: 700; }
+        .info-item { margin-bottom: 35px; }
+        .info-item h4 { color: var(--gold); margin-bottom: 8px; font-size: 0.85rem; letter-spacing: 3px; font-weight: 700; font-family: var(--font-head); }
+        .info-item p { color: #333; font-weight: 500; line-height: 1.8; font-size: 1rem; margin: 0; }
+        .info-item i { color: var(--p-green); margin-right: 12px; font-size: 1.1rem; width: 20px; }
 
-        /* --- Form --- */
-        .form-card { background: rgba(255, 255, 255, 0.5); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.4); }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-size: 0.7rem; color: var(--p-green); font-weight: 700; text-transform: uppercase; }
+        /* --- ✉️ Form --- */
+        .form-card { background: rgba(255, 255, 255, 0.4); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.4); }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 10px; font-size: 0.75rem; color: var(--p-green); font-weight: 700; letter-spacing: 1px; }
+
         input, textarea { 
-            width: 100%; padding: 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); 
-            background: rgba(255,255,255,0.9); font-family: inherit; font-size: 0.9rem;
-            outline: none; transition: 0.3s;
+            width: 100%; padding: 16px; font-size: 1rem; 
+            border: 1px solid rgba(27, 67, 50, 0.1); 
+            border-radius: 8px; background: rgba(255,255,255,0.8); 
+            color: #111; font-family: inherit; transition: 0.3s;
         }
-        input:focus, textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.1); }
+        input:focus, textarea:focus { outline: none; border-color: var(--gold); background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
         .btn-submit { 
-            background: var(--p-green); color: white; border: none; padding: 18px; width: 100%; 
-            font-weight: 700; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; 
-            border-radius: 8px; font-size: 0.85rem; transition: 0.3s;
+            background: var(--p-green); color: white; border: none; padding: 20px; 
+            width: 100%; font-weight: 700; cursor: pointer; letter-spacing: 2px; 
+            text-transform: uppercase; transition: 0.3s; font-size: 0.9rem; 
+            border-radius: 8px; margin-top: 10px;
         }
-        .btn-submit:hover { background: #143326; transform: translateY(-2px); }
+        .btn-submit:hover { background: #143326; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(27,67,50,0.2); }
 
-        /* --- Footer --- */
-        footer { background: #111; color: white; padding: 50px 8% 30px; margin-top: auto; }
-        .f-grid { display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 1400px; margin: 0 auto; text-align: center; }
-        .f-logo { height: 35px; margin-bottom: 20px; filter: brightness(0) invert(1); }
-        .f-col h4 { color: var(--gold); font-size: 0.8rem; margin-bottom: 15px; letter-spacing: 1px; }
-        .f-col p { font-size: 0.8rem; color: #bbb; line-height: 1.6; margin: 5px 0; }
-        .copy { margin-top: 40px; font-size: 0.65rem; border-top: 1px solid #222; padding-top: 20px; color: #444; text-align: center; }
+        /* --- 🏛️ Footer --- */
+        footer { background: #1a1a1a; color: white; padding: 60px 8% 40px; border-top: 1px solid #333; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .f-col h4 { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 25px; border-left: 4px solid var(--gold); padding-left: 15px; font-family: var(--font-head); }
+        .f-col p { color: #7f8c8d; font-size: 0.85rem; line-height: 1.8; margin-bottom: 10px; }
+        .f-logo { height: 40px; margin-bottom: 25px; filter: brightness(0) invert(1); }
+        .copy { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #333; font-size: 0.75rem; color: #555; font-family: var(--font-en); }
 
-        /* --- Responsive Styles --- */
-        @media (max-width: 900px) { 
-            .contact-grid { grid-template-columns: 1fr; padding: 30px 20px; } 
-            .nav-links { display: none; } 
-            .info-card { text-align: center; }
-            .info-card h2 { font-size: 1.8rem; }
-        }
-        
-        @media (min-width: 992px) {
-            .f-grid { grid-template-columns: 2fr 1fr 1fr; text-align: left; }
+        @media (max-width: 1000px) { 
+            .contact-grid { grid-template-columns: 1fr; padding: 40px 25px; }
+            .f-grid { grid-template-columns: 1fr; text-align: center; }
+            .f-col h4 { border-left: none; padding-left: 0; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
-<body> 
+<body oncontextmenu="return false;"> 
 <video autoplay muted loop playsinline id="bg-video"><source src="วิดีโอทำเว็บไซต์.mp4" type="video/mp4"></video>
 <div class="bg-overlay"></div>
 
@@ -146,15 +152,15 @@
             <form action="https://formspree.io/f/xzddzvby" method="POST">
                 <div class="form-group">
                     <label id="l-name">NAME</label>
-                    <input type="text" name="name" id="ph-name" required>
+                    <input type="text" name="name" id="ph-name" placeholder="Name" required>
                 </div>
                 <div class="form-group">
                     <label id="l-email">EMAIL</label>
-                    <input type="email" name="email" id="ph-email" required>
+                    <input type="email" name="email" id="ph-email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
                     <label id="l-msg">MESSAGE</label>
-                    <textarea name="message" id="ph-msg" rows="4" required></textarea>
+                    <textarea name="message" id="ph-msg" rows="4" placeholder="Your message..." required></textarea>
                 </div>
                 <button type="submit" class="btn-submit" id="btn-send">Send Message</button>
             </form>
@@ -166,10 +172,10 @@
     <div class="f-grid">
         <div class="f-col">
             <img src="HJ (5).png" alt="HJ" class="f-logo">
-            <p id="foot-desc"></p>
+            <p id="foot-desc">Premium Korean beauty curator delivering excellence.</p>
         </div>
         <div class="f-col">
-            <h4 id="h-addr-foot">LOCATION</h4>
+            <h4 id="h-addr-foot">OUR OFFICE</h4>
             <p>323/11-12 Moo 3, Bowin, Sriracha, Chon Buri</p>
         </div>
         <div class="f-col">
@@ -177,8 +183,13 @@
             <p>Line: thaihj11</p>
             <p>Tel: 03-8182-577</p>
         </div>
+        <div class="f-col">
+            <h4>COLLECTIONS</h4>
+            <p>Fraijour Herbs</p>
+            <p>Retin-Collagen</p>
+        </div>
     </div>
-    <div class="copy">© 2026 HJ COSMETICS GLOBAL. PURSUIT OF PERFECTION.</div>
+    <div class="copy">© 2026 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
@@ -225,19 +236,9 @@
         document.getElementById('ph-msg').placeholder = l.phMsg;
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
         
-        const heroTitle = document.getElementById('hero-title');
-        const infoH = document.getElementById('info-h');
-        
-        if (currentLang === 'th') {
-            document.body.style.fontFamily = 'var(--font-th)';
-            heroTitle.style.fontFamily = 'var(--font-th)';
-        } else if (currentLang === 'kr') {
-            document.body.style.fontFamily = 'var(--font-kr)';
-            heroTitle.style.fontFamily = 'var(--font-kr)';
-        } else {
-            document.body.style.fontFamily = 'var(--font-en)';
-            heroTitle.style.fontFamily = 'var(--font-head)';
-        }
+        // --- ระบบเปลี่ยนฟอนต์ตามภาษาหลักเหมือนหน้าสินค้า ---
+        const bodyFont = currentLang === 'th' ? 'var(--font-th)' : (currentLang === 'kr' ? 'var(--font-kr)' : 'var(--font-en)');
+        document.body.style.fontFamily = bodyFont;
         
         localStorage.setItem('hj_lang', currentLang);
     }
@@ -248,6 +249,7 @@
     }
 
     updateContent();
+    document.addEventListener('contextmenu', e => e.preventDefault());
 </script>
 </body>
 </html>
