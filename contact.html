@@ -40,7 +40,6 @@
         .nav-links a { text-decoration: none; color: var(--p-green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--gold); }
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-weight: 700; font-size: 0.7rem; border-radius: 2px; transition: 0.3s; }
-        .lang-btn:hover { background: var(--gold); }
 
         /* --- Header --- */
         .hero-header { text-align: center; padding: 60px 5% 30px; }
@@ -54,7 +53,7 @@
         }
 
         /* --- Main Content --- */
-        .contact-container { max-width: 1300px; margin: 0 auto 60px; padding: 0 5%; flex: 1; width: 100%; }
+        .contact-container { max-width: 1300px; margin: 0 auto 40px; padding: 0 5%; flex: 1; width: 100%; }
         .contact-grid { 
             display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; 
             background: rgba(255, 255, 255, 0.3); 
@@ -87,7 +86,11 @@
         }
         .btn-submit:hover { background: #143326; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        /* --- 📱 RESPONSIVE --- */
+        /* --- Footer (Only Copyright) --- */
+        footer { padding: 40px 0; text-align: center; background: transparent; }
+        .copy { font-size: 0.7rem; color: #7f8c8d; letter-spacing: 1px; }
+
+        /* --- Responsive Fix --- */
         @media (max-width: 1024px) {
             nav { padding: 0 5%; }
             .contact-grid { grid-template-columns: 1fr; padding: 40px; }
@@ -98,7 +101,7 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .hero-header { padding: 40px 5% 20px; }
-            .contact-grid { padding: 30px 20px; border-radius: 20px; margin-bottom: 40px; }
+            .contact-grid { padding: 30px 20px; border-radius: 20px; }
             .form-card { padding: 30px 20px; }
         }
     </style>
@@ -156,6 +159,10 @@
         </div>
     </div>
 </div>
+
+<footer>
+    <div class="copy">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
+</footer>
 
 <script>
     const languages = ['th', 'en', 'kr'];
