@@ -7,100 +7,143 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@300;400;500;600&family=Nanum+Myeongjo:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --p-green: #1b4332; --gold: #c5a059; --off-white: #fdfaf5; --font-th: 'Prompt', sans-serif; --font-en: 'Inter', sans-serif; --font-head: 'Cinzel', serif; --font-kr: 'Nanum Myeongjo', serif; }
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; font-family: var(--font-th); }
-        
-        /* Background */
-        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4; }
-        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(253,250,245,0.2) 0%, rgba(253,250,245,0.7) 100%); z-index: -1; }
+        :root { 
+            --p-green: #1b4332; 
+            --gold: #c5a059;
+            --off-white: #fdfaf5;
+            --font-th: 'Prompt', sans-serif;
+            --font-en: 'Inter', sans-serif;
+            --font-head: 'Cinzel', serif;
+            --font-kr: 'Nanum Myeongjo', serif;
+        }
 
-        /* Navigation (Fixed Mobile) */
-        nav { background: rgba(255, 255, 255, 0.9); height: 80px; padding: 0 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.3); }
+        /* --- Global Setup --- */
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; -webkit-user-select: none; user-select: none; }
+        
+        body { 
+            margin: 0; padding: 0; 
+            background-color: var(--off-white); 
+            color: #2d3436; 
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            transition: font-family 0.3s ease;
+        }
+
+        /* --- 🎞️ Video Background --- */
+        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.5; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(253,250,245,0.1) 0%, rgba(253,250,245,0.6) 100%); z-index: -1; }
+
+        /* --- 🎖️ Navigation --- */
+        nav { 
+            background: rgba(255, 255, 255, 0.8); height: 80px; padding: 0 8%;
+            display: flex; justify-content: space-between; align-items: center; 
+            position: sticky; top: 0; z-index: 1000;
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
         .logo-nav img { height: 45px; }
-        .nav-right { display: flex; align-items: center; gap: 20px; }
         .nav-links { display: flex; gap: 30px; }
         .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         .nav-links a.active { color: var(--gold); }
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; border-radius: 2px; }
-        .menu-toggle { display: none; font-size: 1.5rem; color: var(--p-green); cursor: pointer; }
 
-        /* Mobile Menu Logic */
-        @media (max-width: 1000px) {
-            .nav-links { position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px); background: white; flex-direction: column; align-items: center; padding-top: 50px; transition: 0.4s; z-index: 999; }
-            .nav-links.active { left: 0; }
-            .menu-toggle { display: block; }
-            .logo-nav img { height: 35px; }
+        /* --- ✨ Hero Section --- */
+        .hero-header { text-align: center; padding: 60px 5% 30px; }
+        .hero-header h1 { 
+            font-size: clamp(2.2rem, 5vw, 3.8rem); 
+            color: var(--p-green); 
+            letter-spacing: 6px; 
+            margin: 0; 
+            font-weight: 600;
         }
 
-        /* Hero */
-        .hero-header { text-align: center; padding: 60px 5% 30px; }
-        .hero-header h1 { font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.8rem); color: var(--p-green); letter-spacing: 6px; margin: 0; font-weight: 600; }
         .main-container { max-width: 1300px; margin: 0 auto; padding: 0 5% 100px; }
 
-        /* Sections (Glassmorphism) */
-        .origin-section, .brand-grid { background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 20px 60px rgba(0,0,0,0.05); border-radius: 30px; }
-        .origin-section { padding: 60px; margin-bottom: 60px; }
+        /* --- 🏛️ Story Section (Glassmorphism) --- */
+        .origin-section { 
+            background: rgba(255, 255, 255, 0.3); 
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            padding: 80px; border-radius: 30px; margin-bottom: 80px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
         .story-flex { display: flex; align-items: center; gap: 60px; }
         .story-img { flex: 0.8; text-align: center; }
-        .story-img img { width: 100%; max-width: 350px; }
+        .story-img img { width: 100%; max-width: 400px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1)); animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
         .story-text { flex: 1.2; }
-        .story-text h2 { font-size: 2.5rem; color: var(--p-green); margin-bottom: 20px; font-family: var(--font-head); }
-        .story-text p { font-size: 1rem; line-height: 1.8; color: #333; margin-bottom: 30px; }
+        .story-text h2 { font-size: 2.8rem; color: var(--p-green); margin-bottom: 25px; font-weight: 600; }
+        .story-text p { font-size: 1.05rem; line-height: 2; color: #333; margin-bottom: 40px; text-indent: 2em; }
 
-        /* Milestones */
-        .milestone-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .milestone-item { padding: 15px; background: rgba(255,255,255,0.5); border-bottom: 3px solid var(--gold); text-align: center; border-radius: 10px; }
-        .milestone-year { color: var(--p-green); font-size: 1.5rem; font-weight: 700; display: block; }
-        .milestone-text { font-size: 0.6rem; color: #1b4332; font-weight: 700; text-transform: uppercase; }
+        /* --- 📊 Milestones --- */
+        .milestone-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .milestone-item { padding: 25px 15px; background: rgba(255,255,255,0.4); border-bottom: 4px solid var(--gold); text-align: center; border-radius: 12px; }
+        .milestone-year { color: var(--p-green); font-family: var(--font-en); font-size: 2rem; font-weight: 700; display: block; margin-bottom: 5px; }
+        .milestone-text { font-size: 0.7rem; color: #1b4332; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        /* Brand Cards */
-        .brand-grid { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; overflow: hidden; }
-        .brand-image { height: 450px; }
-        .brand-image img { width: 100%; height: 100%; object-fit: cover; }
-        .brand-content { padding: 50px; display: flex; flex-direction: column; justify-content: center; }
-        .brand-content h3 { font-size: 2.5rem; margin: 0 0 15px; color: var(--p-green); font-family: var(--font-head); }
-        .btn-visit { align-self: flex-start; text-decoration: none; color: white; background: var(--p-green); padding: 15px 30px; font-size: 0.75rem; font-weight: 700; border-radius: 4px; font-family: var(--font-en); letter-spacing: 1px; }
+        /* --- 🏷️ Brand Cards --- */
+        .brand-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; 
+            background: rgba(255, 255, 255, 0.3); 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px; overflow: hidden; 
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+        }
+        .brand-image { height: 500px; overflow: hidden; }
+        .brand-image img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s ease; filter: brightness(0.95); }
+        .brand-grid:hover .brand-image img { transform: scale(1.08); filter: brightness(1); }
+        
+        .brand-content { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+        .brand-content span { color: var(--gold); letter-spacing: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; font-family: var(--font-en); }
+        .brand-content h3 { font-size: 2.8rem; margin: 0 0 20px; color: var(--p-green); font-weight: 600; }
+        .brand-content p { line-height: 1.8; color: #444; font-size: 1.05rem; margin-bottom: 35px; }
+        
+        .btn-visit { 
+            align-self: flex-start; text-decoration: none; color: white; background: var(--p-green); 
+            padding: 18px 40px; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; 
+            transition: 0.3s; border-radius: 6px; font-family: var(--font-en);
+        }
+        .btn-visit:hover { background: #143326; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(27,67,50,0.2); }
 
-        /* Footer */
-        footer { background: #1a1a1a; color: #7f8c8d; padding: 60px 8% 40px; margin-top: auto; }
-        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .f-col h4 { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 20px; font-family: var(--font-en); }
-        .f-col p { font-size: 0.85rem; line-height: 1.8; margin-bottom: 5px; }
-        .copy { text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid #333; font-size: 0.7rem; letter-spacing: 1px; }
+        /* --- 🏛️ Footer --- */
+        footer { background: #1a1a1a; color: #7f8c8d; padding: 60px 8% 40px; border-top: 1px solid #333; }
+        .f-grid { display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1fr; gap: 50px; max-width: 1400px; margin: 0 auto; text-align: left; }
+        .f-col h4 { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 25px; border-left: 4px solid var(--gold); padding-left: 15px; font-family: var(--font-en); text-transform: uppercase; }
+        .f-col p { font-size: 0.85rem; line-height: 1.8; margin-bottom: 10px; }
+        .f-logo { height: 40px; margin-bottom: 25px; filter: brightness(0) invert(1); }
+        .copy { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #333; font-size: 0.75rem; letter-spacing: 2px; color: #555; font-family: var(--font-en); }
 
-        /* Mobile Fixes */
         @media (max-width: 1000px) { 
-            .origin-section { padding: 30px 20px; }
-            .story-flex { flex-direction: column; text-align: center; gap: 30px; }
-            .story-img img { width: 200px; }
+            .origin-section { padding: 40px 25px; }
+            .story-flex { flex-direction: column; text-align: center; gap: 40px; }
             .brand-grid { grid-template-columns: 1fr; }
-            .brand-image { height: 250px; } /* ลดความสูงรูปในมือถือ */
-            .brand-content { padding: 30px 20px; text-align: center; align-items: center; }
-            .story-text h2, .brand-content h3 { font-size: 1.8rem; }
-            .nav-links { display: flex; /* Ensure flex for mobile menu */ }
+            .brand-image { height: 350px; }
+            .f-grid { grid-template-columns: 1fr; text-align: center; }
+            .f-col h4 { border-left: none; padding-left: 0; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
 <video autoplay muted loop playsinline id="bg-video"><source src="วิดีโอทำเว็บไซต์.mp4" type="video/mp4"></video>
 <div class="bg-overlay"></div>
 
 <nav>
     <div class="logo-nav"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
-    <div class="nav-right">
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="about.html" class="active">About</a>
-            <a href="product.html">Product</a> <a href="contact.html">Contact</a>
-        </div>
-        <button onclick="rotateLanguage()" id="langBtn" class="lang-btn">TH</button>
-        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
     </div>
+    <button onclick="rotateLanguage()" id="langBtn" class="lang-btn">TH</button>
 </nav>
 
-<header class="hero-header"><h1 id="hero-title">Our Heritage</h1></header>
+<header class="hero-header">
+    <h1 id="hero-title">Our Heritage</h1>
+</header>
 
 <div class="main-container">
     <section class="origin-section">
@@ -110,9 +153,18 @@
                 <h2 id="hj-title">The HJ Story</h2>
                 <p id="hj-desc"></p>
                 <div class="milestone-container">
-                    <div class="milestone-item"><span class="milestone-year">2+</span><span class="milestone-text" id="ms-1">EXPERIENCE YEARS</span></div>
-                    <div class="milestone-item"><span class="milestone-year">100%</span><span class="milestone-text" id="ms-2">KOREAN AUTHENTIC</span></div>
-                    <div class="milestone-item"><span class="milestone-year">15,000+</span><span class="milestone-text" id="ms-3">HAPPY CUSTOMERS</span></div>
+                    <div class="milestone-item">
+                        <span class="milestone-year">2+</span>
+                        <span class="milestone-text" id="ms-1">EXPERIENCE YEARS</span>
+                    </div>
+                    <div class="milestone-item">
+                        <span class="milestone-year">100%</span>
+                        <span class="milestone-text" id="ms-2">KOREAN AUTHENTIC</span>
+                    </div>
+                    <div class="milestone-item">
+                        <span class="milestone-year">15,000+</span>
+                        <span class="milestone-text" id="ms-3">HAPPY CUSTOMERS</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,17 +173,17 @@
     <div class="brand-grid">
         <div class="brand-image"><img src="IMG_5808.jpeg"></div>
         <div class="brand-content">
-            <span id="f-tag-sub" style="color:var(--gold);font-size:0.7rem;font-weight:700;margin-bottom:10px;display:block;">Botanical Therapy</span>
+            <span id="f-tag-sub">Botanical Therapy</span>
             <h3 id="brand-h1">Fraijour</h3>
             <p id="f-desc"></p>
             <a href="https://fraijour.co.kr/" target="_blank" class="btn-visit" id="btn-f">OFFICIAL SITE</a>
         </div>
     </div>
 
-    <div class="brand-grid" id="bathpa-row" style="direction: rtl;">
+    <div class="brand-grid" style="direction: rtl;">
         <div class="brand-image"><img src="IMG_5805.jpeg"></div>
         <div class="brand-content" style="direction: ltr;">
-            <span id="b-tag-sub" style="color:var(--gold);font-size:0.7rem;font-weight:700;margin-bottom:10px;display:block;">Body Ritual</span>
+            <span id="b-tag-sub">Body Ritual</span>
             <h3 id="brand-h2">Bathpa</h3>
             <p id="b-desc"></p>
             <a href="https://www.evascosmetic.com/bathpa" target="_blank" class="btn-visit" id="btn-b">OFFICIAL SITE</a>
@@ -141,7 +193,7 @@
     <div class="brand-grid">
         <div class="brand-image"><img src="IMG_5807.jpeg"></div>
         <div class="brand-content">
-            <span id="c-tag-sub" style="color:var(--gold);font-size:0.7rem;font-weight:700;margin-bottom:10px;display:block;">Intensive Hair & Skin Care</span>
+            <span id="c-tag-sub">Intensive Hair & Skin Care</span>
             <h3 id="brand-h3">Char Char</h3>
             <p id="c-desc"></p>
             <a href="https://www.evascosmetic.com/charchar" target="_blank" class="btn-visit" id="btn-c">OFFICIAL SITE</a>
@@ -152,19 +204,32 @@
 <footer>
     <div class="f-grid">
         <div class="f-col">
-            <img src="HJ (5).png" alt="HJ" class="f-logo" style="height:40px; filter: brightness(0) invert(1); margin-bottom:15px;">
+            <img src="HJ (5).png" alt="HJ" class="f-logo">
             <p id="foot-desc"></p>
         </div>
-        <div class="f-col"><h4 id="h-addr-foot">LOCATION</h4><p>323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230</p></div>
-        <div class="f-col"><h4 id="h-cont-foot">CONTACT</h4><p>Tel: 03-8182-577</p><p>Email: thaihjglobal@gmail.com</p></div>
-        <div class="f-col"><h4 id="h-coll-foot">COLLECTIONS</h4><p>Fraijour</p><p>Bathpa</p><p>Char Char</p></div>
+        <div class="f-col">
+            <h4 id="h-addr-foot">LOCATION</h4>
+            <p>323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
+        </div>
+        <div class="f-col">
+            <h4 id="h-cont-foot">CONTACT</h4>
+            <p>Tel: 03-8182-577</p>
+            <p>Email: thaihjglobal@gmail.com</p>
+        </div>
+        <div class="f-col">
+            <h4 id="h-coll-foot">COLLECTIONS</h4>
+            <p>Fraijour</p>
+            <p>Bathpa</p>
+            <p>Char Char</p>
+        </div>
     </div>
-    <div class="copy">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
+    <div class="copy">© 2026 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
     const languages = ['th', 'en', 'kr'];
     let currentLang = localStorage.getItem('hj_lang') || 'th';
+
     const trans = {
         th: { 
             heroTitle: "มรดกแห่งความงาม", hjTitle: "เรื่องราวของ HJ", 
@@ -173,7 +238,8 @@
             fDesc: "แบรนด์ที่เชี่ยวชาญด้าน Botanical Therapy เน้นการใช้สารสกัดจากพืชพรรณธรรมชาติในการฟื้นฟูผิวอย่างอ่อนโยน", 
             bDesc: "เปลี่ยนการดูแลผิวกายในทุกวันให้กลายเป็นพิธีกรรมแห่งความสุขระดับสปาด้วยกลิ่นหอมและสารบำรุงที่เป็นเอกลักษณ์", 
             cDesc: "ผู้นำด้านผลิตภัณฑ์ดูแลเส้นผมและผิวสูตรเข้มข้น มอบผลลัพธ์ดุจทำทรีทเมนท์ระดับมืออาชีพ",
-            footDesc: "คัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผิวที่ยั่งยืน", visit: "เข้าชมเว็บไซต์", hAddr: "ที่อยู่", hCont: "ติดต่อเรา", hColl: "คอลเลกชัน"
+            footDesc: "คัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผิวที่ยั่งยืน", 
+            visit: "เข้าชมเว็บไซต์", hAddr: "ที่อยู่", hCont: "ติดต่อเรา", hColl: "คอลเลกชัน"
         },
         en: { 
             heroTitle: "Our Heritage", hjTitle: "The HJ Story", 
@@ -182,7 +248,8 @@
             fDesc: "Specializing in Botanical Therapy, Fraijour harnesses natural herbs for deep restoration and balance.", 
             bDesc: "Elevate your daily ritual into a spa escape with unique scents and intensive nourishment.", 
             cDesc: "A pioneer in intensive hair & skin care solutions with professional-grade treatments.",
-            footDesc: "Premium Korean beauty curator delivering excellence to your skin.", visit: "OFFICIAL SITE", hAddr: "LOCATION", hCont: "CONTACT", hColl: "COLLECTIONS"
+            footDesc: "Premium Korean beauty curator delivering excellence to your skin.", 
+            visit: "OFFICIAL SITE", hAddr: "LOCATION", hCont: "CONTACT", hColl: "COLLECTIONS"
         },
         kr: { 
             heroTitle: "아름다운 유산", hjTitle: "HJ 코스메틱 이야기", 
@@ -191,14 +258,21 @@
             fDesc: "프라이주어는 식물 테라피 전문 브랜드로, 자연의 치유력을 활용하여 피부 본연의 힘을 기릅니다.", 
             bDesc: "일상의 목욕 시간을 프리미엄 스파와 같은 휴식으로 바꿔주는 감각적인 바디 케어 브랜드입니다.", 
             cDesc: "고농축 추출물을 통해 손상된 모발과 피부를 회복시키는 전문 케어 솔루션입니다.",
-            footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.", visit: "공식 사이트", hAddr: "주소", hCont: "연락처", hColl: "컬렉션"
+            footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.", 
+            visit: "공식 사이트", hAddr: "주소", hCont: "연락처", hColl: "컬렉션"
         }
     };
 
     function updateContent() {
         const l = trans[currentLang];
-        document.getElementById('hero-title').textContent = l.heroTitle;
-        document.getElementById('hj-title').textContent = l.hjTitle;
+        const heroTitle = document.getElementById('hero-title');
+        const hjTitle = document.getElementById('hj-title');
+        const h1 = document.getElementById('brand-h1');
+        const h2 = document.getElementById('brand-h2');
+        const h3 = document.getElementById('brand-h3');
+        
+        heroTitle.textContent = l.heroTitle;
+        hjTitle.textContent = l.hjTitle;
         document.getElementById('hj-desc').textContent = l.hjDesc;
         document.getElementById('ms-1').textContent = l.ms1;
         document.getElementById('ms-2').textContent = l.ms2;
@@ -213,28 +287,36 @@
         document.querySelectorAll('.btn-visit').forEach(b => b.textContent = l.visit);
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
         
+        // --- ระบบสลับฟอนต์ตามภาษา ---
         if (currentLang === 'th') {
             document.body.style.fontFamily = 'var(--font-th)';
+            heroTitle.style.fontFamily = 'var(--font-th)';
+            hjTitle.style.fontFamily = 'var(--font-th)';
+            h1.style.fontFamily = 'var(--font-head)'; // ชื่อแบรนด์ภาษาอังกฤษให้ใช้ Cinzel เสมอเพื่อความเท่
+            h2.style.fontFamily = 'var(--font-head)';
+            h3.style.fontFamily = 'var(--font-head)';
         } else if (currentLang === 'kr') {
             document.body.style.fontFamily = 'var(--font-kr)';
+            heroTitle.style.fontFamily = 'var(--font-kr)';
+            hjTitle.style.fontFamily = 'var(--font-kr)';
+            h1.style.fontFamily = 'var(--font-head)';
         } else {
             document.body.style.fontFamily = 'var(--font-en)';
+            heroTitle.style.fontFamily = 'var(--font-head)';
+            hjTitle.style.fontFamily = 'var(--font-head)';
+            h1.style.fontFamily = 'var(--font-head)';
         }
+        
         localStorage.setItem('hj_lang', currentLang);
     }
-    
-    function rotateLanguage() { currentLang = languages[(languages.indexOf(currentLang) + 1) % languages.length]; updateContent(); }
-    function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
-    
-    // Fix Bathpa Layout on Mobile
-    function handleResize() {
-        const bathpaRow = document.getElementById('bathpa-row');
-        if (window.innerWidth <= 1000) { bathpaRow.style.direction = 'ltr'; } 
-        else { bathpaRow.style.direction = 'rtl'; }
+
+    function rotateLanguage() {
+        currentLang = languages[(languages.indexOf(currentLang) + 1) % languages.length];
+        updateContent();
     }
-    window.addEventListener('resize', handleResize);
-    handleResize();
+
     updateContent();
+    document.addEventListener('contextmenu', e => e.preventDefault());
 </script>
 </body>
 </html>
