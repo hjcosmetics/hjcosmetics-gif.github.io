@@ -11,7 +11,7 @@
             --p-green: #1b4332; 
             --gold: #c5a059;
             --off-white: #fdfaf5;
-            --font-th: 'Noto Serif Thai', serif; /* เปลี่ยนเป็นฟอนต์ไทยมีหัวที่ดูแพงขึ้น */
+            --font-th: 'Noto Serif Thai', serif;
             --font-en: 'Inter', sans-serif;
             --font-head: 'Cinzel', serif;
             --font-kr: 'Nanum Myeongjo', serif;
@@ -21,7 +21,7 @@
         
         body { 
             margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; 
-            min-height: 100vh; display: flex; flex-direction: column;
+            min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
         }
 
         /* --- Background --- */
@@ -37,24 +37,25 @@
         }
         .logo-nav img { height: 45px; }
         .nav-links { display: flex; gap: 30px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; }
-        .nav-links a.active { color: var(--gold); }
-        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-weight: 700; font-size: 0.7rem; border-radius: 2px; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-weight: 700; font-size: 0.7rem; border-radius: 2px; transition: 0.3s; }
+        .lang-btn:hover { background: var(--gold); }
 
-        /* --- 🆕 หัวข้อหลัก (ปรับให้รองรับ 3 ภาษาให้สวย) --- */
+        /* --- Header --- */
         .hero-header { text-align: center; padding: 60px 5% 30px; }
         .hero-header h1 { 
-            /* ภาษาอังกฤษใช้ Cinzel, ไทยใช้ Noto Serif Thai, เกาหลีใช้ Nanum Myeongjo */
             font-size: clamp(2.2rem, 5vw, 3.8rem); 
             color: var(--p-green); 
             letter-spacing: 4px; 
             margin: 0; 
             font-weight: 700;
             line-height: 1.2;
+            transition: font-family 0.3s ease;
         }
 
-        /* --- Contact Card --- */
-        .contact-container { max-width: 1300px; margin: 0 auto 80px; padding: 0 5%; flex: 1; }
+        /* --- Main Content --- */
+        .contact-container { max-width: 1300px; margin: 0 auto 80px; padding: 0 5%; flex: 1; width: 100%; }
         .contact-grid { 
             display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; 
             background: rgba(255, 255, 255, 0.3); 
@@ -67,28 +68,50 @@
         .info-card h2 { font-size: 2.2rem; color: var(--p-green); margin-bottom: 40px; font-weight: 700; }
         .info-item { margin-bottom: 35px; }
         .info-item h4 { color: var(--gold); margin-bottom: 8px; font-size: 0.85rem; letter-spacing: 2px; font-family: var(--font-head); }
-        .info-item p { color: #333; line-height: 1.8; font-size: 1rem; }
-        .info-item i { color: var(--p-green); margin-right: 12px; }
+        .info-item p { color: #333; line-height: 1.8; font-size: 1rem; margin: 5px 0; }
+        .info-item i { color: var(--p-green); width: 25px; }
 
         /* --- Form --- */
         .form-card { background: rgba(255, 255, 255, 0.4); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.4); }
         .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; margin-bottom: 10px; font-size: 0.75rem; color: var(--p-green); font-weight: 700; }
-        input, textarea { width: 100%; padding: 16px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); background: rgba(255,255,255,0.8); font-family: inherit; }
+        .form-group label { display: block; margin-bottom: 10px; font-size: 0.75rem; color: var(--p-green); font-weight: 700; letter-spacing: 1px; }
+        input, textarea { 
+            width: 100%; padding: 16px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); 
+            background: rgba(255,255,255,0.8); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
+        }
+        input:focus, textarea:focus { border-color: var(--gold); background: #fff; box-shadow: 0 0 10px rgba(197,160,89,0.1); }
 
         .btn-submit { 
             background: var(--p-green); color: white; border: none; padding: 20px; width: 100%; 
             font-weight: 700; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; 
             border-radius: 8px; font-size: 0.9rem; transition: 0.3s;
         }
-        .btn-submit:hover { background: #143326; transform: translateY(-3px); }
+        .btn-submit:hover { background: #143326; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        footer { background: #1a1a1a; color: #7f8c8d; padding: 60px 8% 40px; text-align: center; }
-        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; text-align: left; }
+        /* --- Footer --- */
+        footer { background: #1a1a1a; color: #7f8c8d; padding: 60px 8% 40px; }
+        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; text-align: left; }
         .f-logo { height: 40px; margin-bottom: 25px; filter: brightness(0) invert(1); }
-        .copy { margin-top: 40px; font-size: 0.7rem; border-top: 1px solid #333; padding-top: 20px; }
+        .f-col h4 { color: #fff; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 20px; }
+        .f-col p { font-size: 0.85rem; line-height: 1.6; }
+        .copy { margin-top: 40px; font-size: 0.7rem; border-top: 1px solid #333; padding-top: 20px; text-align: center; }
 
-        @media (max-width: 1000px) { .contact-grid { grid-template-columns: 1fr; padding: 40px 20px; } .nav-links { display: none; } }
+        /* --- 📱 RESPONSIVE (จุดที่ฟิกขนาด) --- */
+        @media (max-width: 1024px) {
+            nav { padding: 0 5%; }
+            .contact-grid { grid-template-columns: 1fr; padding: 40px; }
+            .info-card h2 { text-align: center; font-size: 2rem; }
+            .info-item { text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* ซ่อนเมนูในมือถือ */
+            .hero-header { padding: 40px 5% 20px; }
+            .contact-grid { padding: 30px 20px; border-radius: 20px; }
+            .form-card { padding: 30px 20px; }
+            .f-grid { text-align: center; }
+            .f-logo { margin: 0 auto 25px; }
+        }
     </style>
 </head>
 <body> 
@@ -157,8 +180,7 @@
         </div>
         <div class="f-col">
             <h4 id="h-cont-foot">CONCIERGE</h4>
-            <p>Line: thaihj11</p>
-            <p>Tel: 03-8182-577</p>
+            <p>Line: thaihj11<br>Tel: 03-8182-577</p>
         </div>
     </div>
     <div class="copy">© 2026 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
@@ -208,7 +230,7 @@
         document.getElementById('ph-msg').placeholder = l.phMsg;
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
         
-        // --- ระบบสลับฟอนต์หัวข้อหลักตามภาษา ---
+        // Update Fonts
         const heroTitle = document.getElementById('hero-title');
         const infoH = document.getElementById('info-h');
         
@@ -222,7 +244,7 @@
             infoH.style.fontFamily = 'var(--font-kr)';
         } else {
             document.body.style.fontFamily = 'var(--font-en)';
-            heroTitle.style.fontFamily = 'var(--font-head)'; // ใช้ Cinzel สำหรับ ENG
+            heroTitle.style.fontFamily = 'var(--font-head)';
             infoH.style.fontFamily = 'var(--font-head)';
         }
         
