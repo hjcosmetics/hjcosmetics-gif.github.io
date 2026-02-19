@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Contact Us - HJ COSMETICS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+Thai:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -17,107 +17,113 @@
             --font-kr: 'Nanum Myeongjo', serif;
         }
 
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; user-select: none; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
         body { 
             margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; 
             min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+            font-family: var(--font-th);
         }
 
-        /* --- Background --- */
-        #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.5; }
+        /* --- 🎞️ Background --- */
+        #bg-video { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -2; opacity: 0.4; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(253,250,245,0.1) 0%, rgba(253,250,245,0.6) 100%); z-index: -1; }
 
-        /* --- Navigation --- */
+        /* --- 🎖️ Navigation (Fully Responsive) --- */
         nav { 
-            background: rgba(255, 255, 255, 0.8); height: 80px; padding: 0 8%;
+            background: rgba(255, 255, 255, 0.9); height: 80px; padding: 0 5%;
             display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.3);
+            position: sticky; top: 0; z-index: 2000; backdrop-filter: blur(15px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
-        .logo-nav img { height: 45px; }
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-weight: 700; font-size: 0.7rem; border-radius: 2px; transition: 0.3s; }
-
-        /* --- Header --- */
-        .hero-header { text-align: center; padding: 60px 5% 30px; }
-        .hero-header h1 { 
-            font-size: clamp(2.2rem, 5vw, 3.8rem); 
-            color: var(--p-green); 
-            letter-spacing: 4px; 
-            margin: 0; 
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        /* --- Main Content --- */
-        .contact-container { max-width: 1300px; margin: 0 auto 40px; padding: 0 5%; flex: 1; width: 100%; }
-        .contact-grid { 
-            display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; 
-            background: rgba(255, 255, 255, 0.3); 
-            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            padding: 60px; border-radius: 30px; 
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-        }
+        .logo-nav img { height: clamp(35px, 5vh, 45px); }
         
-        .info-card h2 { font-size: 2.2rem; color: var(--p-green); margin-bottom: 40px; font-weight: 700; }
-        .info-item { margin-bottom: 35px; }
-        .info-item h4 { color: var(--gold); margin-bottom: 8px; font-size: 0.85rem; letter-spacing: 2px; font-family: var(--font-head); }
-        .info-item p { color: #333; line-height: 1.8; font-size: 1rem; margin: 5px 0; }
-        .info-item i { color: var(--p-green); width: 25px; }
+        .nav-links { display: flex; gap: clamp(15px, 3vw, 30px); align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a.active { color: var(--gold); }
 
-        /* --- Form --- */
-        .form-card { background: rgba(255, 255, 255, 0.4); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.4); }
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; margin-bottom: 10px; font-size: 0.75rem; color: var(--p-green); font-weight: 700; letter-spacing: 1px; }
-        input, textarea { 
-            width: 100%; padding: 16px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); 
-            background: rgba(255,255,255,0.8); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
-        }
-        input:focus, textarea:focus { border-color: var(--gold); background: #fff; box-shadow: 0 0 10px rgba(197,160,89,0.1); }
-
-        .btn-submit { 
-            background: var(--p-green); color: white; border: none; padding: 20px; width: 100%; 
-            font-weight: 700; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; 
-            border-radius: 8px; font-size: 0.9rem; transition: 0.3s;
-        }
-        .btn-submit:hover { background: #143326; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-
-        /* --- Footer (Only Copyright) --- */
-        footer { padding: 40px 0; text-align: center; background: transparent; }
-        .copy { font-size: 0.7rem; color: #7f8c8d; letter-spacing: 1px; }
-
-        /* --- Responsive Fix --- */
-        @media (max-width: 1024px) {
-            nav { padding: 0 5%; }
-            .contact-grid { grid-template-columns: 1fr; padding: 40px; }
-            .info-card h2 { text-align: center; font-size: 2rem; }
-            .info-item { text-align: center; }
-        }
+        .mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--p-green); cursor: pointer; }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-header { padding: 40px 5% 20px; }
-            .contact-grid { padding: 30px 20px; border-radius: 20px; }
-            .form-card { padding: 30px 20px; }
+            .mobile-menu-btn { display: block; }
+            .nav-links { 
+                display: none; position: absolute; top: 80px; left: 0; width: 100%; 
+                background: white; flex-direction: column; padding: 30px 0; gap: 25px;
+                border-bottom: 2px solid var(--gold);
+            }
+            .nav-links.active { display: flex; }
+        }
+
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; border-radius: 4px; }
+
+        /* --- ✨ Header --- */
+        .hero-header { text-align: center; padding: clamp(40px, 8vh, 70px) 5% 20px; }
+        .hero-header h1 { 
+            font-size: clamp(2rem, 6vw, 3.5rem); 
+            color: var(--p-green); 
+            letter-spacing: 4px; font-weight: 700;
+        }
+
+        /* --- 📝 Main Content --- */
+        .contact-container { width: 92%; max-width: 1200px; margin: 0 auto 60px; flex: 1; }
+        .contact-grid { 
+            display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(20px, 5vw, 50px); 
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            padding: clamp(25px, 5vw, 60px); border-radius: 25px; 
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.06);
+        }
+        
+        .info-card h2 { font-size: clamp(1.8rem, 3vw, 2.2rem); color: var(--p-green); margin-bottom: 30px; font-weight: 700; }
+        .info-item { margin-bottom: 30px; }
+        .info-item h4 { color: var(--gold); margin-bottom: 8px; font-size: 0.8rem; letter-spacing: 2px; font-family: var(--font-head); }
+        .info-item p { color: #333; line-height: 1.6; font-size: 0.95rem; margin: 5px 0; }
+        .info-item i { color: var(--p-green); width: 25px; margin-right: 5px; }
+
+        /* --- Form --- */
+        .form-card { background: rgba(255, 255, 255, 0.5); padding: clamp(20px, 4vw, 40px); border-radius: 20px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 0.75rem; color: var(--p-green); font-weight: 700; letter-spacing: 1px; }
+        input, textarea { 
+            width: 100%; padding: 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); 
+            background: rgba(255,255,255,0.8); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
+        }
+        input:focus, textarea:focus { border-color: var(--gold); background: #fff; }
+
+        .btn-submit { 
+            background: var(--p-green); color: white; border: none; padding: 18px; width: 100%; 
+            font-weight: 700; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; 
+            border-radius: 8px; font-size: 0.85rem; transition: 0.3s;
+        }
+        .btn-submit:hover { background: #143326; transform: translateY(-3px); }
+
+        /* --- 🏛️ Footer --- */
+        footer { padding: 40px 0; text-align: center; }
+        .copy { font-size: 0.7rem; color: #888; letter-spacing: 1px; font-family: var(--font-en); }
+
+        @media (max-width: 900px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .info-card h2, .info-item { text-align: center; }
         }
     </style>
 </head>
-<body> 
+<body oncontextmenu="return false;"> 
+
 <video autoplay muted loop playsinline id="bg-video"><source src="วิดีโอทำเว็บไซต์.mp4" type="video/mp4"></video>
 <div class="bg-overlay"></div>
 
 <nav>
     <div class="logo-nav"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
-    <div class="nav-links">
+    
+    <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+
+    <div class="nav-links" id="navLinks">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html" class="active">Contact</a>
+        <button onclick="rotateLanguage()" id="langBtn" class="lang-btn">TH</button>
     </div>
-    <button onclick="rotateLanguage()" id="langBtn" class="lang-btn">TH</button>
 </nav>
 
 <header class="hero-header">
@@ -144,15 +150,15 @@
             <form action="https://formspree.io/f/xzddzvby" method="POST">
                 <div class="form-group">
                     <label id="l-name">NAME</label>
-                    <input type="text" name="name" id="ph-name" placeholder="Name" required>
+                    <input type="text" name="name" id="ph-name" required>
                 </div>
                 <div class="form-group">
                     <label id="l-email">EMAIL</label>
-                    <input type="email" name="email" id="ph-email" placeholder="Email" required>
+                    <input type="email" name="email" id="ph-email" required>
                 </div>
                 <div class="form-group">
                     <label id="l-msg">MESSAGE</label>
-                    <textarea name="message" id="ph-msg" rows="4" placeholder="Your message..." required></textarea>
+                    <textarea name="message" id="ph-msg" rows="4" required></textarea>
                 </div>
                 <button type="submit" class="btn-submit" id="btn-send">Send Message</button>
             </form>
@@ -165,6 +171,10 @@
 </footer>
 
 <script>
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+
     const languages = ['th', 'en', 'kr'];
     let currentLang = localStorage.getItem('hj_lang') || 'th';
 
@@ -196,26 +206,12 @@
         document.getElementById('l-email').textContent = l.lEmail;
         document.getElementById('l-msg').textContent = l.lMsg;
         document.getElementById('btn-send').textContent = l.btnSend;
-        document.getElementById('ph-name').placeholder = l.phName;
-        document.getElementById('ph-email').placeholder = l.phEmail;
-        document.getElementById('ph-msg').placeholder = l.phMsg;
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
         
-        const heroTitle = document.getElementById('hero-title');
-        const infoH = document.getElementById('info-h');
-        
-        if (currentLang === 'th') {
-            document.body.style.fontFamily = 'var(--font-th)';
-            heroTitle.style.fontFamily = 'var(--font-th)';
-            infoH.style.fontFamily = 'var(--font-th)';
-        } else if (currentLang === 'kr') {
+        if (currentLang === 'kr') {
             document.body.style.fontFamily = 'var(--font-kr)';
-            heroTitle.style.fontFamily = 'var(--font-kr)';
-            infoH.style.fontFamily = 'var(--font-kr)';
         } else {
-            document.body.style.fontFamily = 'var(--font-en)';
-            heroTitle.style.fontFamily = 'var(--font-head)';
-            infoH.style.fontFamily = 'var(--font-head)';
+            document.body.style.fontFamily = currentLang === 'th' ? 'var(--font-th)' : 'var(--font-en)';
         }
         localStorage.setItem('hj_lang', currentLang);
     }
