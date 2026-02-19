@@ -5,62 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - HJ COSMETICS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+Thai:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@300;400;500;600&family=Inter:wght@400;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
-
         :root { 
             --p-green: #1b4332; 
             --gold: #c5a059;
             --off-white: #fdfaf5;
-            --border-color: rgba(255, 255, 255, 0.4);
-            --font-th: 'Prompt', sans-serif;
+            --font-th: 'Noto Serif Thai', serif; /* เปลี่ยนเป็นฟอนต์ไทยมีหัวที่ดูแพงขึ้น */
             --font-en: 'Inter', sans-serif;
             --font-head: 'Cinzel', serif;
             --font-kr: 'Nanum Myeongjo', serif;
         }
 
-        /* Security & Core UI */
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; -webkit-user-select: none; user-select: none; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; user-select: none; }
         
         body { 
-            margin: 0; padding: 0; 
-            background-color: var(--off-white); 
-            color: #2d3436; 
-            min-height: 100vh;
-            display: flex; flex-direction: column;
-            transition: font-family 0.3s ease;
+            margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; 
+            min-height: 100vh; display: flex; flex-direction: column;
         }
 
-        /* --- 🎞️ Video Background --- */
+        /* --- Background --- */
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.5; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(253,250,245,0.1) 0%, rgba(253,250,245,0.6) 100%); z-index: -1; }
 
-        /* --- 🎖️ Navigation --- */
+        /* --- Navigation --- */
         nav { 
             background: rgba(255, 255, 255, 0.8); height: 80px; padding: 0 8%;
             display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 1000;
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.3);
         }
         .logo-nav img { height: 45px; }
         .nav-links { display: flex; gap: 30px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; }
         .nav-links a.active { color: var(--gold); }
-        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; border-radius: 2px; }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-weight: 700; font-size: 0.7rem; border-radius: 2px; }
 
-        /* --- ✨ Hero --- */
+        /* --- 🆕 หัวข้อหลัก (ปรับให้รองรับ 3 ภาษาให้สวย) --- */
         .hero-header { text-align: center; padding: 60px 5% 30px; }
         .hero-header h1 { 
-            font-family: var(--font-head);
-            font-size: clamp(2rem, 5vw, 3.5rem); 
+            /* ภาษาอังกฤษใช้ Cinzel, ไทยใช้ Noto Serif Thai, เกาหลีใช้ Nanum Myeongjo */
+            font-size: clamp(2.2rem, 5vw, 3.8rem); 
             color: var(--p-green); 
-            letter-spacing: 6px; 
+            letter-spacing: 4px; 
             margin: 0; 
             font-weight: 700;
+            line-height: 1.2;
         }
 
-        /* --- 🏛️ Contact Card (Glassmorphism) --- */
+        /* --- Contact Card --- */
         .contact-container { max-width: 1300px; margin: 0 auto 80px; padding: 0 5%; flex: 1; }
         .contact-grid { 
             display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 40px; 
@@ -71,50 +64,34 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.08);
         }
         
-        .info-card h2 { font-family: var(--font-head); color: var(--p-green); font-size: 2.2rem; margin: 0 0 40px; font-weight: 700; }
+        .info-card h2 { font-size: 2.2rem; color: var(--p-green); margin-bottom: 40px; font-weight: 700; }
         .info-item { margin-bottom: 35px; }
-        .info-item h4 { color: var(--gold); margin-bottom: 8px; font-size: 0.85rem; letter-spacing: 3px; font-weight: 700; font-family: var(--font-head); }
-        .info-item p { color: #333; font-weight: 500; line-height: 1.8; font-size: 1rem; margin: 0; }
-        .info-item i { color: var(--p-green); margin-right: 12px; font-size: 1.1rem; width: 20px; }
+        .info-item h4 { color: var(--gold); margin-bottom: 8px; font-size: 0.85rem; letter-spacing: 2px; font-family: var(--font-head); }
+        .info-item p { color: #333; line-height: 1.8; font-size: 1rem; }
+        .info-item i { color: var(--p-green); margin-right: 12px; }
 
-        /* --- ✉️ Form --- */
+        /* --- Form --- */
         .form-card { background: rgba(255, 255, 255, 0.4); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.4); }
         .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; margin-bottom: 10px; font-size: 0.75rem; color: var(--p-green); font-weight: 700; letter-spacing: 1px; }
-
-        input, textarea { 
-            width: 100%; padding: 16px; font-size: 1rem; 
-            border: 1px solid rgba(27, 67, 50, 0.1); 
-            border-radius: 8px; background: rgba(255,255,255,0.8); 
-            color: #111; font-family: inherit; transition: 0.3s;
-        }
-        input:focus, textarea:focus { outline: none; border-color: var(--gold); background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .form-group label { display: block; margin-bottom: 10px; font-size: 0.75rem; color: var(--p-green); font-weight: 700; }
+        input, textarea { width: 100%; padding: 16px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); background: rgba(255,255,255,0.8); font-family: inherit; }
 
         .btn-submit { 
-            background: var(--p-green); color: white; border: none; padding: 20px; 
-            width: 100%; font-weight: 700; cursor: pointer; letter-spacing: 2px; 
-            text-transform: uppercase; transition: 0.3s; font-size: 0.9rem; 
-            border-radius: 8px; margin-top: 10px;
+            background: var(--p-green); color: white; border: none; padding: 20px; width: 100%; 
+            font-weight: 700; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; 
+            border-radius: 8px; font-size: 0.9rem; transition: 0.3s;
         }
-        .btn-submit:hover { background: #143326; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(27,67,50,0.2); }
+        .btn-submit:hover { background: #143326; transform: translateY(-3px); }
 
-        /* --- 🏛️ Footer --- */
-        footer { background: #1a1a1a; color: white; padding: 60px 8% 40px; border-top: 1px solid #333; }
-        .f-grid { display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1fr; gap: 40px; max-width: 1400px; margin: 0 auto; }
-        .f-col h4 { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 25px; border-left: 4px solid var(--gold); padding-left: 15px; font-family: var(--font-head); }
-        .f-col p { color: #7f8c8d; font-size: 0.85rem; line-height: 1.8; margin-bottom: 10px; }
+        footer { background: #1a1a1a; color: #7f8c8d; padding: 60px 8% 40px; text-align: center; }
+        .f-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; text-align: left; }
         .f-logo { height: 40px; margin-bottom: 25px; filter: brightness(0) invert(1); }
-        .copy { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #333; font-size: 0.75rem; color: #555; font-family: var(--font-en); }
+        .copy { margin-top: 40px; font-size: 0.7rem; border-top: 1px solid #333; padding-top: 20px; }
 
-        @media (max-width: 1000px) { 
-            .contact-grid { grid-template-columns: 1fr; padding: 40px 25px; }
-            .f-grid { grid-template-columns: 1fr; text-align: center; }
-            .f-col h4 { border-left: none; padding-left: 0; }
-            .nav-links { display: none; }
-        }
+        @media (max-width: 1000px) { .contact-grid { grid-template-columns: 1fr; padding: 40px 20px; } .nav-links { display: none; } }
     </style>
 </head>
-<body oncontextmenu="return false;"> 
+<body> 
 <video autoplay muted loop playsinline id="bg-video"><source src="วิดีโอทำเว็บไซต์.mp4" type="video/mp4"></video>
 <div class="bg-overlay"></div>
 
@@ -183,11 +160,6 @@
             <p>Line: thaihj11</p>
             <p>Tel: 03-8182-577</p>
         </div>
-        <div class="f-col">
-            <h4>COLLECTIONS</h4>
-            <p>Fraijour Herbs</p>
-            <p>Retin-Collagen</p>
-        </div>
     </div>
     <div class="copy">© 2026 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</div>
 </footer>
@@ -212,7 +184,7 @@
         kr: { 
             heroTitle: "문의하기", infoH: "연락처", 
             hAddr: "주소", hCont: "고객 서비스", lName: "성함", lEmail: "이메일", lMsg: "메시지", 
-            btnSend: "보내기", footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.",
+            btnSend: "보내기", footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이เตอร์.",
             phName: "이름", phEmail: "이메일", phMsg: "메시지..."
         }
     };
@@ -236,9 +208,23 @@
         document.getElementById('ph-msg').placeholder = l.phMsg;
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
         
-        // --- ระบบเปลี่ยนฟอนต์ตามภาษาหลักเหมือนหน้าสินค้า ---
-        const bodyFont = currentLang === 'th' ? 'var(--font-th)' : (currentLang === 'kr' ? 'var(--font-kr)' : 'var(--font-en)');
-        document.body.style.fontFamily = bodyFont;
+        // --- ระบบสลับฟอนต์หัวข้อหลักตามภาษา ---
+        const heroTitle = document.getElementById('hero-title');
+        const infoH = document.getElementById('info-h');
+        
+        if (currentLang === 'th') {
+            document.body.style.fontFamily = 'var(--font-th)';
+            heroTitle.style.fontFamily = 'var(--font-th)';
+            infoH.style.fontFamily = 'var(--font-th)';
+        } else if (currentLang === 'kr') {
+            document.body.style.fontFamily = 'var(--font-kr)';
+            heroTitle.style.fontFamily = 'var(--font-kr)';
+            infoH.style.fontFamily = 'var(--font-kr)';
+        } else {
+            document.body.style.fontFamily = 'var(--font-en)';
+            heroTitle.style.fontFamily = 'var(--font-head)'; // ใช้ Cinzel สำหรับ ENG
+            infoH.style.fontFamily = 'var(--font-head)';
+        }
         
         localStorage.setItem('hj_lang', currentLang);
     }
@@ -249,7 +235,6 @@
     }
 
     updateContent();
-    document.addEventListener('contextmenu', e => e.preventDefault());
 </script>
 </body>
 </html>
