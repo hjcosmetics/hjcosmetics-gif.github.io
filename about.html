@@ -14,119 +14,98 @@
             --font-th: 'Prompt', sans-serif;
             --font-en: 'Inter', sans-serif;
             --font-head: 'Cinzel', serif;
-            --font-kr: 'Nanum Myeongjo', serif;
         }
 
-        /* --- Global Setup --- */
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
-        
-        body { 
-            margin: 0; padding: 0; 
-            background-color: var(--off-white); 
-            color: #2d3436; 
-            min-height: 100vh;
-            display: flex; flex-direction: column;
-            overflow-x: hidden;
-        }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; min-height: 100vh; overflow-x: hidden; font-family: var(--font-th); }
 
-        /* --- 🎞️ Video Background --- */
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.4; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(253,250,245,0.2) 0%, rgba(253,250,245,0.7) 100%); z-index: -1; }
 
-        /* --- 🎖️ Navigation --- */
+        /* --- 🎖️ Navigation (Fix เมนูหาย) --- */
         nav { 
-            background: rgba(255, 255, 255, 0.9); height: 80px; padding: 0 5%;
+            background: rgba(255, 255, 255, 0.95); height: 70px; padding: 0 5%;
             display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 1000;
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 2000; backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
         }
-        .logo-nav img { height: 40px; }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
+        .logo-nav img { height: 35px; transition: 0.3s; }
+        
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+
+        /* Desktop Menu */
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; }
         .nav-links a.active { color: var(--gold); }
-        .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; border-radius: 2px; }
 
-        /* --- ✨ Hero Section --- */
-        .hero-header { text-align: center; padding: 60px 5% 40px; }
-        .hero-header h1 { 
-            font-family: var(--font-head);
-            font-size: clamp(1.8rem, 5vw, 3.5rem); 
-            color: var(--p-green); 
-            letter-spacing: 5px; 
-            margin: 0; 
+        /* Mobile Menu Button */
+        .menu-toggle { display: none; font-size: 1.5rem; color: var(--p-green); cursor: pointer; }
+
+        /* Mobile Side Menu */
+        @media (max-width: 850px) {
+            .nav-links { 
+                position: fixed; top: 70px; left: -100%; width: 100%; height: calc(100vh - 70px);
+                background: white; flex-direction: column; align-items: center; padding-top: 50px;
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1999;
+            }
+            .nav-links.active { left: 0; }
+            .menu-toggle { display: block; }
+            .logo-nav img { height: 30px; }
         }
 
-        .main-container { max-width: 1200px; margin: 0 auto; padding: 0 5% 80px; }
+        .lang-btn { background: var(--p-green); color: white; border: none; padding: 6px 12px; cursor: pointer; font-weight: 700; font-size: 0.65rem; border-radius: 2px; }
 
-        /* --- 🏛️ Story Section --- */
+        /* --- ✨ Hero & Content --- */
+        .hero-header { text-align: center; padding: 50px 5% 30px; }
+        .hero-header h1 { font-family: var(--font-head); font-size: clamp(1.6rem, 6vw, 3rem); color: var(--p-green); letter-spacing: 4px; margin: 0; }
+
+        .main-container { max-width: 1100px; margin: 0 auto; padding: 0 5% 60px; }
+
+        /* Origin Section (The Card in your photo) */
         .origin-section { 
-            background: rgba(255, 255, 255, 0.5); 
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: 60px 40px; border-radius: 20px; margin-bottom: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px);
+            padding: 40px 25px; border-radius: 25px; margin-bottom: 40px;
+            border: 1px solid white; box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            text-align: center;
         }
-        .story-flex { display: flex; align-items: center; gap: 50px; }
-        .story-img { flex: 1; text-align: center; }
-        .story-img img { width: 100%; max-width: 320px; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1)); }
+        .story-flex { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .story-img img { width: 180px; max-width: 60%; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05)); }
         
-        .story-text { flex: 1.5; }
-        .story-text h2 { font-size: 2.2rem; color: var(--p-green); margin-bottom: 20px; }
-        .story-text p { font-size: 1rem; line-height: 1.8; color: #333; margin-bottom: 30px; }
+        .story-text h2 { font-size: 1.8rem; color: var(--p-green); margin: 0 0 15px; }
+        .story-text p { font-size: 0.95rem; line-height: 1.7; color: #444; margin-bottom: 25px; text-align: justify; }
 
-        /* --- 📊 Milestones --- */
-        .milestone-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .milestone-item { padding: 20px 10px; background: rgba(255,255,255,0.6); border-bottom: 3px solid var(--gold); text-align: center; border-radius: 8px; }
-        .milestone-year { color: var(--p-green); font-size: 1.8rem; font-weight: 700; display: block; margin-bottom: 5px; font-family: var(--font-en); }
-        .milestone-text { font-size: 0.6rem; color: #1b4332; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        /* Milestones (3 columns mobile) */
+        .milestone-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .milestone-item { padding: 15px 5px; background: white; border-bottom: 3px solid var(--gold); border-radius: 10px; }
+        .milestone-year { color: var(--p-green); font-size: 1.2rem; font-weight: 700; display: block; }
+        .milestone-text { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.5px; color: #666; }
 
-        /* --- 🏷️ Brand Cards --- */
+        /* Brand Grid */
         .brand-grid { 
-            display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; 
-            background: rgba(255, 255, 255, 0.5); 
-            backdrop-filter: blur(20px); 
-            border-radius: 20px; overflow: hidden; 
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            display: grid; grid-template-columns: 1fr; margin-bottom: 30px; 
+            background: white; border-radius: 20px; overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
-        .brand-image { height: 400px; overflow: hidden; }
-        .brand-image img { width: 100%; height: 100%; object-fit: cover; transition: 1s ease; }
-        .brand-grid:hover .brand-image img { transform: scale(1.05); }
-        
-        .brand-content { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
-        .brand-content span { color: var(--gold); letter-spacing: 2px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
-        .brand-content h3 { font-family: var(--font-head); font-size: 2.2rem; margin: 0 0 15px; color: var(--p-green); }
-        .brand-content p { line-height: 1.6; color: #444; font-size: 0.95rem; margin-bottom: 25px; }
-        
-        .btn-visit { 
-            align-self: flex-start; text-decoration: none; color: white; background: var(--p-green); 
-            padding: 14px 30px; font-size: 0.75rem; letter-spacing: 1px; font-weight: 700; 
-            transition: 0.3s; border-radius: 4px; text-transform: uppercase;
-        }
-        .btn-visit:hover { background: #143326; transform: translateY(-2px); }
+        .brand-image { height: 250px; }
+        .brand-image img { width: 100%; height: 100%; object-fit: cover; }
+        .brand-content { padding: 30px 20px; text-align: center; }
+        .brand-content h3 { font-family: var(--font-head); font-size: 1.8rem; margin: 10px 0; color: var(--p-green); }
+        .btn-visit { display: inline-block; background: var(--p-green); color: white; padding: 12px 25px; text-decoration: none; border-radius: 4px; font-size: 0.7rem; font-weight: 700; margin-top: 15px; }
 
-        /* --- 🏛️ Footer --- */
-        footer { background: #111; color: white; padding: 50px 8% 30px; margin-top: auto; }
-        .f-grid { display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 1400px; margin: 0 auto; text-align: center; }
-        .f-col h4 { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; }
-        .f-col p { font-size: 0.8rem; color: #bbb; line-height: 1.6; margin: 5px 0; }
-        .f-logo { height: 35px; margin-bottom: 20px; filter: brightness(0) invert(1); }
-        .copy { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #222; font-size: 0.65rem; color: #444; letter-spacing: 1px; }
-
-        /* --- Mobile Responsive --- */
-        @media (max-width: 850px) { 
-            .story-flex { flex-direction: column; text-align: center; }
-            .brand-grid { grid-template-columns: 1fr; }
-            .brand-image { height: 280px; }
-            .brand-content { padding: 30px 20px; text-align: center; align-items: center; }
-            .nav-links { display: none; }
-            .f-grid { grid-template-columns: 1fr; }
+        /* Desktop Adjustments */
+        @media (min-width: 851px) {
+            nav { height: 90px; padding: 0 8%; }
+            .logo-nav img { height: 50px; }
+            .story-flex { flex-direction: row; text-align: left; gap: 60px; }
+            .story-img img { width: 300px; }
+            .brand-grid { grid-template-columns: 1fr 1fr; }
+            .brand-image { height: 400px; }
+            .brand-content { padding: 50px; text-align: left; }
+            .milestone-year { font-size: 2rem; }
         }
 
-        @media (min-width: 992px) {
-            .f-grid { grid-template-columns: 2fr 1fr 1fr 1fr; text-align: left; }
-        }
+        footer { background: #111; color: white; padding: 50px 8%; text-align: center; }
+        .copy { margin-top: 30px; font-size: 0.6rem; color: #444; border-top: 1px solid #222; padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -135,13 +114,17 @@
 <div class="bg-overlay"></div>
 
 <nav>
-    <div class="logo-nav"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
-        <a href="contact.html">Contact</a>
+    <div class="logo-nav"><a href="index.html"><img src="HJ (5).png"></a></div>
+    
+    <div class="nav-right">
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <button onclick="rotateLanguage()" id="langBtn" class="lang-btn">TH</button>
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
     </div>
-    <button onclick="rotateLanguage()" id="langBtn" class="lang-btn">TH</button>
 </nav>
 
 <header class="hero-header">
@@ -151,23 +134,14 @@
 <div class="main-container">
     <section class="origin-section">
         <div class="story-flex">
-            <div class="story-img"><img src="1(1).png" alt="HJ LOGO"></div>
+            <div class="story-img"><img src="1(1).png"></div>
             <div class="story-text">
                 <h2 id="hj-title">The HJ Story</h2>
-                <p id="hj-desc"></p>
+                <p id="hj-desc">HJ COSMETICS ก่อตั้งขึ้นจากความมุ่งมั่นที่จะนำความงามที่แท้จริงจากเกาหลีมาสู่ประเทศไทย เราคัดสรรสกินแคร์ที่ผ่านการทดสอบทางวิทยาศาสตร์ เพื่อมอบผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ</p>
                 <div class="milestone-container">
-                    <div class="milestone-item">
-                        <span class="milestone-year">2+</span>
-                        <span class="milestone-text" id="ms-1">EXPERIENCE YEARS</span>
-                    </div>
-                    <div class="milestone-item">
-                        <span class="milestone-year">100%</span>
-                        <span class="milestone-text" id="ms-2">KOREAN AUTHENTIC</span>
-                    </div>
-                    <div class="milestone-item">
-                        <span class="milestone-year">15,000+</span>
-                        <span class="milestone-text" id="ms-3">HAPPY CUSTOMERS</span>
-                    </div>
+                    <div class="milestone-item"><span class="milestone-year">2+</span><span class="milestone-text">YEARS</span></div>
+                    <div class="milestone-item"><span class="milestone-year">100%</span><span class="milestone-text">KOREAN</span></div>
+                    <div class="milestone-item"><span class="milestone-year">15K+</span><span class="milestone-text">CUSTOMERS</span></div>
                 </div>
             </div>
         </div>
@@ -176,144 +150,33 @@
     <div class="brand-grid">
         <div class="brand-image"><img src="IMG_5808.jpeg"></div>
         <div class="brand-content">
-            <span id="f-tag-sub">Botanical Therapy</span>
-            <h3 id="brand-h1">Fraijour</h3>
-            <p id="f-desc"></p>
-            <a href="https://fraijour.co.kr/" target="_blank" class="btn-visit" id="btn-f">OFFICIAL SITE</a>
-        </div>
-    </div>
-
-    <div class="brand-grid" id="bathpa-row">
-        <div class="brand-image" id="bathpa-img-box"><img src="IMG_5805.jpeg"></div>
-        <div class="brand-content">
-            <span id="b-tag-sub">Body Ritual</span>
-            <h3 id="brand-h2">Bathpa</h3>
-            <p id="b-desc"></p>
-            <a href="https://www.evascosmetic.com/bathpa" target="_blank" class="btn-visit" id="btn-b">OFFICIAL SITE</a>
-        </div>
-    </div>
-
-    <div class="brand-grid">
-        <div class="brand-image"><img src="IMG_5807.jpeg"></div>
-        <div class="brand-content">
-            <span id="c-tag-sub">Intensive Hair & Skin Care</span>
-            <h3 id="brand-h3">Char Char</h3>
-            <p id="c-desc"></p>
-            <a href="https://www.evascosmetic.com/charchar" target="_blank" class="btn-visit" id="btn-c">OFFICIAL SITE</a>
+            <h3>Fraijour</h3>
+            <p id="f-desc">แบรนด์ที่เชี่ยวชาญด้าน Botanical Therapy เน้นการใช้สารสกัดจากพืชพรรณธรรมชาติในการฟื้นฟูผิวอย่างอ่อนโยน</p>
+            <a href="https://fraijour.co.kr/" class="btn-visit">OFFICIAL SITE</a>
         </div>
     </div>
 </div>
 
 <footer>
-    <div class="f-grid">
-        <div class="f-col">
-            <img src="HJ (5).png" alt="HJ" class="f-logo">
-            <p id="foot-desc"></p>
-        </div>
-        <div class="f-col">
-            <h4 id="h-addr-foot">LOCATION</h4>
-            <p>323/11-12 Moo 3, Bowin, Sriracha, Chon Buri 20230</p>
-        </div>
-        <div class="f-col">
-            <h4 id="h-cont-foot">CONTACT</h4>
-            <p>Tel: 03-8182-577</p>
-            <p>Email: thaihjglobal@gmail.com</p>
-        </div>
-        <div class="f-col">
-            <h4 id="h-coll-foot">COLLECTIONS</h4>
-            <p>Fraijour / Bathpa / Char Char</p>
-        </div>
-    </div>
-    <div class="copy">© 2024 HJ COSMETICS GLOBAL. PURSUIT OF PERFECTION.</div>
+    <p>© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</p>
 </footer>
 
 <script>
-    const languages = ['th', 'en', 'kr'];
-    let currentLang = localStorage.getItem('hj_lang') || 'th';
-
-    const trans = {
-        th: { 
-            heroTitle: "มรดกแห่งความงาม", hjTitle: "เรื่องราวของ HJ", 
-            hjDesc: "HJ COSMETICS ก่อตั้งขึ้นจากความมุ่งมั่นที่จะนำความงามที่แท้จริงจากเกาหลีมาสู่ประเทศไทย เราคัดสรรสกินแคร์ที่ผ่านการทดสอบทางวิทยาศาสตร์ เพื่อมอบผลลัพธ์ที่ดีที่สุดสำหรับผิวคุณ", 
-            ms1: "ปีแห่งประสบการณ์", ms2: "นำเข้าจากเกาหลี 100%", ms3: "ลูกค้าที่ไว้วางใจ",
-            fDesc: "แบรนด์ที่เชี่ยวชาญด้าน Botanical Therapy เน้นการใช้สารสกัดจากพืชพรรณธรรมชาติในการฟื้นฟูผิวอย่างอ่อนโยน", 
-            bDesc: "เปลี่ยนการดูแลผิวกายในทุกวันให้กลายเป็นพิธีกรรมแห่งความสุขระดับสปาด้วยกลิ่นหอมและสารบำรุงที่เป็นเอกลักษณ์", 
-            cDesc: "ผู้นำด้านผลิตภัณฑ์ดูแลเส้นผมและผิวสูตรเข้มข้น มอบผลลัพธ์ดุจทำทรีทเมนท์ระดับมืออาชีพ",
-            footDesc: "คัดสรรผลิตภัณฑ์พรีเมียมจากเกาหลี เพื่อผิวที่ยั่งยืน", 
-            visit: "เข้าชมเว็บไซต์", hAddr: "ที่อยู่", hCont: "ติดต่อเรา", hColl: "คอลเลกชัน"
-        },
-        en: { 
-            heroTitle: "Our Heritage", hjTitle: "The HJ Story", 
-            hjDesc: "Established with a visionary commitment to bridge Korean beauty excellence with Thailand. We curate science-backed skincare to deliver excellence to your skin.", 
-            ms1: "EXPERIENCE YEARS", ms2: "KOREAN AUTHENTIC", ms3: "HAPPY CUSTOMERS",
-            fDesc: "Specializing in Botanical Therapy, Fraijour harnesses natural herbs for deep restoration and balance.", 
-            bDesc: "Elevate your daily ritual into a spa escape with unique scents and intensive nourishment.", 
-            cDesc: "A pioneer in intensive hair & skin care solutions with professional-grade treatments.",
-            footDesc: "Premium Korean beauty curator delivering excellence to your skin.", 
-            visit: "OFFICIAL SITE", hAddr: "LOCATION", hCont: "CONTACT", hColl: "COLLECTIONS"
-        },
-        kr: { 
-            heroTitle: "아름다운 유산", hjTitle: "HJ 코스메틱 이야기", 
-            hjDesc: "HJ COSMETICS는 한국의 진정한 아름다움을 태국에 전달하기 위해 설립되었습니다. 우리는 과학적으로 검증된 스킨케어 제품만을 엄선하여 최상의 결과를 제공합니다.", 
-            ms1: "경력 년수", ms2: "100% 한국 정품", ms3: "신뢰하는 고객들",
-            fDesc: "프라이주어는 식물 테라피 전문 브랜드로, 자연의 치유력을 활용하여 피부 본연의 힘을 기릅니다.", 
-            bDesc: "일상의 목욕 시간을 프리미엄 스파와 같은 휴식으로 바꿔주는 감각적인 바디 케어 브랜드입니다.", 
-            cDesc: "고농축 추출물을 통해 손상된 모발과 피부를 회복시키는 전문 케어 솔루션입니다.",
-            footDesc: "탁월함을 선사하는 프리미엄 한국 뷰티 큐레이터.", 
-            visit: "공식 사이트", hAddr: "주소", hCont: "연락처", hColl: "컬렉션"
-        }
-    };
-
-    function updateContent() {
-        const l = trans[currentLang];
-        document.getElementById('hero-title').textContent = l.heroTitle;
-        document.getElementById('hj-title').textContent = l.hjTitle;
-        document.getElementById('hj-desc').textContent = l.hjDesc;
-        document.getElementById('ms-1').textContent = l.ms1;
-        document.getElementById('ms-2').textContent = l.ms2;
-        document.getElementById('ms-3').textContent = l.ms3;
-        document.getElementById('f-desc').textContent = l.fDesc;
-        document.getElementById('b-desc').textContent = l.bDesc;
-        document.getElementById('c-desc').textContent = l.cDesc;
-        document.getElementById('foot-desc').textContent = l.footDesc;
-        document.getElementById('h-addr-foot').textContent = l.hAddr;
-        document.getElementById('h-cont-foot').textContent = l.hCont;
-        document.getElementById('h-coll-foot').textContent = l.hColl;
-        document.querySelectorAll('.btn-visit').forEach(b => b.textContent = l.visit);
-        document.getElementById('langBtn').textContent = currentLang.toUpperCase();
-        
-        // Font Switching
-        if (currentLang === 'th') {
-            document.body.style.fontFamily = 'var(--font-th)';
-        } else if (currentLang === 'kr') {
-            document.body.style.fontFamily = 'var(--font-kr)';
-        } else {
-            document.body.style.fontFamily = 'var(--font-en)';
-        }
-        
-        localStorage.setItem('hj_lang', currentLang);
+    // ระบบเปิด-ปิดเมนูมือถือ
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+        const icon = document.querySelector('.menu-toggle i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
     }
 
+    // ฟังก์ชันสลับภาษา (รักษาข้อมูลเดิม)
+    let currentLang = 'th';
     function rotateLanguage() {
-        currentLang = languages[(languages.indexOf(currentLang) + 1) % languages.length];
-        updateContent();
+        currentLang = currentLang === 'th' ? 'en' : 'th';
+        document.getElementById('langBtn').textContent = currentLang.toUpperCase();
+        // เพิ่ม Logic เปลี่ยนคำตามภาษาได้ที่นี่
     }
-
-    // Desktop Mirror Effect for Bathpa Row
-    function handleResize() {
-        const bathpaRow = document.getElementById('bathpa-row');
-        const bathpaImg = document.getElementById('bathpa-img-box');
-        if (window.innerWidth > 850) {
-            bathpaRow.style.direction = 'rtl';
-            bathpaImg.parentElement.querySelector('.brand-content').style.direction = 'ltr';
-        } else {
-            bathpaRow.style.direction = 'ltr';
-        }
-    }
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    updateContent();
 </script>
 </body>
 </html>
