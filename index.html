@@ -25,24 +25,34 @@
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.3; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.6) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; }
 
-        /* --- Nav (Locked for Mobile) --- */
+        /* --- Nav --- */
         nav { background: rgba(255, 255, 255, 0.95); height: 80px; padding: 0 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 2000; backdrop-filter: blur(10px); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
         .logo-nav img { height: 45px; width: auto; }
         .nav-links { display: flex; gap: 20px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; font-family: var(--font-en); }
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-weight: 700; font-size: 0.7rem; border-radius: 4px; }
 
-        /* --- Hero & Slider --- */
         .hero { padding: 40px 5% 20px; text-align: center; }
         .main-gold-logo { width: 100%; max-width: 280px; margin-bottom: 15px; }
-        .slider-container { width: 92%; max-width: 1400px; margin: 0 auto 40px; aspect-ratio: 16/7; overflow: hidden; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+
+        /* --- Slider --- */
+        .slider-container { width: 92%; max-width: 1400px; margin: 0 auto 30px; aspect-ratio: 16/7; overflow: hidden; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
         .slider-wrapper { display: flex; width: 100%; height: 100%; transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1); }
         .slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; }
 
-        /* --- Container & Grid --- */
+        /* --- ✨ Section: Video & Logos (ย้ายขึ้นมาแล้ว) --- */
+        .video-section { width: 92%; max-width: 1000px; margin: 40px auto 20px; }
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        
+        .brand-partners { padding: 30px 5%; display: flex; justify-content: center; align-items: center; gap: clamp(20px, 5vw, 50px); flex-wrap: wrap; margin-bottom: 40px; }
+        .brand-partners img { height: 35px; filter: grayscale(1); opacity: 0.6; transition: 0.4s; }
+        .brand-partners img:hover { filter: grayscale(0); opacity: 1; transform: scale(1.1); }
+
+        /* --- Grid & Cards --- */
         .container { width: 92%; max-width: 1400px; margin: 0 auto; flex: 1; }
         .grid-title { margin: 40px 0 25px; display: flex; align-items: center; gap: 15px; }
-        .grid-title h2 { font-family: var(--font-head); font-size: 1.2rem; color: var(--p-green); letter-spacing: 2px; white-space: nowrap; }
+        .grid-title h2 { font-family: var(--font-head); font-size: 1.2rem; color: var(--p-green); letter-spacing: 2px; }
         .grid-title .line { flex: 1; height: 1px; background: var(--gold); opacity: 0.3; }
         
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; margin-bottom: 60px; }
@@ -53,36 +63,18 @@
         .product-badge { position: absolute; top: 12px; right: 12px; background: var(--gold); color: white; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.55rem; font-weight: 800; }
         
         .info { padding: 20px; text-align: center; flex-grow: 1; }
-        .info h3 { font-size: 0.9rem; height: 2.8em; overflow: hidden; color: var(--p-green); margin-bottom: 12px; line-height: 1.4; }
-        .sale { font-size: 1.4rem; font-weight: 700; color: var(--p-green); font-family: var(--font-en); }
+        .info h3 { font-size: 0.9rem; height: 2.8em; overflow: hidden; color: var(--p-green); margin-bottom: 12px; }
+        .sale { font-size: 1.4rem; font-weight: 700; color: var(--p-green); }
         .old { color: #adb5bd; text-decoration: line-through; margin-left: 8px; font-size: 0.85rem; }
-        .btn-buy { background: var(--p-green); color: white; padding: 15px; text-align: center; font-weight: 700; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; }
+        .btn-buy { background: var(--p-green); color: white; padding: 15px; text-align: center; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; }
 
-        /* --- Video & Partners --- */
-        .video-section { width: 92%; max-width: 1100px; margin: 60px auto; }
-        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        
-        .brand-partners { padding: 50px 5%; background: rgba(255,255,255,0.5); display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; margin-bottom: 50px; }
-        .brand-partners img { height: 40px; filter: grayscale(1); opacity: 0.6; transition: 0.4s; }
-        .brand-partners img:hover { filter: grayscale(0); opacity: 1; transform: scale(1.1); }
-
-        /* --- Mobile Optimization --- */
         @media (max-width: 768px) {
-            nav { height: 70px; padding: 0 3%; }
-            .logo-nav img { height: 32px; }
-            .nav-links { gap: 10px; }
-            .nav-links a { font-size: 0.55rem; letter-spacing: 0.5px; }
             .slider-container { aspect-ratio: 1/1; }
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .info { padding: 12px; }
-            .info h3 { font-size: 0.75rem; }
-            .sale { font-size: 1.1rem; }
             .brand-partners img { height: 25px; }
         }
 
         footer { background: #111; color: white; padding: 60px 5% 30px; text-align: center; }
-        .copy { font-size: 0.65rem; color: #555; letter-spacing: 2px; margin-top: 30px; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -117,16 +109,7 @@
     </div>
 </div>
 
-<main class="container">
-    <div class="grid-title"><h2>FRAIJOUR HERBS</h2><div class="line"></div></div>
-    <div class="product-grid" id="grid-f"></div>
-    
-    <div class="grid-title"><h2 id="t-others">GLOBAL SELECTION</h2><div class="line"></div></div>
-    <div class="product-grid" id="grid-o"></div>
-</main>
-
 <section class="video-section">
-    <div class="grid-title"><h2>OUR STORY</h2><div class="line"></div></div>
     <div class="video-container">
         <iframe src="https://www.youtube.com/embed/hqyVA3VQoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3VQoyo&controls=0&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
@@ -139,13 +122,19 @@
     <img src="charchar-logo.png" alt="Char Char">
 </section>
 
+<main class="container">
+    <div class="grid-title"><h2>FRAIJOUR HERBS</h2><div class="line"></div></div>
+    <div class="product-grid" id="grid-f"></div>
+    
+    <div class="grid-title"><h2 id="t-others">GLOBAL SELECTION</h2><div class="line"></div></div>
+    <div class="product-grid" id="grid-o"></div>
+</main>
+
 <footer>
     <p>© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</p>
-    <div class="copy">PREMIUM KOREAN BEAUTY CURATOR</div>
 </footer>
 
 <script>
-    // Slider Logic
     let idx = 0;
     setInterval(() => {
         const w = document.getElementById('sliderWrapper');
@@ -153,7 +142,6 @@
         if(w) w.style.transform = `translateX(-${idx * 100}%)`;
     }, 5000);
 
-    // Full 15 Products Data
     const products = [
         { id: 1, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด วอเตอรี่ ครีม", nameEn: "Original Herb Wormwood Watery Cream", nameKr: "오리지널 허브 웜우드 워터리 크림", sale: 290, old: 369, bTh: "แนะนำ", bEn: "HOT", bKr: "추천", img: "1.jpg.png" },
         { id: 2, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด โทนเนอร์", nameEn: "Original Herb Wormwood Toner", nameKr: "오리지널 허브 웜우드 토너", sale: 350, old: 350, bTh: "ขายดี", bEn: "BEST", bKr: "인기", img: "2.jpeg" },
@@ -162,7 +150,7 @@
         { id: 5, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด ชีท มาส์ก", nameEn: "Original Herb Wormwood Sheet Mask", nameKr: "오리지널 허브 웜우드 시트 마스크", sale: 13, old: 89, bTh: "มาส์ก", bEn: "MASK", bKr: "팩", img: "15.jpeg" },
         { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "하트리프 블레미쉬 토너", sale: 360, old: 420, bTh: "ลดสิว", bEn: "ACNE", bKr: "트러블", img: "6.jpeg" },
         { id: 7, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ มอยส์เจอร์ ครีม", nameEn: "Heartleaf Moistur Cream", nameKr: "하트리프 모이스처 크림", sale: 310, old: 450, bTh: "ชุ่มชื้น", bEn: "MOIST", bKr: "보습", img: "5.jpeg" },
-        { id: 8, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต กันแดด", nameEn: "Heartleaf Water Fit Sun", nameKr: "하트리프 워터 핏 선크림", sale:320, old: 490, bTh: "บางเบา", bEn: "LIGHT", bKr: "산뜻", img: "12.jpeg" },
+        { id: 8, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต กันแดด", nameEn: "Heartleaf Water Fit Sun", nameKr: "하트리프 워터 핏 선크림", sale: 320, old: 490, bTh: "บางเบา", bEn: "LIGHT", bKr: "산뜻", img: "12.jpeg" },
         { id: 9, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต กันแดด", nameEn: "Heartleaf Airy Fit Sun", nameKr: "하트리프 에어리 핏 선크림", sale: 280, old: 490, bTh: "คุมมัน", bEn: "MATTE", bKr: "뽀송", img: "11.jpeg" },
         { id: 10, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี โทนเนอร์", nameEn: "Retin Collagen 3D Toner", nameKr: "레틴 콜라겐 3D 토너", sale: 200, old: 480, bTh: "กระชับ", bEn: "FIRM", bKr: "탄력", img: "9.jpeg" },
         { id: 11, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี ครีม", nameEn: "Retin Collagen 3D Cream", nameKr: "레틴 콜라겐 3D 크림", sale: 150, old: 550, bTh: "ริ้วรอย", bEn: "LIFT", bKr: "주름", img: "7.jpeg" },
