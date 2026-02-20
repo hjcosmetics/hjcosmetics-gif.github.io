@@ -111,7 +111,7 @@
         footer { padding: 40px 0; text-align: center; background: transparent; }
         .copy { font-size: 0.75rem; letter-spacing: 2px; color: #7f8c8d; font-family: var(--font-en); }
 
-        /* --- 📱 RESPONSIVE FIX (ฟิกขนาด) --- */
+        /* --- 📱 RESPONSIVE FIX (บังคับแถวเดียว) --- */
         @media (max-width: 1024px) {
             .origin-section { padding: 50px 30px; }
             .story-flex { gap: 30px; }
@@ -119,11 +119,21 @@
         }
 
         @media (max-width: 768px) {
-            nav { padding: 0 3%; height: auto; padding-top: 15px; padding-bottom: 15px; flex-direction: column; gap: 15px; }
-            .nav-links { display: flex; gap: 15px; order: 2; }
-            .nav-links a { font-size: 0.6rem; letter-spacing: 1px; }
+            nav { padding: 0 3%; height: 70px; flex-direction: row; justify-content: space-between; gap: 5px; }
+            .logo-nav img { height: 32px; }
+            
+            .nav-links { 
+                display: flex; 
+                gap: 12px; 
+                order: 2; 
+                position: static; 
+                background: transparent; 
+                padding: 0;
+            }
+            .nav-links a { font-size: 0.6rem; letter-spacing: 0.5px; }
+            
             .logo-nav { order: 1; }
-            .lang-btn { order: 3; padding: 5px 10px; }
+            .lang-btn { order: 3; padding: 5px 8px; font-size: 0.6rem; }
 
             .hero-header { padding: 40px 5% 20px; }
             
@@ -135,7 +145,7 @@
             
             .brand-grid { grid-template-columns: 1fr; border-radius: 20px; }
             .brand-image { height: 300px; }
-            .brand-grid[style*="rtl"] { direction: ltr !important; } /* ยกเลิกสลับซ้ายขวาในมือถือ */
+            .brand-grid[style*="rtl"] { direction: ltr !important; }
             .brand-content { padding: 30px 20px; text-align: center; }
             .btn-visit { align-self: center; width: 100%; text-align: center; }
         }
@@ -248,7 +258,7 @@
             hjDesc: "HJ COSMETICS는 한국의 진정한 아름다움을 태국에 전달하기 위해 설립되었습니다. 우리는 과학적으로 검증된 스킨케어 제품만을 엄선하여 최상의 결과를 제공합니다.", 
             ms1: "경력 년수", ms2: "100% 한국 정품", ms3: "신뢰하는 고객들",
             fDesc: "프라이주어는 식물 테라피 전문 브랜드로, 자연의 치유력을 활용하여 피부 본연의 힘을 기릅니다.", 
-            bDesc: "일상의 목욕 시간을 프리미엄 스파와 같은 휴식으로 바꿔주는 감각적인 바디 케어 브랜드입니다.", 
+            bDesc: "일상의 목욕 시간을 프리미엄 ส파와 같은 휴식으로 바꿔주는 감각적인 바디 케어 브랜드입니다.", 
             cDesc: "고농축 추출물을 통해 손상된 모발과 피부를 회복시키는 전문 케어 솔루션입니다.",
             visit: "공식 사이트"
         }
