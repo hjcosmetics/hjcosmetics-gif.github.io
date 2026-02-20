@@ -107,7 +107,7 @@
         }
         .btn-visit:hover { background: #143326; transform: translateY(-3px); }
 
-        /* --- 🏛️ Footer (Copyright 2024 ONLY) --- */
+        /* --- 🏛️ Footer --- */
         footer { padding: 40px 0; text-align: center; background: transparent; }
         .copy { font-size: 0.75rem; letter-spacing: 2px; color: #7f8c8d; font-family: var(--font-en); }
 
@@ -119,8 +119,12 @@
         }
 
         @media (max-width: 768px) {
-            nav { padding: 0 5%; }
-            .nav-links { display: none; }
+            nav { padding: 0 3%; height: auto; padding-top: 15px; padding-bottom: 15px; flex-direction: column; gap: 15px; }
+            .nav-links { display: flex; gap: 15px; order: 2; }
+            .nav-links a { font-size: 0.6rem; letter-spacing: 1px; }
+            .logo-nav { order: 1; }
+            .lang-btn { order: 3; padding: 5px 10px; }
+
             .hero-header { padding: 40px 5% 20px; }
             
             .origin-section { padding: 40px 20px; border-radius: 20px; }
