@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="th">
 <head>
     <meta charset="UTF-8">
@@ -23,34 +23,36 @@
         #bg-video { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -2; opacity: 0.3; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.6) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; }
 
-        /* --- 🎖️ Navigation (Fixed & Responsive) --- */
+        /* --- 🎖️ Navigation (บังคับแถวเดียว) --- */
         nav { 
             background: rgba(255, 255, 255, 0.95); height: 80px; 
             padding: 0 5%; display: flex; justify-content: space-between; align-items: center; 
             position: sticky; top: 0; z-index: 2000; backdrop-filter: blur(10px);
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
-        .logo-nav img { height: 45px; width: auto; }
+        .logo-nav img { height: 45px; width: auto; transition: 0.3s; }
 
-        /* เมนูหน้าจอคอม */
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-en); transition: 0.3s; }
         .nav-links a.active { color: var(--gold); }
 
-        /* ปุ่ม Hamburger (แสดงเฉพาะมือถือ) */
-        .mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--p-green); cursor: pointer; }
+        .mobile-menu-btn { display: none !important; } /* ซ่อนปุ่ม 3 ขีดถาวร */
 
-        /* เมนูในมือถือ (แบบ Slide Down) */
         @media (max-width: 768px) {
-            .mobile-menu-btn { display: block; }
+            nav { height: 70px; padding: 0 3%; flex-direction: row !important; }
+            .logo-nav img { height: 32px; }
             .nav-links { 
-                display: none; /* ซ่อนเมนูแนวนอน */
-                position: absolute; top: 80px; left: 0; width: 100%; 
-                background: white; flex-direction: column; padding: 20px; 
-                gap: 20px; border-bottom: 2px solid var(--gold);
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                display: flex !important; 
+                position: static; 
+                width: auto; 
+                background: transparent; 
+                padding: 0; 
+                gap: 12px; 
+                box-shadow: none;
+                border: none;
             }
-            .nav-links.active { display: flex; } /* แสดงเมื่อกดปุ่ม */
+            .nav-links a { font-size: 0.6rem; letter-spacing: 0.5px; }
+            .lang-btn { padding: 5px 8px; font-size: 0.6rem; }
         }
 
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-weight: 700; font-size: 0.7rem; font-family: var(--font-en); border-radius: 4px; }
@@ -101,8 +103,6 @@
 <nav>
     <div class="logo-nav"><a href="index.html"><img src="HJ (5).png"></a></div>
     
-    <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-
     <div class="nav-links" id="navLinks">
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
@@ -137,15 +137,11 @@
 </footer>
 
 <script>
-    // ฟังก์ชันเปิด/ปิดเมนูในมือถือ
-    function toggleMenu() {
-        document.getElementById('navLinks').classList.toggle('active');
-    }
-
     // Slider Logic
     let index = 0;
     const wrapper = document.getElementById('sliderWrapper');
     function next() {
+        if (!wrapper) return;
         index = (index + 1) % 4;
         wrapper.style.transform = `translateX(-${index * 100}%)`;
     }
@@ -175,6 +171,7 @@
     function render() {
         const gridF = document.getElementById('grid-f');
         const gridO = document.getElementById('grid-o');
+        if (!gridF || !gridO) return;
         gridF.innerHTML = ''; gridO.innerHTML = '';
         
         products.forEach(p => {
