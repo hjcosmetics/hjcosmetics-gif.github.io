@@ -40,14 +40,19 @@
         .slider-wrapper { display: flex; width: 100%; height: 100%; transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1); }
         .slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; }
 
-        /* --- ✨ Section: Video & Logos (ย้ายขึ้นมาแล้ว) --- */
+        /* --- Section: Video --- */
         .video-section { width: 92%; max-width: 1000px; margin: 40px auto 20px; }
         .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         
-        .brand-partners { padding: 30px 5%; display: flex; justify-content: center; align-items: center; gap: clamp(20px, 5vw, 50px); flex-wrap: wrap; margin-bottom: 40px; }
-        .brand-partners img { height: 35px; filter: grayscale(1); opacity: 0.6; transition: 0.4s; }
-        .brand-partners img:hover { filter: grayscale(0); opacity: 1; transform: scale(1.1); }
+        /* --- ✨ Brand Partners (ปรับขนาดโลโก้เฉพาะจุด) --- */
+        .brand-partners { padding: 30px 5%; display: flex; justify-content: center; align-items: center; gap: clamp(20px, 5vw, 60px); flex-wrap: wrap; margin-bottom: 40px; }
+        .brand-partners img { height: 35px; width: auto; filter: grayscale(1); opacity: 0.6; transition: 0.4s; object-fit: contain; }
+        
+        /* ขยายขนาดเฉพาะ Bathpa และ Char Char */
+        .brand-partners img.large-logo { height: 55px; opacity: 0.7; } 
+        
+        .brand-partners img:hover { filter: grayscale(0); opacity: 1 !important; transform: scale(1.05); }
 
         /* --- Grid & Cards --- */
         .container { width: 92%; max-width: 1400px; margin: 0 auto; flex: 1; }
@@ -72,6 +77,7 @@
             .slider-container { aspect-ratio: 1/1; }
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .brand-partners img { height: 25px; }
+            .brand-partners img.large-logo { height: 40px; } /* ปรับขนาดในมือถือให้เหมาะสม */
         }
 
         footer { background: #111; color: white; padding: 60px 5% 30px; text-align: center; }
@@ -118,8 +124,8 @@
 <section class="brand-partners">
     <img src="Evas.png" alt="EVAS">
     <img src="Fraijour.png" alt="Fraijour">
-    <img src="Bathpa.png" alt="Bathpa">
-    <img src="Charchar.png" alt="Char Char">
+    <img src="Bathpa.png" alt="Bathpa" class="large-logo">
+    <img src="Charchar.png" alt="Char Char" class="large-logo">
 </section>
 
 <main class="container">
