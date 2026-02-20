@@ -29,7 +29,7 @@
         #bg-video { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -2; opacity: 0.4; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(253,250,245,0.1) 0%, rgba(253,250,245,0.6) 100%); z-index: -1; }
 
-        /* --- 🎖️ Navigation (Fully Responsive) --- */
+        /* --- 🎖️ Navigation --- */
         nav { 
             background: rgba(255, 255, 255, 0.9); height: 80px; padding: 0 5%;
             display: flex; justify-content: space-between; align-items: center; 
@@ -42,16 +42,13 @@
         .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         .nav-links a.active { color: var(--gold); }
 
-        .mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--p-green); cursor: pointer; }
+        .mobile-menu-btn { display: none; }
 
         @media (max-width: 768px) {
-            .mobile-menu-btn { display: block; }
-            .nav-links { 
-                display: none; position: absolute; top: 80px; left: 0; width: 100%; 
-                background: white; flex-direction: column; padding: 30px 0; gap: 25px;
-                border-bottom: 2px solid var(--gold);
-            }
-            .nav-links.active { display: flex; }
+            nav { height: auto; padding: 15px 5%; flex-direction: column; gap: 15px; }
+            .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .nav-links a { font-size: 0.65rem; letter-spacing: 1px; }
+            .mobile-menu-btn { display: none !important; }
         }
 
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; border-radius: 4px; }
@@ -116,8 +113,6 @@
 <nav>
     <div class="logo-nav"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
     
-    <div class="mobile-menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-
     <div class="nav-links" id="navLinks">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -171,10 +166,6 @@
 </footer>
 
 <script>
-    function toggleMenu() {
-        document.getElementById('navLinks').classList.toggle('active');
-    }
-
     const languages = ['th', 'en', 'kr'];
     let currentLang = localStorage.getItem('hj_lang') || 'th';
 
