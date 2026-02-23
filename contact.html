@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Contact Us - HJ COSMETICS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+Thai:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@300;400;500;600&family=Nanum+Myeongjo:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root { 
             --p-green: #1b4332; 
             --gold: #c5a059;
             --off-white: #fdfaf5;
-            --font-th: 'Noto Serif Thai', serif;
+            --font-th: 'Prompt', sans-serif; /* เปลี่ยนจาก Noto Serif Thai เป็น Prompt */
             --font-en: 'Inter', sans-serif;
             --font-head: 'Cinzel', serif;
             --font-kr: 'Nanum Myeongjo', serif;
@@ -39,6 +39,8 @@
             .nav-links { gap: 12px; }
             .nav-links a { font-size: 0.6rem; letter-spacing: 0.5px; }
             .lang-btn { padding: 5px 8px; font-size: 0.6rem; }
+            /* ป้องกันกล่องข้อความซ้อนกันในมือถือ */
+            .contact-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
         }
 
         .hero-header { text-align: center; padding: clamp(40px, 8vh, 70px) 5% 20px; }
@@ -119,7 +121,7 @@
 
 <script>
     const languages = ['th', 'en', 'kr'];
-    let currentLang = localStorage.getItem('selectedLang') || 'th'; // ใช้ key เดียวกับ index
+    let currentLang = localStorage.getItem('selectedLang') || 'th'; 
 
     const trans = {
         th: { heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", hAddr: "ที่อยู่", hCont: "ฝ่ายบริการ", lName: "ชื่อ-นามสกุล", lEmail: "อีเมล", lMsg: "ข้อความ", btnSend: "ส่งข้อความ" },
