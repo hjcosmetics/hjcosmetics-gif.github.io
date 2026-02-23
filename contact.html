@@ -19,61 +19,33 @@
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
-        body { 
-            margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; 
-            min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
-            font-family: var(--font-th);
-        }
+        body { margin: 0; padding: 0; background-color: var(--off-white); color: #2d3436; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; font-family: var(--font-th); }
 
-        /* --- 🎞️ Background --- */
         #bg-video { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -2; opacity: 0.4; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(253,250,245,0.1) 0%, rgba(253,250,245,0.6) 100%); z-index: -1; }
 
-        /* --- 🎖️ Navigation (Updated to match Index/About) --- */
-        nav { 
-            background: rgba(255, 255, 255, 0.9); height: 80px; padding: 0 5%;
-            display: flex; align-items: center; 
-            position: sticky; top: 0; z-index: 2000; backdrop-filter: blur(15px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
+        nav { background: rgba(255, 255, 255, 0.9); height: 80px; padding: 0 5%; display: flex; align-items: center; position: sticky; top: 0; z-index: 2000; backdrop-filter: blur(15px); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
         .logo-nav { flex: 1; display: flex; align-items: center; }
         .logo-nav img { height: 45px; transition: 0.3s; }
-        
         .nav-links { flex: 2; display: flex; gap: 25px; align-items: center; justify-content: center; }
         .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         .nav-links a.active { color: var(--gold); }
-
         .nav-actions { flex: 1; display: flex; justify-content: flex-end; }
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; border-radius: 4px; }
 
-        /* --- 📱 Responsive แก้ไขให้เป็นแถวเดียว --- */
         @media (max-width: 768px) {
             nav { height: 70px; padding: 0 3%; }
             .logo-nav img { height: 32px; } 
-            
             .nav-links { gap: 12px; }
             .nav-links a { font-size: 0.6rem; letter-spacing: 0.5px; }
             .lang-btn { padding: 5px 8px; font-size: 0.6rem; }
         }
 
-        /* --- ✨ Header --- */
         .hero-header { text-align: center; padding: clamp(40px, 8vh, 70px) 5% 20px; }
-        .hero-header h1 { 
-            font-size: clamp(2rem, 6vw, 3.5rem); 
-            color: var(--p-green); 
-            letter-spacing: 4px; font-weight: 700;
-        }
+        .hero-header h1 { font-size: clamp(2rem, 6vw, 3.5rem); color: var(--p-green); letter-spacing: 4px; font-weight: 700; }
 
-        /* --- 📝 Main Content --- */
         .contact-container { width: 92%; max-width: 1200px; margin: 0 auto 60px; flex: 1; }
-        .contact-grid { 
-            display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(20px, 5vw, 50px); 
-            background: rgba(255, 255, 255, 0.4); 
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            padding: clamp(25px, 5vw, 60px); border-radius: 25px; 
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.06);
-        }
+        .contact-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(20px, 5vw, 50px); background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: clamp(25px, 5vw, 60px); border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 0 15px 50px rgba(0,0,0,0.06); }
         
         .info-card h2 { font-size: clamp(1.8rem, 3vw, 2.2rem); color: var(--p-green); margin-bottom: 30px; font-weight: 700; }
         .info-item { margin-bottom: 30px; }
@@ -81,31 +53,16 @@
         .info-item p { color: #333; line-height: 1.6; font-size: 0.95rem; margin: 5px 0; }
         .info-item i { color: var(--p-green); width: 25px; margin-right: 5px; }
 
-        /* --- Form --- */
         .form-card { background: rgba(255, 255, 255, 0.5); padding: clamp(20px, 4vw, 40px); border-radius: 20px; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; font-size: 0.75rem; color: var(--p-green); font-weight: 700; letter-spacing: 1px; }
-        input, textarea { 
-            width: 100%; padding: 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); 
-            background: rgba(255,255,255,0.8); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
-        }
+        input, textarea { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.1); background: rgba(255,255,255,0.8); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s; }
         input:focus, textarea:focus { border-color: var(--gold); background: #fff; }
-
-        .btn-submit { 
-            background: var(--p-green); color: white; border: none; padding: 18px; width: 100%; 
-            font-weight: 700; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; 
-            border-radius: 8px; font-size: 0.85rem; transition: 0.3s;
-        }
+        .btn-submit { background: var(--p-green); color: white; border: none; padding: 18px; width: 100%; font-weight: 700; cursor: pointer; letter-spacing: 2px; text-transform: uppercase; border-radius: 8px; font-size: 0.85rem; transition: 0.3s; }
         .btn-submit:hover { background: #143326; transform: translateY(-3px); }
 
-        /* --- 🏛️ Footer --- */
         footer { padding: 40px 0; text-align: center; }
         .copy { font-size: 0.7rem; color: #888; letter-spacing: 1px; font-family: var(--font-en); }
-
-        @media (max-width: 900px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            .info-card h2, .info-item { text-align: center; }
-        }
     </style>
 </head>
 <body oncontextmenu="return false;"> 
@@ -114,9 +71,7 @@
 <div class="bg-overlay"></div>
 
 <nav>
-    <div class="logo-nav">
-        <a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a>
-    </div>
+    <div class="logo-nav"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -149,18 +104,9 @@
         
         <div class="form-card">
             <form action="https://formspree.io/f/xzddzvby" method="POST">
-                <div class="form-group">
-                    <label id="l-name">NAME</label>
-                    <input type="text" name="name" id="ph-name" required>
-                </div>
-                <div class="form-group">
-                    <label id="l-email">EMAIL</label>
-                    <input type="email" name="email" id="ph-email" required>
-                </div>
-                <div class="form-group">
-                    <label id="l-msg">MESSAGE</label>
-                    <textarea name="message" id="ph-msg" rows="4" required></textarea>
-                </div>
+                <div class="form-group"><label id="l-name">NAME</label><input type="text" name="name" required></div>
+                <div class="form-group"><label id="l-email">EMAIL</label><input type="email" name="email" required></div>
+                <div class="form-group"><label id="l-msg">MESSAGE</label><textarea name="message" rows="4" required></textarea></div>
                 <button type="submit" class="btn-submit" id="btn-send">Send Message</button>
             </form>
         </div>
@@ -173,24 +119,12 @@
 
 <script>
     const languages = ['th', 'en', 'kr'];
-    let currentLang = localStorage.getItem('hj_lang') || 'th';
+    let currentLang = localStorage.getItem('selectedLang') || 'th'; // ใช้ key เดียวกับ index
 
     const trans = {
-        th: { 
-            heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", 
-            hAddr: "ที่อยู่", hCont: "ฝ่ายบริการ", lName: "ชื่อ-นามสกุล", lEmail: "อีเมล", lMsg: "ข้อความ", 
-            btnSend: "ส่งข้อความ", phName: "ชื่อของคุณ", phEmail: "อีเมลติดต่อ", phMsg: "พิมพ์ข้อความที่นี่..."
-        },
-        en: { 
-            heroTitle: "Contact Us", infoH: "Get In Touch", 
-            hAddr: "ADDRESS", hCont: "CONCIERGE", lName: "YOUR NAME", lEmail: "EMAIL", lMsg: "MESSAGE", 
-            btnSend: "SEND MESSAGE", phName: "Your name", phEmail: "Your email", phMsg: "Write message..."
-        },
-        kr: { 
-            heroTitle: "문의하기", infoH: "연락처", 
-            hAddr: "주소", hCont: "고객 서비스", lName: "성함", lEmail: "이메일", lMsg: "메시지", 
-            btnSend: "보내기", phName: "이름", phEmail: "이메일", phMsg: "메시지..."
-        }
+        th: { heroTitle: "ติดต่อเรา", infoH: "ช่องทางการติดต่อ", hAddr: "ที่อยู่", hCont: "ฝ่ายบริการ", lName: "ชื่อ-นามสกุล", lEmail: "อีเมล", lMsg: "ข้อความ", btnSend: "ส่งข้อความ" },
+        en: { heroTitle: "Contact Us", infoH: "Get In Touch", hAddr: "ADDRESS", hCont: "CONCIERGE", lName: "YOUR NAME", lEmail: "EMAIL", lMsg: "MESSAGE", btnSend: "SEND MESSAGE" },
+        kr: { heroTitle: "문의하기", infoH: "연락처", hAddr: "주소", hCont: "고객 서비스", lName: "성함", lEmail: "이메일", lMsg: "메시지", btnSend: "보내기" }
     };
 
     function updateContent() {
@@ -205,19 +139,15 @@
         document.getElementById('btn-send').textContent = l.btnSend;
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
         
-        if (currentLang === 'kr') {
-            document.body.style.fontFamily = 'var(--font-kr)';
-        } else {
-            document.body.style.fontFamily = currentLang === 'th' ? 'var(--font-th)' : 'var(--font-en)';
-        }
-        localStorage.setItem('hj_lang', currentLang);
+        if (currentLang === 'kr') { document.body.style.fontFamily = 'var(--font-kr)'; }
+        else { document.body.style.fontFamily = currentLang === 'th' ? 'var(--font-th)' : 'var(--font-en)'; }
+        localStorage.setItem('selectedLang', currentLang);
     }
 
     function rotateLanguage() {
         currentLang = languages[(languages.indexOf(currentLang) + 1) % languages.length];
         updateContent();
     }
-
     updateContent();
 </script>
 </body>
