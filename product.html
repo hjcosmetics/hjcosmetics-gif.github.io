@@ -27,91 +27,91 @@
         .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-en); pointer-events: auto; }
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-weight: 700; font-size: 0.7rem; border-radius: 2px; pointer-events: auto; }
 
-        .container { max-width: 1350px; margin: 40px auto 80px; padding: 0 5%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: start; }
+        .container { max-width: 1200px; margin: 30px auto 80px; padding: 0 5%; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: start; }
         
-        /* 🆕 รูปภาพเด่นขึ้น พื้นหลังใสเบลอ ไม่ทึบ */
+        /* 🆕 Image Display */
         .img-display { 
             background: rgba(255, 255, 255, 0.3); 
-            padding: 60px 40px; 
-            border-radius: 30px; 
+            padding: 40px 30px; 
+            border-radius: 25px; 
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             box-shadow: 0 20px 60px rgba(0,0,0,0.08); 
             position: sticky; 
-            top: 110px; 
+            top: 100px; 
             display: flex;
             flex-direction: column;
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
         .img-display img { 
-            width: 95%; 
-            max-width: 550px;
+            width: 90%; 
+            max-width: 450px;
             height: auto; 
-            margin-bottom: 40px; 
+            margin-bottom: 25px; 
             filter: drop-shadow(0 20px 40px rgba(0,0,0,0.12));
         }
 
-        /* 🆕 สโลแกนตัวตรง อิงตามฟอนต์หลักแต่ละภาษา */
+        /* 🆕 Slogan - ปรับขนาดให้เล็กลง */
         .p-slogan { 
-            font-size: 1.5rem; 
+            font-size: 1.1rem; 
             color: var(--p-green); 
             font-weight: 600; 
             text-align: center;
-            line-height: 1.4;
-            max-width: 85%;
-            letter-spacing: -0.02em;
+            line-height: 1.5;
+            max-width: 90%;
+            letter-spacing: -0.01em;
         }
         .p-slogan::after {
             content: "";
             display: block;
-            width: 60px;
-            height: 4px;
+            width: 40px;
+            height: 3px;
             background: var(--gold);
-            margin: 20px auto 0;
+            margin: 15px auto 0;
             border-radius: 10px;
         }
 
-        .brand-label { color: var(--gold); letter-spacing: 5px; font-weight: 700; font-family: var(--font-head); font-size: 0.85rem; margin: 0; }
-        h1 { font-family: var(--font-head); font-size: 2.4rem; color: var(--p-green); margin: 15px 0; line-height: 1.1; }
-        .price-tag { font-size: 2.8rem; font-weight: 700; color: var(--p-green); margin-bottom: 30px; font-family: var(--font-en); }
-        .price-tag .old { font-size: 1.3rem; color: #b2bec3; text-decoration: line-through; margin-left: 15px; font-weight: 300; }
+        .brand-label { color: var(--gold); letter-spacing: 4px; font-weight: 700; font-family: var(--font-head); font-size: 0.75rem; margin: 0; }
+        h1 { font-family: var(--font-head); font-size: 1.6rem; color: var(--p-green); margin: 12px 0; line-height: 1.2; }
+        .price-tag { font-size: 1.8rem; font-weight: 700; color: var(--p-green); margin-bottom: 25px; font-family: var(--font-en); }
+        .price-tag .old { font-size: 1rem; color: #b2bec3; text-decoration: line-through; margin-left: 10px; font-weight: 300; }
 
-        .license-box { border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 20px 0; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
-        .fda-text h4 { margin: 0; font-size: 0.6rem; color: #95a5a6; letter-spacing: 1px; }
-        .fda-text p { margin: 4px 0 0; font-weight: 700; font-size: 0.95rem; color: #444; }
-        .btn-cert { color: var(--gold); text-decoration: none; font-size: 0.75rem; font-weight: 800; border: 1.5px solid var(--gold); padding: 6px 15px; border-radius: 4px; pointer-events: auto; transition: 0.3s; }
+        .license-box { border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 15px 0; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
+        .fda-text h4 { margin: 0; font-size: 0.55rem; color: #95a5a6; letter-spacing: 1px; }
+        .fda-text p { margin: 3px 0 0; font-weight: 700; font-size: 0.85rem; color: #444; }
+        .btn-cert { color: var(--gold); text-decoration: none; font-size: 0.65rem; font-weight: 800; border: 1.5px solid var(--gold); padding: 5px 12px; border-radius: 4px; pointer-events: auto; transition: 0.3s; }
         .btn-cert:hover { background: var(--gold); color: white; }
 
-        .desc-section { margin-bottom: 30px; }
-        .desc-section h3 { font-family: var(--font-head); font-size: 0.9rem; color: var(--p-green); margin-bottom: 12px; letter-spacing: 1px; border-left: 5px solid var(--gold); padding-left: 15px; }
-        .desc-section p { font-size: 1rem; line-height: 1.8; color: #444; margin: 0; white-space: pre-line; user-select: text; }
+        .desc-section { margin-bottom: 25px; }
+        .desc-section h3 { font-family: var(--font-head); font-size: 0.75rem; color: var(--p-green); margin-bottom: 10px; letter-spacing: 1px; border-left: 4px solid var(--gold); padding-left: 12px; }
+        .desc-section p { font-size: 0.85rem; line-height: 1.7; color: #444; margin: 0; white-space: pre-line; user-select: text; }
 
-        .review-box { background: rgba(255, 255, 255, 0.5); padding: 25px; border-radius: 15px; border: 1px solid rgba(0,0,0,0.05); margin-top: 20px; }
-        .review-item { border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0; }
+        .review-box { background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); margin-top: 15px; }
+        .review-item { border-bottom: 1px solid rgba(0,0,0,0.05); padding: 12px 0; }
         .review-item:last-child { border: none; }
-        .stars { color: #f1c40f; font-size: 0.8rem; margin-bottom: 8px; }
-        .review-text { font-size: 0.95rem; color: #333; font-weight: 500; }
-        .reviewer { display: block; font-size: 0.7rem; color: #95a5a6; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .stars { color: #f1c40f; font-size: 0.7rem; margin-bottom: 6px; }
+        .review-text { font-size: 0.85rem; color: #333; font-weight: 500; }
+        .reviewer { display: block; font-size: 0.65rem; color: #95a5a6; margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
 
-        .btn-action { display: flex; align-items: center; justify-content: center; gap: 10px; background: #06C755; color: white; padding: 20px; text-decoration: none; font-weight: 700; font-size: 1rem; margin-top: 30px; border-radius: 10px; pointer-events: auto; transition: 0.3s; }
+        .btn-action { display: flex; align-items: center; justify-content: center; gap: 8px; background: #06C755; color: white; padding: 16px; text-decoration: none; font-weight: 700; font-size: 0.85rem; margin-top: 25px; border-radius: 8px; pointer-events: auto; transition: 0.3s; }
         .btn-action:hover { background: #05b34c; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(6,199,85,0.2); }
-        .market-links { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 15px; }
-        .m-btn { padding: 15px; border-radius: 8px; text-align: center; color: white; font-weight: 700; font-size: 0.75rem; text-decoration: none; pointer-events: auto; transition: 0.3s; }
-        .m-btn:hover { opacity: 0.9; transform: translateY(-2px); }
-
-        .product-nav-container { display: flex; justify-content: space-between; margin-bottom: 30px; gap: 15px; }
-        .nav-p-btn { flex: 1; padding: 15px; border: 2px solid var(--p-green); color: var(--p-green); cursor: pointer; font-size: 0.75rem; font-weight: 700; text-align: center; transition: 0.3s; background: transparent; border-radius: 6px; }
-        .nav-p-btn:hover { background: var(--p-green); color: white; }
+        .market-links { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; }
+        .m-btn { padding: 12px; border-radius: 6px; text-align: center; color: white; font-weight: 700; font-size: 0.65rem; text-decoration: none; pointer-events: auto; transition: 0.3s; }
         
-        .back-to-home { display: inline-flex; align-items: center; gap: 10px; color: var(--p-green); text-decoration: none; font-size: 0.85rem; font-weight: 700; margin-bottom: 35px; letter-spacing: 1px; }
+        .product-nav-container { display: flex; justify-content: space-between; margin-bottom: 25px; gap: 12px; }
+        .nav-p-btn { flex: 1; padding: 12px; border: 1.5px solid var(--p-green); color: var(--p-green); cursor: pointer; font-size: 0.65rem; font-weight: 700; text-align: center; transition: 0.3s; background: transparent; border-radius: 4px; }
+        
+        .back-to-home { display: inline-flex; align-items: center; gap: 8px; color: var(--p-green); text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-bottom: 30px; letter-spacing: 1px; }
 
-        footer { background: #1a1a1a; color: #7f8c8d; padding: 60px 5%; text-align: center; font-size: 0.8rem; border-top: 1px solid #333; }
+        footer { background: #1a1a1a; color: #7f8c8d; padding: 40px 5%; text-align: center; font-size: 0.7rem; border-top: 1px solid #333; }
         
         @media (max-width: 1000px) { 
-            .container { grid-template-columns: 1fr; gap: 30px; } 
-            .img-display { position: static; padding: 40px 20px; } 
-            .p-slogan { font-size: 1.2rem; }
+            .container { grid-template-columns: 1fr; gap: 25px; } 
+            .img-display { position: static; padding: 30px 20px; } 
+            .p-slogan { font-size: 1rem; }
+            h1 { font-size: 1.4rem; }
+            .price-tag { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -176,9 +176,9 @@
     document.onkeydown = e => { if(e.keyCode == 123 || (e.ctrlKey && [85,83,67].includes(e.keyCode))) return false; };
 
     const products = {
-        1: { brand: "FRAIJOUR", sale: "฿290", old: "฿420", img: "1.jpg.png", fda: "20-2-6700030346", cert: "WATERY CREAM.jpg", th: { name: "Original Herb Wormwood Calming Watery Cream", slogan: "ปรนนิบัติผิวด้วยความชุ่มชื้น ล็อคผิวฉ่ำวาวเนียนนุ่มตลอดวัน", desc: "ครีมบำรุงเนื้อวอเตอรี่ ปลอบประโลมผิวแพ้ง่าย เติมความชุ่มชื้นล้ำลึก", use: "ทาบำรุงผิวหน้าเป็นขั้นตอนสุดท้ายเช้า-เย็น", reviews: ["เนื้อเบาซึมไวมาก - Anonymous", "หน้าชุ่มชื้น รอยแดงจางลง - User_8821"] }, en: { name: "Original Herb Wormwood Watery Cream", slogan: "Ultimate Hydration for Glowing & Silky Smooth Skin", desc: "Soothing watery cream with Mugwort for sensitive skin.", use: "Apply as the final skincare step." }, kr: { name: "오리지널 허브 웜우드 워터리 크림", slogan: "하루 종일 빛나는 광채와 깊은 수분 보호막", desc: "민감한 피부를 진정시키고 수분을 채워주는 워터리 크림.", use: "기초 마지막 단계에서 발라주세요." } },
+        1: { brand: "FRAIJOUR", sale: "฿290", old: "฿420", img: "1.jpg.png", fda: "20-2-6700030346", cert: "WATERY CREAM.jpg", th: { name: "Original Herb Wormwood Calming Watery Cream", slogan: "ปรนนิบัติผิวด้วยความชุ่มชื้น ล็อคผิวฉ่ำวาวเนียนนุ่มตลอดวัน", desc: "ครีมบำรุงเนื้อวอเตอรี่ ปลอบประโลมผิวแพ้ง่าย เติมความชุ่มชื้นล้ำลึก", use: "ทาบำรุงผิวหน้าเป็นขั้นตอนสุดท้ายเช้า-เย็น", reviews: ["เนื้อเบาซึมไวมาก - Anonymous", "หน้าชุ่มชื้น รอยแดงจางลง - User_8821"] }, en: { name: "Original Herb Wormwood Watery Cream", slogan: "Ultimate Hydration for Glowing & Silky Smooth Skin", desc: "Soothing watery cream with Mugwort for sensitive skin.", use: "Apply as the final skincare step." }, kr: { name: "오리지널 허브 웜우드 워터리 크림", slogan: "하루 종일 빛나는 광채และ 깊은 수분 보호막", desc: "민감한 피부를 진정시키고 수분을 채워주는 워터리 크림.", use: "기초 마지막 단계에서 발라주세요." } },
         2: { brand: "FRAIJOUR", sale: "฿350", old: "฿375", img: "2.jpeg", fda: "20-2-6700030435", cert: "WORMWOOD TONER.jpg", th: { name: "Original Herb Wormwood Calming Toner", slogan: "พลังสมุนไพรธรรมชาติ เพื่อผิวสะอาดสมดุลและรูขุมขนกระชับ", desc: "โทนเนอร์สมุนไพรปรับสมดุลผิว ลดการอักเสบและทำความสะอาดรูขุมขน", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["เช็ดแล้วหน้าสะอาดสดชื่น - Anonymous", "สิวผดลดลงเยอะมาก - P***y"] }, en: { name: "Original Herb Wormwood Toner", slogan: "Natural Herbal Power for Balanced & Poreless Perfection", desc: "Herbal toner to balance skin and clear pores.", use: "Wipe gently after cleansing." }, kr: { name: "오리지널 허브 웜우드 토너", slogan: "자연 허브의 정수로 되찾는 깨끗한 피부 밸런스", desc: "피부 밸런스를 맞춰주고 모공을 정돈해주는 허브 토너.", use: "세안 후 화장솜에 적셔 닦า내세요." } },
-        3: { brand: "FRAIJOUR", sale: "฿250", old: "฿400", img: "3.jpeg", fda: "20-2-6700030907", cert: "WORMWOOD CLEANSING WATER.jpg", th: { name: "Original Herb Wormwood Cleansing Water", slogan: "สัมผัสความสะอาดบริสุทธิ์ ขจัดเมคอัพอย่างอ่อนโยนไม่ทิ้งความมัน", desc: "คลีนซิ่งวอเตอร์สูตรสมุนไพร เช็ดเมคอัพออกหมดจด อ่อนโยน ไม่เหนียวหน้า", use: "ใช้สำลีชุบคลีนซิ่งเช็ดทั่วใบหน้าจนสะอาด", reviews: ["เช็ดสะอาดมาก ไม่แสบตา - Anonymous", "หน้าสดชื่น ไม่ต้องล้างน้ำซ้ำ - User_9901"] }, en: { name: "Original Herb Wormwood Cleansing Water", slogan: "Pure Cleansing Touch for Gently Purified & Fresh Skin", desc: "Herbal cleansing water that removes makeup gently.", use: "Saturate a cotton pad and wipe face." }, kr: { name: "오리지널 허브 웜우드 클렌징 워터", slogan: "끈적임 없는 순수한 세정, 자극 없는 메이크업 리무버", desc: "자극 없이 노폐물을 닦아주는 저자극 클렌징 워터.", use: "화장솜에 적셔 얼굴을 부드럽게 닦า내세요." } },
+        3: { brand: "FRAIJOUR", sale: "฿250", old: "฿400", img: "3.jpeg", fda: "20-2-6700030907", cert: "WORMWOOD CLEANSING WATER.jpg", th: { name: "Original Herb Wormwood Cleansing Water", slogan: "สัมผัสความสะอาดบริสุทธิ์ ขจัดเมคอัพอย่างอ่อนโยนไม่ทิ้งความมัน", desc: "คลีนซิ่งวอเตอร์สูตรสมุนไพร เช็ดเมคอัพออกหมดจด อ่อนโยน ไม่เหนียวหน้า", use: "ใช้สำลีชุบคลีนซิ่งเช็ดทั่วใบหน้าจนสะอาด", reviews: ["เช็ดสะอาดมาก ไม่แสบตา - Anonymous", "หน้าสดชื่น ไม่ต้องล้างน้ำซ้ำ - User_9901"] }, en: { name: "Original Herb Wormwood Cleansing Water", slogan: "Pure Cleansing Touch for Gently Purified & Fresh Skin", desc: "Herbal cleansing water that removes makeup gently.", use: "Saturate a cotton pad and wipe face." }, kr: { name: "오리지널 허브 웜우드 클렌징 워터", slogan: "끈적임 없는 순수한 세정, 자극 없는 เม이크업 리무버", desc: "자극 없이 노폐물을 닦아주는 저자극 클렌징 워터.", use: "화장솜에 적셔 얼굴을 부드럽게 닦า내세요." } },
         4: { brand: "FRAIJOUR", sale: "฿290", old: "฿331", img: "4.jpeg", fda: "20-2-6700030513", cert: "WORMWOOD CLEANSING FOAM.jpg", th: { name: "Original Herb Wormwood Cleansing Foam", slogan: "ฟองโฟมนุ่มละเอียด ทำความสะอาดล้ำลึกถึงระดับรูขุมขน", desc: "โฟมล้างหน้าสมุนไพร ทำความสะอาดสิ่งสกปรกล้ำลึกถึงรูขุมขน", use: "ใช้ล้างหน้าเป็นประจำเช้า-เย็น", reviews: ["ฟองนุ่ม ล้างแล้วหน้าไม่แห้ง - Anonymous", "กลิ่นหอมสมุนไพรผ่อนคลาย - User_3321"] }, en: { name: "Original Herb Wormwood Cleansing Foam", slogan: "Luxurious Micro-Foam for Deep & Gentle Pore Purification", desc: "Deep cleansing foam with herbal extracts.", use: "Lather with water and wash face." }, kr: { name: "오리지널 허브 웜우드 클렌징 폼", slogan: "부드러운 미세 거품으로 모공 속 깊숙이 투명하게 차오르는 딥 클렌징", desc: "모공 속 노폐물까지 깨끗하게 세정해주는 허브 폼.", use: "거품을 내어 세안 후 헹구세요." } },
         5: { brand: "FRAIJOUR", sale: "฿13", old: "฿22", img: "15.jpeg", fda: "20-2-6700035339", cert: "MASK.jpg", th: { name: "Original Herb Wormwood Sheet Mask", slogan: "แผ่นมาส์กเข้มข้น ฟื้นฟูผิวเหนื่อยล้าให้กลับมาสดใสในข้ามคืน", desc: "มาส์กแผ่นบำรุงผิวเข้มข้น ปลอบประโลมผิวแบบเร่งด่วน", use: "มาส์กทิ้งไว้ 15-20 นาทีแล้วดึงออก", reviews: ["มาส์กแล้วหน้าสดใสมาก - Anonymous", "แผ่นมาส์กนุ่ม ชุ่มชื้นดี - R***i"] }, en: { name: "Original Herb Wormwood Sheet Mask", slogan: "Intensive Rescue Mask for Instant Radiance & Skin Recovery", desc: "Soothing sheet mask for instant skin recovery.", use: "Apply for 15-20 minutes." }, kr: { name: "오리지널 허브 웜우드 시트 마스크", slogan: "지친 피부에 즉각적인 에너지를 채우는 고농축 마스크", desc: "민감한 피부를 즉각적으로 진정시키는 시트 마스크.", use: "15-20분 동안 부착 후 떼어내세요." } },
         6: { brand: "FRAIJOUR", sale: "฿360", old: "฿420", img: "6.jpeg", fda: "20-2-6700030433", cert: "HEARTLEAF TONER.jpg", th: { name: "Heartleaf Blemish Toner", slogan: "สยบวงจรปัญหาสิว คืนความเนียนใสด้วยสารสกัดฮาร์ทลีฟเข้มข้น", desc: "โทนเนอร์สารสกัดฮาร์ทลีฟ ลดสิวและรอยแดง คุมความมันส่วนเกิน", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["สิวอักเสบยุบไวมาก - Anonymous", "เหมาะกับคนผิวมันเป็นสิว - User_7721"] }, en: { name: "Heartleaf Blemish Toner", slogan: "Clear Blemishes & Calms Skin with Heartleaf Essence", desc: "Soothing toner for acne-prone skin.", use: "Wipe after cleansing." }, kr: { name: "하트리프 블레미쉬 토너", slogan: "트러블 고민 해결, 어성초로 완성하는 매끄러운 피부", desc: "어성초 성분이 트러블을 진정시켜주는 토너.", use: "세안 후 피부를 닦아내세요." } },
@@ -187,7 +187,7 @@
         9: { brand: "FRAIJOUR", sale: "฿280", old: "฿420", img: "11.jpeg", fda: "20-2-6700030345", cert: "AIRY FIT.jpg", th: { name: "Heartleaf Airy Fit Sun Cream", slogan: "สัมผัสเบาสบายดุจอากาศ มอบผิวแมตต์คุมมันสวยตลอดวัน", desc: "กันแดดเนื้อแอร์รี่ เบาเหมือนอากาศ ให้ลุคแมตต์คุมมัน", use: "ทาทั่วใบหน้าก่อนออกแดด", reviews: ["เบาเหมือนไม่ได้ทา - Anonymous", "คุมมันระหว่างวันได้ดี - User_5590"] }, en: { name: "Heartleaf Airy Fit Sun Cream", slogan: "Airy-Light Matte Protection for Flawless All-Day Shine Control", desc: "Airy-light sunscreen for a matte finish.", use: "Apply before sun exposure." }, kr: { name: "하트리프 에어리 핏 선크림", slogan: "공기처럼 가벼운 매트 피니시, 번들거림 없는 완벽함", desc: "공기처럼 가볍고 보송하게 마무리되는 선크림.", use: "외출 전 골고루 발라주세요." } },
         10: { brand: "FRAIJOUR", sale: "฿260", old: "฿420", img: "9.jpeg", fda: "20-2-6700030512", cert: "CORE TONER.jpg", th: { name: "Retin Collagen 3D Core Toner", slogan: "เปิดสวิตช์ผิวอิ่มฟู ยกกระชับรูขุมขนให้ผิวดูมีมิติ", desc: "โทนเนอร์ยกกระชับผิว เติมคอลลาเจนให้ผิวดูอิ่มฟู", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["หน้าดูเนียนกระชับขึ้น - Anonymous", "เตรียมผิวได้ดีมาก - User_6610"] }, en: { name: "Retin Collagen 3D Core Toner", slogan: "Activate Plump & Firm Skin for a Defined 3D Radiance", desc: "Firming toner with Collagen to plum skin.", use: "Wipe after cleansing." }, kr: { name: "레틴콜라겐 3D 코어 토너", slogan: "입체적인 볼륨감, 피부 탄력의 새로운 차원", desc: "피부 탄력을 높이고 영양을 채워주는 토너.", use: "세안 후 화장솜으로 닦아내세요." } },
         11: { brand: "FRAIJOUR", sale: "฿210", old: "฿420", img: "7.jpeg", fda: "20-2-6700030268", cert: "CORE CREAM.jpg", th: { name: "Retin Collagen 3D Core Cream", slogan: "นวัตกรรมลดเลือนริ้วรอย คืนความอ่อนเยาว์และยืดหยุ่นให้ผิว", desc: "ครีมลดเลือนริ้วรอยเข้มข้น ช่วยให้ผิวยืดหยุ่นและอ่อนเยาว์", use: "ทาบำรุงผิวหน้าและลำคอ", reviews: ["ร่องแก้มดูจางลง - Anonymous", "เนื้อครีมเข้มข้นแต่ไม่หนัก - User_0088"] }, en: { name: "Retin Collagen 3D Core Cream", slogan: "Advanced Anti-Aging Solution for Elastic & Youthful Vigor", desc: "Intensive anti-wrinkle cream for elastic skin.", use: "Apply to face and neck." }, kr: { name: "레틴콜라겐 3D 코어 크림", slogan: "주름을 지우는 과학, 탄력 넘치는 젊은 피부의 비결", desc: "주름 개선과 탄력 강화에 도움을 주는 크림.", use: "얼굴과 목에 고루 펴 발라주세요." } },
-        12: { brand: "FRAIJOUR", sale: "฿159", old: "฿331", img: "8.jpeg", fda: "20-2-6700030357", cert: "CORE EYE CREAM.jpg", th: { name: "Retin Collagen 3D Core Eye Cream", slogan: "ดูแลผิวรอบดวงตาอย่างล้ำลึก สยบรอยคล้ำให้กลับมาสดใส", desc: "ครีมบำรุงรอบดวงตา ลดรอยคล้ำและถุงใต้ตา", use: "ทาบางๆ รอบดวงตาเช้า-เย็น", reviews: ["ใต้ตาดูสว่างขึ้น - Anonymous", "ชุ่มชื้นดีมาก ไม่แสบตา - User_1234"] }, en: { name: "Retin Collagen 3D Core Eye Cream", slogan: "Total Eye Revitalization for Bright & Ageless Appearance", desc: "Targeted eye cream for dark circles and wrinkles.", use: "Tap gently around the eyes." }, kr: { name: "레틴콜라겐 3D 코어 아이크림", slogan: "눈가에 피어나는 빛, 다크서클 고민 없는 탄탄함", desc: "눈가 주름และ 다크서클을 관리해주는 아이크림.", use: "눈가에 톡톡 두드려 흡수시키세요." } },
+        12: { brand: "FRAIJOUR", sale: "฿159", old: "฿331", img: "8.jpeg", fda: "20-2-6700030357", cert: "CORE EYE CREAM.jpg", th: { name: "Retin Collagen 3D Core Eye Cream", slogan: "ดูแลผิวรอบดวงตาอย่างล้ำลึก สยบรอยคล้ำให้กลับมาสดใส", desc: "ครีมบนรุงรอบดวงตา ลดรอยคล้ำและถุงใต้ตา", use: "ทาบางๆ รอบดวงตาเช้า-เย็น", reviews: ["ใต้ตาดูสว่างขึ้น - Anonymous", "ชุ่มชื้นดีมาก ไม่แสบตา - User_1234"] }, en: { name: "Retin Collagen 3D Core Eye Cream", slogan: "Total Eye Revitalization for Bright & Ageless Appearance", desc: "Targeted eye cream for dark circles and wrinkles.", use: "Tap gently around the eyes." }, kr: { name: "레틴콜라겐 3D 코어 아이크림", slogan: "눈가에 피어나는 빛, 다크서클 고민 없는 탄탄함", desc: "눈가 주름และ 다크서클을 관리해주는 아이크림.", use: "눈가에 톡톡 두드려 흡수시키세요." } },
         13: { brand: "FRAIJOUR", sale: "฿107", old: "฿280", img: "10.jpeg", fda: "20-2-6700032157", cert: "CORE LIP OIL.jpg", th: { name: "Retin Collagen 3D Core Lip Oil", slogan: "บำรุงริมฝีปากให้อวบอิ่ม แวววาวสุขภาพดีดุจเซเลบริตี้", desc: "ลิปออยล์บำรุงริมฝีปาก แก้ปากคล้ำและเติมความอวบอิ่ม", use: "ทาริมฝีปากได้บ่อยตามต้องการ", reviews: ["ปากดูสุขภาพดีมาก - Anonymous", "ไม่เหนียวเกินไป - User_8877"] }, en: { name: "Retin Collagen 3D Core Lip Oil", slogan: "Celebrity-Style Plump Lips with Healthy & Glossy Glow", desc: "Nourishing lip oil for plump and healthy lips.", use: "Apply to lips as needed." }, kr: { name: "레틴콜라겐 3D 코어 립 오일", slogan: "빛나는 볼륨 립, 건강하고 매혹적인 입술 완성", desc: "입술에 생기와 보습을 주는 립 오일.", use: "건조할 때마다 발รา주세요." } },
         14: { brand: "CHAR CHAR", sale: "฿120", old: "฿225", img: "14.jpeg", fda: "20-2-6700032154", cert: "CHAR CHAR.jpg", th: { name: "Char Char Mungbean Foam", slogan: "ดีท็อกซ์ผิวด้วยถั่วเขียว เผยผิวสว่างกระจ่างใสไร้สิ่งตกค้าง", desc: "โฟมล้างหน้าถั่วเขียว ทำความสะอาดล้ำลึกและช่วยให้ผิวสว่างใส", use: "ใช้ล้างหน้าเป็นประจำเช้า-เย็น", reviews: ["หน้าใสขึ้นหลังล้าง - Anonymous", "ล้างสะอาดเกลี้ยงมาก - User_4432"] }, en: { name: "Char Char Mungbean Foam", slogan: "Mungbean Detox for Deep Cleansing & Radiant Clarity", desc: "Deep cleansing foam with Mungbean extract.", use: "Wash face daily." }, kr: { name: "챠챠 녹두 폼클렌징", slogan: "녹두의 해독 에너지, 맑고 투명한 피부를 위한 선택", desc: "녹두 성분이 노폐물을 깨끗이 지워주는 폼.", use: "세안 시 거품을 내어 사용하세요." } },
         15: { brand: "BATHPA", sale: "฿119", old: "฿320", img: "13.jpeg", fda: "20-2-6700030582", cert: "BATHPA.jpg", th: { name: "Bathpa Body Tone Up", slogan: "ปรับสีผิวออร่าทันที ผิวกายสวยเนียนเป็นธรรมชาติไม่ติดขน", desc: "โลชั่นปรับสีผิวผิวกายให้สว่างใสขึ้นทันทีอย่างเป็นธรรมชาติ", use: "ทาบำรุงผิวกาย", reviews: ["ขาวขึ้นแบบไม่โป๊ะ - Anonymous", "เกลี่ยง่ายไม่ติดขน - User_9912"] }, en: { name: "Bathpa Body Tone Up", slogan: "Instant Aura Glow for Flawless & Natural Body Tone", desc: "Instant brightening body lotion.", use: "Apply to the body." }, kr: { name: "바스파 바디 톤업", slogan: "바르는 순간 빛나는 아우라, 자연스러운 톤업 효과", desc: "피부 톤을 즉각적으로 밝혀주는 바디 로션.", use: "몸 전체에 골고루 펴 발라주세요." } }
@@ -230,7 +230,6 @@
 
         document.getElementById('langBtn').innerText = lang.toUpperCase();
         
-        // 🆕 ตั้งค่าฟอนต์ตามภาษาหลัก
         const bodyFont = lang === 'th' ? 'var(--font-th)' : (lang === 'kr' ? 'var(--font-kr)' : 'var(--font-en)');
         document.body.style.fontFamily = bodyFont;
         document.getElementById('p-slogan').style.fontFamily = bodyFont;
