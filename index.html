@@ -25,45 +25,35 @@
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.3; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(253,250,245,0.6) 0%, rgba(253,250,245,0.8) 100%); z-index: -1; }
 
-        /* --- Nav (ปรับปรุงให้เมนูกลาง) --- */
-        nav { 
-            background: rgba(255, 255, 255, 0.95); 
-            height: 80px; 
-            padding: 0 5%; 
-            display: flex; 
-            align-items: center; 
-            position: sticky; 
-            top: 0; 
-            z-index: 2000; 
-            backdrop-filter: blur(10px); 
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05); 
-        }
+        /* --- Nav --- */
+        nav { background: rgba(255, 255, 255, 0.95); height: 80px; padding: 0 5%; display: flex; align-items: center; position: sticky; top: 0; z-index: 2000; backdrop-filter: blur(10px); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
         .logo-nav { flex: 1; display: flex; align-items: center; }
         .logo-nav img { height: 45px; width: auto; }
-        
         .nav-links { flex: 2; display: flex; gap: 25px; align-items: center; justify-content: center; }
         .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; font-family: var(--font-en); }
-        
         .nav-actions { flex: 1; display: flex; justify-content: flex-end; }
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-weight: 700; font-size: 0.7rem; border-radius: 4px; }
 
-        /* --- ส่วนที่เหลือคงเดิม --- */
         .hero { padding: 40px 5% 20px; text-align: center; }
         .main-gold-logo { width: 100%; max-width: 280px; margin-bottom: 15px; }
 
+        /* --- Slider --- */
         .slider-container { width: 92%; max-width: 1400px; margin: 0 auto 30px; aspect-ratio: 16/7; overflow: hidden; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
         .slider-wrapper { display: flex; width: 100%; height: 100%; transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1); }
         .slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; }
 
+        /* --- Section: Video --- */
         .video-section { width: 92%; max-width: 1000px; margin: 40px auto 20px; }
         .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         
+        /* --- Brand Partners --- */
         .brand-partners { padding: 30px 5%; display: flex; justify-content: center; align-items: center; gap: clamp(20px, 5vw, 60px); flex-wrap: wrap; margin-bottom: 40px; }
         .brand-partners img { height: 35px; width: auto; filter: grayscale(1); opacity: 0.6; transition: 0.4s; object-fit: contain; }
         .brand-partners img.large-logo { height: 55px; opacity: 0.7; } 
         .brand-partners img:hover { filter: grayscale(0); opacity: 1 !important; transform: scale(1.05); }
 
+        /* --- Grid & Cards --- */
         .container { width: 92%; max-width: 1400px; margin: 0 auto; flex: 1; }
         .grid-title { margin: 40px 0 25px; display: flex; align-items: center; gap: 15px; }
         .grid-title h2 { font-family: var(--font-head); font-size: 1.2rem; color: var(--p-green); letter-spacing: 2px; }
@@ -83,13 +73,10 @@
         .btn-buy { background: var(--p-green); color: white; padding: 15px; text-align: center; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; }
 
         @media (max-width: 768px) {
-            .slider-container { aspect-ratio: 1/1; }
+            .slider-container { aspect-ratio: 16/9; } /* แก้กลับเป็นแนวนอนตามรูปแบบภาพ */
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .brand-partners img { height: 25px; }
             .brand-partners img.large-logo { height: 40px; }
-            nav { padding: 0 15px; }
-            .nav-links { gap: 10px; }
-            .nav-links a { font-size: 0.65rem; }
         }
 
         footer { background: #111; color: white; padding: 60px 5% 30px; text-align: center; }
@@ -101,9 +88,7 @@
 <div class="bg-overlay"></div>
 
 <nav>
-    <div class="logo-nav">
-        <a href="index.html"><img src="HJ (5).png"></a>
-    </div>
+    <div class="logo-nav"><a href="index.html"><img src="HJ (5).png"></a></div>
     <div class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
@@ -160,27 +145,25 @@
     let idx = 0;
     setInterval(() => {
         const w = document.getElementById('sliderWrapper');
-        if(w) {
-            idx = (idx + 1) % 8;
-            w.style.transform = `translateX(-${idx * 100}%)`;
-        }
+        idx = (idx + 1) % 8;
+        if(w) w.style.transform = `translateX(-${idx * 100}%)`;
     }, 5000);
 
     const products = [
-        { id: 1, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด วอเตอรี่ ครีม", nameEn: "Original Herb Wormwood Watery Cream", nameKr: "오리지널 허브 웜우드 워터리 크림", sale: 290, old: 369, bTh: "แนะนำ", bEn: "HOT", bKr: "추천", img: "1.jpg.png" },
-        { id: 2, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด โทนเนอร์", nameEn: "Original Herb Wormwood Toner", nameKr: "오리지널 허브 웜우드 토너", sale: 350, old: 350, bTh: "ขายดี", bEn: "BEST", bKr: "인기", img: "2.jpeg" },
+        { id: 1, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลามมิ่ง วอเตอรี่ ครีม", nameEn: "Original Herb Wormwood Watery Cream", nameKr: "오리지널 허브 웜우드 워터리 크림", sale: 290, old: 369, bTh: "แนะนำ", bEn: "HOT", bKr: "추천", img: "1.jpg.png" },
+        { id: 2, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลามมิ่ง โทนเนอร์", nameEn: "Original Herb Wormwood Toner", nameKr: "오리지널 허브 웜우드 토너", sale: 350, old: 350, bTh: "ขายดี", bEn: "BEST", bKr: "인기", img: "2.jpeg" },
         { id: 3, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง วอเตอร์", nameEn: "Original Herb Wormwood Cleansing Water", nameKr: "오리지널 허브 웜우드 클렌징 워터", sale: 250, old: 390, bTh: "ใหม่", bEn: "NEW", bKr: "신상", img: "3.jpeg" },
         { id: 4, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง โฟม", nameEn: "Original Herb Wormwood Cleansing Foam", nameKr: "오리지널 허브 웜우드 클렌징 폼", sale: 290, old: 290, bTh: "สะอาด", bEn: "TOP", bKr: "세정", img: "4.jpeg" },
         { id: 5, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด ชีท มาส์ก", nameEn: "Original Herb Wormwood Sheet Mask", nameKr: "오리지널 허브 웜우드 시트 마스크", sale: 13, old: 89, bTh: "มาส์ก", bEn: "MASK", bKr: "팩", img: "15.jpeg" },
         { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "하트리프 블레미쉬 토너", sale: 360, old: 420, bTh: "ลดสิว", bEn: "ACNE", bKr: "트러블", img: "6.jpeg" },
-        { id: 7, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ มอยส์เจอร์ ครีม", nameEn: "Heartleaf Moistur Cream", nameKr: "하트리프 모이스처 크림", sale: 310, old: 450, bTh: "ชุ่มชื้น", bEn: "MOIST", bKr: "보습", img: "5.jpeg" },
+        { id: 7, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช มอยส์เจอร์ ครีม", nameEn: "Heartleaf Moistur Cream", nameKr: "하트리프 모이스처 크림", sale: 310, old: 450, bTh: "ชุ่มชื้น", bEn: "MOIST", bKr: "보습", img: "5.jpeg" },
         { id: 8, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต กันแดด", nameEn: "Heartleaf Water Fit Sun", nameKr: "하트리프 워터 핏 선크림", sale: 320, old: 490, bTh: "บางเบา", bEn: "LIGHT", bKr: "산뜻", img: "12.jpeg" },
         { id: 9, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต กันแดด", nameEn: "Heartleaf Airy Fit Sun", nameKr: "하트리프 에어리 핏 선크림", sale: 280, old: 490, bTh: "คุมมัน", bEn: "MATTE", bKr: "뽀송", img: "11.jpeg" },
-        { id: 10, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี โทนเนอร์", nameEn: "Retin Collagen 3D Toner", nameKr: "레틴 콜라겐 3D 토너", sale: 200, old: 480, bTh: "กระชับ", bEn: "FIRM", bKr: "탄력", img: "9.jpeg" },
-        { id: 11, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี ครีม", nameEn: "Retin Collagen 3D Cream", nameKr: "레틴 콜라겐 3D 크림", sale: 150, old: 550, bTh: "ริ้วรอย", bEn: "LIFT", bKr: "주름", img: "7.jpeg" },
-        { id: 12, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี อายครีม", nameEn: "Retin Collagen Eye Cream", nameKr: "레틴 콜ลา겐 아이크림", sale: 159, old: 490, bTh: "รอบดวงตา", bEn: "EYE", bKr: "눈가", img: "8.jpeg" },
-        { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน ลิป ออยล์", nameEn: "Retin Collagen Lip Oil", nameKr: "레틴 콜라겐 립 오일", sale: 107, old: 350, bTh: "ปากนุ่ม", bEn: "LIPS", bKr: "입술", img: "10.jpeg" },
-        { id: 14, brand: "CharChar", nameTh: "มุงบีน ซิก้า โฟม", nameEn: "Mungbean Cica Foam", nameKr: "녹두 시카 폼", sale: 150, old: 390, bTh: "ล้ำลึก", bEn: "DEEP", bKr: "녹두", img: "14.jpeg" },
+        { id: 10, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ โทนเนอร์", nameEn: "Retin-Collagen 3D Core Toner", nameKr: "오리지널 허브 웜우드 레티놀 콜라겐 토너", sale: 200, old: 480, bTh: "กระชับ", bEn: "FIRM", bKr: "탄력", img: "9.jpeg" },
+        { id: 11, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin-Collagen 3D Core Cream", nameKr: "오리지널 허브 웜우드 레티놀 콜라겐 크림", sale: 150, old: 550, bTh: "ริ้วรอย", bEn: "LIFT", bKr: "주름", img: "7.jpeg" },
+        { id: 12, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ อายครีม", nameEn: "Retin-Collagen 3D Core Eye Cream", nameKr: "오리지널 허브 웜우드 레티놀 콜라겐 아이크림", sale: 159, old: 490, bTh: "รอบดวงตา", bEn: "EYE", bKr: "눈가", img: "8.jpeg" },
+        { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ ลิป ออยล์", nameEn: "Retin-Collagen 3D Core Lip Oil", nameKr: "오리지널 허브 웜우드 레티놀 콜라겐 립 오일", sale: 107, old: 350, bTh: "ปากนุ่ม", bEn: "LIPS", bKr: "입술", img: "10.jpeg" },
+        { id: 14, brand: "CharChar", nameTh: "มุงบีน ซิก้า คลีนซิ่ง โฟม", nameEn: "Mungbean Cica Cleansing Foam", nameKr: "녹두 시카 폼", sale: 150, old: 390, bTh: "ล้ำลึก", bEn: "DEEP", bKr: "녹두", img: "14.jpeg" },
         { id: 15, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바디 톤업 크림", sale: 119, old: 450, bTh: "ผิวใส", bEn: "BODY", bKr: "미백", img: "13.jpeg" }
     ];
 
