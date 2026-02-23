@@ -33,18 +33,23 @@
         #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; opacity: 0.5; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(253,250,245,0.1) 0%, rgba(253,250,245,0.6) 100%); z-index: -1; }
 
-        /* --- 🎖️ Navigation --- */
+        /* --- 🎖️ Navigation (Updated to match Index) --- */
         nav { 
-            background: rgba(255, 255, 255, 0.8); height: 80px; padding: 0 8%;
-            display: flex; justify-content: space-between; align-items: center; 
+            background: rgba(255, 255, 255, 0.8); height: 80px; padding: 0 5%;
+            display: flex; align-items: center; 
             position: sticky; top: 0; z-index: 1000;
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
         }
+        .logo-nav { flex: 1; display: flex; align-items: center; }
         .logo-nav img { height: 45px; }
-        .nav-links { display: flex; gap: 30px; }
+        
+        .nav-links { flex: 2; display: flex; gap: 30px; justify-content: center; }
         .nav-links a { text-decoration: none; color: var(--p-green); font-family: var(--font-en); font-weight: 600; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; }
         .nav-links a.active { color: var(--gold); }
+        
+        .nav-actions { flex: 1; display: flex; justify-content: flex-end; }
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 8px 15px; cursor: pointer; font-family: var(--font-en); font-weight: 700; font-size: 0.7rem; border-radius: 2px; }
 
         /* --- ✨ Hero Section --- */
@@ -111,7 +116,7 @@
         footer { padding: 40px 0; text-align: center; background: transparent; }
         .copy { font-size: 0.75rem; letter-spacing: 2px; color: #7f8c8d; font-family: var(--font-en); }
 
-        /* --- 📱 RESPONSIVE FIX (บังคับแถวเดียว) --- */
+        /* --- 📱 RESPONSIVE FIX --- */
         @media (max-width: 1024px) {
             .origin-section { padding: 50px 30px; }
             .story-flex { gap: 30px; }
@@ -119,21 +124,11 @@
         }
 
         @media (max-width: 768px) {
-            nav { padding: 0 3%; height: 70px; flex-direction: row; justify-content: space-between; gap: 5px; }
+            nav { padding: 0 3%; height: 70px; }
             .logo-nav img { height: 32px; }
-            
-            .nav-links { 
-                display: flex; 
-                gap: 12px; 
-                order: 2; 
-                position: static; 
-                background: transparent; 
-                padding: 0;
-            }
+            .nav-links { gap: 12px; }
             .nav-links a { font-size: 0.6rem; letter-spacing: 0.5px; }
-            
-            .logo-nav { order: 1; }
-            .lang-btn { order: 3; padding: 5px 8px; font-size: 0.6rem; }
+            .lang-btn { padding: 5px 8px; font-size: 0.6rem; }
 
             .hero-header { padding: 40px 5% 20px; }
             
@@ -157,13 +152,17 @@
 <div class="bg-overlay"></div>
 
 <nav>
-    <div class="logo-nav"><a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a></div>
+    <div class="logo-nav">
+        <a href="index.html"><img src="HJ (5).png" alt="HJ LOGO"></a>
+    </div>
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html" class="active">About</a>
         <a href="contact.html">Contact</a>
     </div>
-    <button onclick="rotateLanguage()" id="langBtn" class="lang-btn">TH</button>
+    <div class="nav-actions">
+        <button onclick="rotateLanguage()" id="langBtn" class="lang-btn">TH</button>
+    </div>
 </nav>
 
 <header class="hero-header">
