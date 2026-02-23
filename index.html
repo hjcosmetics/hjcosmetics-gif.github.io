@@ -66,17 +66,25 @@
         .img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .product-badge { position: absolute; top: 12px; right: 12px; background: var(--gold); color: white; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.55rem; font-weight: 800; }
         
-        .info { padding: 20px; text-align: center; flex-grow: 1; }
-        .info h3 { font-size: 0.9rem; height: 2.8em; overflow: hidden; color: var(--p-green); margin-bottom: 12px; }
-        .sale { font-size: 1.4rem; font-weight: 700; color: var(--p-green); }
-        .old { color: #adb5bd; text-decoration: line-through; margin-left: 8px; font-size: 0.85rem; }
-        .btn-buy { background: var(--p-green); color: white; padding: 15px; text-align: center; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; }
+        .info { padding: 15px; text-align: center; flex-grow: 1; }
+        .info h3 { font-size: 0.85rem; height: 2.8em; overflow: hidden; color: var(--p-green); margin-bottom: 8px; line-height: 1.4; }
+        
+        /* ปรับส่วนราคาให้อยู่คนละบรรทัด */
+        .sale { font-size: 1.2rem; font-weight: 700; color: var(--p-green); display: block; line-height: 1.2; }
+        .old { color: #adb5bd; text-decoration: line-through; font-size: 0.75rem; display: block; margin-top: 2px; }
+        
+        .btn-buy { background: var(--p-green); color: white; padding: 12px; text-align: center; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; }
 
         @media (max-width: 768px) {
-            .slider-container { aspect-ratio: 16/9; } /* แก้กลับเป็นแนวนอนตามรูปแบบภาพ */
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .slider-container { aspect-ratio: 16/9; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .brand-partners img { height: 25px; }
             .brand-partners img.large-logo { height: 40px; }
+            .info { padding: 10px; }
+            .info h3 { font-size: 0.75rem; margin-bottom: 5px; }
+            .sale { font-size: 1.05rem; }
+            .old { font-size: 0.7rem; }
+            .btn-buy { padding: 10px; font-size: 0.65rem; }
         }
 
         footer { background: #111; color: white; padding: 60px 5% 30px; text-align: center; }
@@ -159,10 +167,10 @@
         { id: 7, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช มอยส์เจอร์ ครีม", nameEn: "Heartleaf Blemish Moisture Cream", nameKr: "하트리프 블레미쉬 모이스처라이저 크림", sale: 310, old: 464, bTh: "ชุ่มชื้น", bEn: "MOIST", bKr: "보습", img: "5.jpeg" },
         { id: 8, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต กันแดด", nameEn: "Heartleaf Water Fit Sun", nameKr: "하트리프 워터 핏 선크림", sale: 320, old: 500, bTh: "บางเบา", bEn: "LIGHT", bKr: "산뜻", img: "12.jpeg" },
         { id: 9, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต กันแดด", nameEn: "Heartleaf Airy Fit Sun", nameKr: "하트리프 에어리 핏 선크림", sale: 280, old: 420, bTh: "คุมมัน", bEn: "MATTE", bKr: "뽀송", img: "11.jpeg" },
-        { id: 10, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ โทนเนอร์", nameEn: "Retin-Collagen 3D Core Toner", nameKr: "레틴 콜라겐 3D 코어 토너", sale: 200, old: 420, bTh: "กระชับ", bEn: "FIRM", bKr: "탄력", img: "9.jpeg" },
-        { id: 11, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin-Collagen 3D Core Cream", nameKr: "레틴 콜라겐 3D 코어 크림", sale: 210, old: 420, bTh: "ริ้วรอย", bEn: "LIFT", bKr: "주름", img: "7.jpeg" },
-        { id: 12, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ อายครีม", nameEn: "Retin-Collagen 3D Core Eye Cream", nameKr: "레틴 콜라겐 3D 코어 아이크림", sale: 260, old: 331, bTh: "รอบดวงตา", bEn: "EYE", bKr: "눈가", img: "8.jpeg" },
-        { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ ลิป ออยล์", nameEn: "Retin-Collagen 3D Core Lip Oil", nameKr: "레틴 콜라겐 3D 코어 립 오일", sale: 107, old: 280, bTh: "ปากนุ่ม", bEn: "LIPS", bKr: "입술", img: "10.jpeg" },
+        { id: 10, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ โทนเนอร์", nameEn: "Retin-Collagen 3D Core Toner", nameKr: "레틴 콜라겐 3D 코อร์ 토너", sale: 200, old: 420, bTh: "กระชับ", bEn: "FIRM", bKr: "탄력", img: "9.jpeg" },
+        { id: 11, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin-Collagen 3D Core Cream", nameKr: "레틴 콜라겐 3D 코อร์ 크림", sale: 210, old: 420, bTh: "ริ้วรอย", bEn: "LIFT", bKr: "주름", img: "7.jpeg" },
+        { id: 12, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ อายครีม", nameEn: "Retin-Collagen 3D Core Eye Cream", nameKr: "레틴 콜라겐 3D 코อร์ 아이크림", sale: 260, old: 331, bTh: "รอบดวงตา", bEn: "EYE", bKr: "눈가", img: "8.jpeg" },
+        { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ ลิป ออยล์", nameEn: "Retin-Collagen 3D Core Lip Oil", nameKr: "레틴 콜라겐 3D 코อร์ 립 오일", sale: 107, old: 280, bTh: "ปากนุ่ม", bEn: "LIPS", bKr: "입술", img: "10.jpeg" },
         { id: 14, brand: "CharChar", nameTh: "มุงบีน ซิก้า คลีนซิ่ง โฟม", nameEn: "Mungbean Cica Cleansing Foam", nameKr: "녹두 시카 클렌징 폼", sale: 120, old: 225, bTh: "ล้ำลึก", bEn: "DEEP", bKr: "녹두", img: "14.jpeg" },
         { id: 15, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바디 톤업 크림", sale: 119, old: 320, bTh: "ผิวใส", bEn: "BODY", bKr: "미백", img: "13.jpeg" }
     ];
@@ -188,7 +196,8 @@
                     </div>
                     <div class="info">
                         <h3 class="${currentLang === 'kr' ? 'kr-font' : ''}">${name}</h3>
-                        <div class="sale">฿${p.sale} <span class="old">฿${p.old}</span></div>
+                        <div class="sale">฿${p.sale}</div>
+                        <div class="old">฿${p.old}</div>
                     </div>
                     <div class="btn-buy">${shopText}</div>
                 </a>`;
