@@ -52,7 +52,34 @@
             filter: drop-shadow(0 20px 40px rgba(0,0,0,0.12));
         }
 
-        /* 🆕 Slogan - ปรับขนาดให้เล็กลง */
+        /* 🚨 ป้าย FLASH SALE ที่เพิ่มให้ชัดเจนขึ้น */
+        .sale-badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: #ff4757;
+            color: white;
+            font-family: var(--font-en);
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            letter-spacing: 1px;
+            animation: pulse 1.5s infinite;
+            display: none; /* ซ่อนไว้เป็นค่าเริ่มต้น */
+            z-index: 10;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .price-on-sale {
+            color: #ff4757 !important; /* เปลี่ยนราคาเป็นสีแดง */
+        }
+
+        /* 🆕 Slogan */
         .p-slogan { 
             font-size: 1.1rem; 
             color: var(--p-green); 
@@ -74,7 +101,7 @@
 
         .brand-label { color: var(--gold); letter-spacing: 4px; font-weight: 700; font-family: var(--font-head); font-size: 0.75rem; margin: 0; }
         h1 { font-family: var(--font-head); font-size: 1.6rem; color: var(--p-green); margin: 12px 0; line-height: 1.2; }
-        .price-tag { font-size: 1.8rem; font-weight: 700; color: var(--p-green); margin-bottom: 25px; font-family: var(--font-en); }
+        .price-tag { font-size: 1.8rem; font-weight: 700; color: var(--p-green); margin-bottom: 25px; font-family: var(--font-en); transition: 0.3s; }
         .price-tag .old { font-size: 1rem; color: #b2bec3; text-decoration: line-through; margin-left: 10px; font-weight: 300; }
 
         .license-box { border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 15px 0; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
@@ -132,6 +159,8 @@
 
 <div class="container">
     <div class="img-display">
+        <!-- ป้าย Sale จะถูกควบคุมการแสดงผลด้วย JS -->
+        <div id="sale-badge" class="sale-badge"><i class="fas fa-fire"></i> FLASH SALE</div>
         <img id="p-img" src="">
         <div id="p-slogan" class="p-slogan"></div>
     </div>
@@ -205,11 +234,20 @@
         document.getElementById('p-brand').innerText = p.brand;
         document.getElementById('p-name').innerText = content.name;
         
-        // --- 🆕 เพิ่มป้ายลดราคา (Sale Badge) อัตโนมัติ เฉพาะสินค้าที่ร่วมรายการ โดยใช้ Inline Style เพื่อรักษาฟอร์แมตดั้งเดิม ---
+        // 🔴 ระบบจัดการป้ายแสดงการลดราคาและเปลี่ยนสีตัวเลข
         const isSaleItem = [5, 10, 11, 12, 13, 14, 15].includes(currentId);
-        const saleBadgeHTML = isSaleItem ? ` <span style="font-size: 0.75rem; background: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; vertical-align: middle; margin-left: 10px; font-weight: 600; letter-spacing: 1px;">🔥 FLASH SALE</span>` : '';
-        document.getElementById('p-sale').innerHTML = p.sale + saleBadgeHTML;
+        const saleBadge = document.getElementById('sale-badge');
+        const priceTagElement = document.getElementById('p-sale');
         
+        if (isSaleItem) {
+            saleBadge.style.display = 'block'; // แสดงป้ายบนรูป
+            priceTagElement.classList.add('price-on-sale'); // ทำให้ตัวเลขเป็นสีแดง
+        } else {
+            saleBadge.style.display = 'none'; // ซ่อนป้าย
+            priceTagElement.classList.remove('price-on-sale'); // ตัวเลขสีปกติ
+        }
+        
+        priceTagElement.innerText = p.sale;
         document.getElementById('p-old').innerText = p.old;
         document.getElementById('p-fda').innerText = p.fda;
         document.getElementById('p-cert').href = p.cert;
