@@ -40,6 +40,104 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* --- สไตล์ของ Welcome Animation Overlay --- */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(27, 67, 50, 0.7); /* พื้นหลังสีเขียวเข้มโปร่งแสง */
+            backdrop-filter: blur(15px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* กล่องข้อความต้อนรับเด่นๆ เด้งขึ้นมา */
+        .welcome-box {
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 400px;
+            width: 85%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--gold);
+            transform: scale(0.7) translateY(50px);
+            opacity: 0;
+            animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .welcome-logo {
+            width: 140px;
+            margin-bottom: 20px;
+            animation: fadeInDown 0.6s ease both;
+            animation-delay: 0.4s;
+        }
+
+        .welcome-title {
+            font-family: var(--font-head);
+            color: var(--p-green);
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease both;
+            animation-delay: 0.6s;
+        }
+
+        .welcome-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease both;
+            animation-delay: 0.8s;
+        }
+
+        .welcome-btn {
+            background: var(--p-green);
+            color: white;
+            border: 1px solid var(--gold);
+            padding: 12px 35px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font-en);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease both;
+            animation-delay: 1s;
+        }
+
+        .welcome-btn:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+        }
+
+        /* อนิเมชันต่างๆ */
+        @keyframes popIn {
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes fadeInDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         /* --- Nav --- */
         nav { background: rgba(255, 255, 255, 0.95); height: 70px; padding: 0 4%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; backdrop-filter: blur(10px); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
         .logo-nav img { height: 35px; width: auto; }
@@ -125,6 +223,16 @@
 </head>
 <body oncontextmenu="return false;">
 
+<!-- ส่วนของอนิเมชันป๊อปอัพต้อนรับที่เพิ่มเข้าไปใหม่ -->
+<div class="welcome-overlay" id="welcomeOverlay">
+    <div class="welcome-box">
+        <img src="gold.png" class="welcome-logo" alt="HJ Logo">
+        <h1 class="welcome-title">WELCOME TO</h1>
+        <p class="welcome-text">HJ COSMETICS GLOBAL<br>Premium Luxury Curator</p>
+        <button class="welcome-btn" onclick="closeWelcome()">Enter Site</button>
+    </div>
+</div>
+
 <nav>
     <div class="logo-nav"><a href="index.html"><img src="HJ (5).png"></a></div>
     <div class="nav-links">
@@ -177,6 +285,17 @@
 <footer><p style="text-align:center; padding:30px; font-size:0.7rem; color:#999;">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</p></footer>
 
 <script>
+    /* เพิ่มสคริปต์ควบคุมการปิดหน้าจอต้อนรับ */
+    function closeWelcome() {
+        const overlay = document.getElementById('welcomeOverlay');
+        if(overlay) {
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 600); // ซ่อนหลังจากอนิเมชันจางหายเสร็จสมบูรณ์
+        }
+    }
+
     let idx = 0;
     setInterval(() => {
         const w = document.getElementById('sliderWrapper');
@@ -186,10 +305,10 @@
     const products = [
         { id: 1, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลามมิ่ง วอเตอรี่ ครีม", nameEn: "Original Herb Wormwood Calming Watery Cream", nameKr: "오리지널 허브 웜우드 카밍 워터리 크림", sale: 330, old: 420, bTh: "แนะนำ", bEn: "HOT", bKr: "추천", img: "1.jpg.png", outOfStock: true },
         { id: 2, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลามมิ่ง โทนเนอร์", nameEn: "Original Herb Wormwood Calming Toner", nameKr: "오리지널 허브 웜우드 카밍 토너", sale: 350, old: 375, bTh: "ขายดี", bEn: "BEST", bKr: "인기", img: "2.jpeg" },
-        { id: 3, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง วอเตอร์", nameEn: "Original Herb Wormwood Cleansing Water", nameKr: "오리지널 허브 웜우드 클렌징 워터", sale: 250, old: 400, bTh: "ใหม่", bEn: "NEW", bKr: "신상", img: "3.jpeg" },
+        { id: 3, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง วอเตอร์", nameEn: "Original Herb Wormwood Cleansing Water", nameKr: "오리지널 허브 웜우ด 클렌징 워터", sale: 250, old: 400, bTh: "ใหม่", bEn: "NEW", bKr: "신상", img: "3.jpeg" },
         { id: 4, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง โฟม", nameEn: "Original Herb Wormwood Cleansing Foam", nameKr: "오리지널 허브 웜우드 클렌징 폼", sale: 290, old: 331, bTh: "สะอาด", bEn: "TOP", bKr: "세정", img: "4.jpeg" },
         // มาส์กหน้า (เพิ่ม SALE)
-        { id: 5, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด ชีท มาส์ก", nameEn: "Original Herb Wormwood Sheet Mask", nameKr: "오리지널 허브 웜우ด 시트 마스크", sale: 15, old: 22, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "15.jpeg", isPromo: true },
+        { id: 5, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด ชีท มาส์ก", nameEn: "Original Herb Wormwood Sheet Mask", nameKr: "오리지널 허브 웜우드 시트 마스크", sale: 15, old: 22, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "15.jpeg", isPromo: true },
         { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "하트리프 블레미쉬 토너", sale: 360, old: 420, bTh: "ลดสิว", bEn: "ACNE", bKr: "트러블", img: "6.jpeg" },
         { id: 7, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช มอยส์เจอร์ ครีม", nameEn: "Heartleaf Blemish Moisture Cream", nameKr: "하트리프 블레미쉬 모이스처라이저 크림", sale: 290, old: 464, bTh: "ชุ่มชื้น", bEn: "MOIST", bKr: "보습", img: "5.jpeg" },
         { id: 8, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต กันแดด", nameEn: "Heartleaf Water Fit Sun", nameKr: "하트리프 워터 핏 선크림", sale: 320, old: 500, bTh: "บางเบา", bEn: "LIGHT", bKr: "산뜻", img: "12.jpeg" },
