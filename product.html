@@ -204,7 +204,12 @@
         document.getElementById('p-slogan').innerText = content.slogan;
         document.getElementById('p-brand').innerText = p.brand;
         document.getElementById('p-name').innerText = content.name;
-        document.getElementById('p-sale').innerText = p.sale;
+        
+        // --- 🆕 เพิ่มป้ายลดราคา (Sale Badge) อัตโนมัติ เฉพาะสินค้าที่ร่วมรายการ โดยใช้ Inline Style เพื่อรักษาฟอร์แมตดั้งเดิม ---
+        const isSaleItem = [5, 10, 11, 12, 13, 14, 15].includes(currentId);
+        const saleBadgeHTML = isSaleItem ? ` <span style="font-size: 0.75rem; background: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; vertical-align: middle; margin-left: 10px; font-weight: 600; letter-spacing: 1px;">🔥 FLASH SALE</span>` : '';
+        document.getElementById('p-sale').innerHTML = p.sale + saleBadgeHTML;
+        
         document.getElementById('p-old').innerText = p.old;
         document.getElementById('p-fda').innerText = p.fda;
         document.getElementById('p-cert').href = p.cert;
