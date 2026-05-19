@@ -52,7 +52,7 @@
             filter: drop-shadow(0 20px 40px rgba(0,0,0,0.12));
         }
 
-        /* 🚨 ป้าย FLASH SALE ที่เพิ่มให้ชัดเจนขึ้น */
+        /* 🚨 ป้าย FLASH SALE */
         .sale-badge {
             position: absolute;
             top: 25px;
@@ -67,7 +67,7 @@
             box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
             letter-spacing: 1px;
             animation: pulse 1.5s infinite;
-            display: none; /* ซ่อนไว้เป็นค่าเริ่มต้น */
+            display: none;
             z-index: 10;
         }
         @keyframes pulse {
@@ -76,7 +76,7 @@
             100% { transform: scale(1); }
         }
         .price-on-sale {
-            color: #ff4757 !important; /* เปลี่ยนราคาเป็นสีแดง */
+            color: #ff4757 !important;
         }
 
         /* 🆕 Slogan */
@@ -113,6 +113,16 @@
         .desc-section { margin-bottom: 25px; }
         .desc-section h3 { font-family: var(--font-head); font-size: 0.75rem; color: var(--p-green); margin-bottom: 10px; letter-spacing: 1px; border-left: 4px solid var(--gold); padding-left: 12px; }
         .desc-section p { font-size: 0.85rem; line-height: 1.7; color: #444; margin: 0; white-space: pre-line; user-select: text; }
+
+        /* 🆕 สไตล์ฟอร์มระบบรีวิวเพิ่มเติมเพื่อให้เข้ากับดีไซน์ดั้งเดิม */
+        .review-form-box { background: rgba(255, 255, 255, 0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); margin-bottom: 15px; pointer-events: auto; }
+        .review-form-group { display: flex; gap: 10px; margin-bottom: 8px; }
+        .review-form-box input, .review-form-box select, .review-form-box textarea { background: rgba(255,255,255,0.8); border: 1px solid var(--border-color); padding: 8px 12px; font-size: 0.8rem; border-radius: 6px; font-family: inherit; outline: none; color: #333; -webkit-user-select: text; user-select: text; }
+        .review-form-box input { flex: 2; }
+        .review-form-box select { flex: 1; color: #f1c40f; font-weight: bold; }
+        .review-form-box textarea { width: 100%; height: 60px; resize: none; margin-bottom: 8px; }
+        .btn-submit-review { width: 100%; background: var(--p-green); color: white; border: none; padding: 10px; font-weight: 700; font-size: 0.75rem; letter-spacing: 1px; border-radius: 6px; cursor: pointer; transition: 0.3s; }
+        .btn-submit-review:hover { background: #122d22; }
 
         .review-box { background: rgba(255, 255, 255, 0.5); padding: 20px; border-radius: 12px; border: 1px solid rgba(0,0,0,0.05); margin-top: 15px; }
         .review-item { border-bottom: 1px solid rgba(0,0,0,0.05); padding: 12px 0; }
@@ -159,7 +169,6 @@
 
 <div class="container">
     <div class="img-display">
-        <!-- ป้าย Sale จะถูกควบคุมการแสดงผลด้วย JS -->
         <div id="sale-badge" class="sale-badge"><i class="fas fa-fire"></i> FLASH SALE</div>
         <img id="p-img" src="">
         <div id="p-slogan" class="p-slogan"></div>
@@ -186,6 +195,21 @@
         
         <div class="desc-section">
             <h3>REVIEWS</h3>
+            <!-- 🆕 ส่วนฟอร์มเขียนรีวิวใหม่ -->
+            <form id="reviewForm" class="review-form-box" onsubmit="submitReview(event)">
+                <div class="review-form-group">
+                    <input type="text" id="revName" placeholder="ชื่อของคุณ" required>
+                    <select id="revRating">
+                        <option value="5">⭐⭐⭐⭐⭐ (5)</option>
+                        <option value="4">⭐⭐⭐⭐ (4)</option>
+                        <option value="3">⭐⭐⭐ (3)</option>
+                        <option value="2">⭐⭐ (2)</option>
+                        <option value="1">⭐ (1)</option>
+                    </select>
+                </div>
+                <textarea id="revText" placeholder="เขียนความเห็นของคุณเกี่ยวกับสินค้าชิ้นนี้..." required></textarea>
+                <button type="submit" class="btn-submit-review">SEND REVIEW</button>
+            </form>
             <div id="p-reviews" class="review-box"></div>
         </div>
 
@@ -211,12 +235,12 @@
         4: { brand: "FRAIJOUR", sale: "฿290", old: "฿331", img: "4.jpeg", fda: "20-2-6700030513", cert: "WORMWOOD CLEANSING FOAM.jpg", th: { name: "Original Herb Wormwood Cleansing Foam", slogan: "ฟองโฟมนุ่มละเอียด ทำความสะอาดล้ำลึกถึงระดับรูขุมขน", desc: "โฟมล้างหน้าสมุนไพร ทำความสะอาดสิ่งสกปรกล้ำลึกถึงรูขุมขน", use: "ใช้ล้างหน้าเป็นประจำเช้า-เย็น", reviews: ["ฟองนุ่ม ล้างแล้วหน้าไม่แห้ง - Anonymous", "กลิ่นหอมสมุนไพรผ่อนคลาย - User_3321"] }, en: { name: "Original Herb Wormwood Cleansing Foam", slogan: "Luxurious Micro-Foam for Deep & Gentle Pore Purification", desc: "Deep cleansing foam with herbal extracts.", use: "Lather with water and wash face." }, kr: { name: "오리지널 허브 웜우드 클렌징 폼", slogan: "부드러운 미세 거품으로 모공 속 깊숙이 투명하게 차오르는 딥 클렌징", desc: "모공 속 노폐물까지 깨끗하게 세정해주는 허브 폼.", use: "거품을 내어 세안 후 헹구세요." } },
         5: { brand: "FRAIJOUR", sale: "฿15", old: "฿22", img: "15.jpeg", fda: "20-2-6700035339", cert: "MASK.jpg", th: { name: "Original Herb Wormwood Sheet Mask", slogan: "แผ่นมาส์กเข้มข้น ฟื้นฟูผิวเหนื่อยล้าให้กลับมาสดใสในข้ามคืน", desc: "มาส์กแผ่นบำรุงผิวเข้มข้น ปลอบประโลมผิวแบบเร่งด่วน", use: "มาส์กทิ้งไว้ 15-20 นาทีแล้วดึงออก", reviews: ["มาส์กแล้วหน้าสดใสมาก - Anonymous", "แผ่นมาส์กนุ่ม ชุ่มชื้นดี - R***i"] }, en: { name: "Original Herb Wormwood Sheet Mask", slogan: "Intensive Rescue Mask for Instant Radiance & Skin Recovery", desc: "Soothing sheet mask for instant skin recovery.", use: "Apply for 15-20 minutes." }, kr: { name: "오리지널 허브 웜우드 시트 마스크", slogan: "지친 피부에 즉각적인 에너지를 채우는 고농축 마스크", desc: "민감한 피부를 즉각적으로 진정시키는 시트 마스크.", use: "15-20분 동안 부착 후 떼어내세요." } },
         6: { brand: "FRAIJOUR", sale: "฿360", old: "฿420", img: "6.jpeg", fda: "20-2-6700030433", cert: "HEARTLEAF TONER.jpg", th: { name: "Heartleaf Blemish Toner", slogan: "สยบวงจรปัญหาสิว คืนความเนียนใสด้วยสารสกัดฮาร์ทลีฟเข้มข้น", desc: "โทนเนอร์สารสกัดฮาร์ทลีฟ ลดสิวและรอยแดง คุมความมันส่วนเกิน", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["สิวอักเสบยุบไวมาก - Anonymous", "เหมาะกับคนผิวมันเป็นสิว - User_7721"] }, en: { name: "Heartleaf Blemish Toner", slogan: "Clear Blemishes & Calms Skin with Heartleaf Essence", desc: "Soothing toner for acne-prone skin.", use: "Wipe after cleansing." }, kr: { name: "하트리프 블레미쉬 토너", slogan: "트러블 고민 해결, 어성초로 완성하는 매끄러운 피부", desc: "어성초 성분이 트러블을 진정시켜주는 토너.", use: "세안 후 피부를 닦아내세요." } },
-        7: { brand: "FRAIJOUR", sale: "฿290", old: "฿464", img: "5.jpeg", fda: "20-2-6700030510", cert: "MOISTURE CREAM.jpg", th: { name: "Heartleaf Blemish Moisture Cream", slogan: "เกราะป้องกันผิวชุ่มชื้น ลดความระคายเคืองเพื่อผิวที่แข็งแรงกว่า", desc: "ครีมบำรุงสำหรับผิวเป็นสิว ช่วยเติมความชุ่มชื้นและลดความระคายเคือง", use: "ทาบำรุงผิวหน้าเช้า-เย็น", reviews: ["เนื้อครีมไม่อุดตัน - Anonymous", "ใช้คู่กับโทนเนอร์คือดีมาก - P***r"] }, en: { name: "Heartleaf Blemish Moisture Cream", slogan: "Moisture Barrier Protection for Stronger & Calmer Skin", desc: "Calming moisturizer for troubled skin.", use: "Apply to face morning and night." }, kr: { name: "하트리프 모이스처 크림", slogan: "민감한 피부를 위한 촉촉한 수분 진정 보호막", desc: "트러블 피부에 수분을 공급하고 진정시키는 크림.", use: "얼굴에 부드럽게 발라주세요." } },
+        7: { brand: "FRAIJOUR", sale: "฿290", old: "฿464", img: "5.jpeg", fda: "20-2-6700030510", cert: "MOISTURE CREAM.jpg", th: { name: "Heartleaf Blemish Moisture Cream", slogan: "เกราะป้องกันผิวชุ่มชื้น ลดความระคายเคืองเพื่อผิวที่แข็งแรงกว่า", desc: "ครีมบำรุงสำหรับผิวเป็นสิว ช่วยเติมความชุ่มชื้นและลดความระคายเคือง", use: "ทาบำรุงผิวหน้าเช้า-เย็น", reviews: ["เนื้อครีมไม่อุดตัน - Anonymous", "ใช้คู่กับโทนเนอร์คือดีมาก - P***r"] }, en: { name: "Heartleaf Blemish Moisture Cream", slogan: "Moisture Barrier Protection for Stronger & Calmer Skin", desc: "Calming moisturizer for troubled skin.", use: "Apply to face morning and night." }, kr: { name: "하트리프 모이스처 크림", slogan: "민감한 피부를 위한 촉촉한 수분 진정 보호막", desc: "트러블 피부에 수분을 공급하고 진정시키는 크림.", use: "얼굴에 부ด럽게 발라주세요." } },
         8: { brand: "FRAIJOUR", sale: "฿320", old: "฿500", img: "12.jpeg", fda: "20-2-6700030347", cert: "WATER FIT.jpg", th: { name: "Heartleaf Water Fit Sunscreen", slogan: "กันแดดเนื้อน้ำ บางเบาสบายผิว พร้อมการปกป้องระดับสูงสุด", desc: "กันแดดเนื้อน้ำ บางเบาสบายผิว ปกป้องสูงสุดพร้อมบำรุง", use: "ทาทั่วใบหน้าก่อนออกแดด", reviews: ["ไม่วอก ไม่ลอย ซึมไว - Anonymous", "กันแดดได้ดี หน้าไม่มัน - User_4401"] }, en: { name: "Heartleaf Water Fit Sunscreen", slogan: "Invisible Shield with High Protection & Watery Comfort", desc: "Water-based sunscreen with SPF50+ protection.", use: "Apply before sun exposure." }, kr: { name: "하트리프 워터 핏 선크림", slogan: "물처럼 가벼운 밀착력, 자외선으로부터 완벽한 보호", desc: "수분 가득한 제형으로 가볍게 밀착되는 선크림.", use: "외출 전 피부에 펴 발라주세요." } },
-        9: { brand: "FRAIJOUR", sale: "฿280", old: "฿420", img: "11.jpeg", fda: "20-2-6700030345", cert: "AIRY FIT.jpg", th: { name: "Heartleaf Airy Fit Sun Cream", slogan: "สัมผัสเบาสบายดุจอากาศ มอบผิวแมตต์คุมมันสวยตลอดวัน", desc: "กันแดดเนื้อแอร์รี่ เบาเหมือนอากาศ ให้ลุคแมตต์คุมมัน", use: "ทาทั่วใบหน้าก่อนออกแดด", reviews: ["เบาเหมือนไม่ได้ทา - Anonymous", "คุมมันระหว่างวันได้ดี - User_5590"] }, en: { name: "Heartleaf Airy Fit Sun Cream", slogan: "Airy-Light Matte Protection for Flawless All-Day Shine Control", desc: "Airy-light sunscreen for a matte finish.", use: "Apply before sun exposure." }, kr: { name: "하트리프 에어리 핏 선크림", slogan: "공기처럼 가벼운 매트 피니시, 번들거림 없는 완벽함", desc: "공기처럼 가볍고 보송하게 마무리되는 선크림.", use: "외출 전 골고루 발라주세요." } },
+        9: { brand: "FRAIJOUR", sale: "฿280", old: "฿420", img: "11.jpeg", fda: "20-2-6700030345", cert: "AIRY FIT.jpg", th: { name: "Heartleaf Airy Fit Sun Cream", slogan: "สัมผัสเบาสบายดุจอากาศ มอบผิวแมตต์คุมมันสวยตลอดวัน", desc: "กันแดดเนื้อแอร์รี่ เบาเหมือนอากาศ ให้ลุคแมตต์คุมมัน", use: "ทาทั่วใบหน้าก่อนออกแดด", reviews: ["เบาเหมือนไม่ได้ทา - Anonymous", "คุมมันระหว่างวันได้ดี - User_5590"] }, en: { name: "Heartleaf Airy Fit Sun Cream", slogan: "Airy-Light Matte Protection for Flawless All-Day Shine Control", desc: "Airy-light sunscreen for a matte finish.", use: "Apply before sun exposure." }, kr: { name: "하트리프 에어리 핏 선크림", slogan: "공기처럼 가벼운 매트 피니시, 번들거림 없는 완벽함", desc: "공기처럼 가볍고 보송하게 마무리되는 선크림.", use: "외출 전 골고루 발รา주세요." } },
         10: { brand: "FRAIJOUR", sale: "฿239", old: "฿420", img: "9.jpeg", fda: "20-2-6700030512", cert: "CORE TONER.jpg", th: { name: "Retin Collagen 3D Core Toner", slogan: "เปิดสวิตช์ผิวอิ่มฟู ยกกระชับรูขุมขนให้ผิวดูมีมิติ", desc: "โทนเนอร์ยกกระชับผิว เติมคอลลาเจนให้ผิวดูอิ่มฟู", use: "เช็ดทั่วใบหน้าหลังล้างหน้า", reviews: ["หน้าดูเนียนกระชับขึ้น - Anonymous", "เตรียมผิวได้ดีมาก - User_6610"] }, en: { name: "Retin Collagen 3D Core Toner", slogan: "Activate Plump & Firm Skin for a Defined 3D Radiance", desc: "Firming toner with Collagen to plum skin.", use: "Wipe after cleansing." }, kr: { name: "레틴콜라겐 3D 코어 토너", slogan: "입체적인 볼륨감, 피부 탄력의 새로운 차원", desc: "피부 탄력을 높이고 영양을 채워주는 토너.", use: "세안 후 화장솜으로 닦아내세요." } },
         11: { brand: "FRAIJOUR", sale: "฿199", old: "฿420", img: "7.jpeg", fda: "20-2-6700030268", cert: "CORE CREAM.jpg", th: { name: "Retin Collagen 3D Core Cream", slogan: "นวัตกรรมลดเลือนริ้วรอย คืนความอ่อนเยาว์และยืดหยุ่นให้ผิว", desc: "ครีมลดเลือนริ้วรอยเข้มข้น ช่วยให้ผิวยืดหยุ่นและอ่อนเยาว์", use: "ทาบำรุงผิวหน้าและลำคอ", reviews: ["ร่องแก้มดูจางลง - Anonymous", "เนื้อครีมเข้มข้นแต่ไม่หนัก - User_0088"] }, en: { name: "Retin Collagen 3D Core Cream", slogan: "Advanced Anti-Aging Solution for Elastic & Youthful Vigor", desc: "Intensive anti-wrinkle cream for elastic skin.", use: "Apply to face and neck." }, kr: { name: "레틴콜라겐 3D 코어 크림", slogan: "주름을 지우는 과학, 탄력 넘치는 젊은 피부의 비결", desc: "주름 개선과 탄력 강화에 도움을 주는 크림.", use: "얼굴과 목에 고루 펴 발라주세요." } },
-        12: { brand: "FRAIJOUR", sale: "฿140", old: "฿331", img: "8.jpeg", fda: "20-2-6700030357", cert: "CORE EYE CREAM.jpg", th: { name: "Retin Collagen 3D Core Eye Cream", slogan: "ดูแลผิวรอบดวงตาอย่างล้ำลึก สยบรอยคล้ำให้กลับมาสดใส", desc: "ครีมบนรุงรอบดวงตา ลดรอยคล้ำและถุงใต้ตา", use: "ทาบางๆ รอบดวงตาเช้า-เย็น", reviews: ["ใต้ตาดูสว่างขึ้น - Anonymous", "ชุ่มชื้นดีมาก ไม่แสบตา - User_1234"] }, en: { name: "Retin Collagen 3D Core Eye Cream", slogan: "Total Eye Revitalization for Bright & Ageless Appearance", desc: "Targeted eye cream for dark circles and wrinkles.", use: "Tap gently around the eyes." }, kr: { name: "레틴콜라겐 3D 코어 아이크림", slogan: "눈가에 피어나는 빛, 다크서클 고민 없는 탄탄함", desc: "눈가 주름과 다크서클을 관리해주는 아이크림.", use: "눈가에 톡톡 두드려 흡수시키세요." } },
+        12: { brand: "FRAIJOUR", sale: "฿140", old: "฿331", img: "8.jpeg", fda: "20-2-6700030357", cert: "CORE EYE CREAM.jpg", th: { name: "Retin Collagen 3D Core Eye Cream", slogan: "ดูแลผิวรอบดวงตาอย่างล้ำลึก สยบรอยคล้ำให้กลับมาสดใส", desc: "ครีมบนรุงรอบดวงตา ลดรอยคล้ำและถุงใต้ตา", use: "ทาบางๆ รอบดวงตาเช้า-เย็น", reviews: ["ใต้ตาดูสว่างขึ้น - Anonymous", "ชุ่มชื้นดีมาก ไม่แสบตา - User_1234"] }, en: { name: "Retin Collagen 3D Core Eye Cream", slogan: "Total Eye Revitalization for Bright & Ageless Appearance", desc: "Targeted eye cream for dark circles and wrinkles.", use: "Tap gently around the eyes." }, kr: { name: "레틴콜라겐 3D 코어 아이크림", slogan: "눈가에 피어나는 빛, 다크서클 고민 없는 탄탄함", desc: "눈가 주름และ 다크서클을 관리해주는 아이크림.", use: "눈가에 톡톡 두드려 흡수시키세요." } },
         13: { brand: "FRAIJOUR", sale: "฿88", old: "฿280", img: "10.jpeg", fda: "20-2-6700032157", cert: "CORE LIP OIL.jpg", th: { name: "Retin Collagen 3D Core Lip Oil", slogan: "บำรุงริมฝีปากให้อวบอิ่ม แวววาวสุขภาพดีดุจเซเลบริตี้", desc: "ลิปออยล์บำรุงริมฝีปาก แก้ปากคล้ำและเติมความอวบอิ่ม", use: "ทาริมฝีปากได้บ่อยตามต้องการ", reviews: ["ปากดูสุขภาพดีมาก - Anonymous", "ไม่เหนียวเกินไป - User_8877"] }, en: { name: "Retin Collagen 3D Core Lip Oil", slogan: "Celebrity-Style Plump Lips with Healthy & Glossy Glow", desc: "Nourishing lip oil for plump and healthy lips.", use: "Apply to lips as needed." }, kr: { name: "레틴콜라겐 3D 코어 립 오일", slogan: "빛나는 볼륨 립, 건강하고 매혹적인 입술 완성", desc: "입술에 생기와 보습을 주는 립 오일.", use: "건조할 때마다 발라주세요." } },
         14: { brand: "CHAR CHAR", sale: "฿99", old: "฿225", img: "14.jpeg", fda: "20-2-6700032154", cert: "CHAR CHAR.jpg", th: { name: "Char Char Mungbean Foam", slogan: "ดีท็อกซ์ผิวด้วยถั่วเขียว เผยผิวสว่างกระจ่างใสไร้สิ่งตกค้าง", desc: "โฟมล้างหน้าถั่วเขียว ทำความสะอาดล้ำลึกและช่วยให้ผิวสว่างใส", use: "ใช้ล้างหน้าเป็นประจำเช้า-เย็น", reviews: ["หน้าใสขึ้นหลังล้าง - Anonymous", "ล้างสะอาดเกลี้ยงมาก - User_4432"] }, en: { name: "Char Char Mungbean Foam", slogan: "Mungbean Detox for Deep Cleansing & Radiant Clarity", desc: "Deep cleansing foam with Mungbean extract.", use: "Wash face daily." }, kr: { name: "챠챠 녹두 폼클렌징", slogan: "녹두의 해독 에너지, 맑고 투명한 피부를 위한 선택", desc: "녹두 성분이 노폐물을 깨끗이 지워주는 폼.", use: "세안 시 거품을 내어 사용하세요." } },
         15: { brand: "BATHPA", sale: "฿99", old: "฿320", img: "13.jpeg", fda: "20-2-6700030582", cert: "BATHPA.jpg", th: { name: "Bathpa Body Tone Up", slogan: "ปรับสีผิวออร่าทันที ผิวกายสวยเนียนเป็นธรรมชาติไม่ติดขน", desc: "โลชั่นปรับสีผิวผิวกายให้สว่างใสขึ้นทันทีอย่างเป็นธรรมชาติ", use: "ทาบำรุงผิวกาย", reviews: ["ขาวขึ้นแบบไม่โป๊ะ - Anonymous", "เกลี่ยง่ายไม่ติดขน - User_9912"] }, en: { name: "Bathpa Body Tone Up", slogan: "Instant Aura Glow for Flawless & Natural Body Tone", desc: "Instant brightening body lotion.", use: "Apply to the body." }, kr: { name: "바스파 바디 톤업", slogan: "바르는 순간 빛나는 아우라, 자연스러운 톤업 효과", desc: "피부 톤을 즉각적으로 밝혀주는 바디 로션.", use: "몸 전체에 골고루 펴 발라주세요." } }
@@ -234,17 +258,17 @@
         document.getElementById('p-brand').innerText = p.brand;
         document.getElementById('p-name').innerText = content.name;
         
-        // 🔴 ระบบจัดการป้ายแสดงการลดราคาและเปลี่ยนสีตัวเลข
+        // 🔴 ระบบป้ายลดราคาตามสินค้าที่เลือก
         const isSaleItem = [5, 10, 11, 12, 13, 14, 15].includes(currentId);
         const saleBadge = document.getElementById('sale-badge');
         const priceTagElement = document.getElementById('p-sale');
         
         if (isSaleItem) {
-            saleBadge.style.display = 'block'; // แสดงป้ายบนรูป
-            priceTagElement.classList.add('price-on-sale'); // ทำให้ตัวเลขเป็นสีแดง
+            saleBadge.style.display = 'block';
+            priceTagElement.classList.add('price-on-sale');
         } else {
-            saleBadge.style.display = 'none'; // ซ่อนป้าย
-            priceTagElement.classList.remove('price-on-sale'); // ตัวเลขสีปกติ
+            saleBadge.style.display = 'none';
+            priceTagElement.classList.remove('price-on-sale');
         }
         
         priceTagElement.innerText = p.sale;
@@ -254,14 +278,8 @@
         document.getElementById('p-desc').innerText = content.desc;
         document.getElementById('p-use').innerText = content.use;
 
-        const reviewBox = document.getElementById('p-reviews');
-        reviewBox.innerHTML = p.th.reviews.map(r => `
-            <div class="review-item">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <div class="review-text">"${r.split(' - ')[0]}"</div>
-                <span class="reviewer">${r.split(' - ')[1]}</span>
-            </div>
-        `).join('');
+        // 🆕 ระบบแสดงผลรีวิว (ดั้งเดิม + รีวิวใหม่จาก LocalStorage)
+        renderReviews(p);
 
         const productIds = Object.keys(products).map(Number);
         const currentIndex = productIds.indexOf(currentId);
@@ -276,6 +294,66 @@
         const bodyFont = lang === 'th' ? 'var(--font-th)' : (lang === 'kr' ? 'var(--font-kr)' : 'var(--font-en)');
         document.body.style.fontFamily = bodyFont;
         document.getElementById('p-slogan').style.fontFamily = bodyFont;
+    }
+
+    // 🆕 ฟังก์ชันช่วย Render รีวิวแยกเพื่ออัปเดตแบบ Dynamic
+    function renderReviews(product) {
+        const reviewBox = document.getElementById('p-reviews');
+        
+        // 1. ดึงรีวิวดั้งเดิมจาก Object
+        let html = product.th.reviews.map(r => `
+            <div class="review-item">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <div class="review-text">"${r.split(' - ')[0]}"</div>
+                <span class="reviewer">${r.split(' - ')[1]}</span>
+            </div>
+        `).join('');
+
+        // 2. ดึงรีวิวใหม่ที่ผู้ใช้เขียนเพิ่มจาก LocalStorage (แยกตาม ID สินค้า)
+        const customReviews = JSON.parse(localStorage.getItem(`reviews_prod_${currentId}`)) || [];
+        customReviews.forEach(rev => {
+            let starIcons = '';
+            for(let i=1; i<=5; i++) {
+                starIcons += i <= rev.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+            }
+            html += `
+                <div class="review-item">
+                    <div class="stars">${starIcons}</div>
+                    <div class="review-text">"${rev.text}"</div>
+                    <span class="reviewer">- ${rev.name}</span>
+                </div>
+            `;
+        });
+
+        reviewBox.innerHTML = html;
+    }
+
+    // 🆕 ฟังก์ชันกดส่งรีวิวใหม่
+    function submitReview(e) {
+        e.preventDefault();
+        const nameInput = document.getElementById('revName');
+        const ratingInput = document.getElementById('revRating');
+        const textInput = document.getElementById('revText');
+
+        const newReview = {
+            name: nameInput.value.trim(),
+            rating: parseInt(ratingInput.value),
+            text: textInput.value.trim()
+        };
+
+        // บันทึกลง LocalStorage ตาม ID สินค้าปัจจุบัน
+        const customReviews = JSON.parse(localStorage.getItem(`reviews_prod_${currentId}`)) || [];
+        customReviews.push(newReview);
+        localStorage.setItem(`reviews_prod_${currentId}`, JSON.stringify(customReviews));
+
+        // เคลียร์ค่าในฟอร์ม
+        nameInput.value = '';
+        textInput.value = '';
+        ratingInput.value = '5';
+
+        // รี Render หน้าจอรีวิวทันที
+        const p = products[currentId] || products[1];
+        renderReviews(p);
     }
 
     function changeLang() {
