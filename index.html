@@ -125,6 +125,35 @@
             box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
         }
 
+        /* --- แถบโฆษณาแจ้งเตือนลดราคา (เพิ่มใหม่) --- */
+        .promo-banner {
+            background: var(--sale-red);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 8px 0;
+            overflow: hidden;
+            position: relative;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(230, 57, 70, 0.2);
+        }
+
+        .promo-track {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+
+        .promo-text {
+            padding: 0 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+
         /* อนิเมชันต่างๆ */
         @keyframes popIn {
             to { transform: scale(1) translateY(0); opacity: 1; }
@@ -136,6 +165,10 @@
         @keyframes fadeInDown {
             from { transform: translateY(-20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
         }
 
         /* --- Nav --- */
@@ -223,13 +256,23 @@
 </head>
 <body oncontextmenu="return false;">
 
-<!-- ส่วนของอนิเมชันป๊อปอัพต้อนรับที่เพิ่มเข้าไปใหม่ -->
+<!-- ส่วนของอนิเมชันป๊อปอัพต้อนรับ -->
 <div class="welcome-overlay" id="welcomeOverlay">
     <div class="welcome-box">
         <img src="gold.png" class="welcome-logo" alt="HJ Logo">
         <h1 class="welcome-title">WELCOME TO</h1>
         <p class="welcome-text">HJ COSMETICS GLOBAL<br>Premium Luxury Curator</p>
         <button class="welcome-btn" onclick="closeWelcome()">Enter Site</button>
+    </div>
+</div>
+
+<!-- แถบแจ้งเตือนโฆษณาสินค้าลดราคาแบบอักษรวิ่ง (เพิ่มใหม่) -->
+<div class="promo-banner">
+    <div class="promo-track">
+        <div class="promo-text"><i class="fa-solid fa-fire"></i> BIG SALE! สินค้าลดราคาพิเศษ ดีลสุดคุ้มส่งตรงจากเกาหลี ช้อปเลยตอนนี้!</div>
+        <div class="promo-text"><i class="fa-solid fa-sparkles"></i> FRAIJOUR HERBS & GLOBAL SELECTION ลดสูงสุดราคาพิเศษ!</div>
+        <div class="promo-text"><i class="fa-solid fa-fire"></i> BIG SALE! สินค้าลดราคาพิเศษ ดีลสุดคุ้มส่งตรงจากเกาหลี ช้อปเลยตอนนี้!</div>
+        <div class="promo-text"><i class="fa-solid fa-sparkles"></i> FRAIJOUR HERBS & GLOBAL SELECTION ลดสูงสุดราคาพิเศษ!</div>
     </div>
 </div>
 
@@ -285,14 +328,14 @@
 <footer><p style="text-align:center; padding:30px; font-size:0.7rem; color:#999;">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</p></footer>
 
 <script>
-    /* เพิ่มสคริปต์ควบคุมการปิดหน้าจอต้อนรับ */
+    /* สคริปต์ควบคุมการปิดหน้าจอต้อนรับ */
     function closeWelcome() {
         const overlay = document.getElementById('welcomeOverlay');
         if(overlay) {
             overlay.style.opacity = '0';
             setTimeout(() => {
                 overlay.style.display = 'none';
-            }, 600); // ซ่อนหลังจากอนิเมชันจางหายเสร็จสมบูรณ์
+            }, 600);
         }
     }
 
@@ -305,7 +348,7 @@
     const products = [
         { id: 1, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลามมิ่ง วอเตอรี่ ครีม", nameEn: "Original Herb Wormwood Calming Watery Cream", nameKr: "오리지널 허브 웜우드 카밍 워터리 크림", sale: 330, old: 420, bTh: "แนะนำ", bEn: "HOT", bKr: "추천", img: "1.jpg.png", outOfStock: true },
         { id: 2, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลามมิ่ง โทนเนอร์", nameEn: "Original Herb Wormwood Calming Toner", nameKr: "오리지널 허브 웜우드 카밍 토너", sale: 350, old: 375, bTh: "ขายดี", bEn: "BEST", bKr: "인기", img: "2.jpeg" },
-        { id: 3, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง วอเตอร์", nameEn: "Original Herb Wormwood Cleansing Water", nameKr: "오리지널 허브 웜우ด 클렌징 워터", sale: 250, old: 400, bTh: "ใหม่", bEn: "NEW", bKr: "신상", img: "3.jpeg" },
+        { id: 3, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง วอเตอร์", nameEn: "Original Herb Wormwood Cleansing Water", nameKr: "오리지널 허브 웜우드 클렌징 워터", sale: 250, old: 400, bTh: "ใหม่", bEn: "NEW", bKr: "신상", img: "3.jpeg" },
         { id: 4, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง โฟม", nameEn: "Original Herb Wormwood Cleansing Foam", nameKr: "오리지널 허브 웜우드 클렌징 폼", sale: 290, old: 331, bTh: "สะอาด", bEn: "TOP", bKr: "세정", img: "4.jpeg" },
         // มาส์กหน้า (เพิ่ม SALE)
         { id: 5, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด ชีท มาส์ก", nameEn: "Original Herb Wormwood Sheet Mask", nameKr: "오리지널 허브 웜우드 시트 마스크", sale: 15, old: 22, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "15.jpeg", isPromo: true },
