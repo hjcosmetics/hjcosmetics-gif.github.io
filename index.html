@@ -20,7 +20,6 @@
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
         
-        /* เปลี่ยน body ให้รองรับ Video Background ด้านหลังสุด */
         body { 
             color: #2d3436; 
             font-family: var(--font-th); 
@@ -29,10 +28,10 @@
             flex-direction: column; 
             min-height: 100vh; 
             position: relative;
-            background: #0a1e16; /* สีพื้นหลังสำรองระหว่างวิดีโอกำลังโหลด */
+            background: #0a1e16; 
         }
 
-        /* --- สไตล์ของ Video Background หลังหน้าเว็บ --- */
+        /* --- Video Background --- */
         .bg-video-container {
             position: fixed;
             top: 0;
@@ -47,13 +46,12 @@
             top: 50%;
             left: 50%;
             width: 100vw;
-            height: 56.25vw; /* อัตราส่วน 16:9 */
+            height: 56.25vw; 
             min-height: 100vh;
-            min-width: 177.77vh; /* อัตราส่วน 16:9 */
+            min-width: 177.77vh; 
             transform: translate(-50%, -50%);
-            pointer-events: none; /* ห้ามคลิกโดนตัววิดีโอ */
+            pointer-events: none; 
         }
-        /* เลเยอร์สีเข้มฉาบหน้าวิดีโอเพื่อให้เนื้อหาในเว็บอ่านง่ายขึ้น */
         .bg-video-overlay {
             position: fixed;
             top: 0;
@@ -64,7 +62,7 @@
             background: linear-gradient(135deg, rgba(253, 250, 245, 0.85), rgba(245, 239, 230, 0.9));
         }
 
-        /* --- สไตล์ของ Welcome Animation Overlay (ทรง Fluid Shape) --- */
+        /* --- Welcome Animation Overlay --- */
         .welcome-overlay {
             position: fixed;
             top: 0;
@@ -81,7 +79,6 @@
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* ปรับรูปทรงกล่องให้โค้งมนอิสระ ไม่ทื่อ (Fluid & Organic Luxury Shape) */
         .welcome-box {
             background: rgba(255, 255, 255, 0.95);
             padding: 70px 40px 45px;
@@ -110,7 +107,6 @@
             animation: floatUp infinite linear;
         }
 
-        /* โลโก้ลอยทะลุขอบด้านบนขึ้นไป (Floating Overlap) */
         .welcome-logo {
             width: 140px;
             position: absolute;
@@ -142,7 +138,6 @@
             animation: fadeInUp 0.6s ease both 0.7s;
         }
 
-        /* ป้ายลดราคาเฉียงรับมุมกล่องแบบ Wavy Ribbon */
         .popup-promo-badge {
             background: linear-gradient(135deg, var(--sale-red), #c31432);
             color: white;
@@ -161,7 +156,6 @@
             gap: 10px;
         }
 
-        /* ปุ่มกดดีไซน์แคปซูลเรืองแสง */
         .welcome-btn {
             background: var(--p-green);
             color: white;
@@ -203,34 +197,17 @@
             border-radius: 50px;
         }
 
-        /* คีย์เฟรมแอนิเมชันป๊อปอัพ */
-        @keyframes fluidPopIn {
-            to { transform: scale(1) rotate(0deg); opacity: 1; }
-        }
-        @keyframes logoFloat {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(-8px) scale(1.03); }
-        }
+        @keyframes fluidPopIn { to { transform: scale(1) rotate(0deg); opacity: 1; } }
+        @keyframes logoFloat { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(-8px) scale(1.03); } }
         @keyframes floatUp {
             0% { transform: translateY(300px) translateX(0) scale(0.3); opacity: 0; }
             10% { opacity: 0.7; }
             90% { opacity: 0.7; }
             100% { transform: translateY(-20px) translateX(15px) scale(1.2); opacity: 0; }
         }
-        @keyframes pulseBadge {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); box-shadow: 0 12px 30px rgba(230, 57, 70, 0.6); }
-            100% { transform: scale(1); }
-        }
-        @keyframes shimmerEffect {
-            0% { left: -60%; }
-            25% { left: 140%; }
-            100% { left: 140%; }
-        }
-        @keyframes fadeInUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+        @keyframes pulseBadge { 0% { transform: scale(1); } 50% { transform: scale(1.03); box-shadow: 0 12px 30px rgba(230, 57, 70, 0.6); } 100% { transform: scale(1); } }
+        @keyframes shimmerEffect { 0% { left: -60%; } 25% { left: 140%; } 100% { left: 140%; } }
+        @keyframes fadeInUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
         /* --- Nav --- */
         nav { background: rgba(255, 255, 255, 0.9); height: 70px; padding: 0 4%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; backdrop-filter: blur(10px); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
@@ -239,17 +216,66 @@
         .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.65rem; letter-spacing: 0.5px; text-transform: uppercase; font-family: var(--font-en); white-space: nowrap; }
         .lang-btn { background: var(--p-green); color: white; border: none; padding: 6px 10px; cursor: pointer; font-weight: 700; font-size: 0.65rem; border-radius: 4px; }
 
-        /* --- Hero & Slider --- */
+        /* --- Hero --- */
         .hero { padding: 30px 5% 15px; text-align: center; }
         .main-gold-logo { width: 100%; max-width: 240px; }
-        .slider-container { width: 92%; max-width: 1400px; margin: 0 auto 20px; aspect-ratio: 16/8; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .slider-wrapper { display: flex; width: 100%; height: 100%; transition: transform 0.8s ease-in-out; }
-        .slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; }
+
+        /* --- 💎 ปฏิวัติกรอบภาพสไลด์: ทรงมนรีออร์แกนิก & แอนิเมชันเนื้อนุ่ม 💎 --- */
+        .slider-container { 
+            width: 90%; 
+            max-width: 1100px; 
+            margin: 0 auto 35px; 
+            aspect-ratio: 16/9; 
+            position: relative;
+            background: transparent;
+            /* ปรับรูปทรงให้โค้งมนนุ่มนวลสไตล์ Organic Fluid ไม่เป็นสี่เหลี่ยมทื่อ */
+            border-radius: 50% 50% 45% 45% / 15% 15% 12% 12%; 
+            overflow: hidden;
+            /* เพิ่มมิติเงาตื้นลึกและขอบทองเรืองแสงจางๆ ให้ดูลอยตัวเสมือนกระจกหลอมเหลว */
+            box-shadow: 0 30px 70px rgba(10, 30, 22, 0.25), 
+                        0 0 0 2px rgba(195, 160, 89, 0.2),
+                        inset 0 0 30px rgba(0,0,0,0.2);
+            transform: translateZ(0); /* บังคับใช้ Hardware Acceleration บนมือถือ */
+        }
+
+        /* ตัวครอบสไลด์เดี่ยวที่ใช้ระบบสลับรูปแบบ Crossfade + Zoom หรูหรา */
+        .slide-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: scale(1.08);
+            transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                        transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 1;
+        }
+
+        /* คลาสที่จะถูกสลับด้วย JS เพื่อเริ่มแอนิเมชันที่นุ่มนวล */
+        .slide-item.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        /* แผ่นฟิลเตอร์ดรอปแสงด้านล่างสไลด์เพิ่มความหรูหรา */
+        .slider-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 35%;
+            background: linear-gradient(to top, rgba(10, 31, 23, 0.15), transparent);
+            z-index: 3;
+            pointer-events: none;
+        }
 
         /* --- Video Section --- */
         .video-section { width: 92%; max-width: 1000px; margin: 20px auto; }
-        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 12px; overflow: hidden; }
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        
         .brand-partners { padding: 20px 5%; display: flex; justify-content: center; align-items: center; gap: clamp(15px, 4vw, 50px); flex-wrap: wrap; margin-bottom: 20px; }
         .brand-partners img { height: 25px; filter: grayscale(1); opacity: 0.6; }
         .brand-partners img.large-logo { height: 40px; }
@@ -264,7 +290,6 @@
 
         /* --- Card --- */
         .card { background: rgba(255, 255, 255, 0.9); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.05); height: 100%; transition: 0.3s; position: relative; backdrop-filter: blur(5px); }
-         
         .card.on-sale-highlight { border: 1.5px solid var(--sale-red); box-shadow: 0 0 15px rgba(230, 57, 70, 0.15); }
         .card.on-sale-highlight .product-badge { background: var(--sale-red); animation: pulse 2s infinite; width: 40px; height: 40px; font-size: 0.6rem; }
         .card.on-sale-highlight .sale { color: var(--sale-red); font-size: 1.3rem; }
@@ -281,7 +306,6 @@
 
         .img-box { width: 100%; background: #fff; display: flex; align-items: center; justify-content: center; position: relative; padding: 10px; }
         .img-box img { max-width: 100%; height: auto; object-fit: contain; }
-
         .product-badge { position: absolute; top: 8px; right: 8px; background: var(--gold); color: white; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; font-weight: 800; z-index: 1; transition: 0.3s; }
          
         .info { padding: 10px 8px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; gap: 4px; }
@@ -300,30 +324,28 @@
             .info h3 { font-size: 0.85rem; }
             .sale { font-size: 1.2rem; }
             .welcome-box { padding: 80px 50px 55px; }
+            .slider-container { border-radius: 50% 50% 48% 48% / 18% 18% 14% 14%; } /* มนสวยขึ้นเมื่อจอใหญ่ */
         }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
-<!-- 🎬 แทรกลูกเล่น Video Background ไว้หลังสุดของเว็บ -->
+<!-- Background Video -->
 <div class="bg-video-container">
-    <iframe src="https://www.youtube.com/embed/hqyVA3VQoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3VQoyo&controls=0&rel=0" allow="autoplay; encrypted-media"></iframe>
+    <iframe src="https://www.youtube.com/embed/hqyVA3OVAoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3OVAoyo&controls=0&rel=0" allow="autoplay; encrypted-media"></iframe>
 </div>
 <div class="bg-video-overlay"></div>
 
-<!-- ส่วนของอนิเมชันป๊อปอัพต้อนรับดีไซน์โค้งมน Organic Fluid Shape -->
+<!-- Welcome Pop-up Overlay -->
 <div class="welcome-overlay" id="welcomeOverlay">
     <div class="welcome-box" id="welcomeBox">
         <img src="gold.png" class="welcome-logo" alt="HJ Logo">
-        
         <h1 class="welcome-title">WELCOME TO</h1>
         <p class="welcome-text">HJ COSMETICS GLOBAL<br>Premium Luxury Curator</p>
-        
         <div class="popup-promo-badge">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             <span>BIG SALE กำลังดำเนินอยู่!</span>
         </div>
-        
         <button class="welcome-btn" onclick="closeWelcome()">Enter Site</button>
     </div>
 </div>
@@ -344,22 +366,21 @@
     <img src="gold.png" class="main-gold-logo">
 </header>
 
+<!-- 🌟 กรอบโครงสร้างสไลด์แบบรูปทรงไหลมน (Fluid Shape Slider) 🌟 -->
 <div class="slider-container">
-    <div class="slider-wrapper" id="sliderWrapper">
-        <div class="slide" style="background-image: url('indexpic.jpg');"></div>
-        <div class="slide" style="background-image: url('in2.jpg');"></div>
-        <div class="slide" style="background-image: url('in3.jpg');"></div>
-        <div class="slide" style="background-image: url('in4.jpg');"></div>
-        <div class="slide" style="background-image: url('in5.jpg');"></div>
-        <div class="slide" style="background-image: url('in6.jpg');"></div>
-        <div class="slide" style="background-image: url('in7.jpg');"></div>
-        <div class="slide" style="background-image: url('in8.jpg');"></div>
-    </div>
+    <div class="slide-item active" style="background-image: url('indexpic.jpg');"></div>
+    <div class="slide-item" style="background-image: url('in2.jpg');"></div>
+    <div class="slide-item" style="background-image: url('in3.jpg');"></div>
+    <div class="slide-item" style="background-image: url('in4.jpg');"></div>
+    <div class="slide-item" style="background-image: url('in5.jpg');"></div>
+    <div class="slide-item" style="background-image: url('in6.jpg');"></div>
+    <div class="slide-item" style="background-image: url('in7.jpg');"></div>
+    <div class="slide-item" style="background-image: url('in8.jpg');"></div>
 </div>
 
 <section class="video-section">
     <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/hqyVA3VQoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3VQoyo&controls=0&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/hqyVA3OVAoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3OVAoyo&controls=0&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 </section>
 
@@ -398,23 +419,47 @@
     }
     createSparkles();
 
-    /* สคริปต์ควบคุมการปิดหน้าจอต้อนรับ */
     function closeWelcome() {
         const overlay = document.getElementById('welcomeOverlay');
         if(overlay) {
             overlay.style.opacity = '0';
             overlay.style.transform = 'translateY(-30px) scale(0.95)';
-            setTimeout(() => {
-                overlay.style.display = 'none';
-            }, 800);
+            setTimeout(() => { overlay.style.display = 'none'; }, 800);
         }
     }
 
-    let idx = 0;
-    setInterval(() => {
-        const w = document.getElementById('sliderWrapper');
-        if(w) { idx = (idx + 1) % 8; w.style.transform = `translateX(-${idx * 100}%)`; }
-    }, 5000);
+    /* 🌟 ระบบ Smooth Engine ขับเคลื่อนแอนิเมชันสไลด์ด้วยความนุ่มระดับเฟรมต่อเฟรม 🌟 */
+    let currentSlideIdx = 0;
+    const slides = document.querySelectorAll('.slide-item');
+    const totalSlides = slides.length;
+    let lastTime = 0;
+    const displayInterval = 4000; // เวลาแสดงผลภาพละ 4 วินาที
+
+    function updateSlider(timestamp) {
+        if (!lastTime) lastTime = timestamp;
+        const elapsed = timestamp - lastTime;
+
+        if (elapsed >= displayInterval) {
+            // ถอดคลาสทำงานออกจากสไลด์ปัจจุบัน
+            slides[currentSlideIdx].classList.remove('active');
+            
+            // คำนวณอินเด็กซ์ถัดไป
+            currentSlideIdx = (currentSlideIdx + 1) % totalSlides;
+            
+            // ใส่คลาสเริ่มทำงานให้สไลด์ใหม่ (จะสั่งเปิดเอฟเฟกต์ Fade + Scale ลงมาพร้อมกันอย่างนุ่มนวล)
+            slides[currentSlideIdx].classList.add('active');
+            
+            lastTime = timestamp;
+        }
+        
+        // ใช้ requestAnimationFrame วนลูปประสิทธิภาพสูงแทนการตั้งเวลาดิบๆ
+        requestAnimationFrame(updateSlider);
+    }
+    
+    // เริ่มต้นรันระบบขับเคลื่อนแอนิเมชันขั้นสูงเมื่อโหลดหน้าเสร็จ
+    if(totalSlides > 0) {
+        requestAnimationFrame(updateSlider);
+    }
 
     const products = [
         { id: 1, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลามมิ่ง วอเตอรี่ ครีม", nameEn: "Original Herb Wormwood Calming Watery Cream", nameKr: "오리지널 허브 웜우드 카밍 워터리 크림", sale: 330, old: 420, bTh: "แนะนำ", bEn: "HOT", bKr: "추천", img: "1.jpg.png", outOfStock: true },
