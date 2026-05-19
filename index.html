@@ -31,7 +31,7 @@
             background: #0a1e16; 
         }
 
-        /* --- Video Background --- */
+        /* --- Fix Video Background Area --- */
         .bg-video-container {
             position: fixed;
             top: 0;
@@ -40,6 +40,7 @@
             height: 100%;
             z-index: -2;
             overflow: hidden;
+            background: #0a1e16;
         }
         .bg-video-container iframe {
             position: absolute;
@@ -220,7 +221,7 @@
         .hero { padding: 30px 5% 15px; text-align: center; }
         .main-gold-logo { width: 100%; max-width: 240px; }
 
-        /* --- 💎 ปฏิวัติกรอบภาพสไลด์: ทรงมนรีออร์แกนิก & แอนิเมชันเนื้อนุ่ม 💎 --- */
+        /* --- กรอบภาพสไลด์ทรงมนรีออร์แกนิก --- */
         .slider-container { 
             width: 90%; 
             max-width: 1100px; 
@@ -228,17 +229,14 @@
             aspect-ratio: 16/9; 
             position: relative;
             background: transparent;
-            /* ปรับรูปทรงให้โค้งมนนุ่มนวลสไตล์ Organic Fluid ไม่เป็นสี่เหลี่ยมทื่อ */
             border-radius: 50% 50% 45% 45% / 15% 15% 12% 12%; 
             overflow: hidden;
-            /* เพิ่มมิติเงาตื้นลึกและขอบทองเรืองแสงจางๆ ให้ดูลอยตัวเสมือนกระจกหลอมเหลว */
             box-shadow: 0 30px 70px rgba(10, 30, 22, 0.25), 
                         0 0 0 2px rgba(195, 160, 89, 0.2),
                         inset 0 0 30px rgba(0,0,0,0.2);
-            transform: translateZ(0); /* บังคับใช้ Hardware Acceleration บนมือถือ */
+            transform: translateZ(0);
         }
 
-        /* ตัวครอบสไลด์เดี่ยวที่ใช้ระบบสลับรูปแบบ Crossfade + Zoom หรูหรา */
         .slide-item {
             position: absolute;
             top: 0;
@@ -254,14 +252,12 @@
             z-index: 1;
         }
 
-        /* คลาสที่จะถูกสลับด้วย JS เพื่อเริ่มแอนิเมชันที่นุ่มนวล */
         .slide-item.active {
             opacity: 1;
             transform: scale(1);
             z-index: 2;
         }
 
-        /* แผ่นฟิลเตอร์ดรอปแสงด้านล่างสไลด์เพิ่มความหรูหรา */
         .slider-container::after {
             content: '';
             position: absolute;
@@ -324,15 +320,15 @@
             .info h3 { font-size: 0.85rem; }
             .sale { font-size: 1.2rem; }
             .welcome-box { padding: 80px 50px 55px; }
-            .slider-container { border-radius: 50% 50% 48% 48% / 18% 18% 14% 14%; } /* มนสวยขึ้นเมื่อจอใหญ่ */
+            .slider-container { border-radius: 50% 50% 48% 48% / 18% 18% 14% 14%; }
         }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
-<!-- Background Video -->
+<!-- 🎬 แก้ไขลิงก์วิดีโอพื้นหลัง (Fix Background Video URL) -->
 <div class="bg-video-container">
-    <iframe src="https://www.youtube.com/embed/hqyVA3OVAoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3OVAoyo&controls=0&rel=0" allow="autoplay; encrypted-media"></iframe>
+    <iframe src="https://www.youtube.com/embed/hqyVA3VQoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3VQoyo&controls=0&showinfo=0&rel=0&iv_load_policy=3" allow="autoplay; encrypted-media"></iframe>
 </div>
 <div class="bg-video-overlay"></div>
 
@@ -366,7 +362,7 @@
     <img src="gold.png" class="main-gold-logo">
 </header>
 
-<!-- 🌟 กรอบโครงสร้างสไลด์แบบรูปทรงไหลมน (Fluid Shape Slider) 🌟 -->
+<!-- สไลด์โครงสร้างมนรีไหล (Fluid Shape Slider) -->
 <div class="slider-container">
     <div class="slide-item active" style="background-image: url('indexpic.jpg');"></div>
     <div class="slide-item" style="background-image: url('in2.jpg');"></div>
@@ -378,9 +374,10 @@
     <div class="slide-item" style="background-image: url('in8.jpg');"></div>
 </div>
 
+<!-- 🎬 แก้ไขลิงก์วิดีโอหลักกลางหน้าจอด้วยพารามิเตอร์ที่ถูกต้อง -->
 <section class="video-section">
     <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/hqyVA3OVAoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3OVAoyo&controls=0&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/hqyVA3VQoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3VQoyo&controls=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 </section>
 
@@ -401,7 +398,6 @@
 <footer><p style="text-align:center; padding:30px; font-size:0.7rem; color:#999;">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</p></footer>
 
 <script>
-    /* สคริปต์สร้างละอองวิ้งสีทองในกล่องฟรีฟอร์ม */
     function createSparkles() {
         const box = document.getElementById('welcomeBox');
         if(!box) return;
@@ -428,35 +424,26 @@
         }
     }
 
-    /* 🌟 ระบบ Smooth Engine ขับเคลื่อนแอนิเมชันสไลด์ด้วยความนุ่มระดับเฟรมต่อเฟรม 🌟 */
+    /* ระบบแอนิเมชันสไลด์สมูทเอนจิ้น */
     let currentSlideIdx = 0;
     const slides = document.querySelectorAll('.slide-item');
     const totalSlides = slides.length;
     let lastTime = 0;
-    const displayInterval = 4000; // เวลาแสดงผลภาพละ 4 วินาที
+    const displayInterval = 4000; 
 
     function updateSlider(timestamp) {
         if (!lastTime) lastTime = timestamp;
         const elapsed = timestamp - lastTime;
 
         if (elapsed >= displayInterval) {
-            // ถอดคลาสทำงานออกจากสไลด์ปัจจุบัน
             slides[currentSlideIdx].classList.remove('active');
-            
-            // คำนวณอินเด็กซ์ถัดไป
             currentSlideIdx = (currentSlideIdx + 1) % totalSlides;
-            
-            // ใส่คลาสเริ่มทำงานให้สไลด์ใหม่ (จะสั่งเปิดเอฟเฟกต์ Fade + Scale ลงมาพร้อมกันอย่างนุ่มนวล)
             slides[currentSlideIdx].classList.add('active');
-            
             lastTime = timestamp;
         }
-        
-        // ใช้ requestAnimationFrame วนลูปประสิทธิภาพสูงแทนการตั้งเวลาดิบๆ
         requestAnimationFrame(updateSlider);
     }
     
-    // เริ่มต้นรันระบบขับเคลื่อนแอนิเมชันขั้นสูงเมื่อโหลดหน้าเสร็จ
     if(totalSlides > 0) {
         requestAnimationFrame(updateSlider);
     }
