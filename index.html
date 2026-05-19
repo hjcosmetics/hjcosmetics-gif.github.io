@@ -19,7 +19,26 @@
         }
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
-        body { background-color: var(--off-white); color: #2d3436; font-family: var(--font-th); overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* แก้ไขเฉพาะส่วน body เพื่อให้มีภาพพื้นหลังไล่เฉดสีที่สามารถขยับเคลื่อนไหวได้ */
+        body { 
+            background: linear-gradient(135deg, #fdfaf5, #f5efe6, #eae2d5, #fdfaf5);
+            background-size: 400% 400%;
+            animation: luxuryGradient 15s ease infinite;
+            color: #2d3436; 
+            font-family: var(--font-th); 
+            overflow-x: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+        }
+
+        /* คีย์เฟรมสำหรับควบคุมการขยับของพื้นหลัง */
+        @keyframes luxuryGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
         /* --- Nav --- */
         nav { background: rgba(255, 255, 255, 0.95); height: 70px; padding: 0 4%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; backdrop-filter: blur(10px); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
@@ -48,12 +67,12 @@
         .grid-title { margin: 25px 0 15px; display: flex; align-items: center; gap: 10px; }
         .grid-title h2 { font-family: var(--font-head); font-size: 1rem; color: var(--p-green); letter-spacing: 1px; }
         .grid-title .line { flex: 1; height: 1px; background: var(--gold); opacity: 0.3; }
-        
+         
         .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 50px; }
 
         /* --- Card --- */
         .card { background: white; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.05); height: 100%; transition: 0.3s; position: relative; }
-        
+         
         /* สไตล์พิเศษสำหรับตัวที่ลดราคา (SALE Highlight) */
         .card.on-sale-highlight { border: 1.5px solid var(--sale-red); box-shadow: 0 0 15px rgba(230, 57, 70, 0.1); }
         .card.on-sale-highlight .product-badge { background: var(--sale-red); animation: pulse 2s infinite; width: 40px; height: 40px; font-size: 0.6rem; }
@@ -85,14 +104,14 @@
         }
 
         .product-badge { position: absolute; top: 8px; right: 8px; background: var(--gold); color: white; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; font-weight: 800; z-index: 1; transition: 0.3s; }
-        
+         
         .info { padding: 10px 8px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; gap: 4px; }
         .info h3 { font-size: 0.75rem; color: var(--p-green); line-height: 1.2; min-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        
+         
         .price-group { display: flex; flex-direction: column; align-items: center; margin-bottom: 5px; }
         .sale { font-size: 1.05rem; font-weight: 700; color: var(--p-green); }
         .old { color: #adb5bd; text-decoration: line-through; font-size: 0.65rem; }
-        
+         
         .btn-buy { background: var(--p-green); color: white; padding: 10px; text-align: center; font-weight: 700; font-size: 0.65rem; text-transform: uppercase; margin-top: auto; }
         .btn-buy.out { background: #666; }
 
@@ -170,7 +189,7 @@
         { id: 3, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง วอเตอร์", nameEn: "Original Herb Wormwood Cleansing Water", nameKr: "오리지널 허브 웜우드 클렌징 워터", sale: 250, old: 400, bTh: "ใหม่", bEn: "NEW", bKr: "신상", img: "3.jpeg" },
         { id: 4, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง โฟม", nameEn: "Original Herb Wormwood Cleansing Foam", nameKr: "오리지널 허브 웜우드 클렌징 폼", sale: 290, old: 331, bTh: "สะอาด", bEn: "TOP", bKr: "세정", img: "4.jpeg" },
         // มาส์กหน้า (เพิ่ม SALE)
-        { id: 5, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด ชีท มาส์ก", nameEn: "Original Herb Wormwood Sheet Mask", nameKr: "오리지널 허브 웜우드 시트 마스크", sale: 15, old: 22, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "15.jpeg", isPromo: true },
+        { id: 5, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด ชีท มาส์ก", nameEn: "Original Herb Wormwood Sheet Mask", nameKr: "오리지널 허브 웜우ด 시트 마스크", sale: 15, old: 22, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "15.jpeg", isPromo: true },
         { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "하트리프 블레미쉬 토너", sale: 360, old: 420, bTh: "ลดสิว", bEn: "ACNE", bKr: "트러블", img: "6.jpeg" },
         { id: 7, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช มอยส์เจอร์ ครีม", nameEn: "Heartleaf Blemish Moisture Cream", nameKr: "하트리프 블레미쉬 모이스처라이저 크림", sale: 290, old: 464, bTh: "ชุ่มชื้น", bEn: "MOIST", bKr: "보습", img: "5.jpeg" },
         { id: 8, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต กันแดด", nameEn: "Heartleaf Water Fit Sun", nameKr: "하트리프 워터 핏 선크림", sale: 320, old: 500, bTh: "บางเบา", bEn: "LIGHT", bKr: "산뜻", img: "12.jpeg" },
@@ -195,13 +214,13 @@
         products.forEach(p => {
             const name = currentLang === 'en' ? p.nameEn : (currentLang === 'kr' ? p.nameKr : p.nameTh);
             const badge = currentLang === 'en' ? p.bEn : (currentLang === 'kr' ? p.bKr : p.bTh);
-            
+             
             let btnText = currentLang === 'th' ? 'ช้อปเลย' : (currentLang === 'kr' ? '지금 구매' : 'SHOP NOW');
             let soldOutText = currentLang === 'th' ? 'หมดสต็อก' : (currentLang === 'kr' ? '품절' : 'SOLD OUT');
-            
+             
             const isOut = p.outOfStock === true;
             const isPromo = p.isPromo === true;
-            
+             
             const html = `
                 <a href="${isOut ? '#' : 'product.html?id='+p.id}" class="card ${isOut ? 'sold-out' : ''} ${isPromo ? 'on-sale-highlight' : ''}">
                     <div class="img-box">
