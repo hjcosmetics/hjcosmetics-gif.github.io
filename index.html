@@ -20,7 +20,6 @@
 
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
         
-        /* แก้ไขเฉพาะส่วน body เพื่อให้มีภาพพื้นหลังไล่เฉดสีที่สามารถขยับเคลื่อนไหวได้ */
         body { 
             background: linear-gradient(135deg, #fdfaf5, #f5efe6, #eae2d5, #fdfaf5);
             background-size: 400% 400%;
@@ -33,22 +32,21 @@
             min-height: 100vh; 
         }
 
-        /* คีย์เฟรมสำหรับควบคุมการขยับของพื้นหลัง */
         @keyframes luxuryGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* --- สไตล์ของ Welcome Animation Overlay (อัปเกรดลูกเล่นใหม่) --- */
+        /* --- สไตล์ของ Welcome Animation Overlay (รูปทรง Fluid Shape ใหม่) --- */
         .welcome-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 30, 22, 0.85); /* เข้มขึ้นเพื่อให้เอฟเฟกต์สีทองเด่น */
-            backdrop-filter: blur(20px);
+            background: rgba(10, 31, 23, 0.88); 
+            backdrop-filter: blur(25px);
             z-index: 9999;
             display: flex;
             align-items: center;
@@ -57,86 +55,89 @@
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* กล่องป๊อปอัพอัปเกรดเอฟเฟกต์เรืองแสงและโครงสร้างภายใน */
+        /* ปรับรูปทรงกล่องให้โค้งมนอิสระ ไม่ทื่อ (Fluid & Organic Luxury Shape) */
         .welcome-box {
-            background: #ffffff;
-            padding: 50px 35px 40px;
-            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 70px 40px 45px;
+            /* ใช้ border-radius 8 ค่าเพื่อให้ได้ทรงโค้งมนแบบออร์แกนิกคล้ายหยดน้ำหรือกลีบดอกไม้ */
+            border-radius: 60% 40% 55% 45% / 45% 50% 50% 55%;
             text-align: center;
-            max-width: 440px;
-            width: 88%;
+            max-width: 450px;
+            width: 90%;
             position: relative;
-            overflow: hidden; /* สำหรับซ่อนเม็ดสีทองที่วิ่งเกินกล่อง */
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 0 40px rgba(197, 160, 89, 0.2);
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255,255,255,0.6);
             border: 2px solid var(--gold);
-            transform: scale(0.5) translateY(100px);
+            transform: scale(0.3) rotate(-5deg);
             opacity: 0;
-            animation: superPopIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation: fluidPopIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             animation-delay: 0.1s;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* เม็ดประกายสีทองระยิบระยับ (Background Particle Background) */
+        /* เม็ดประกายสีทองระยิบระยับภายในกล่อง */
         .sparkle {
             position: absolute;
             background: radial-gradient(circle, #fff 10%, var(--gold) 60%, transparent 100%);
             border-radius: 50%;
-            opacity: 0.6;
+            opacity: 0.5;
             pointer-events: none;
             animation: floatUp infinite linear;
         }
 
+        /* โลโก้ลอยทะลุขอบด้านบนขึ้นไป (Floating Overlap) */
         .welcome-logo {
-            width: 150px;
-            margin-bottom: 25px;
-            z-index: 2;
-            animation: logoBounce 3s ease-in-out infinite alternate, fadeInDown 0.6s ease both 0.4s;
+            width: 140px;
+            position: absolute;
+            top: -55px;
+            z-index: 5;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+            animation: logoFloat 4s ease-in-out infinite alternate;
         }
 
         .welcome-title {
             font-family: var(--font-head);
             color: var(--p-green);
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             letter-spacing: 3px;
+            margin-top: 10px;
             margin-bottom: 8px;
             z-index: 2;
             opacity: 0;
-            animation: fadeInUp 0.6s ease both 0.6s;
+            animation: fadeInUp 0.6s ease both 0.5s;
         }
 
         .welcome-text {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #555;
             margin-bottom: 25px;
             line-height: 1.6;
             z-index: 2;
             opacity: 0;
-            animation: fadeInUp 0.6s ease both 0.8s;
+            animation: fadeInUp 0.6s ease both 0.7s;
         }
 
-        /* ป้ายแจ้งลดราคาอัปเกรด แฟลชแสงวิ่งผ่าน */
+        /* ป้ายลดราคาปรับทรงเป็น Wavy Capsule โค้งรับตัวกล่อง */
         .popup-promo-badge {
-            background: linear-gradient(135deg, var(--sale-red), #b71c1c);
+            background: linear-gradient(135deg, var(--sale-red), #c31432);
             color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
+            padding: 12px 30px;
+            border-radius: 30px 10px 30px 10px; /* ดีไซน์เฉียงสลับมุม */
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 30px;
             width: 100%;
             z-index: 2;
-            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
-            animation: pulseBadge 1.5s infinite, fadeInUp 0.6s ease both 0.9s;
+            box-shadow: 0 10px 25px rgba(230, 57, 70, 0.4);
+            animation: pulseBadge 1.8s infinite, fadeInUp 0.6s ease both 0.9s;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            letter-spacing: 0.5px;
         }
 
-        /* ปุ่ม Enter Site ที่มี Shimmer Effect แสงกระจกสะท้อนตัดผ่าน */
+        /* ปุ่มกดดีไซน์เรียบหรูเรืองแสง */
         .welcome-btn {
             background: var(--p-green);
             color: white;
@@ -144,18 +145,18 @@
             padding: 14px 50px;
             font-size: 0.85rem;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
-            border-radius: 50px;
+            border-radius: 40% 40% 40% 40% / 50% 50% 50% 50%; /* ทรงแคปซูลโค้งนิ่ม */
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             font-family: var(--font-en);
             opacity: 0;
             animation: fadeInUp 0.6s ease both 1.1s;
             z-index: 2;
-            box-shadow: 0 4px 15px rgba(27, 67, 50, 0.3);
+            box-shadow: 0 5px 20px rgba(27, 67, 50, 0.3);
         }
 
         .welcome-btn::after {
@@ -165,49 +166,45 @@
             left: -60%;
             width: 30%;
             height: 200%;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.3);
             transform: rotate(25deg);
-            transition: none;
-            animation: shimmerEffect 3s infinite linear;
+            animation: shimmerEffect 3.5s infinite linear;
         }
 
         .welcome-btn:hover {
             background: var(--gold);
             border-color: white;
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.5);
+            border-radius: 50px; /* ยืดเปลี่ยนทรงตอนชี้ */
         }
 
-        /* แอนิเมชันลูกเล่นเพิ่มเติม */
-        @keyframes superPopIn {
-            to { transform: scale(1) translateY(0); opacity: 1; }
+        /* แอนิเมชันสำหรับทรงเอฟเฟกต์ใหม่ */
+        @keyframes fluidPopIn {
+            to { transform: scale(1) rotate(0deg); opacity: 1; }
         }
-        @keyframes logoBounce {
-            from { transform: translateY(0); }
-            to { transform: translateY(-8px); }
+        @keyframes logoFloat {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-8px) scale(1.03); }
         }
         @keyframes floatUp {
-            0% { transform: translateY(350px) translateX(0) scale(0.5); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-50px) translateX(20px) scale(1.2); opacity: 0; }
+            0% { transform: translateY(300px) translateX(0) scale(0.3); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-20px) translateX(15px) scale(1.2); opacity: 0; }
         }
         @keyframes pulseBadge {
-            0% { transform: scale(1); box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4); }
-            50% { transform: scale(1.04); box-shadow: 0 8px 30px rgba(230, 57, 70, 0.7); }
-            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4); }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); box-shadow: 0 12px 30px rgba(230, 57, 70, 0.6); }
+            100% { transform: scale(1); }
         }
         @keyframes shimmerEffect {
             0% { left: -60%; }
-            30% { left: 140%; }
+            25% { left: 140%; }
             100% { left: 140%; }
         }
         @keyframes fadeInUp {
-            from { transform: translateY(25px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes fadeInDown {
-            from { transform: translateY(-25px); opacity: 0; }
+            from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
 
@@ -244,7 +241,6 @@
         /* --- Card --- */
         .card { background: white; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.05); height: 100%; transition: 0.3s; position: relative; }
          
-        /* สไตล์พิเศษสำหรับตัวที่ลดราคา (SALE Highlight) */
         .card.on-sale-highlight { border: 1.5px solid var(--sale-red); box-shadow: 0 0 15px rgba(230, 57, 70, 0.1); }
         .card.on-sale-highlight .product-badge { background: var(--sale-red); animation: pulse 2s infinite; width: 40px; height: 40px; font-size: 0.6rem; }
         .card.on-sale-highlight .sale { color: var(--sale-red); font-size: 1.3rem; }
@@ -259,20 +255,8 @@
         .card.sold-out .img-box img { filter: grayscale(1); }
         .stock-label { position: absolute; background: rgba(0,0,0,0.7); color: white; padding: 4px 10px; font-size: 0.7rem; font-weight: bold; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 4px; z-index: 2; }
 
-        .img-box { 
-            width: 100%; 
-            background: #fff; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            position: relative;
-            padding: 10px;
-        }
-        .img-box img { 
-            max-width: 100%; 
-            height: auto; 
-            object-fit: contain; 
-        }
+        .img-box { width: 100%; background: #fff; display: flex; align-items: center; justify-content: center; position: relative; padding: 10px; }
+        .img-box img { max-width: 100%; height: auto; object-fit: contain; }
 
         .product-badge { position: absolute; top: 8px; right: 8px; background: var(--gold); color: white; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; font-weight: 800; z-index: 1; transition: 0.3s; }
          
@@ -291,24 +275,25 @@
             .logo-nav img { height: 45px; }
             .info h3 { font-size: 0.85rem; }
             .sale { font-size: 1.2rem; }
+            .welcome-box { padding: 80px 50px 55px; }
         }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
-<!-- ส่วนของอนิเมชันป๊อปอัพต้อนรับ (อัปเกรดแบบใส่ Particle วิ้งทองคู่ป้ายลดราคา) -->
+<!-- ส่วนของอนิเมชันป๊อปอัพต้อนรับดีไซน์โค้งมน Organic Fluid Shape -->
 <div class="welcome-overlay" id="welcomeOverlay">
     <div class="welcome-box" id="welcomeBox">
-        <!-- เอฟเฟกต์หิมะ/วิ้งสีทองโปรยปราย จะถูกสร้างขึ้นอัตโนมัติด้วย JavaScript ตรงนี้ -->
-        
+        <!-- โลโก้ดีไซน์แบบลอยเยื้องหลุดขอบบน (Overlap Design) -->
         <img src="gold.png" class="welcome-logo" alt="HJ Logo">
+        
         <h1 class="welcome-title">WELCOME TO</h1>
         <p class="welcome-text">HJ COSMETICS GLOBAL<br>Premium Luxury Curator</p>
         
-        <!-- ป้ายลดราคาเด่นๆ ภายในป๊อปอัพ -->
+        <!-- ป้ายลดราคาเฉียงรับมุมกล่องแบบ Wavy Ribbon -->
         <div class="popup-promo-badge">
-            <i class="fa-solid fa-bolt-lightning"></i>
-            <span>สินค้าลดราคาพิเศษ BIG SALE ดำเนินอยู่!</span>
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>BIG SALE กำลังดำเนินอยู่!</span>
         </div>
         
         <button class="welcome-btn" onclick="closeWelcome()">Enter Site</button>
@@ -367,28 +352,22 @@
 <footer><p style="text-align:center; padding:30px; font-size:0.7rem; color:#999;">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</p></footer>
 
 <script>
-    /* สคริปต์สร้างเม็ดสีทองลอยขึ้นภายในป๊อปอัพโดยอัตโนมัติ */
+    /* สคริปต์สร้างละอองวิ้งสีทองในกล่องฟรีฟอร์ม */
     function createSparkles() {
         const box = document.getElementById('welcomeBox');
         if(!box) return;
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 12; i++) {
             let sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
-            
-            // สุ่มตำแหน่งและขนาดเม็ดประกายทอง
-            let size = Math.random() * 6 + 3;
+            let size = Math.random() * 5 + 3;
             sparkle.style.width = size + 'px';
             sparkle.style.height = size + 'px';
-            sparkle.style.left = Math.random() * 100 + '%';
-            
-            // สุ่มความเร็วและดีเลย์แอนิเมชันให้ดูเป็นธรรมชาติ
-            sparkle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            sparkle.style.left = (Math.random() * 80 + 10) + '%';
+            sparkle.style.animationDuration = (Math.random() * 3 + 2.5) + 's';
             sparkle.style.animationDelay = (Math.random() * 2) + 's';
-            
             box.appendChild(sparkle);
         }
     }
-    // เรียกทำงานทันทีเมื่อเริ่มโหลด
     createSparkles();
 
     /* สคริปต์ควบคุมการปิดหน้าจอต้อนรับ */
@@ -396,7 +375,7 @@
         const overlay = document.getElementById('welcomeOverlay');
         if(overlay) {
             overlay.style.opacity = '0';
-            overlay.style.transform = 'scale(1.1)'; // เพิ่มลูกเล่นตอนปิดแบบขยายฟุ้งหายไป
+            overlay.style.transform = 'translateY(-30px) scale(0.95)'; // เฟดถอยหลังขึ้นด้านบนนุ่มๆ
             setTimeout(() => {
                 overlay.style.display = 'none';
             }, 800);
