@@ -6,52 +6,33 @@
     <title>HJ COSMETICS | Premium Luxury Curator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@200;300;400;500&family=Montserrat:wght@300;600;800&family=Nanum+Myeongjo:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prompt:wght@200;300;400;500&family=Montserrat:wght@300;600;800&display=swap');
 
-        :root { 
-            --p-green: #1b4332; 
-            --gold: #c5a059;
-            --sale-red: #e63946;
-            --off-white: #fdfaf5;
-            --font-th: 'Prompt', sans-serif;
-            --font-en: 'Montserrat', sans-serif;
-            --font-head: 'Cinzel', serif;
-        }
+        :root { --p-green: #1b4332; --gold: #c5a059; --sale-red: #e63946; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #0a1e16; font-family: 'Prompt', sans-serif; overflow-x: hidden; min-height: 100vh; }
 
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
-        
-        body { 
-            color: #2d3436; 
-            font-family: var(--font-th); 
-            overflow-x: hidden; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-            position: relative;
-            background: #0a1e16; 
-        }
-
-        /* --- Fix Video Background Area --- */
+        /* Video Background */
         .bg-video-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
+            z-index: -10; 
             overflow: hidden;
-            background: #0a1e16;
         }
         .bg-video-container iframe {
             position: absolute;
             top: 50%;
             left: 50%;
             width: 100vw;
-            height: 56.25vw; 
+            height: 56.25vw;
             min-height: 100vh;
-            min-width: 177.77vh; 
+            min-width: 177.77vh;
             transform: translate(-50%, -50%);
-            pointer-events: none; 
+            border: none;
+            pointer-events: none;
         }
         .bg-video-overlay {
             position: fixed;
@@ -59,477 +40,55 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, rgba(253, 250, 245, 0.85), rgba(245, 239, 230, 0.9));
+            z-index: -9;
+            background: linear-gradient(135deg, rgba(253, 250, 245, 0.8), rgba(245, 239, 230, 0.85));
         }
 
-        /* --- Welcome Animation Overlay --- */
-        .welcome-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 31, 23, 0.88); 
-            backdrop-filter: blur(25px);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+        /* Video Section */
+        .video-section { width: 92%; max-width: 1000px; margin: 40px auto; position: relative; z-index: 1; }
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        .welcome-box {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 70px 40px 45px;
-            border-radius: 60% 40% 55% 45% / 45% 50% 50% 55%;
-            text-align: center;
-            max-width: 450px;
-            width: 90%;
-            position: relative;
-            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255,255,255,0.6);
-            border: 2px solid var(--gold);
-            transform: scale(0.3) rotate(-5deg);
-            opacity: 0;
-            animation: fluidPopIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            animation-delay: 0.1s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        /* Welcome Overlay */
+        .welcome-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 31, 23, 0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; transition: 0.8s; }
+        .welcome-box { background: #fff; padding: 50px; border-radius: 20px; text-align: center; cursor: pointer; }
 
-        .sparkle {
-            position: absolute;
-            background: radial-gradient(circle, #fff 10%, var(--gold) 60%, transparent 100%);
-            border-radius: 50%;
-            opacity: 0.5;
-            pointer-events: none;
-            animation: floatUp infinite linear;
-        }
-
-        .welcome-logo {
-            width: 140px;
-            position: absolute;
-            top: -55px;
-            z-index: 5;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
-            animation: logoFloat 4s ease-in-out infinite alternate;
-        }
-
-        .welcome-title {
-            font-family: var(--font-head);
-            color: var(--p-green);
-            font-size: 1.6rem;
-            letter-spacing: 3px;
-            margin-top: 10px;
-            margin-bottom: 8px;
-            z-index: 2;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease both 0.5s;
-        }
-
-        .welcome-text {
-            font-size: 0.85rem;
-            color: #555;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            z-index: 2;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease both 0.7s;
-        }
-
-        .popup-promo-badge {
-            background: linear-gradient(135deg, var(--sale-red), #c31432);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px 10px 30px 10px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            width: 100%;
-            z-index: 2;
-            box-shadow: 0 10px 25px rgba(230, 57, 70, 0.4);
-            animation: pulseBadge 1.8s infinite, fadeInUp 0.6s ease both 0.9s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .welcome-btn {
-            background: var(--p-green);
-            color: white;
-            border: 1px solid var(--gold);
-            padding: 14px 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            border-radius: 40% 40% 40% 40% / 50% 50% 50% 50%;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            font-family: var(--font-en);
-            opacity: 0;
-            animation: fadeInUp 0.6s ease both 1.1s;
-            z-index: 2;
-            box-shadow: 0 5px 20px rgba(27, 67, 50, 0.3);
-        }
-
-        .welcome-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -60%;
-            width: 30%;
-            height: 200%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: rotate(25deg);
-            animation: shimmerEffect 3.5s infinite linear;
-        }
-
-        .welcome-btn:hover {
-            background: var(--gold);
-            border-color: white;
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(197, 160, 89, 0.5);
-            border-radius: 50px;
-        }
-
-        @keyframes fluidPopIn { to { transform: scale(1) rotate(0deg); opacity: 1; } }
-        @keyframes logoFloat { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(-8px) scale(1.03); } }
-        @keyframes floatUp {
-            0% { transform: translateY(300px) translateX(0) scale(0.3); opacity: 0; }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
-            100% { transform: translateY(-20px) translateX(15px) scale(1.2); opacity: 0; }
-        }
-        @keyframes pulseBadge { 0% { transform: scale(1); } 50% { transform: scale(1.03); box-shadow: 0 12px 30px rgba(230, 57, 70, 0.6); } 100% { transform: scale(1); } }
-        @keyframes shimmerEffect { 0% { left: -60%; } 25% { left: 140%; } 100% { left: 140%; } }
-        @keyframes fadeInUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-        /* --- Nav --- */
-        nav { background: rgba(255, 255, 255, 0.9); height: 70px; padding: 0 4%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 2000; backdrop-filter: blur(10px); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .logo-nav img { height: 35px; width: auto; }
-        .nav-links { display: flex; gap: clamp(8px, 2.5vw, 25px); align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--p-green); font-weight: 600; font-size: 0.65rem; letter-spacing: 0.5px; text-transform: uppercase; font-family: var(--font-en); white-space: nowrap; }
-        .lang-btn { background: var(--p-green); color: white; border: none; padding: 6px 10px; cursor: pointer; font-weight: 700; font-size: 0.65rem; border-radius: 4px; }
-
-        /* --- Hero --- */
-        .hero { padding: 30px 5% 15px; text-align: center; }
-        .main-gold-logo { width: 100%; max-width: 240px; }
-
-        /* --- กรอบภาพสไลด์ทรงมนรีออร์แกนิก --- */
-        .slider-container { 
-            width: 90%; 
-            max-width: 1100px; 
-            margin: 0 auto 35px; 
-            aspect-ratio: 16/9; 
-            position: relative;
-            background: transparent;
-            border-radius: 50% 50% 45% 45% / 15% 15% 12% 12%; 
-            overflow: hidden;
-            box-shadow: 0 30px 70px rgba(10, 30, 22, 0.25), 
-                        0 0 0 2px rgba(195, 160, 89, 0.2),
-                        inset 0 0 30px rgba(0,0,0,0.2);
-            transform: translateZ(0);
-        }
-
-        .slide-item {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transform: scale(1.08);
-            transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1), 
-                        transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
-            z-index: 1;
-        }
-
-        .slide-item.active {
-            opacity: 1;
-            transform: scale(1);
-            z-index: 2;
-        }
-
-        .slider-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 35%;
-            background: linear-gradient(to top, rgba(10, 31, 23, 0.15), transparent);
-            z-index: 3;
-            pointer-events: none;
-        }
-
-        /* --- Video Section --- */
-        .video-section { width: 92%; max-width: 1000px; margin: 20px auto; }
-        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        
-        .brand-partners { padding: 20px 5%; display: flex; justify-content: center; align-items: center; gap: clamp(15px, 4vw, 50px); flex-wrap: wrap; margin-bottom: 20px; }
-        .brand-partners img { height: 25px; filter: grayscale(1); opacity: 0.6; }
-        .brand-partners img.large-logo { height: 40px; }
-
-        /* --- Product Grid --- */
-        .container { width: 94%; max-width: 1400px; margin: 0 auto; flex: 1; }
-        .grid-title { margin: 25px 0 15px; display: flex; align-items: center; gap: 10px; }
-        .grid-title h2 { font-family: var(--font-head); font-size: 1rem; color: var(--p-green); letter-spacing: 1px; }
-        .grid-title .line { flex: 1; height: 1px; background: var(--gold); opacity: 0.3; }
-         
-        .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 50px; }
-
-        /* --- Card --- */
-        .card { background: rgba(255, 255, 255, 0.9); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.05); height: 100%; transition: 0.3s; position: relative; backdrop-filter: blur(5px); }
-        .card.on-sale-highlight { border: 1.5px solid var(--sale-red); box-shadow: 0 0 15px rgba(230, 57, 70, 0.15); }
-        .card.on-sale-highlight .product-badge { background: var(--sale-red); animation: pulse 2s infinite; }
-        .card.on-sale-highlight .sale { color: var(--sale-red); font-size: 1.3rem; }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
-            70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(230, 57, 70, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
-        }
-
-        .card.sold-out { opacity: 0.7; pointer-events: none; }
-        .card.sold-out .img-box img { filter: grayscale(1); }
-        .stock-label { position: absolute; background: rgba(0,0,0,0.7); color: white; padding: 4px 10px; font-size: 0.7rem; font-weight: bold; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 4px; z-index: 2; }
-
-        .img-box { width: 100%; background: #fff; display: flex; align-items: center; justify-content: center; position: relative; padding: 10px; }
-        .img-box img { max-width: 100%; height: auto; object-fit: contain; }
-        
-        /* ปรับ CSS Product Badge ให้รองรับข้อความยาวๆ อย่าง "เติมสต็อกแล้ว" */
-        .product-badge { 
-            position: absolute; 
-            top: 8px; 
-            right: 8px; 
-            background: var(--gold); 
-            color: white; 
-            min-width: 34px; 
-            height: 34px; 
-            padding: 0 8px;
-            border-radius: 20px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 0.55rem; 
-            font-weight: 800; 
-            z-index: 1; 
-            transition: 0.3s;
-            white-space: nowrap; 
-        }
-         
-        .info { padding: 10px 8px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; gap: 4px; }
-        .info h3 { font-size: 0.75rem; color: var(--p-green); line-height: 1.2; min-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-         
-        .price-group { display: flex; flex-direction: column; align-items: center; margin-bottom: 5px; }
-        .sale { font-size: 1.05rem; font-weight: 700; color: var(--p-green); }
-        .old { color: #adb5bd; text-decoration: line-through; font-size: 0.65rem; }
-         
-        .btn-buy { background: var(--p-green); color: white; padding: 10px; text-align: center; font-weight: 700; font-size: 0.65rem; text-transform: uppercase; margin-top: auto; }
-        .btn-buy.out { background: #666; }
-
-        @media (min-width: 769px) {
-            .product-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
-            .logo-nav img { height: 45px; }
-            .info h3 { font-size: 0.85rem; }
-            .sale { font-size: 1.2rem; }
-            .welcome-box { padding: 80px 50px 55px; }
-            .slider-container { border-radius: 50% 50% 48% 48% / 18% 18% 14% 14%; }
-        }
+        nav { background: rgba(255,255,255,0.95); height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; position: sticky; top: 0; z-index: 100; }
+        .container { width: 94%; max-width: 1200px; margin: 20px auto; }
+        .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
     </style>
 </head>
-<body oncontextmenu="return false;">
+<body>
 
-<!-- Background Video -->
 <div class="bg-video-container">
-    <iframe src="https://www.youtube.com/embed/hqyVA3VQoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3VQoyo&controls=0&showinfo=0&rel=0&iv_load_policy=3" allow="autoplay; encrypted-media"></iframe>
+    <iframe src="https://www.youtube.com/embed/hqyVA3VQoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3VQoyo&controls=0&showinfo=0&rel=0&playsinline=1" allow="autoplay; encrypted-media"></iframe>
 </div>
 <div class="bg-video-overlay"></div>
 
-<!-- Welcome Pop-up Overlay -->
-<div class="welcome-overlay" id="welcomeOverlay">
-    <div class="welcome-box" id="welcomeBox">
-        <img src="gold.png" class="welcome-logo" alt="HJ Logo">
-        <h1 class="welcome-title">WELCOME TO</h1>
-        <p class="welcome-text">HJ COSMETICS GLOBAL<br>Premium Luxury Curator</p>
-        <div class="popup-promo-badge">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span>BIG SALE กำลังดำเนินอยู่!</span>
-        </div>
-        <button class="welcome-btn" onclick="closeWelcome()">Enter Site</button>
-    </div>
+<div class="welcome-overlay" id="welcomeOverlay" onclick="this.style.opacity='0'; setTimeout(()=>this.style.display='none', 800)">
+    <div class="welcome-box"><h1>WELCOME</h1><p>Click to Enter</p></div>
 </div>
 
-<nav>
-    <div class="logo-nav"><a href="index.html"><img src="HJ (5).png"></a></div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </div>
-    <div class="nav-actions">
-        <button onclick="changeLang()" id="langBtn" class="lang-btn">EN</button>
-    </div>
-</nav>
+<nav><div>HJ COSMETICS</div></nav>
 
-<header class="hero">
-    <img src="gold.png" class="main-gold-logo">
-</header>
-
-<!-- Slider -->
-<div class="slider-container">
-    <div class="slide-item active" style="background-image: url('indexpic.jpg');"></div>
-    <div class="slide-item" style="background-image: url('in2.jpg');"></div>
-    <div class="slide-item" style="background-image: url('in3.jpg');"></div>
-    <div class="slide-item" style="background-image: url('in4.jpg');"></div>
-    <div class="slide-item" style="background-image: url('in5.jpg');"></div>
-    <div class="slide-item" style="background-image: url('in6.jpg');"></div>
-    <div class="slide-item" style="background-image: url('in7.jpg');"></div>
-    <div class="slide-item" style="background-image: url('in8.jpg');"></div>
-</div>
-
-<!-- Main Video Section -->
 <section class="video-section">
     <div class="video-container">
         <iframe src="https://www.youtube.com/embed/hqyVA3VQoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3VQoyo&controls=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 </section>
 
-<section class="brand-partners">
-    <img src="Evas.png" alt="EVAS">
-    <img src="Fraijour.png" alt="Fraijour">
-    <img src="Bathpa.png" alt="Bathpa" class="large-logo">
-    <img src="Charchar.png" alt="Char Char" class="large-logo">
-</section>
-
 <main class="container">
-    <div class="grid-title"><h2>FRAIJOUR HERBS</h2><div class="line"></div></div>
-    <div class="product-grid" id="grid-f"></div>
-    <div class="grid-title"><h2 id="t-others">GLOBAL SELECTION</h2><div class="line"></div></div>
-    <div class="product-grid" id="grid-o"></div>
+    <div class="product-grid" id="grid"></div>
 </main>
 
-<footer><p style="text-align:center; padding:30px; font-size:0.7rem; color:#999;">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</p></footer>
-
 <script>
-    function createSparkles() {
-        const box = document.getElementById('welcomeBox');
-        if(!box) return;
-        for (let i = 0; i < 12; i++) {
-            let sparkle = document.createElement('div');
-            sparkle.classList.add('sparkle');
-            let size = Math.random() * 5 + 3;
-            sparkle.style.width = size + 'px';
-            sparkle.style.height = size + 'px';
-            sparkle.style.left = (Math.random() * 80 + 10) + '%';
-            sparkle.style.animationDuration = (Math.random() * 3 + 2.5) + 's';
-            sparkle.style.animationDelay = (Math.random() * 2) + 's';
-            box.appendChild(sparkle);
-        }
-    }
-    createSparkles();
-
-    function closeWelcome() {
-        const overlay = document.getElementById('welcomeOverlay');
-        if(overlay) {
-            overlay.style.opacity = '0';
-            overlay.style.transform = 'translateY(-30px) scale(0.95)';
-            setTimeout(() => { overlay.style.display = 'none'; }, 800);
-        }
-    }
-
-    let currentSlideIdx = 0;
-    const slides = document.querySelectorAll('.slide-item');
-    const totalSlides = slides.length;
-    let lastTime = 0;
-    const displayInterval = 4000; 
-
-    function updateSlider(timestamp) {
-        if (!lastTime) lastTime = timestamp;
-        const elapsed = timestamp - lastTime;
-
-        if (elapsed >= displayInterval) {
-            slides[currentSlideIdx].classList.remove('active');
-            currentSlideIdx = (currentSlideIdx + 1) % totalSlides;
-            slides[currentSlideIdx].classList.add('active');
-            lastTime = timestamp;
-        }
-        requestAnimationFrame(updateSlider);
-    }
-    
-    if(totalSlides > 0) {
-        requestAnimationFrame(updateSlider);
-    }
-
-    const products = [
-        { id: 1, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลามมิ่ง วอเตอรี่ ครีม", nameEn: "Original Herb Wormwood Calming Watery Cream", nameKr: "오리지널 허브 웜우드 카밍 워터리 크림", sale: 330, old: 420, bTh: "เติมสต็อกแล้ว", bEn: "RESTOCKED", bKr: "재입고", img: "1.jpg.png" },
-        { id: 2, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลามมิ่ง โทนเนอร์", nameEn: "Original Herb Wormwood Calming Toner", nameKr: "오리지널 허브 웜우드 카밍 토너", sale: 350, old: 375, bTh: "ขายดี", bEn: "BEST", bKr: "인기", img: "2.jpeg" },
-        { id: 3, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง วอเตอร์", nameEn: "Original Herb Wormwood Cleansing Water", nameKr: "오리지널 허브 웜우드 클렌징 워터", sale: 250, old: 400, bTh: "ใหม่", bEn: "NEW", bKr: "신상", img: "3.jpeg" },
-        { id: 4, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด คลีนซิ่ง โฟม", nameEn: "Original Herb Wormwood Cleansing Foam", nameKr: "오리지널 허브 웜우드 클렌징 폼", sale: 290, old: 331, bTh: "สะอาด", bEn: "TOP", bKr: "세정", img: "4.jpeg" },
-        { id: 5, brand: "Fraijour", nameTh: "ออริจินัล เฮิร์บ วอร์มวูด ชีท มาส์ก", nameEn: "Original Herb Wormwood Sheet Mask", nameKr: "오리지널 허브 웜우드 시트 마스크", sale: 15, old: 22, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "15.jpeg", isPromo: true },
-        { id: 6, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช โทนเนอร์", nameEn: "Heartleaf Blemish Toner", nameKr: "하트리프 블레미쉬 토너", sale: 360, old: 420, bTh: "ลดสิว", bEn: "ACNE", bKr: "트러블", img: "6.jpeg" },
-        { id: 7, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ เบลมมิช มอยส์เจอร์ ครีม", nameEn: "Heartleaf Blemish Moisture Cream", nameKr: "하트리프 블레미쉬 모이스처라이저 크림", sale: 290, old: 464, bTh: "ชุ่มชื้น", bEn: "MOIST", bKr: "보습", img: "5.jpeg" },
-        { id: 8, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ วอเตอร์ ฟิต กันแดด", nameEn: "Heartleaf Water Fit Sun", nameKr: "하트리프 워터 핏 선크림", sale: 320, old: 500, bTh: "บางเบา", bEn: "LIGHT", bKr: "산뜻", img: "12.jpeg" },
-        { id: 9, brand: "Fraijour", nameTh: "ฮาร์ทลีฟ แอรี่ ฟิต กันแดด", nameEn: "Heartleaf Airy Fit Sun", nameKr: "하트리프 에어리 핏 선크림", sale: 280, old: 420, bTh: "คุมมัน", bEn: "MATTE", bKr: "뽀송", img: "11.jpeg" },
-        { id: 10, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ โทนเนอร์", nameEn: "Retin-Collagen 3D Core Toner", nameKr: "레틴 콜라겐 3D 코어 토너", sale: 199, old: 420, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "9.jpeg", isPromo: true },
-        { id: 11, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ ครีม", nameEn: "Retin-Collagen 3D Core Cream", nameKr: "레틴 콜라겐 3D 코어 크림", sale: 159, old: 420, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "7.jpeg", isPromo: true },
-        { id: 12, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ อายครีม", nameEn: "Retin-Collagen 3D Core Eye Cream", nameKr: "레틴 콜라겐 3D 코어 아이크림", sale: 116, old: 331, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "8.jpeg", isPromo: true },
-        { id: 13, brand: "Fraijour", nameTh: "เรติน คอลลาเจน 3ดี คอร์ ลิป ออยล์", nameEn: "Retin-Collagen 3D Core Lip Oil", nameKr: "레틴 콜라겐 3D 코어 립 오일", sale: 79, old: 280, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "10.jpeg", isPromo: true },
-        { id: 14, brand: "CharChar", nameTh: "มังบีน ซิก้า คลีนซิ่ง โฟม", nameEn: "Mungbean Cica Cleansing Foam", nameKr: "녹두 시카 클렌징 폼", sale: 99, old: 225, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "14.jpeg", isPromo: true },
-        { id: 15, brand: "Bathpa", nameTh: "บอดี้ โทนอัพ ครีม", nameEn: "Body Tone Up Cream", nameKr: "바디 톤업 크림", sale: 94, old: 320, bTh: "SALE", bEn: "SALE", bKr: "SALE", img: "13.jpeg", isPromo: true }
-    ];
-
-    let currentLang = localStorage.getItem('selectedLang') || 'en';
-
-    function render() {
-        const gf = document.getElementById('grid-f');
-        const go = document.getElementById('grid-o');
-        if(!gf || !go) return;
-        gf.innerHTML = ''; go.innerHTML = '';
-        products.forEach(p => {
-            const name = currentLang === 'en' ? p.nameEn : (currentLang === 'kr' ? p.nameKr : p.nameTh);
-            const badge = currentLang === 'en' ? p.bEn : (currentLang === 'kr' ? p.bKr : p.bTh);
-             
-            let btnText = currentLang === 'th' ? 'ช้อปเลย' : (currentLang === 'kr' ? '지금 구매' : 'SHOP NOW');
-            let soldOutText = currentLang === 'th' ? 'หมดสต็อก' : (currentLang === 'kr' ? '품절' : 'SOLD OUT');
-             
-            const isOut = p.outOfStock === true;
-            const isPromo = p.isPromo === true;
-             
-            const html = `
-                <a href="${isOut ? '#' : 'product.html?id='+p.id}" class="card ${isOut ? 'sold-out' : ''} ${isPromo ? 'on-sale-highlight' : ''}">
-                    <div class="img-box">
-                        <div class="product-badge">${badge}</div>
-                        ${isOut ? `<div class="stock-label">${soldOutText}</div>` : ''}
-                        <img src="${p.img}">
-                    </div>
-                    <div class="info">
-                        <h3>${name}</h3>
-                        <div class="price-group">
-                            <span class="sale">฿${p.sale}</span>
-                            <span class="old">฿${p.old}</span>
-                        </div>
-                    </div>
-                    <div class="btn-buy ${isOut ? 'out' : ''}">${isOut ? soldOutText : btnText}</div>
-                </a>`;
-            if(p.brand === "Fraijour") gf.innerHTML += html; else go.innerHTML += html;
-        });
-        document.getElementById('langBtn').textContent = currentLang.toUpperCase();
-    }
-    
-    function changeLang() { 
-        currentLang = currentLang === 'th' ? 'en' : (currentLang === 'en' ? 'kr' : 'th'); 
-        localStorage.setItem('selectedLang', currentLang); 
-        render(); 
-    }
-    
-    render();
+    // โหลดข้อมูลสินค้า
+    const products = [{name: "Product 1", price: "300"}, {name: "Product 2", price: "350"}];
+    const grid = document.getElementById('grid');
+    products.forEach(p => {
+        grid.innerHTML += `<div style="background:white; padding:20px; border-radius:10px;"><h3>${p.name}</h3><p>฿${p.price}</p></div>`;
+    });
 </script>
+
 </body>
 </html>
