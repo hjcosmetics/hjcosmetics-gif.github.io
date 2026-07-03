@@ -287,7 +287,7 @@
         /* --- Card --- */
         .card { background: rgba(255, 255, 255, 0.9); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; border: 1px solid rgba(0,0,0,0.05); height: 100%; transition: 0.3s; position: relative; backdrop-filter: blur(5px); }
         .card.on-sale-highlight { border: 1.5px solid var(--sale-red); box-shadow: 0 0 15px rgba(230, 57, 70, 0.15); }
-        .card.on-sale-highlight .product-badge { background: var(--sale-red); animation: pulse 2s infinite; width: 40px; height: 40px; font-size: 0.6rem; }
+        .card.on-sale-highlight .product-badge { background: var(--sale-red); animation: pulse 2s infinite; }
         .card.on-sale-highlight .sale { color: var(--sale-red); font-size: 1.3rem; }
 
         @keyframes pulse {
@@ -302,7 +302,27 @@
 
         .img-box { width: 100%; background: #fff; display: flex; align-items: center; justify-content: center; position: relative; padding: 10px; }
         .img-box img { max-width: 100%; height: auto; object-fit: contain; }
-        .product-badge { position: absolute; top: 8px; right: 8px; background: var(--gold); color: white; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; font-weight: 800; z-index: 1; transition: 0.3s; }
+        
+        /* ปรับ CSS Product Badge ให้รองรับข้อความยาวๆ อย่าง "เติมสต็อกแล้ว" */
+        .product-badge { 
+            position: absolute; 
+            top: 8px; 
+            right: 8px; 
+            background: var(--gold); 
+            color: white; 
+            min-width: 34px; 
+            height: 34px; 
+            padding: 0 8px;
+            border-radius: 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 0.55rem; 
+            font-weight: 800; 
+            z-index: 1; 
+            transition: 0.3s;
+            white-space: nowrap; 
+        }
          
         .info { padding: 10px 8px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; gap: 4px; }
         .info h3 { font-size: 0.75rem; color: var(--p-green); line-height: 1.2; min-height: 2.4em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -326,11 +346,13 @@
 </head>
 <body oncontextmenu="return false;">
 
+<!-- Background Video -->
 <div class="bg-video-container">
     <iframe src="https://www.youtube.com/embed/hqyVA3VQoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3VQoyo&controls=0&showinfo=0&rel=0&iv_load_policy=3" allow="autoplay; encrypted-media"></iframe>
 </div>
 <div class="bg-video-overlay"></div>
 
+<!-- Welcome Pop-up Overlay -->
 <div class="welcome-overlay" id="welcomeOverlay">
     <div class="welcome-box" id="welcomeBox">
         <img src="gold.png" class="welcome-logo" alt="HJ Logo">
@@ -360,6 +382,7 @@
     <img src="gold.png" class="main-gold-logo">
 </header>
 
+<!-- Slider -->
 <div class="slider-container">
     <div class="slide-item active" style="background-image: url('indexpic.jpg');"></div>
     <div class="slide-item" style="background-image: url('in2.jpg');"></div>
@@ -371,6 +394,7 @@
     <div class="slide-item" style="background-image: url('in8.jpg');"></div>
 </div>
 
+<!-- Main Video Section -->
 <section class="video-section">
     <div class="video-container">
         <iframe src="https://www.youtube.com/embed/hqyVA3VQoyo?autoplay=1&mute=1&loop=1&playlist=hqyVA3VQoyo&controls=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -420,7 +444,6 @@
         }
     }
 
-    /* ระบบแอนิเมชันสไลด์สมูทเอนจิ้น */
     let currentSlideIdx = 0;
     const slides = document.querySelectorAll('.slide-item');
     const totalSlides = slides.length;
@@ -499,7 +522,13 @@
         });
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
     }
-    function changeLang() { currentLang = currentLang === 'th' ? 'en' : (currentLang === 'en' ? 'kr' : 'th'); localStorage.setItem('selectedLang', currentLang); render(); }
+    
+    function changeLang() { 
+        currentLang = currentLang === 'th' ? 'en' : (currentLang === 'en' ? 'kr' : 'th'); 
+        localStorage.setItem('selectedLang', currentLang); 
+        render(); 
+    }
+    
     render();
 </script>
 </body>
