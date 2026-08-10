@@ -415,7 +415,12 @@
     <div class="product-grid" id="grid-o"></div>
 </main>
 
-<footer><p style="text-align:center; padding:30px; font-size:0.7rem; color:#999;">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</p></footer>
+<footer>
+    <p style="text-align:center; padding: 20px 30px 5px; font-size:0.75rem; color:#c5a059; font-weight: 500;">
+        <i class="fa-solid fa-eye"></i> ยอดเข้าชมเว็บไซต์: <span id="visitorCount">...</span> ครั้ง
+    </p>
+    <p style="text-align:center; padding: 5px 30px 30px; font-size:0.7rem; color:#999;">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</p>
+</footer>
 
 <script>
     function createSparkles() {
@@ -530,6 +535,21 @@
     }
     
     render();
+
+    // --- System Visitor Counter ---
+    function updateVisitorCount() {
+        let count = localStorage.getItem('hj_site_visits');
+        if(!count) {
+            count = 100;
+        }
+        count = parseInt(count) + 1;
+        localStorage.setItem('hj_site_visits', count);
+        const countEl = document.getElementById('visitorCount');
+        if(countEl) {
+            countEl.textContent = count.toLocaleString();
+        }
+    }
+    updateVisitorCount();
 </script>
 </body>
 </html>
