@@ -416,7 +416,7 @@
 
 <footer>
     <p style="text-align:center; padding: 20px 30px 5px; font-size:0.75rem; color:#c5a059; font-weight: 500;">
-        <i class="fa-solid fa-eye"></i> ยอดเข้าชมเว็บไซต์: <span id="visitorCount">กำลังโหลด...</span> ครั้ง
+        <i class="fa-solid fa-eye"></i> <span id="lblVisitor">ยอดเข้าชมเว็บไซต์</span>: <span id="visitorCount">กำลังโหลด...</span> <span id="lblVisitsUnit">ครั้ง</span>
     </p>
     <p style="text-align:center; padding: 5px 30px 30px; font-size:0.7rem; color:#999;">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</p>
 </footer>
@@ -490,6 +490,14 @@
     ];
 
     let currentLang = localStorage.getItem('selectedLang') || 'en';
+    let globalVisitorCount = null; // ตัวแปรเก็บบันทึกยอดเข้าชมรวม
+
+    // คลังคำแปลระบบนับผู้เข้าชม (3 ภาษา)
+    const counterTranslations = {
+        th: { label: 'ยอดเข้าชมเว็บไซต์', unit: 'ครั้ง', loading: 'กำลังโหลด...' },
+        en: { label: 'Total Website Visits', unit: 'views', loading: 'Loading...' },
+        kr: { label: '총 방문자 수', unit: '회', loading: '로딩 중...' }
+    };
 
     function render() {
         const gf = document.getElementById('grid-f');
@@ -525,6 +533,9 @@
             if(p.brand === "Fraijour") gf.innerHTML += html; else go.innerHTML += html;
         });
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
+
+        // อัปเดตภาษาของระบบนับผู้เข้าชมที่ Footer
+        updateCounterLanguage();
     }
     
     function changeLang() { 
@@ -532,25 +543,43 @@
         localStorage.setItem('selectedLang', currentLang); 
         render(); 
     }
+
+    // ฟังก์ชันสำหรับสลับข้อความระบบนับผู้เข้าชมตามภาษาที่เลือก
+    function updateCounterLanguage() {
+        const t = counterTranslations[currentLang] || counterTranslations.en;
+        const lblEl = document.getElementById('lblVisitor');
+        const unitEl = document.getElementById('lblVisitsUnit');
+        const countEl = document.getElementById('visitorCount');
+
+        if(lblEl) lblEl.textContent = t.label;
+        if(unitEl) unitEl.textContent = t.unit;
+        if(countEl) {
+            if(globalVisitorCount !== null) {
+                countEl.textContent = globalVisitorCount;
+            } else {
+                countEl.textContent = t.loading;
+            }
+        }
+    }
     
     render();
 
     // --- REAL-TIME GLOBAL VISITOR COUNTER (นับจำนวนจริงทั่วโลก) ---
     function fetchRealVisitorCount() {
-        const countEl = document.getElementById('visitorCount');
-        // เรียกใช้ API ฟรีที่จะบวกยอดเพิ่ม 1 เมื่อมีคนเปิดหน้าเว็บ และบันทึกไว้ในระบบกลาง
         fetch('https://api.counterapi.dev/v1/hjcosmetics_official_site/visits/up')
             .then(res => res.json())
             .then(data => {
                 if(data && data.count) {
-                    countEl.textContent = Number(data.count).toLocaleString();
+                    globalVisitorCount = Number(data.count).toLocaleString();
                 } else {
-                    countEl.textContent = '1,024'; // สำรองกรณี API ตอบกลับไม่สมบูรณ์
+                    globalVisitorCount = '1,024'; // สำรองกรณี API ตอบกลับไม่สมบูรณ์
                 }
+                updateCounterLanguage();
             })
             .catch(err => {
                 console.log('Counter API Error:', err);
-                countEl.textContent = '1,024'; // สำรองกรณีขัดข้อง
+                globalVisitorCount = '1,024'; // สำรองกรณีขัดข้อง
+                updateCounterLanguage();
             });
     }
     fetchRealVisitorCount();
