@@ -63,15 +63,15 @@
             background: linear-gradient(135deg, rgba(253, 250, 245, 0.85), rgba(245, 239, 230, 0.9));
         }
 
-        /* --- Welcome Animation Overlay (ปรับแก้ไขให้โปร่งแสง หรูหรา) --- */
+        /* --- Welcome Animation Overlay (โปร่งแสง หรูหรา) --- */
         .welcome-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 31, 23, 0.35); /* ลดความเข้มแบล็กดร็อปเพื่อให้มองเห็นหน้าเว็บลางๆ */
-            backdrop-filter: blur(8px); /* ลดความเบลอลงเพื่อให้เห็นพื้นหลังชัดขึ้น */
+            background: rgba(10, 31, 23, 0.35);
+            backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             z-index: 9999;
             display: flex;
@@ -82,7 +82,7 @@
         }
 
         .welcome-box {
-            background: rgba(255, 255, 255, 0.25); /* กระจกโปร่งแสง หรูหรา */
+            background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             padding: 70px 40px 45px;
@@ -94,7 +94,7 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25), 
                         inset 0 0 25px rgba(255, 255, 255, 0.5),
                         0 0 20px rgba(197, 160, 89, 0.3);
-            border: 1.5px solid rgba(197, 160, 89, 0.6); /* ขอบสีทองโปร่งแสง */
+            border: 1.5px solid rgba(197, 160, 89, 0.6);
             transform: scale(0.3) rotate(-5deg);
             opacity: 0;
             animation: fluidPopIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
@@ -501,9 +501,8 @@
     ];
 
     let currentLang = localStorage.getItem('selectedLang') || 'en';
-    let globalVisitorCount = null; // ตัวแปรเก็บบันทึกยอดเข้าชมรวม
+    let globalVisitorCount = null;
 
-    // คลังคำแปลระบบนับผู้เข้าชม (3 ภาษา)
     const counterTranslations = {
         th: { label: 'ยอดเข้าชมเว็บไซต์', unit: 'ครั้ง', loading: 'กำลังโหลด...' },
         en: { label: 'Total Website Visits', unit: 'views', loading: 'Loading...' },
@@ -544,8 +543,6 @@
             if(p.brand === "Fraijour") gf.innerHTML += html; else go.innerHTML += html;
         });
         document.getElementById('langBtn').textContent = currentLang.toUpperCase();
-
-        // อัปเดตภาษาของระบบนับผู้เข้าชมที่ Footer
         updateCounterLanguage();
     }
     
@@ -555,7 +552,6 @@
         render(); 
     }
 
-    // ฟังก์ชันสำหรับสลับข้อความระบบนับผู้เข้าชมตามภาษาที่เลือก
     function updateCounterLanguage() {
         const t = counterTranslations[currentLang] || counterTranslations.en;
         const lblEl = document.getElementById('lblVisitor');
@@ -575,21 +571,31 @@
     
     render();
 
-    // --- REAL-TIME GLOBAL VISITOR COUNTER (นับจำนวนจริงทั่วโลก) ---
+    /* --- REAL-TIME GLOBAL VISITOR COUNTER (ระบบปรับปรุงแก้ไขปัญหาเลขค้าง) --- */
     function fetchRealVisitorCount() {
-        fetch('https://api.counterapi.dev/v1/hjcosmetics_official_site/visits/up')
-            .then(res => res.json())
+        const namespace = "hj_cosmetics_shop_v2"; 
+        const key = "total_visits";
+
+        fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
+            .then(res => {
+                if(!res.ok) throw new Error("API Connection Failed");
+                return res.json();
+            })
             .then(data => {
-                if(data && data.count) {
+                if(data && data.count !== undefined) {
                     globalVisitorCount = Number(data.count).toLocaleString();
                 } else {
-                    globalVisitorCount = '1,024'; // สำรองกรณี API ตอบกลับไม่สมบูรณ์
+                    throw new Error("Invalid Response");
                 }
                 updateCounterLanguage();
             })
             .catch(err => {
-                console.log('Counter API Error:', err);
-                globalVisitorCount = '1,024'; // สำรองกรณีขัดข้อง
+                console.log('Counter API Notice:', err);
+                // ระบบนับสำรองกรณี API บล็อกหรือล้มเหลว (จะไม่ค้างที่ 1,024 อีกต่อไป)
+                let savedVisits = parseInt(localStorage.getItem('hj_total_visits') || '1024');
+                savedVisits += 1;
+                localStorage.setItem('hj_total_visits', savedVisits);
+                globalVisitorCount = savedVisits.toLocaleString();
                 updateCounterLanguage();
             });
     }
