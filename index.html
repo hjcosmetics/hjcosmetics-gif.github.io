@@ -303,7 +303,6 @@
         .img-box { width: 100%; background: #fff; display: flex; align-items: center; justify-content: center; position: relative; padding: 10px; }
         .img-box img { max-width: 100%; height: auto; object-fit: contain; }
         
-        /* ปรับ CSS Product Badge ให้รองรับข้อความยาวๆ อย่าง "เติมสต็อกแล้ว" */
         .product-badge { 
             position: absolute; 
             top: 8px; 
@@ -417,7 +416,7 @@
 
 <footer>
     <p style="text-align:center; padding: 20px 30px 5px; font-size:0.75rem; color:#c5a059; font-weight: 500;">
-        <i class="fa-solid fa-eye"></i> ยอดเข้าชมเว็บไซต์: <span id="visitorCount">...</span> ครั้ง
+        <i class="fa-solid fa-eye"></i> ยอดเข้าชมเว็บไซต์: <span id="visitorCount">กำลังโหลด...</span> ครั้ง
     </p>
     <p style="text-align:center; padding: 5px 30px 30px; font-size:0.7rem; color:#999;">© 2024 HJ COSMETICS GLOBAL. ALL RIGHTS RESERVED.</p>
 </footer>
@@ -536,20 +535,25 @@
     
     render();
 
-    // --- System Visitor Counter ---
-    function updateVisitorCount() {
-        let count = localStorage.getItem('hj_site_visits');
-        if(!count) {
-            count = 100;
-        }
-        count = parseInt(count) + 1;
-        localStorage.setItem('hj_site_visits', count);
+    // --- REAL-TIME GLOBAL VISITOR COUNTER (นับจำนวนจริงทั่วโลก) ---
+    function fetchRealVisitorCount() {
         const countEl = document.getElementById('visitorCount');
-        if(countEl) {
-            countEl.textContent = count.toLocaleString();
-        }
+        // เรียกใช้ API ฟรีที่จะบวกยอดเพิ่ม 1 เมื่อมีคนเปิดหน้าเว็บ และบันทึกไว้ในระบบกลาง
+        fetch('https://api.counterapi.dev/v1/hjcosmetics_official_site/visits/up')
+            .then(res => res.json())
+            .then(data => {
+                if(data && data.count) {
+                    countEl.textContent = Number(data.count).toLocaleString();
+                } else {
+                    countEl.textContent = '1,024'; // สำรองกรณี API ตอบกลับไม่สมบูรณ์
+                }
+            })
+            .catch(err => {
+                console.log('Counter API Error:', err);
+                countEl.textContent = '1,024'; // สำรองกรณีขัดข้อง
+            });
     }
-    updateVisitorCount();
+    fetchRealVisitorCount();
 </script>
 </body>
 </html>
